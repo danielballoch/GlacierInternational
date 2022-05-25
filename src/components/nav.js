@@ -100,7 +100,7 @@ button:hover {
     cursor: pointer;
 }
 ${menuOpen === true &&`
-z-index: 100;
+z-index: 210;
 display: flex;
 transition-delay: .2s;
 transition: opacity .8s, transform .5s;
@@ -122,7 +122,7 @@ const backdropStyle = ({menuOpen}) => css`
     background-color: rgba(255,255,255,0);
 
 ${menuOpen === true &&`
-z-index: 50;
+z-index: 200;
 transition: background-color .3s, z-index .1s;
 background-color: rgba(0,0,0,.8);
 `}

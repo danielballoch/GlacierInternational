@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
@@ -19,16 +19,21 @@ import Terms from './terms'
 
 const Layout = ({ children, pageLocation, hideFooter, invertNav}) => {
     console.log("layout props", pageLocation)
+
+    const [termsValue, setTermsValue] = useState(false);
+    useEffect(() => {
+        if (typeof window !== "undefined" && window.document){
+            var tValue;
+            {document.cookie.split(';').some((item) => item.trim().startsWith('termsAccepted=')) ? 
+            tValue = document.cookie.split('; ').find(row => row.startsWith('termsAccepted=')).split('=')[1] : 
+            document.cookie = "termsAccepted=false" }
+            setTermsValue(tValue)
+            console.log("terms value use effect: " + termsValue)
+            console.log("document cookie: " + document.cookie)
+        }
+    })
+    console.log("terms after: " + termsValue)
     
-    // const [cookies, setCookie] = useCookies(['accepted']);
-    // setCookie('accepted', false);
-    //create variable to show/hide terms, check cookie exists, if not create cookie, if so set var as cookie. *should be state?
-    var termsValue = false;
-    {document.cookie.split(';').some((item) => item.trim().startsWith('termsAccepted=')) ? 
-    termsValue = document.cookie.split('; ').find(row => row.startsWith('termsAccepted=')).split('=')[1] : 
-    document.cookie = "termsAccepted=false" }
-    console.log(termsValue)
-    console.log(document.cookie)
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -44,7 +49,6 @@ const Layout = ({ children, pageLocation, hideFooter, invertNav}) => {
   return (
     <>
       <div>
-      {/* <CookiesProvider> */}
       <Helmet htmlAttributes={{lang: 'en'}}>
             <meta charSet="utf-8" lang="en"/>
             <meta name="description" content={data.site.siteMetadata.description}/>
@@ -64,12 +68,11 @@ const Layout = ({ children, pageLocation, hideFooter, invertNav}) => {
             }
           `}
         />
-        {termsValue === "true" ?  null : <Terms/>}
-        {/* <Terms/> */}
+        {(typeof window !== "undefined" && window.document) ? (termsValue !== "true" ?  <Terms/> : null ) : null}
+        
         <Nav pageLocation={pageLocation} invertNav={invertNav}/>
         <main>{children}</main>
         <Footer hideFooter={hideFooter}/>
-        {/* </CookiesProvider> */}
       </div>
     </>
   )

@@ -67,9 +67,9 @@ justify-content: center;
 flex-direction: column;
 align-items: center;
 `
-const CenterLeft = styled.div`
+const CenterRight = styled.div`
 z-index: 10;
-background-color: white;
+background-color: #fbfbfb;
 width: 30vw;
 height: 100vh;
 margin-left: 20px;
@@ -121,7 +121,7 @@ left: calc(35vw - 350px);
 text-align: center;
 width: 700px;
 height: 100px;
-background-color: white;
+background-color: #fbfbfb;
 color: black;
 border-radius: 50px 50px 0 0;
 box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -137,7 +137,7 @@ const IndexPage = ({display=false}) => {
     const [model, setModel] = useState(["TRD PRO",32000])
     const [lift, setLift] = useState(0)
 
-    const [colour, setColour] = useState(["red",100])
+    const [colour, setColour] = useState(["white",100])
 
     const [accessory1, setAccessory1] = useState(false)
     const [accessory2, setAccessory2] = useState(false)
@@ -166,7 +166,7 @@ const IndexPage = ({display=false}) => {
                 SRBlue
                 )}/>
             </Center>
-            <CenterLeft>
+            <CenterRight>
                 <p>Grade:</p>
                 <button className={(model[0] === "DOUBLE CAB SR" ? 'active' : '') } onClick={() => setModel(["DOUBLE CAB SR",32000])}>DOUBLE CAB SR</button>
                 <button className={(model[0] === "CrewMax Capstone" ? 'active' : '') } onClick={() => setModel(["CrewMax Capstone",42000])}>CrewMax SR</button>
@@ -175,7 +175,7 @@ const IndexPage = ({display=false}) => {
                 <button className={(colour[0] === "white" ? 'active' : '') } onClick={() => setColour(["white",100])}>White</button>
                 <button className={(colour[0] === "blue" ? 'active' : '') } onClick={() => setColour(["blue",200])}>Blue</button>
                 <button className={(colour[0] === "black" ? 'active' : '') } onClick={() => setColour(["black",500])}>black</button>
-            </CenterLeft>
+            </CenterRight>
         </Row>
         
         
