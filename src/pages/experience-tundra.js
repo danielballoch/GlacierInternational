@@ -7,20 +7,20 @@ import Layout from "../components/layout"
 
 const Container = styled.div`
 margin-top: 100px;
-color: white;
+height: calc(100vh - 170px);
+color: black;
 display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
+font-family: seguo-ui, visby, sans-serif;
 `
 
 const ExperienceTundraPage = () => {
     return(
-        <Layout>
+        <Layout invertNav={true}>
             <Container>
-                <h1>hello experience tundra page</h1>
-                <h1>hello experience tundra page</h1>
-                <h1>hello experience tundra page</h1>
+            <h1>Page under maintenence, please come back soon...</h1>
             </Container>
         </Layout>
     )

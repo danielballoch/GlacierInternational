@@ -135,7 +135,7 @@ button {
 const AboutPage = () => {
     const [videoOpen, setVideoOpen] = useState(false);
     return(
-        <Layout>
+        <Layout invertNav={true}>
             <Container>
                 <h1>About Us</h1>
             </Container>
