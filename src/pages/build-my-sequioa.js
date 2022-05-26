@@ -107,7 +107,7 @@ const CenterLeft = styled.div`
 z-index: 10;
 background-color: white;
 width: 30vw;
-height: 100vh;
+min-height: 100vh;
 margin-left: 20px;
 box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.04);
 .features {
@@ -148,12 +148,17 @@ display: flex;
 justify-content: left;
 flex-direction: column;
 align-items: left;
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 20px 0px 34px;
+}
 button {
     align-self: flex-start;
     background-color: white;
     padding: 6px 20px;
     border-radius: 50px;
-    margin: 10px 40px;
+    margin: 10px 10px;
     border: none;
     transition: .3s;
     border: solid 1px white;
@@ -240,14 +245,18 @@ const IndexPage = ({display=false}) => {
                 
                 <p>Grade:</p>
                 {/*Display grade buttons, update activeGrade state onClick & if active use active class styling */}
+                <div className="wrap">
                 {grades.map((grade, i) => (
-                    <button className={(activeGrade[0] === grade.name ? 'active' : '')} onClick={() => setActiveGrade([grade.name, 32000, i])}>{grade.name}</button>
+                    <button className={(activeGrade[0] === grade.name ? 'active' : '')} onClick={() => {setActiveGrade([grade.name, 32000, i]); setActiveColor(["Midnight Black Metallic",100, 0])}}>{grade.name}</button>
                 ))}
+                </div>
                 <p>Colour:</p>
                 {/*Display color buttons based on activeGrade, update activeColor state onClick & if active use active class styling */}
+                <div className="wrap">
                 {grades[activeGrade[2]].colors.map((color, i) => (
                     <button className={(activeColor[0] === color ? 'active' : '') } onClick={() => {setActiveColor([color,100, i])}}>{color}</button>
                 ))}
+                </div>
             </CenterLeft>
         </Row>
         

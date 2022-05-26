@@ -116,24 +116,58 @@ const CenterLeft = styled.div`
 z-index: 10;
 background-color: white;
 width: 30vw;
-height: 100vh;
+min-height: 100vh;
 margin-left: 20px;
 box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.04);
+h1 {
+    margin: 60px 20px 0px 40px;
+    color: rgba(0,0,0,0.9);
+    font-size: 3em;
+    font-weight: 100;
+    text-align: left;
+}
 p {
 color: black;
 margin: 60px 20px 0px 40px;
 font-size: 1.5em;
 }
+.features {
+    margin: 40px 20px 0px 26px;
+    display: flex;
+    flex-wrap: wrap;
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: black;
+        padding: 10px 14px;
+        text-align: center;
+        h2 {
+            margin: 0;
+            color: #252525;
+        }
+        p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    }
+}
+
 display: flex;
 justify-content: left;
 flex-direction: column;
 align-items: left;
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 20px 0px 34px;
+}
 button {
     align-self: flex-start;
     background-color: white;
     padding: 6px 20px;
     border-radius: 50px;
-    margin: 10px 40px;
+    margin: 10px 10px;
     border: none;
     transition: .3s;
     border: solid 1px white;
@@ -183,17 +217,17 @@ const IndexPage = ({display=false}) => {
     const [activeGrade, setActiveGrade] = useState(["1794",32000, 0])
     const [lift, setLift] = useState(0)
 
-    const [activeColor, setActiveColor] = useState(["Red",100, 5])
+    const [activeColor, setActiveColor] = useState(["Supersonic Red",100, 5])
 
 
     const grades = [
-        {name: "1794", colors: ["Black","Blue", "Green","Grey", "Mesquite", "Pearl", "Red", "Silver"], src: [Black1794, Blue1794, Green1794, Grey1794, Mesquite1794, Pearl1794, Red1794, Silver1794], price: "89,091"},
-        {name: "Capstone", colors: ["Black","Blue","Grey","Pearl","Red","Silver"], src: [BlackCapstone, BlueCapstone, GreyCapstone, PearlCapstone, RedCapstone, SilverCapstone], price: "113,553"},
-        {name: "Limited", colors: ["Black","Blue","Green","Grey","Mesquite","Pearl","Red","Silver", "White"], src: [BlackLimited, BlueLimited, GreenLimited, GreyLimited,MesquiteLimited, PearlLimited, RedLimited, SilverLimited, WhiteLimited], price: "72,351"},
-        {name: "Platinum", colors: ["Black","Blue","Grey","Pearl","Red","Silver"], src: [BlackPlatinum, BluePlatinum, GreyPlatinum, PearlPlatinum, RedPlatinum, SilverPlatinum], price: "88,520"},
-        {name: "SR", colors: ["Black","Grey","Silver", "White"], src: [BlackSR, GreySR, SilverSR, WhiteSR], price: "55,490"},
-        {name: "SR5", colors: ["Black","Blue","Green","Grey","Red","Rock","Silver", "White"], src: [BlackSR5, BlueSR5, GreenSR5, GreySR5, RedSR5,RockSR5, SilverSR5, WhiteSR5], price: "55,490"},
-        {name: "TRDPRO", colors: ["Black","Rock","Solar", "White"], src: [BlackTRDPRO, RockTRDPRO, SolarTRDPRO, WhiteTRDPRO], price: "103,115"},
+        {name: "1794", colors: ["Midnight Black Metallic","Blueprint", "Army Green","Magnetic Grey Metallic", "Smoked Mesquite", "Wind Chill Pearl", "Supersonic Red", "Celestial Silver Metallic"], src: [Black1794, Blue1794, Green1794, Grey1794, Mesquite1794, Pearl1794, Red1794, Silver1794], price: "89,091"},
+        {name: "Capstone", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Wind Chill Pearl","Supersonic Red","Celestial Silver Metallic"], src: [BlackCapstone, BlueCapstone, GreyCapstone, PearlCapstone, RedCapstone, SilverCapstone], price: "113,553"},
+        {name: "Limited", colors: ["Midnight Black Metallic","Blueprint","Army Green","Magnetic Grey Metallic","Smoked Mesquite","Wind Chill Pearl","Supersonic Red","Celestial Silver Metallic", "White"], src: [BlackLimited, BlueLimited, GreenLimited, GreyLimited,MesquiteLimited, PearlLimited, RedLimited, SilverLimited, WhiteLimited], price: "72,351"},
+        {name: "Platinum", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Wind Chill Pearl","Supersonic Red","Celestial Silver Metallic"], src: [BlackPlatinum, BluePlatinum, GreyPlatinum, PearlPlatinum, RedPlatinum, SilverPlatinum], price: "88,520"},
+        {name: "SR", colors: ["Midnight Black Metallic","Magnetic Grey Metallic","Celestial Silver Metallic", "White"], src: [BlackSR, GreySR, SilverSR, WhiteSR], price: "55,490"},
+        {name: "SR5", colors: ["Midnight Black Metallic","Blueprint","Army Green","Magnetic Grey Metallic","Supersonic Red","Lunar Rock","Celestial Silver Metallic", "White"], src: [BlackSR5, BlueSR5, GreenSR5, GreySR5, RedSR5,RockSR5, SilverSR5, WhiteSR5], price: "55,490"},
+        {name: "TRDPRO", colors: ["Midnight Black Metallic","Lunar Rock","Solar Octane", "White"], src: [BlackTRDPRO, RockTRDPRO, SolarTRDPRO, WhiteTRDPRO], price: "103,115"},
     ]
     console.log(grades)
     console.log(activeColor[0]+activeGrade[0])
@@ -213,16 +247,27 @@ const IndexPage = ({display=false}) => {
                 />
             </Center>
             <CenterLeft>
+                <h1>2022 Toyota Tundra</h1>
+                <div className="features">
+                    <div><h2>437 HP/583 Lb.-Ft.</h2><p>i-FORCE MAX Engine</p></div>
+                    <div><h2>389 HP/479 Lb.-Ft.</h2><p>i-FORCE Engine </p></div>
+                    <div><h2>12,000 Lbs. *</h2><p>Max Towing *</p></div>
+                    <div><h2>1,940 Lbs. *</h2><p>Max Payload </p></div>
+                </div>
                 <p>Grade:</p>
                 {/*Display grade buttons, update activeGrade state onClick & if active use active class styling */}
+                <div className="wrap">
                 {grades.map((grade, i) => (
-                    <button className={(activeGrade[0] === grade.name ? 'active' : '')} onClick={() => setActiveGrade([grade.name, 32000, i])}>{grade.name}</button>
+                    <button className={(activeGrade[0] === grade.name ? 'active' : '')} onClick={() => {setActiveGrade([grade.name, 32000, i]);setActiveColor(["Midnight Black Metallic",100, 0])}}>{grade.name}</button>
                 ))}
+                </div>
                 <p>Colour:</p>
                 {/*Display color buttons based on activeGrade, update activeColor state onClick & if active use active class styling */}
+                <div className="wrap">
                 {grades[activeGrade[2]].colors.map((color, i) => (
                     <button className={(activeColor[0] === color ? 'active' : '') } onClick={() => {setActiveColor([color,100, i])}}>{color}</button>
                 ))}
+                </div>
             </CenterLeft>
         </Row>
         
