@@ -6,7 +6,7 @@ import scrollTo from 'gatsby-plugin-smoothscroll';
 import { StaticImage } from "gatsby-plugin-image";
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-const sidebarStyles = ({menuOpen}) => css`
+const termsStyles = ({menuOpen}) => css`
 ${'' /* display: none; */}
 ${'' /* overflow-x: scroll; */}
 ${'' /* white-space: nowrap; */}
@@ -47,7 +47,7 @@ opacity: 1;
 transform: translateX(0%);
 `}
 `
-const backdropStyle = ({menuOpen}) => css`
+const backStyle = ({menuOpen}) => css`
     position: fixed;
     z-index: -100;
     top: 0;
@@ -73,7 +73,7 @@ export default function Terms(){
 
     const [menuOpen, setMenuOpen] = useState(true);
     let DrawerLinks = (
-        <div css={sidebarStyles({ menuOpen })}>
+        <div css={termsStyles({ menuOpen })}>
             <div>
                 <h1>Terms & Conditions</h1>
                 <p>
@@ -95,7 +95,7 @@ export default function Terms(){
     <div>    
 
     {DrawerLinks}
-    <div css={backdropStyle({ menuOpen })}/>
+    <div css={backStyle({ menuOpen })}/>
     </div>
     )
 }
