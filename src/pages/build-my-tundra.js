@@ -104,8 +104,8 @@ video {
 const Center = styled.div`
 display: flex;
 position: fixed;
-top: calc(50vh - 250px);;
-left: 20vw;
+top: calc(50vh - 20vh);;
+left: calc(35vw - 20vw);
 width: 40vw;
 height: 40vh
 justify-content: center;
