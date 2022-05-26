@@ -21,18 +21,18 @@ const Layout = ({ children, pageLocation, hideFooter, invertNav}) => {
     console.log("layout props", pageLocation)
 
     const [termsValue, setTermsValue] = useState(false);
-    useEffect(() => {
-        if (typeof window !== "undefined" && window.document){
-            var tValue;
-            {document.cookie.split(';').some((item) => item.trim().startsWith('termsAccepted=')) ? 
-            tValue = document.cookie.split('; ').find(row => row.startsWith('termsAccepted=')).split('=')[1] : 
-            document.cookie = "termsAccepted=false" }
-            setTermsValue(tValue)
-            console.log("terms value use effect: " + termsValue)
-            console.log("document cookie: " + document.cookie)
-        }
-    })
-    console.log("terms after: " + termsValue)
+    // useEffect(() => {
+    //     if (typeof window !== "undefined" && window.document){
+    //         var tValue;
+    //         {document.cookie.split(';').some((item) => item.trim().startsWith('termsAccepted=')) ? 
+    //         tValue = document.cookie.split('; ').find(row => row.startsWith('termsAccepted=')).split('=')[1] : 
+    //         document.cookie = "termsAccepted=false" }
+    //         setTermsValue(tValue)
+    //         console.log("terms value use effect: " + termsValue)
+    //         console.log("document cookie: " + document.cookie)
+    //     }
+    // })
+    // console.log("terms after: " + termsValue)
     
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -68,7 +68,8 @@ const Layout = ({ children, pageLocation, hideFooter, invertNav}) => {
             }
           `}
         />
-        {(typeof window !== "undefined" && window.document) ? (termsValue !== "true" ?  <Terms/> : null ) : null}
+        {/* {(typeof window !== "undefined" && window.document) ? (termsValue !== "true" ?  <Terms/> : null ) : null} */}
+        {termsValue !== "true" ?  <Terms/> : null }
         
         <Nav pageLocation={pageLocation} invertNav={invertNav}/>
         <main>{children}</main>
