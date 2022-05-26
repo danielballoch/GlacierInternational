@@ -2,17 +2,53 @@ import React, {useState, useEffect} from "react"
 import styled from '@emotion/styled';
 import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
-import LimitedWhite from "../images/tundra/limited/white.png"
-import LimitedBlack from "../images/tundra/limited/black.png"
-import LimitedBlue from "../images/tundra/limited/blue.png"
 
-import CapstoneBlue from "../images/tundra/capstone/blue.png"
-import CapstoneWhite from "../images/tundra/capstone/white.png"
-import CapstoneBlack from "../images/tundra/capstone/black.png"
+//import Capstone images
+import BlackCapstone from "../images/sequoia/Capstone/CAPSTONEBLACK.webp"
+import BlueCapstone from "../images/sequoia/Capstone/CAPSTONEBLUE.webp"
+import GrayCapstone from "../images/sequoia/Capstone/CAPSTONEGRAY.webp"
+import PearlCapstone from "../images/sequoia/Capstone/CAPSTONEPEARL.webp"
+import RedCapstone from "../images/sequoia/Capstone/CAPSTONERED.webp"
+import SilverCapstone from "../images/sequoia/Capstone/CAPSTONESILVER.webp"
 
-import SRBlue from "../images/tundra/sr/blue.png"
-import SRBlack from "../images/tundra/sr/black.png"
-import SRWhite from "../images/tundra/sr/white.png"
+
+//import Limited images
+import BlackLimited from "../images/sequoia/Limited/LIMITEDBLACK.webp"
+import BlueLimited from "../images/sequoia/Limited/LIMITEDBLUE.webp"
+import GreenLimited from "../images/sequoia/Limited/LIMITEDGREEN.webp"
+import GrayLimited from "../images/sequoia/Limited/LIMITEDGREY.webp"
+import MesquiteLimited from "../images/sequoia/Limited/LIMITEDMESQUITE.webp"
+import PearlLimited from "../images/sequoia/Limited/LIMITEDPEARL.webp"
+import RedLimited from "../images/sequoia/Limited/LIMITEDRED.webp"
+import SilverLimited from "../images/sequoia/Limited/LIMITEDSILVER.webp"
+import WhiteLimited from "../images/sequoia/Limited/LIMITEDWHITE.webp"
+
+//import Platinum images
+import BlackPlatinum from "../images/sequoia/Platinum/PLATINUMBLACK.webp"
+import BluePlatinum from "../images/sequoia/Platinum/PLATINUMBLUE.webp"
+import GrayPlatinum from "../images/sequoia/Platinum/PLATINUMMETALLIC.webp"
+import PearlPlatinum from "../images/sequoia/Platinum/PLATINUMPEARL.webp"
+import RedPlatinum from "../images/sequoia/Platinum/PLATINUMRED.webp"
+import SilverPlatinum from "../images/sequoia/Platinum/PLATINUMSILVER.webp"
+
+//import SR5 images
+import BlackSR5 from "../images/sequoia/SR5/SR5BLACK.webp"
+import BlueSR5 from "../images/sequoia/SR5/SR5BLUE.webp"
+import GraySR5 from "../images/sequoia/SR5/SR5GRAY.webp"
+import GreenSR5 from "../images/sequoia/SR5/SR5GREEN.webp"
+import MesquiteSR5 from "../images/sequoia/SR5/SR5MESQUITE.webp"
+import RedSR5 from "../images/sequoia/SR5/SR5RED.webp"
+import RockSR5 from "../images/sequoia/SR5/SR5ROCK.webp"
+import SilverSR5 from "../images/sequoia/SR5/SR5SILVER.webp"
+import WhiteSR5 from "../images/sequoia/SR5/SR5WHITE.webp"
+
+//import TRDPRO images
+import BlackTRDPRO from "../images/sequoia/TRDPRO/TRDPROBLACK.webp"
+import GrayTRDPRO from "../images/sequoia/TRDPRO/TRDPROGRAY.webp"
+import SolarTRDPRO from "../images/sequoia/TRDPRO/TRDPROSOLAR.webp"
+import WhiteTRDPRO from "../images/sequoia/TRDPRO/TRDPROWHITE.webp"
+
+
 
 
 
@@ -59,23 +95,31 @@ video {
 const Center = styled.div`
 display: flex;
 position: fixed;
-top: calc(50vh - 250px);;
-left: 20vw;
+top: calc(50vh - 157px);
+left: calc(35vw - 20vw);
 width: 40vw;
 height: 40vh
 justify-content: center;
 flex-direction: column;
 align-items: center;
 `
-const CenterRight = styled.div`
+const CenterLeft = styled.div`
 z-index: 10;
-background-color: #fbfbfb;
+background-color: white;
 width: 30vw;
 height: 100vh;
 margin-left: 20px;
 box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.04);
+h1 {
+    margin: 60px 20px 0px 40px;
+    color: black;
+    font-size: 2em;
+    font-weight: 100;
+    text-align: left;
+}
 p {
 color: black;
+font-weight: 100;
 margin: 60px 20px 0px 40px;
 font-size: 1.5em;
 }
@@ -121,7 +165,7 @@ left: calc(35vw - 350px);
 text-align: center;
 width: 700px;
 height: 100px;
-background-color: #fbfbfb;
+background-color: white;
 color: black;
 border-radius: 50px 50px 0 0;
 box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -133,49 +177,54 @@ a {
 
 const IndexPage = ({display=false}) => {
     const [price, setPrice] = useState(0);
-
+    console.log("Price: " + price)
     const [model, setModel] = useState(["TRD PRO",32000])
+    const [activeGrade, setActiveGrade] = useState(["1794",32000, 0])
     const [lift, setLift] = useState(0)
 
-    const [colour, setColour] = useState(["white",100])
+    const [activeColor, setActiveColor] = useState(["Red",100, 5])
 
-    const [accessory1, setAccessory1] = useState(false)
-    const [accessory2, setAccessory2] = useState(false)
-    const [accessory3, setAccessory3] = useState(false)
-    const [accessory4, setAccessory4] = useState(false)
-
+    const grades = [
+        {name: "Capstone", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Wind Chill Pearl","Supersonic Red","Celestial Silver Metallic"], src: [BlackCapstone, BlueCapstone, GrayCapstone, PearlCapstone, RedCapstone, SilverCapstone], price: "128,723"},
+        {name: "Limited", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic", "Army Green", "Smoked Mesquite", "Wind Chill Pearl", "Supersonic Red", "Celestial Silver Metallic", "White"], src: [BlackLimited, BlueLimited, GrayLimited, GreenLimited, MesquiteLimited, PearlLimited, RedLimited, SilverLimited, WhiteLimited], price: "86,821"},
+        {name: "Platinum", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Wind Chill Pearl", "Supersonic Red", "Celestial Silver Metallic"], src: [BlackPlatinum, BluePlatinum, GrayPlatinum, PearlPlatinum, RedPlatinum, SilverPlatinum], price: "102,358"},
+        {name: "SR5", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Army Green","Smoked Mesquite", "Supersonic Red","Rock", "Celestial Silver Metallic", "White"], src: [BlackSR5, BlueSR5, GraySR5, GreenSR5,MesquiteSR5, RedSR5,RockSR5, SilverSR5, WhiteSR5], price: "77,519"},
+        {name: "TRD PRO", colors: ["Midnight Black Metallic","Magnetic Grey Metallic","Solar Octane", "White"], src: [BlackTRDPRO, GrayTRDPRO, SolarTRDPRO, WhiteTRDPRO], price: "117,866"},
+    ]
+    console.log(grades)
+    console.log(activeColor[0]+activeGrade[0])
     useEffect(() => {
-        if (price !== (model[1] + colour[1] + lift)){setPrice(model[1] + colour[1])}
+        if (price !== grades[activeGrade[2]]){setPrice(grades[activeGrade[2]].price)}
     });
   return (
       <Layout hideFooter={true} invertNav={true}>
         <Main style={pageStyles}>
         <title>Home Page</title>
-        <Price><a>Total Price: ${price} (NZD)</a><a>Finance Options</a></Price>
+        <Price><a>Total Price: est ${price} (NZD)</a><a>Finance Options</a></Price>
         <Row>
             <Center>
-                <img src={(
-                model[0] === "CrewMax Limited" && colour[0] === "white" ? LimitedWhite : 
-                model[0] === "CrewMax Limited" && colour[0] === "black" ? LimitedBlack :
-                model[0] === "CrewMax Limited" ? LimitedBlue : 
-                model[0] === "CrewMax Capstone" && colour[0] === "white" ? CapstoneWhite :
-                model[0] === "CrewMax Capstone" && colour[0] === "black" ? CapstoneBlack :
-                model[0] === "CrewMax Capstone" ? CapstoneBlue : 
-                model[0] === "DOUBLE CAB SR" && colour[0] === "white" ? SRWhite :
-                model[0] === "DOUBLE CAB SR" && colour[0] === "black" ? SRBlack :
-                SRBlue
-                )}/>
+                {/*Get image src from grades array based on active grade & color */}
+                <img src={grades[activeGrade[2]].src[activeColor[2]]} 
+                // style={{width: "1100px"}}
+                />
             </Center>
-            <CenterRight>
+            <CenterLeft>
+                <h1>2023 Toyota Sequia</h1>
+                {/* <p>437 Horsepower</p>
+                <p>583 Lb.-Ft. Torque</p>
+                <p>9,000 Lbs. Max Towing *</p>
+                <p>7-8 Seating</p> */}
                 <p>Grade:</p>
-                <button className={(model[0] === "DOUBLE CAB SR" ? 'active' : '') } onClick={() => setModel(["DOUBLE CAB SR",32000])}>DOUBLE CAB SR</button>
-                <button className={(model[0] === "CrewMax Capstone" ? 'active' : '') } onClick={() => setModel(["CrewMax Capstone",42000])}>CrewMax SR</button>
-                <button className={(model[0] === "CrewMax Limited" ? 'active' : '') } onClick={() => setModel(["CrewMax Limited",47000])}>CrewMax Limited</button>
+                {/*Display grade buttons, update activeGrade state onClick & if active use active class styling */}
+                {grades.map((grade, i) => (
+                    <button className={(activeGrade[0] === grade.name ? 'active' : '')} onClick={() => setActiveGrade([grade.name, 32000, i])}>{grade.name}</button>
+                ))}
                 <p>Colour:</p>
-                <button className={(colour[0] === "white" ? 'active' : '') } onClick={() => setColour(["white",100])}>White</button>
-                <button className={(colour[0] === "blue" ? 'active' : '') } onClick={() => setColour(["blue",200])}>Blue</button>
-                <button className={(colour[0] === "black" ? 'active' : '') } onClick={() => setColour(["black",500])}>black</button>
-            </CenterRight>
+                {/*Display color buttons based on activeGrade, update activeColor state onClick & if active use active class styling */}
+                {grades[activeGrade[2]].colors.map((color, i) => (
+                    <button className={(activeColor[0] === color ? 'active' : '') } onClick={() => {setActiveColor([color,100, i])}}>{color}</button>
+                ))}
+            </CenterLeft>
         </Row>
         
         
