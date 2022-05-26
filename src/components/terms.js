@@ -38,7 +38,7 @@ button:hover {
     cursor: pointer;
 }
 ${menuOpen === true &&`
-z-index: 400;
+z-index: 800;
 display: flex;
 transition-delay: .2s;
 transition: opacity .8s, transform .5s;
@@ -60,7 +60,7 @@ const backStyle = ({menuOpen}) => css`
     background-color: rgba(255,255,255,0);
 
 ${menuOpen === true &&`
-z-index: 200;
+z-index: 400;
 transition: background-color .3s, z-index .1s;
 background-color: rgba(0,0,0,.8);
 `}
