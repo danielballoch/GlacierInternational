@@ -187,18 +187,18 @@ const IndexPage = ({display=false}) => {
 
 
     const grades = [
-        {name: "1794", colors: ["Black","Blue", "Green","Grey", "Mesquite", "Pearl", "Red", "Silver"], src: [Black1794, Blue1794, Green1794, Grey1794, Mesquite1794, Pearl1794, Red1794, Silver1794]},
-        {name: "Capstone", colors: ["Black","Blue","Grey","Pearl","Red","Silver"], src: [BlackCapstone, BlueCapstone, GreyCapstone, PearlCapstone, RedCapstone, SilverCapstone]},
-        {name: "Limited", colors: ["Black","Blue","Green","Grey","Mesquite","Pearl","Red","Silver", "White"], src: [BlackLimited, BlueLimited, GreenLimited, GreyLimited,MesquiteLimited, PearlLimited, RedLimited, SilverLimited, WhiteLimited]},
-        {name: "Platinum", colors: ["Black","Blue","Grey","Pearl","Red","Silver"], src: [BlackPlatinum, BluePlatinum, GreyPlatinum, PearlPlatinum, RedPlatinum, SilverPlatinum]},
-        {name: "SR", colors: ["Black","Grey","Silver", "White"], src: [BlackSR, GreySR, SilverSR, WhiteSR]},
-        {name: "SR5", colors: ["Black","Blue","Green","Grey","Red","Rock","Silver", "White"], src: [BlackSR5, BlueSR5, GreenSR5, GreySR5, RedSR5,RockSR5, SilverSR5, WhiteSR5]},
-        {name: "TRDPRO", colors: ["Black","Rock","Solar", "White"], src: [BlackTRDPRO, RockTRDPRO, SolarTRDPRO, WhiteTRDPRO]},
+        {name: "1794", colors: ["Black","Blue", "Green","Grey", "Mesquite", "Pearl", "Red", "Silver"], src: [Black1794, Blue1794, Green1794, Grey1794, Mesquite1794, Pearl1794, Red1794, Silver1794], price: "89,091"},
+        {name: "Capstone", colors: ["Black","Blue","Grey","Pearl","Red","Silver"], src: [BlackCapstone, BlueCapstone, GreyCapstone, PearlCapstone, RedCapstone, SilverCapstone], price: "113,553"},
+        {name: "Limited", colors: ["Black","Blue","Green","Grey","Mesquite","Pearl","Red","Silver", "White"], src: [BlackLimited, BlueLimited, GreenLimited, GreyLimited,MesquiteLimited, PearlLimited, RedLimited, SilverLimited, WhiteLimited], price: "72,351"},
+        {name: "Platinum", colors: ["Black","Blue","Grey","Pearl","Red","Silver"], src: [BlackPlatinum, BluePlatinum, GreyPlatinum, PearlPlatinum, RedPlatinum, SilverPlatinum], price: "88,520"},
+        {name: "SR", colors: ["Black","Grey","Silver", "White"], src: [BlackSR, GreySR, SilverSR, WhiteSR], price: "55,490"},
+        {name: "SR5", colors: ["Black","Blue","Green","Grey","Red","Rock","Silver", "White"], src: [BlackSR5, BlueSR5, GreenSR5, GreySR5, RedSR5,RockSR5, SilverSR5, WhiteSR5], price: "55,490"},
+        {name: "TRDPRO", colors: ["Black","Rock","Solar", "White"], src: [BlackTRDPRO, RockTRDPRO, SolarTRDPRO, WhiteTRDPRO], price: "103,115"},
     ]
     console.log(grades)
     console.log(activeColor[0]+activeGrade[0])
     useEffect(() => {
-        if (price !== (model[1] + activeColor[1] + lift)){setPrice(model[1] + activeColor[1])}
+        if (price !== grades[activeGrade[2]]){setPrice(grades[activeGrade[2]].price)}
     });
   return (
       <Layout hideFooter={true} invertNav={true}>

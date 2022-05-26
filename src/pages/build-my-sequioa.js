@@ -110,10 +110,31 @@ width: 30vw;
 height: 100vh;
 margin-left: 20px;
 box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.04);
+.features {
+    margin: 40px 20px 0px 26px;
+    display: flex;
+    flex-wrap: wrap;
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: black;
+        padding: 10px 14px;
+        text-align: center;
+        h2 {
+            margin: 0;
+            color: #252525;
+        }
+        p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    }
+}
 h1 {
     margin: 60px 20px 0px 40px;
-    color: black;
-    font-size: 2em;
+    color: rgba(0,0,0,0.9);
+    font-size: 3em;
     font-weight: 100;
     text-align: left;
 }
@@ -210,10 +231,13 @@ const IndexPage = ({display=false}) => {
             </Center>
             <CenterLeft>
                 <h1>2023 Toyota Sequia</h1>
-                {/* <p>437 Horsepower</p>
-                <p>583 Lb.-Ft. Torque</p>
-                <p>9,000 Lbs. Max Towing *</p>
-                <p>7-8 Seating</p> */}
+                <div className="features">
+                    <div><h2>437</h2><p>Horsepower</p></div>
+                    <div><h2>583 Lb.-Ft.</h2><p>Torque</p></div>
+                    <div><h2>9,000 Lbs.</h2><p>Max Towing *</p></div>
+                    <div><h2>7-8</h2><p>Seating</p></div>
+                </div>
+                
                 <p>Grade:</p>
                 {/*Display grade buttons, update activeGrade state onClick & if active use active class styling */}
                 {grades.map((grade, i) => (
