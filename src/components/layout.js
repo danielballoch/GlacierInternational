@@ -65,6 +65,7 @@ const Layout = ({ children, pageLocation, hideFooter, invertNav}) => {
               max-width: '100vw';
               overflow-x: 'hidden';
               white-space: 'nowrap';
+              font-family: seguo-ui, visby, sans-serif;
             }
           `}
         />

@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import { Link } from "gatsby"
 import Video from "../components/video"
 import styled from '@emotion/styled';
 import {css} from '@emotion/react';
@@ -6,8 +7,9 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 
 const Container = styled.div`
-margin-top: 100px;
-color: white;
+/* margin: 80px 0; */
+height: calc(100vh - 440px);
+color: black;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -19,7 +21,57 @@ p {
 `
 const ContainerSplit = styled(Container)`
 flex-direction: row;
+justify-content: left;
+height: 90vh;
 ` 
+const ContainerSplit2 = styled(ContainerSplit)`
+height: 70vh;
+width: 100%;
+.exHover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* width: 100vw; */
+    p {
+        position: absolute;
+        z-index: 100;
+        color: white;
+        width: 50%;
+        transition: .5s;
+        text-decoration: underline solid 1px rgba(255,255,255,0);
+    }
+    transition: .5s;
+    :hover {
+        filter: brightness(140%);
+        cursor: pointer;
+        p {
+            text-decoration: underline solid 1px white;
+        }
+    }
+}
+.experienceImgs {
+    max-height: 70vh;
+    height: 100%;
+    width: 100%;
+    filter: brightness(40%);
+    
+    
+}
+`
+const ContainerLeft = styled.div`
+display: flex;
+justify-content: center;
+padding: 10px 80px;
+flex-direction: column;
+text-align: left;
+height: 800px;
+p {
+    text-align: left;
+    max-width: 600px;
+}
+`
+    
 
 
 //video styling
@@ -43,6 +95,11 @@ button {
         background-color: rgba(355, 355, 355, 0.4)
     }
 }
+`
+const About = styled.div`
+color: white;
+font-size: 30px;
+margin-top: 150px;
 `
 
 const popupStyles = ({videoOpen}) => css`
@@ -135,10 +192,30 @@ button {
 const AboutPage = () => {
     const [videoOpen, setVideoOpen] = useState(false);
     return(
-        <Layout invertNav={true}>
-            <Container>
+        <Layout>
+        <div style={{ display: "grid", maxHeight: 440}}>
+            <StaticImage
+                src={`../images/about/AboutHero.png`}
+                alt="Tundra front on"
+                style={{
+                        height: "440px",
+                        gridArea: "1/1",
+                        position: "relative",
+                        placeItems: "center",
+                        display: "grid",
+                    }}
+            />
+            <About style={{
+                    gridArea: "1/1",
+                    position: "relative",
+                    placeItems: "center",
+                    display: "grid",
+                    }}>
                 <h1>About Us</h1>
-            </Container>
+            </About>
+            
+        </div>
+            
             <Container>
                 <h2>Our Story</h2>
                 <p>
@@ -153,7 +230,7 @@ const AboutPage = () => {
             </Container>
             <Youtube2 style={{ display: "grid", maxHeight: 640}} id="homeSection">
             <StaticImage
-                src={`../images/SoldImage.JPG`}
+                src={`../images/about/SoldImage.JPG`}
                 alt="Sold Tundra Image"
                 style={{
                         maxHeight: "640px",
@@ -192,18 +269,43 @@ const AboutPage = () => {
         </div>  
 
         <ContainerSplit>
-            <p>IMG</p>
-            <Container>
-            <h2>Our Craftsmanship</h2>
+            <StaticImage
+                src={`../images/about/AboutCraft.jpg`}
+                alt="Tundra front on"
+                style={{
+                    maxHeight: "90vh",
+                    height: "100%",
+                    width: "35vw"
+                    }}
+            />
+            <ContainerLeft>
+                <h2>Our Craftsmanship</h2>
                 <p>Paragraph explaining conversion and customisation, introducting vechicles more leading readers to want to learn more. Integer convallis dolor vitae est gravida, vitae elementum elit porttitor. Maecenas at posuere enim, at euismod urna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse vitae congue ante. Nam pharetra urna id enim elementum, at vehicula turpis rutrum.</p>
                 <p>Donec aliquet fermentum ex, eu vehicula nisi fermentum eget. Etiam maximus luctus justo, a mattis nibh dignissim eu. Vivamus feugiat eros ante, in eleifend nisi elementum vel. Mauris eleifend, justo eu dictum aliquet, magna lorem dignissim odio, at imperdiet leo magna sagittis enim. Vestibulum dignissim varius massa, sit amet fermentum nunc sollicitudin sit amet. Praesent nisi urna, vestibulum vel ante eget, rhoncus imperdiet lorem.</p>
-            </Container>
+            </ContainerLeft>
         </ContainerSplit>
 
-        <ContainerSplit>
-            <p>Image 1</p>
-            <p>Image 2</p>
-        </ContainerSplit>
+        <ContainerSplit2>
+            <Link to={"/experience-tundra"} className="exHover" >
+                <p>Experience Tundra</p>
+                <StaticImage
+                    className="experienceImgs"
+                    objectPosition={"50% 50%"}
+                    src={`../images/about/tundraAbout.png`}
+                    alt="Tundra front on"
+                />
+            </Link>
+            <Link to={"/experience-sequoia"} className="exHover">
+            <p>Experience Sequoia</p>
+            <StaticImage 
+                className="experienceImgs"
+                objectPosition={"50% 50%"}
+                src={`../images/about/sequoiaAbout.png`}
+                alt="Sequoia front on"
+            />
+            </Link>
+            
+        </ContainerSplit2>
         </Layout>
     )
 }
