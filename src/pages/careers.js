@@ -16,11 +16,14 @@ flex-direction: column;
 font-family: seguo-ui, visby, sans-serif;
 `
 
+
+
 const CareersPage = () => {
     return(
         <Layout invertNav={true}>
             <Container>
             <h1>Page under maintenence, please come back soon...</h1>
+            
             </Container>
         </Layout>
     )
