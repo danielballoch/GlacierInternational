@@ -54,9 +54,7 @@ width: 100%;
     max-height: 70vh;
     height: 100%;
     width: 100%;
-    filter: brightness(40%);
-    
-    
+    filter: brightness(40%); 
 }
 `
 const ContainerLeft = styled.div`
