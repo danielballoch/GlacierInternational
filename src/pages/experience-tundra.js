@@ -22,12 +22,24 @@ iframe {
     width: 60%;
     height: 60%;
 }
+
+span {
+    position: absolute;
+    width: 1px;
+    height: calc(2vw);
+    background-color: white; 
+    margin-right: 209px;
+    bottom: 0;
+    }
+
 button {
  border: 1px solid white;
  color: white;
- padding: 10px 20px;
+ padding: 12px 30px;
+ font-size: .9em;
  background-color: rgba(0,0,0,0);
  margin: 20px 20px;
+ transition: .3s;
  :hover {
     background-color: rgba(255,255,255,1);
     color: black;
@@ -43,9 +55,16 @@ button {
 const Container2 = styled.div`
 background-color: rgba(0,0,0,0.8);
 color: white;
-width: 30%;
+/* width: 30%; */
+width: 438px;
 padding: 40px;
-margin-left: calc(66% - 15%)
+margin-left: calc(58% - 256px);
+h2 {
+    font-size: 36px;
+}
+p {
+    text-align: justify;
+}
 `
 
 const Container3 = styled.div`
@@ -68,7 +87,30 @@ p {
     letter-spacing: 1px;
     padding: 4px;
 }
+`
 
+const Social = styled.div`
+position: absolute;
+display: flex;
+flex-direction: column;
+justify-self: left;
+align-self: flex-end;
+margin-left: 10px;
+div {
+    margin: 10px;
+    filter: grayscale(100%);
+    transition: .3s;
+    :hover {
+        filter: grayscale(50%);
+        cursor: pointer;
+    }
+}
+span {
+    width: 1px;
+    height: 300px;
+    background-color: white; 
+    margin: auto;
+}
 `
 
 const ExperienceTundraPage = () => {
@@ -200,8 +242,34 @@ const ExperienceTundraPage = () => {
                              height: "350px",
                             }}
                         />
-                        <div><button>Build Your Tundra</button> <button>Tundra Brochure</button> </div>
+                        <div><button>Build Your Tundra</button> <button>Tundra Brochure</button></div> 
+                        {/* <span/> */}
+                        
                         </Container>
+                        <Social>
+                            <StaticImage
+                                className="experienceImgs"
+                                objectFit={"contain"}
+                                style={{width:"34px"}}
+                                src={`../images/social/instagram-icon.png`}
+                                alt="Tundra front on"
+                            />
+                            <StaticImage
+                                objectFit={"contain"}
+                                className="experienceImgs"
+                                style={{width:"34px"}}
+                                src={`../images/social/youtube-icon.png`}
+                                alt="Tundra front on"
+                            />
+                            <StaticImage
+                                objectFit={"contain"}
+                                className="experienceImgs"
+                                style={{width:"34px"}}
+                                src={`../images/social/facebook-icon.png`}
+                                alt="Tundra front on"
+                            />
+                            <span/>
+                        </Social>
                 </div>
             </div>
         </Layout>

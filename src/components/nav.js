@@ -146,7 +146,7 @@ z-index: 1000;
 /* inset */
 /* box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;  */
 /* min github */
-box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+/*  */
 `
 const NavContent = styled.div`
 /* max-width: 960px; */
