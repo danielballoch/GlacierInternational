@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import {css} from '@emotion/react';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import { StaticImage } from "gatsby-plugin-image";
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 //Nav
 

@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import {css} from '@emotion/react';
 import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
+import { Link } from "gatsby"
 
 const Container = styled.div`
 /* margin-top: 100px; */
@@ -242,7 +243,7 @@ const ExperienceTundraPage = () => {
                              height: "350px",
                             }}
                         />
-                        <div><button>Build Your Tundra</button> <button>Tundra Brochure</button></div> 
+                        <div><Link to="/build-my-tundra"><button>Build Your Tundra</button></Link> <button>Tundra Brochure</button></div> 
                         {/* <span/> */}
                         
                         </Container>
