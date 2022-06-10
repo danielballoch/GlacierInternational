@@ -77,6 +77,7 @@ p {
     letter-spacing: 1.4px;
     font-size: 13px;
     opacity: 1;
+    color: white;
 }
 a {
     margin: auto;
@@ -128,6 +129,7 @@ div {
         font-weight: 100;
     }
     h2 {
+        font-family: sans-serif, helvetica, open-sans;
         position: absolute;
         font-size: 410px;
         color: rgba(0,0,0,0.07);
@@ -140,9 +142,9 @@ div {
     p {
         z-index: 100;
         font-size: 14px;
-        max-width: 800px;
+        max-width: 700px;
         text-align: center;
-        margin: 30px 5px 5px 0;
+        margin: 20px 5px 5px 0;
         letter-spacing: 1.4px;
     }
     div {

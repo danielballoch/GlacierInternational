@@ -9,6 +9,7 @@ const Video = ({ videoSrcURL, videoTitle, ...props }) => (
         }}
     >
     <video
+      disablePictureInPicture
       title={videoTitle}
       height="100%"
       width="100%"

@@ -139,13 +139,18 @@ align-items: center;
     .textBox {
         position: absolute;
         z-index: 100;
-        color: white;
+
+        
         text-align: left;
         width: 360px;
         transition: .5s;
         text-decoration: underline solid 1px rgba(255,255,255,0);
         h1 {
             font-weight: 100;
+            color: white;
+        }
+        p {
+            color: white;
         }
     }
     transition: .5s;

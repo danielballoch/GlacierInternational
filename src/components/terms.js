@@ -30,6 +30,12 @@ div {
     width: 800px;
     
 }
+h1 {
+    color: white;
+}
+p {
+    color: white;
+}
 button {
     padding: 10px 40px;
 }
@@ -54,7 +60,7 @@ const backStyle = ({menuOpen}) => css`
     ${'' /* transition: .3s; */}
     transition-delay: .3s;
     transition: background-color .3s, z-index .4s;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-color: rgba(255,255,255,0);
 

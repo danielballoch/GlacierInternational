@@ -95,7 +95,9 @@ button {
 }
 `
 const About = styled.div`
-color: white;
+h1 {
+    color: white; 
+}
 font-size: 30px;
 margin-top: 150px;
 `

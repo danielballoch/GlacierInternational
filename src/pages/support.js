@@ -113,7 +113,10 @@ const Social = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: center;
-color: white;
+p {
+    color: white;
+}
+
 div {
     margin: 0 10px;
     :hover {

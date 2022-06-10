@@ -80,7 +80,7 @@ ${menuOpen === true &&`
 
 const sidebarStyles = ({menuOpen}) => css`
 ${'' /* display: none; */}
-overflow-x: scroll;
+overflow-x: none;
 white-space: nowrap;
 transition: .5s;
 transition-delay: 0;
@@ -116,7 +116,11 @@ const backdropStyle = ({menuOpen}) => css`
     ${'' /* transition: .3s; */}
     transition-delay: .3s;
     transition: background-color .3s, z-index .4s;
-    width: 100vw;
+    width: 100%;
+    overflow: auto
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
     height: 100vh;
     background-color: rgba(255,255,255,0);
 

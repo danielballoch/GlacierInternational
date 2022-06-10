@@ -10,6 +10,10 @@ const Container = styled.div`
 /* margin-top: 100px; */
 h1 {
     margin-top: 100px;
+    color: white;
+}
+p {
+    color: white;
 }
 height: 100%;
 width: 100%;
@@ -62,9 +66,11 @@ padding: 40px;
 margin-left: calc(58% - 256px);
 h2 {
     font-size: 36px;
+    color: white;
 }
 p {
     text-align: justify;
+    color: white;
 }
 `
 
@@ -80,13 +86,16 @@ h2 {
     text-align: right;
     width: 250px;
     font-size: 36px;
+    color: white;
+    line-height: 45px;
 }
 p {
     margin: 0;
     text-align: left;
     width: 150px;
     letter-spacing: 1px;
-    padding: 4px;
+    padding: 7px 7px;
+    color: white;
 }
 `
 
