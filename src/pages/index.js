@@ -71,7 +71,7 @@ p {
     max-width: 1100px;
     margin: 40px auto;
     text-align: center;
-    font-family: visby,sans-serif;
+    /* font-family: visby,sans-serif; */
     font-weight: 400;
     line-height: 1.4;
     letter-spacing: 1.4px;

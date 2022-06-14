@@ -54,9 +54,10 @@ const Layout = ({ children, pageLocation, hideFooter, invertNav}) => {
             <meta name="description" content={data.site.siteMetadata.description}/>
             <title>{data.site.siteMetadata.title}</title>
             <link rel="canonical" href={data.site.siteMetadata.siteUrl} />
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-            <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100&display=swap" rel="stylesheet"/> 
+
+            <link rel="preconnect" href="https://fonts.googleapis.com"/>
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+            <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100&family=Open+Sans&display=swap" rel="stylesheet"/> 
       </Helmet>
       <Global
           styles={css`
@@ -68,12 +69,14 @@ const Layout = ({ children, pageLocation, hideFooter, invertNav}) => {
               max-width: '100vw';
               overflow-x: 'hidden';
               white-space: 'nowrap';
-              font-family: seguo-ui, visby, sans-serif;
+              /* font-family: seguo-ui, visby, sans-serif; */
+              font-family: open-sans;
               h1, h2 {
                 font-family: 'Heebo', sans-serif;
                 color: #111111;
               }
               p {
+                  font-family: "Open Sans";
                   color: #050505;
               }
             }
