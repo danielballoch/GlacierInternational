@@ -115,7 +115,25 @@ height: 955px;
 width: 100%;
 display: flex ;
 flex-direction: row;
-font-family: seguo-ui, visby, sans-serif;
+font-family: open-sans, visby, sans-serif;
+@media(max-width: 940px){
+    flex-direction: column-reverse;
+    height: 100%;
+    margin-bottom: 100px;
+    h1,h2 {
+        text-align: center;
+    }
+    h2 {
+        font-size: 164px !important;
+        overflow: clip;
+        margin-top: 90px;
+    }
+    div {
+        h1 {
+        font-size: 40px !important;
+        }
+    }
+}
 div {
     width: 100%;
     display: flex;
@@ -129,11 +147,12 @@ div {
         font-weight: 100;
     }
     h2 {
-        font-family: sans-serif, helvetica, open-sans;
+        font-family: open-sans, visby, sans-serif;
         position: absolute;
         font-size: 410px;
         color: rgba(0,0,0,0.07);
         font-weight: 700;
+        overflow: clip;
         z-index: 0;
         @media (max-width: 1800px){
             font-size: 280px;   
@@ -174,6 +193,9 @@ div {
 }
 `
 const Button = styled(Link)`
+@media(max-width: 940px){
+    text-align: center;
+}
             background-color: black;
             color: white;
             border: solid 1px black;
@@ -183,6 +205,7 @@ const Button = styled(Link)`
             font-size: 16px;
             weight: 200;    
             text-decoration: none;
+            
 `
 const ButtonOutline = styled (Button)` 
     background-color: rgba(0,0,0,0);
