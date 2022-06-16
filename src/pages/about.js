@@ -8,14 +8,21 @@ import Layout from "../components/layout"
 
 const Container = styled.div`
 /* margin: 80px 0; */
-height: calc(100vh - 440px);
+/* height: calc(100vh - 440px); */
+@media(max-width: 940px){
+    p {
+        margin: 20px;
+    }
+    margin-bottom: 60px;
+}
+min-height: 515px;
 color: black;
 display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
 p {
-    width: 840px;
+    max-width: 840px;
     text-align: center;
 }
 `
@@ -23,6 +30,22 @@ const ContainerSplit = styled(Container)`
 flex-direction: row;
 justify-content: left;
 height: 90vh;
+.imageclass {
+        max-height: 90vh;
+        height: 100%;
+        width: 35vw;
+}
+@media(max-width: 940px){
+    flex-direction: column;
+    height: auto;
+    .imageclass {
+        margin: 100px 0 0 0;
+        align-self: flex-start;
+        width: 90vw;
+        min-height: 150px;
+        height: 40vw;
+    }
+}
 ` 
 const ContainerSplit2 = styled(ContainerSplit)`
 height: 70vh;
@@ -58,6 +81,14 @@ width: 100%;
 }
 `
 const ContainerLeft = styled.div`
+@media(max-width: 940px){
+    padding: 20px;
+    height: auto;
+    p {
+        padding: 0 60px 20px 0;
+        margin: 0;
+    }
+}
 display: flex;
 justify-content: center;
 padding: 10px 80px;
@@ -272,11 +303,7 @@ const AboutPage = () => {
             <StaticImage
                 src={`../images/about/AboutCraft.jpg`}
                 alt="Tundra front on"
-                style={{
-                    maxHeight: "90vh",
-                    height: "100%",
-                    width: "35vw"
-                    }}
+                className="imageclass"
             />
             <ContainerLeft>
                 <h2>Our Craftsmanship</h2>
