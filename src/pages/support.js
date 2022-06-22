@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import { Link } from "gatsby"
 import Video from "../components/video"
 import styled from '@emotion/styled';
 import {css} from '@emotion/react';
@@ -282,24 +283,30 @@ const SupportTundraPage = () => {
                 <Social>
                 <p>Follow us on social media for updates, showcases, and more information </p>
                 <div>
+                    <Link to="https://www.instagram.com/glacier_international/">
                     <StaticImage
                         className="socialImgs"
                         objectFit={"contain"}
                         src={`../images/social/instagram-icon.png`}
                         alt="Tundra front on"
                     />
+                    </Link>
+                    <Link to="https://www.youtube.com/channel/UC2CR408AOJqt5JNUFVt-nSQ">
                     <StaticImage
                         objectFit={"contain"}
                         className="socialImgs"
                         src={`../images/social/youtube-icon.png`}
                         alt="Tundra front on"
                     />
+                    </Link>
+                    <Link to="https://www.facebook.com/GlacierInt">
                     <StaticImage
                         objectFit={"contain"}
                         className="socialImgs"
                         src={`../images/social/facebook-icon.png`}
                         alt="Tundra front on"
                     />
+                    </Link>
                 </div>
                 </Social>
                 </div>

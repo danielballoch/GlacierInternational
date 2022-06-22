@@ -29,12 +29,12 @@ display: flex;
 flex-direction: column;
 transform: translateY(-3%);
 div {
-    overflow-y: scroll;
     margin-top: 100px;
     padding: 100px 0;
     width: 800px;
     @media(max-width: 940px){
         width: 90%;
+        overflow-y: scroll;
     }
     
 }
