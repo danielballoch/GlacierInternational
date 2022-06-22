@@ -129,20 +129,45 @@ form {
 const Social = styled.div`
 @media(max-width: 940px){
     width: 90%;
-    margin: 100px auto 0 auto;
+    margin: 100px auto 10px auto;
+    flex-direction: column-reverse;
+    p {
+        text-align: center;
+        margin-top: 10px !important;
+    }
+    div {
+        justify-content: space-around;
+        div {
+            width: 100%;
+        }
+    }
+    .socialImgs {
+        width: 20% !important;
+    }
 }
 display: flex;
 flex-direction: row;
 justify-content: center;
+margin: 10px;
 p {
     color: white;
+    margin: 0;
+    align-self: center;
 }
 div {
+    display: flex;
     margin: 0 10px;
     :hover {
         cursor: pointer;
     }
 }
+.socialImgs {
+    width: 70px;
+    :hover {
+        cursor: pointer;
+    }
+}
+
 `
 
 const Content = ({question, answer}) => {
@@ -256,27 +281,26 @@ const SupportTundraPage = () => {
 
                 <Social>
                 <p>Follow us on social media for updates, showcases, and more information </p>
-                <StaticImage
-                    className="experienceImgs"
-                    objectFit={"contain"}
-                    style={{width:"40px"}}
-                    src={`../images/social/instagram-icon.png`}
-                    alt="Tundra front on"
-                />
-                <StaticImage
-                    objectFit={"contain"}
-                    className="experienceImgs"
-                    style={{width:"40px"}}
-                    src={`../images/social/youtube-icon.png`}
-                    alt="Tundra front on"
-                />
-                <StaticImage
-                    objectFit={"contain"}
-                    className="experienceImgs"
-                    style={{width:"40px"}}
-                    src={`../images/social/facebook-icon.png`}
-                    alt="Tundra front on"
-                />
+                <div>
+                    <StaticImage
+                        className="socialImgs"
+                        objectFit={"contain"}
+                        src={`../images/social/instagram-icon.png`}
+                        alt="Tundra front on"
+                    />
+                    <StaticImage
+                        objectFit={"contain"}
+                        className="socialImgs"
+                        src={`../images/social/youtube-icon.png`}
+                        alt="Tundra front on"
+                    />
+                    <StaticImage
+                        objectFit={"contain"}
+                        className="socialImgs"
+                        src={`../images/social/facebook-icon.png`}
+                        alt="Tundra front on"
+                    />
+                </div>
                 </Social>
                 </div>
             </div>
