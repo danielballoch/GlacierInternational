@@ -9,12 +9,15 @@ const termsStyles = ({menuOpen}) => css`
 ${'' /* display: none; */}
 ${'' /* overflow-x: scroll; */}
 ${'' /* white-space: nowrap; */}
+@media(max-width: 940px){
+
+}
 font-family: visby,sans-serif;
 transition: .5s;
 transition-delay: 0;
 position: fixed;
 color: white;
-justify-content: center;
+justify-content: flex-start;
 align-items: center;
 top: 0;
 right:0;
@@ -24,10 +27,15 @@ height: 100%;
 width: 100%;
 display: flex;
 flex-direction: column;
-justify-content: center;
 transform: translateY(-3%);
 div {
+    overflow-y: scroll;
+    margin-top: 100px;
+    padding: 100px 0;
     width: 800px;
+    @media(max-width: 940px){
+        width: 90%;
+    }
     
 }
 h1 {

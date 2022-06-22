@@ -6,6 +6,10 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 
 const FAQ = styled.div`
+@media(max-width: 940px){
+    width: 80%;
+    margin: 100px auto 0 auto;
+}
 margin-top: 100px;
 height: calc(100vh - 170px);
 color: black;
@@ -27,6 +31,9 @@ div {
 }
 `
 const ContentBox = styled.div`
+@media(max-width: 940px){
+    width: 100%;
+}
 width: 800px;
 display: flex;
 flex-direction: row;
@@ -76,6 +83,10 @@ p {
 `
 
 const ContactForm = styled.div`
+@media(max-width: 940px){
+    width: 80%;
+    margin: 100px auto 0 auto;
+}
 width: 860px;
 margin: 100px 0;
 text-align: center;
@@ -92,6 +103,12 @@ form {
         justify-content: space-between;
         label {
             width: 45%;
+        }
+        @media(max-width: 940px){
+        flex-direction: column;
+        label {
+            width: 100%;
+        }
         }
     }
     input, textarea {
@@ -110,13 +127,16 @@ form {
 `
 
 const Social = styled.div`
+@media(max-width: 940px){
+    width: 90%;
+    margin: 100px auto 0 auto;
+}
 display: flex;
 flex-direction: row;
 justify-content: center;
 p {
     color: white;
 }
-
 div {
     margin: 0 10px;
     :hover {
