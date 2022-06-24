@@ -7,7 +7,8 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 
 const Container = styled.div`
-height: calc(100vh - 440px);
+min-height: calc(100vh - 440px);
+height: auto;
 color: black;
 display: flex;
 justify-content: center;
@@ -20,10 +21,31 @@ h1 {
 p {
     width: 840px;
     text-align: center;
+    @media(max-width: 940px){
+        width: 90%;
+    }
 }
 `
-
+const Hero = styled.div`
+    display: grid;
+    grid-area: 5/3;
+    position: relative;
+    color: white;
+    place-items: center;
+    @media(max-width: 940px){
+        /* "auto repeat(3, 30vw [col-start]) auto" */
+        /* grid-row-start: 1;
+        grid-row-end: 4;
+        grid-column-start: 1;
+        grid-column-end: 6; */
+}
+    }
+`
 const HeroContent = styled.div`
+@media(max-width: 940px){
+    width: 100%;
+    margin: 180px 0;
+}
 background-color: rgba(255,255,255, 0.9);
 color: black;
 width: 500px;
@@ -50,6 +72,9 @@ button {
 `
 
 const Values = styled.div`
+@media(max-width: 940px){
+    display: none;
+}
 display: flex;
 flex-direction: row;
 justify-content: space-around;
@@ -61,11 +86,27 @@ h2 {
 `
 
 const Values2 = styled.div`
+    @media(max-width: 940px){
+        span {
+            display: none !important;
+        }
+        h2 {
+            display: block !important;
+        }
+        div {
+            div {
+                border: none !important;
+            }
+        }
+    }
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 margin-top: 5vw;
+h2 {
+    display: none;
+}
 span {
     align-self: center;
     padding: 22px 0;
@@ -78,6 +119,7 @@ span {
     border-left: solid rgba(0,0,0,0.5) 1px;
     margin: 0;
     margin-left: 8px;
+
 }
 .horizontalLine {
     width: 150px;
@@ -107,6 +149,19 @@ div {
 
 
 const ContainerSplit2 = styled.div`
+@media(max-width: 940px){
+    flex-direction: column;
+    height: auto;
+    .exHover {
+        width: 100% !important;
+    }
+    .textBox {
+        width: 100% !important;
+    }
+    .experienceImgs {
+        max-height: 300px !important;
+    }
+}
 height: 350px;
 width: 100%;
 flex-direction: row;
@@ -120,31 +175,16 @@ align-items: center;
     width: 100%;
     filter: brightness(40%); 
 }
-.exHover {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 35%;
-    /* width: 100vw; */
-    /* p {
+.textBox {
         position: absolute;
         z-index: 100;
-        color: white;
-        width: 50%;
-        text-align: center;
-        transition: .5s;
-        text-decoration: underline solid 1px rgba(255,255,255,0);
-    } */
-    .textBox {
-        position: absolute;
-        z-index: 100;
-
-        
         text-align: left;
-        width: 360px;
-        transition: .5s;
+        width: 33%;
         text-decoration: underline solid 1px rgba(255,255,255,0);
+        p,h1 {
+            margin: 10px 20px;
+            text-align: center;
+        }
         h1 {
             font-weight: 100;
             color: white;
@@ -153,13 +193,16 @@ align-items: center;
             color: white;
         }
     }
+.exHover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 33.33%;
     transition: .5s;
     :hover {
-        filter: brightness(140%);
+        /* filter: brightness(140%); */
         cursor: pointer;
-        p {
-            /* text-decoration: underline solid 1px white; */
-        }
     }
     
 }
@@ -211,20 +254,14 @@ const CareersPage = () => {
                         marginTop: "calc(100px + 6vw)"
                     }}
             />
-            <div style={{
-                    gridArea: "5/3",
-                    position: "relative",
-                    color: "white",
-                    placeItems: "center",
-                    display: "grid", 
-                    }}>
+            <Hero>
                 <HeroContent>
                 <h1>Working at Glacier International</h1>
                 <p>Glacier International is a growing business based in Queenstown and we're on the hunt for automotive professionals to join our team.</p>
                 <p>We're working with state of the art machinary and are passionate about helping our customers, likewise were looking for people who are great at their craft, eager to learn, and have the same enthusiasim to get these high class machines out to all the thrill seekers and smart buyers across New Zealand.</p>
                 <button>EXPLORE ROLES</button>
                 </HeroContent>
-            </div>
+            </Hero>
         </div>
             <Values>
                 <h2>01 Freedom & Responsibility</h2>
@@ -235,6 +272,7 @@ const CareersPage = () => {
                 <div>
                     <span>01<div className="verticalLine"/><div className="horizontalLine"/><div className="verticalLine"/></span>
                     <div>
+                        <h2>01 Freedom & Responsibility</h2>
                         <p>Glacier International is a growing business based in Queenstown and we're on the hunt for automotive professionals to join our team.</p>
                         <p>We're working with state of the art machinary and are passionate about helping our customers, likewise were looking for people who are great at their craft, eager to learn, and have the same enthusiasim to get these high class machines out to all the thrill seekers and smart buyers across New Zealand.</p>
                     </div>
@@ -243,6 +281,7 @@ const CareersPage = () => {
                 <div>
                     <span>02<div className="verticalLine"/><div className="horizontalLine"/><div className="verticalLine"/></span>
                     <div>
+                    <h2>02 Community</h2>
                     <p>We're a growing tight-knit team focused on quality, and we believe the path to quality is getting the right people for the job, and doing all we can to make sure everyones interested, happy, and excited about what their work.</p>
                     </div>
                 </div>
@@ -250,6 +289,7 @@ const CareersPage = () => {
                 <div>
                     <span>03<div className="verticalLine"/><div className="horizontalLine"/><div className="verticalLine last"/></span>
                     <div>
+                        <h2>03 "Where do I sign!?"</h2>
                         <p>"Where do I sign" is our expression for passion, enthusiasim, attention to detail, and prioritisation.</p>
                         <p>Whether your in the workshop, on the phone, or in the courtyard, the goal should always be to push toward a great customer experience - our aim is always to make our customers line up, with smiles stretching across their face, and say things like "where do I sign!?"</p>
                     </div>

@@ -8,6 +8,30 @@ import { Link } from "gatsby"
 
 const Container = styled.div`
 /* margin-top: 100px; */
+@media(max-width: 940px){
+    p {
+        width: auto !important;
+        text-align: center;
+        padding: 0 20px;
+    }
+    iframe {
+        width: 94% !important;
+    }
+    .tundraimage {
+        width: auto !important;
+    }
+    h1 {
+        text-align: center;
+    }
+    button {
+        width: 100%;
+        margin: 20px auto !important;
+    }
+}
+.tundraimage {
+    width: 760px;
+    height: 350px;
+}
 h1 {
     margin-top: 100px;
     color: white;
@@ -58,6 +82,12 @@ button {
 `
 
 const Container2 = styled.div`
+@media(max-width: 940px){
+    width: auto;
+    p, h2 {
+        padding: 0 40px !important;
+    }
+}
 background-color: rgba(0,0,0,0.8);
 color: white;
 /* width: 30%; */
@@ -75,10 +105,20 @@ p {
 `
 
 const Container3 = styled.div`
+@media(max-width: 940px){
+    width: auto !important;
+    margin: 0;
+    padding: 20px 10px;
+    p, h2 {
+        width: auto !important;
+    }
+    p {
+        margin-top: 86px !important;
+    }
+}
 background-color: rgba(0,0,0,0.8);
 color: white;
 padding: 40px;
-margin: 0;
 display: flex;
 margin: 10vh 10vw;
 h2 {
@@ -247,10 +287,8 @@ const ExperienceTundraPage = () => {
                         src={`../images/experienceTundra/last.jpg`}
                         alt="Glacier International Logo"
                         objectPosition={"50% 70%"}
-                        style={{
-                             width: "760px",
-                             height: "350px",
-                            }}
+                        className="tundraimage"
+                        
                         />
                         <div><Link to="/build-my-tundra"><button>Build Your Tundra</button></Link> <button>Tundra Brochure</button></div> 
                         {/* <span/> */}
