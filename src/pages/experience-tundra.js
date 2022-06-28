@@ -13,15 +13,18 @@ const Container = styled.div`
         width: auto !important;
         text-align: center;
         padding: 0 20px;
+        margin: 0 0 20px 0;
     }
     iframe {
-        width: 94% !important;
+        width: 96% !important;
+        height: 60vw !important;
     }
     .tundraimage {
         width: auto !important;
     }
     h1 {
         text-align: center;
+        margin: 0;
     }
     button {
         width: 100%;
@@ -86,7 +89,9 @@ const Container2 = styled.div`
     width: auto;
     p, h2 {
         padding: 0 40px !important;
+        /* text-align: center !important; */
     }
+    background-color: rgba(0,0,0,0) !important;
 }
 background-color: rgba(0,0,0,0.8);
 color: white;
@@ -103,17 +108,34 @@ p {
     color: white;
 }
 `
+const ExperienceContainer = styled.div`
+display: grid; 
+max-height: 100vh;
+.sideimg {
+    position: relative;
+    place-items: center;
+    display: grid;
+    width: 100%;
+    height: 100vh;
+    overflow: visible;
+    grid-area: 1/1;
+    @media(max-width: 940px){
+        /* Do whatever I need to do for image to fit properly like design */
+    }
+}
+
+`
 
 const Container3 = styled.div`
 @media(max-width: 940px){
     width: auto !important;
     margin: 0;
-    padding: 20px 10px;
+    padding: 20px 30px;
     p, h2 {
         width: auto !important;
     }
     p {
-        margin-top: 86px !important;
+        margin: 44px 0px 0 0 !important;
     }
 }
 background-color: rgba(0,0,0,0.8);
@@ -122,7 +144,7 @@ padding: 40px;
 display: flex;
 margin: 10vh 10vw;
 h2 {
-    margin: 0;
+    /* margin: 0; */
     text-align: right;
     width: 250px;
     font-size: 36px;
@@ -201,6 +223,7 @@ const ExperienceTundraPage = () => {
              <StaticImage
                         src={`../images/experienceTundra/collage1.png`}
                         alt="Glacier International Logo"
+                        objectPosition={"60% 50%"}
                          style={{
                              gridArea: "1/1",
                              position: "relative",
@@ -228,19 +251,12 @@ const ExperienceTundraPage = () => {
                 </div>
             </div>
             {/* Sideview */}
-            <div style={{ display: "grid", maxHeight: "100vh"}} id="homeSection">
+            <ExperienceContainer >
              <StaticImage
                         src={`../images/experienceTundra/side.jpg`}
                         alt="Glacier International Logo"
-                         style={{
-                             gridArea: "1/1",
-                             position: "relative",
-                             placeItems: "center",
-                             display: "grid",
-                             width: "100%",
-                             height: "100vh",
-                             overflow: "visible"
-                            }}
+                        objectPosition={"50% 100%"}
+                        className={"sideimg"}
                     />  
                 <div
                     style={{
@@ -256,9 +272,9 @@ const ExperienceTundraPage = () => {
                         <p>Tundra’s exceptional interior stands apart with its premium materials and quality feel that both driver and passengers will enjoy</p>
                         </Container3>
                 </div>
-            </div>
+            </ExperienceContainer>
             {/* Last/link */}
-            <div style={{ display: "grid", maxHeight: "100%"}} id="homeSection">
+            <div style={{ display: "grid", maxHeight: "100%"}}>
              <StaticImage
                         src={`../images/experienceTundra/collage2.png`}
                         alt="Glacier International Logo"

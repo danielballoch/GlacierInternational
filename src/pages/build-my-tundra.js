@@ -64,7 +64,7 @@ import WhiteTRDPRO from "../images/tundra/TRDPRO/WhiteTRDPRO.png"
 
 const pageStyles = {
     padding: 0,
-    margin: "100px 0",
+    margin: "100px 0 0 0",
     backgroundColor: "white"
   }
 
@@ -104,13 +104,27 @@ video {
 const Center = styled.div`
 display: flex;
 position: fixed;
-top: calc(50vh - 20vh);;
+top: calc(50vh - 20vh);
 left: calc(35vw - 20vw);
 width: 40vw;
-height: 40vh
+height: 40vh;
 justify-content: center;
 flex-direction: column;
 align-items: center;
+@media (max-width: 1050px){
+    width: 94vw;
+    max-width: 660px;
+    /* left: calc(50vw - 47vw); */
+    left: unset;
+    margin: auto;
+    /* top: calc(40vh - 20vh); */
+    margin-top: 100px;
+    top: 0;
+    img {
+        width: 100%;
+    }
+    position: relative;
+}
 `
 const CenterLeft = styled.div`
 z-index: 10;
@@ -161,6 +175,7 @@ align-items: left;
     display: flex;
     flex-wrap: wrap;
     margin: 10px 20px 0px 34px;
+    
 }
 button {
     align-self: flex-start;
@@ -179,7 +194,6 @@ button {
 }
 .active {
     border: solid 1px #0952BE;
-    
 }
 `
 
@@ -191,6 +205,18 @@ align-items: center;
 `
 
 const Price = styled.div`
+@media(max-width: 1050px) {
+    width: 100%;
+    left: 0;
+    /* top: calc(20vw + 300px); */
+    /* bottom: calc(30vh); */
+    /* height 40vh top: calc(40vh - 20vh); */
+    position: relative;
+    
+}
+@media(max-width: 700px) {
+font-size: 14px;
+}
 position: fixed;
 display: flex;
 justify-content: center;
@@ -203,14 +229,128 @@ height: 100px;
 background-color: white;
 color: black;
 border-radius: 50px 50px 0 0;
-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+/* border-top: solid 1px black; */
+box-shadow: rgba(33, 35, 38, 0.1) 0px -2px 5px -1px;
+/* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 a {
     margin: 0 20px;
 }
 `
 
+const FeatureSection = styled.div`
+width: 80%;
+margin: 0 auto 30vh auto;
+display: flex;
+flex-direction: column;
+justify-content: center;
+p {
+    margin: 10px;
+}
+.wrap {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+button {
+    align-self: flex-start;
+    background-color: white;
+    padding: 22px 30px;
+    border-radius: 10px;
+    margin: 6px 2px;
+    border: none;
+    transition: .3s;
+    border: solid 1px white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    :hover {
+        cursor: pointer;
+        border: solid 1px #0952BE;
+    }
+}
+.orderbtn {
+    background-color: green;
+    color: white;
+    width: 100%;
+    font-size: 18px;
+    letter-spacing: 1.4px;
+    font-weight: 600;
+    font-family: 'Heebo',sans-serif;
+    border: none;
+    margin: 20px auto 0 auto;
+    :hover {
+        border: none;
+    }
+}
+.active {
+    border: solid 1px #0952BE;
+}
+`
+const SelectionTab = styled.div`
+display: flex;
+justify-content: center;
+margin: 40px 0 20px 0;
+color: black;
+
+button {
+    margin: 4px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    padding: 10px 20px;
+    color: #666;
+    :hover {
+        cursor: pointer;
+    }
+}
+.next, .back {
+    /* border: solid 1px #0952BE;
+    border-radius: 50px; */
+    height: 3px;
+    width: 3px;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+.back {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+.selected {
+    color: black;
+}
+`
+
+
+function getWindowDimensions(){
+    const {innerWidth: width, innerHeight: height } = window;
+    return {
+        width,
+        height
+    };
+}
+
+function useWindowDimensions() {
+    const [windowDimensions, setWindowDimensions] = useState(
+      getWindowDimensions()
+    );
+  
+    useEffect(() => {
+      function handleResize() {
+        setWindowDimensions(getWindowDimensions());
+      }
+  
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+  
+    return windowDimensions;
+  }
+
 
 const IndexPage = ({display=false}) => {
+    const {width, height } = useWindowDimensions();
     const [price, setPrice] = useState(0);
 
     const [model, setModel] = useState(["TRD PRO",32000])
@@ -218,6 +358,8 @@ const IndexPage = ({display=false}) => {
     const [lift, setLift] = useState(0)
 
     const [activeColor, setActiveColor] = useState(["Supersonic Red",100, 5])
+
+    const [selectionStage, setSelectionStage] = useState(0)
 
 
     const grades = [
@@ -234,6 +376,7 @@ const IndexPage = ({display=false}) => {
     useEffect(() => {
         if (price !== grades[activeGrade[2]]){setPrice(grades[activeGrade[2]].price)}
     });
+    if (width > 1050){
   return (
       <Layout hideFooter={true} invertNav={true}>
         <Main style={pageStyles}>
@@ -253,6 +396,7 @@ const IndexPage = ({display=false}) => {
                     <div><h2>389 HP/479 Lb.-Ft.</h2><p>i-FORCE Engine </p></div>
                     <div><h2>12,000 Lbs. *</h2><p>Max Towing *</p></div>
                     <div><h2>1,940 Lbs. *</h2><p>Max Payload </p></div>
+                    <div><p>{width} {height}</p></div>
                 </div>
                 <p>Grade:</p>
                 {/*Display grade buttons, update activeGrade state onClick & if active use active class styling */}
@@ -277,6 +421,59 @@ const IndexPage = ({display=false}) => {
         </Main>
     </Layout>
   )
+    } else {
+
+        let featureSection;
+        if (selectionStage === 0){
+            featureSection = <FeatureSection>
+                {/*Display grade buttons, update activeGrade state onClick & if active use active class styling */}
+                <div className="wrap">
+                {grades.map((grade, i) => (
+                    <button className={(activeGrade[0] === grade.name ? 'active' : '')} onClick={() => {setActiveGrade([grade.name, 32000, i]);setActiveColor(["Midnight Black Metallic",100, 0])}}>{grade.name}</button>
+                ))}
+                </div>
+            </FeatureSection>
+        } else if (selectionStage === 1){
+            featureSection = <FeatureSection>
+                {/*Display color buttons based on activeGrade, update activeColor state onClick & if active use active class styling */}
+                <div className="wrap">
+                {grades[activeGrade[2]].colors.map((color, i) => (
+                    <button className={(activeColor[0] === color ? 'active' : '') } onClick={() => {setActiveColor([color,100, i])}}>{color}</button>
+                ))}
+                </div>
+            </FeatureSection>
+        } else {
+            featureSection = <FeatureSection><p>To put a 10% deposit down secureing your Tundra build for 2022, please click the button for more info at our payment gateway.</p><button className="orderbtn">Complete Order</button></FeatureSection>
+        }
+        return (
+            <Layout hideFooter={true} invertNav={true}>
+                <Main style={pageStyles}>
+                    <title>Home Page</title>
+                    <Center>
+                        {/*Get image src from grades array based on active grade & color */}
+                        <img src={grades[activeGrade[2]].src[activeColor[2]]} 
+                        // style={{width: "1100px"}}
+                        />
+                    </Center>
+
+                    <Price><a>Total Price: ${price} (NZD)</a><a>Finance Options</a></Price>
+                    
+                    <SelectionTab>
+                        <button onClick={() => {if(selectionStage > 0){setSelectionStage(selectionStage - 1)}}}><span className="back"/></button>
+                        <button className={selectionStage === 0 ? "selected" : ""} onClick={() => {setSelectionStage(0)}}>grade</button>
+                        <button className={selectionStage === 1 ? "selected" : ""} onClick={() => {setSelectionStage(1)}}>color</button>
+                        <button className={selectionStage === 2 ? "selected" : ""} onClick={() => {setSelectionStage(2)}}>order</button>
+                        <button onClick={() => {if(selectionStage < 2){setSelectionStage(selectionStage + 1)}}}><span className="next"/></button>
+                    </SelectionTab>
+                    {featureSection}
+                    {/* <ButtonSection></ButtonSection> */}
+                    
+                    
+                    {/* <p>{selectionStage}</p> */}
+                </Main>
+            </Layout>
+        )
+    }
 }
 
 export default IndexPage
