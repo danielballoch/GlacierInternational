@@ -204,7 +204,7 @@ const ContainerSplit2 = styled.div`
         width: 100% !important;
     }
     .experienceImgs {
-        max-height: 300px !important;
+        height: 300px !important;
     }
 }
 height: 350px;
