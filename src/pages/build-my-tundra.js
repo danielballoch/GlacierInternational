@@ -352,7 +352,11 @@ function useWindowDimensions() {
 
 
 const IndexPage = ({display=false}) => {
-    const {width, height } = useWindowDimensions();
+    let width;
+    if(isBrowser){
+        width = useWindowDimensions().width;
+    }
+    
     const [price, setPrice] = useState(0);
 
     const [model, setModel] = useState(["TRD PRO",32000])
