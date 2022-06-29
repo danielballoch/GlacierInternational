@@ -99,6 +99,36 @@ video {
         */
     }
 }
+.popup {
+    @media (max-width: 1050px){
+        top: 15%;
+        width: 80%;
+        left: 10%;
+    }
+    left: calc(35vw - 350px);
+    text-align: center;
+    width: 700px;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 60%;
+    z-index: 100;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    /* margin: 10px; */
+    /* padding: 20px; */
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    p {
+        padding: 20px;
+    }
+    a {
+        margin: 20px;
+    }
+}
+.none {
+    display: none;
+}
 `
 
 const Center = styled.div`
@@ -144,6 +174,9 @@ p {
 color: black;
 margin: 60px 20px 0px 40px;
 font-size: 1.5em;
+}
+.infoText {
+    font-size: 1em;
 }
 .features {
     margin: 40px 20px 0px 26px;
@@ -222,14 +255,19 @@ align-items: center;
 
 const Price = styled.div`
 .up {
+    span {
+        transform: rotate(-135deg) !important;
+    }
+}
+.left {
     /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    
     margin: 1px;
     border: none;
     padding: 3px 6px;
     border-radius: 30px;
     span {
+        transition: .3s;
         display: inline-block;
         /* vertical-align: middle; */
         height: 1px;
@@ -277,7 +315,7 @@ border-radius: 50px 50px 0 0;
 box-shadow: rgba(33, 35, 38, 0.1) 0px -2px 5px -1px;
 /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 a {
-    margin: 0 20px;
+    margin: 0 10px;
    
 }
 `
@@ -368,6 +406,9 @@ button {
     color: black;
 }
 `
+
+
+
 const isBrowser = typeof window !== "undefined";
 
 
@@ -377,14 +418,15 @@ const IndexPage = ({display=false}) => {
     
     const [price, setPrice] = useState(0);
 
-    const [model, setModel] = useState(["TRD PRO",32000])
-    const [activeGrade, setActiveGrade] = useState(["1794",32000, 0])
-    const [lift, setLift] = useState(0)
+    const [model, setModel] = useState(["TRD PRO",32000]);
+    const [activeGrade, setActiveGrade] = useState(["1794",32000, 0]);
+    const [lift, setLift] = useState(0);
 
-    const [activeColor, setActiveColor] = useState(["Supersonic Red",100, 5])
+    const [activeColor, setActiveColor] = useState(["Supersonic Red",100, 5]);
 
-    const [selectionStage, setSelectionStage] = useState(0)
-
+    const [selectionStage, setSelectionStage] = useState(0);
+    const [financePopup, setFinancePopup] = useState(false);
+    
 
     const grades = [
         {name: "1794", colors: ["Midnight Black Metallic","Blueprint", "Army Green","Magnetic Grey Metallic", "Smoked Mesquite", "Wind Chill Pearl", "Supersonic Red", "Celestial Silver Metallic"], src: [Black1794, Blue1794, Green1794, Grey1794, Mesquite1794, Pearl1794, Red1794, Silver1794], price: "89,091"},
@@ -405,7 +447,12 @@ const IndexPage = ({display=false}) => {
       <Layout hideFooter={true} invertNav={true}>
         <Main style={pageStyles}>
         <title>Home Page</title>
-        <Price><a>Total Price: ${price} (NZD)</a><a>Finance Options<span className="up"><span/></span></a></Price>
+        
+        <div className={financePopup ? "popup" : "none"}>
+            <p>Glacier International lease/loan options or any relevant information for finances.</p>
+            <p>*to be updated/redesigned once more info is known here*</p>
+        </div>
+        <Price><a>Total Price: ${price} (NZD)</a><a onClick={() => {setFinancePopup(!financePopup)}}>Finance Options<span className={financePopup ? "left up" : "left"}><span/></span></a></Price>
         <Row>
             <Center>
                 {/*Get image src from grades array based on active grade & color */}
@@ -435,6 +482,8 @@ const IndexPage = ({display=false}) => {
                     <button className={(activeColor[0] === color ? 'active' : '') } onClick={() => {setActiveColor([color,100, i])}}>{color}</button>
                 ))}
                 </div>
+                
+                <p className="infoText">To put a 10% deposit down securing your Tundra build for 2022, please click the button for more info at our payment gateway.</p>
                 <button className="orderbtn">Complete Order</button>
             </CenterLeft>
         </Row>
@@ -467,7 +516,7 @@ const IndexPage = ({display=false}) => {
                 </div>
             </FeatureSection>
         } else {
-            featureSection = <FeatureSection><p>To put a 10% deposit down secureing your Tundra build for 2022, please click the button for more info at our payment gateway.</p><button className="orderbtn">Complete Order</button></FeatureSection>
+            featureSection = <FeatureSection><p>To put a 10% deposit down securing your Tundra build for 2022, please click the button for more info at our payment gateway.</p><button className="orderbtn">Complete Order</button></FeatureSection>
         }
         return (
             <Layout hideFooter={true} invertNav={true}>
@@ -480,7 +529,11 @@ const IndexPage = ({display=false}) => {
                         />
                     </Center>
 
-                    <Price><a>Total Price: ${price} (NZD)</a><a>Finance Options <span className="up"><span/></span></a></Price>
+                    <div className={financePopup ? "popup" : "none"}>
+                        <p>Glacier International lease/loan options or any relevant information for finances.</p>
+                        <p>*to be updated/redesigned once more info is known here*</p>
+                    </div>
+                    <Price><a>Total Price: ${price} (NZD)</a><a onClick={() => {setFinancePopup(!financePopup)}}>Finance Options <span className={financePopup ? "left up" : "left"}><span/></span></a></Price>
                     
                     <SelectionTab>
                         <button onClick={() => {if(selectionStage > 0){setSelectionStage(selectionStage - 1)}}}><span className="back"/></button>
