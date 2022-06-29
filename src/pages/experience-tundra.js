@@ -9,6 +9,7 @@ import { Link } from "gatsby"
 const Container = styled.div`
 /* margin-top: 100px; */
 @media(max-width: 940px){
+    margin-bottom: 400px;
     p {
         width: auto !important;
         text-align: center;
@@ -29,6 +30,7 @@ const Container = styled.div`
     button {
         width: 100%;
         margin: 20px auto !important;
+        padding: 20px 30px !important;
     }
 }
 .tundraimage {
@@ -63,23 +65,24 @@ span {
     margin-right: 209px;
     bottom: 0;
     }
-
+a {
+    button {
+        background-color: rgba(0,0,0,0);
+        color: white;
+    }
+}
 button {
  border: 1px solid white;
- color: white;
+ background-color: white;
+ color: black;
  padding: 12px 30px;
  font-size: .9em;
- background-color: rgba(0,0,0,0);
  margin: 20px 20px;
  transition: .3s;
  :hover {
     background-color: rgba(255,255,255,1);
     color: black;
     cursor: pointer;
- }
- :1st-of-type{
-    background-color: white;
-    color: black;
  }
 }
 `
@@ -111,6 +114,10 @@ p {
 const ExperienceContainer = styled.div`
 display: grid; 
 max-height: 100vh;
+@media(max-width: 940px){
+    max-height: 100%;
+    grid-template-rows: auto auto;
+}
 .sideimg {
     position: relative;
     place-items: center;
@@ -120,7 +127,27 @@ max-height: 100vh;
     overflow: visible;
     grid-area: 1/1;
     @media(max-width: 940px){
+        height: 100%;
         /* Do whatever I need to do for image to fit properly like design */
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+}
+.premText {
+    position: relative;
+    place-items: end;
+    justify-content: start;
+    display: grid;
+    grid-area: 1/1;
+    @media(max-width: 940px){
+        height: 100%;
+        background-color: black;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 2;
     }
 }
 
@@ -131,11 +158,13 @@ const Container3 = styled.div`
     width: auto !important;
     margin: 0;
     padding: 20px 30px;
+    justify-content: center;
+    align-items: center;
     p, h2 {
         width: auto !important;
     }
     p {
-        margin: 44px 0px 0 0 !important;
+        height: 100%;
     }
 }
 background-color: rgba(0,0,0,0.8);
@@ -161,7 +190,33 @@ p {
 }
 `
 
+const EndGrid = styled.div`
+display: grid;
+max-height: 100%;
+.tundraCollage {
+    position: relative;
+    place-items: center;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    grid-area: 1/1;
+    @media(max-width: 940px){
+        object-fit: scale-down;
+    }
+}
+`
+
 const Social = styled.div`
+@media(max-width: 940px){
+    span {
+        display: none;
+    }
+    .experienceImgs {
+        width: 60px !important;
+    }
+    margin-bottom: 10px;
+}
 position: absolute;
 display: flex;
 flex-direction: column;
@@ -183,9 +238,30 @@ span {
     background-color: white; 
     margin: auto;
 }
+.experienceImgs {
+    width: 34px;
+}
 `
 
+const isBrowser = typeof window !== "undefined";
+
 const ExperienceTundraPage = () => {
+    let bottomBackground;
+    if (isBrowser && window.innerWidth > 1050){
+        bottomBackground =  <StaticImage
+                                src="../images/experienceTundra/collage2.png"
+                                alt="Tundra collage"
+                                className="tundraCollage"
+                                objectPosition={"50% 50%"}
+                            />  
+    } else {
+        bottomBackground = <StaticImage
+                                src="../images/experienceTundra/collage2Mobile.png"
+                                alt="Tundra collage"
+                                className="tundraCollage"
+                                objectPosition={"50% 50%"}
+                            />  
+    }
     return(
         <Layout>
         {/* hero/video */}
@@ -258,15 +334,7 @@ const ExperienceTundraPage = () => {
                         objectPosition={"50% 100%"}
                         className={"sideimg"}
                     />  
-                <div
-                    style={{
-                        gridArea: "1/1",
-                        position: "relative",
-                        placeItems: "end",
-                        justifyContent: "start",
-                        display: "grid",
-                        }}
-                    >
+                <div className="premText">
                         <Container3>
                         <h2>TOUGH ON THE OUTSIDE PREMIUM ON THE INSIDE</h2>
                         <p>Tundra’s exceptional interior stands apart with its premium materials and quality feel that both driver and passengers will enjoy</p>
@@ -274,20 +342,10 @@ const ExperienceTundraPage = () => {
                 </div>
             </ExperienceContainer>
             {/* Last/link */}
-            <div style={{ display: "grid", maxHeight: "100%"}}>
-             <StaticImage
-                        src={`../images/experienceTundra/collage2.png`}
-                        alt="Glacier International Logo"
-                         style={{
-                             gridArea: "1/1",
-                             position: "relative",
-                             placeItems: "center",
-                             display: "grid",
-                             width: "100%",
-                             height: "100%",
-                             overflow: "visible"
-                            }}
-                    />  
+            <EndGrid >
+
+            
+                {bottomBackground}
                 <div
                     style={{
                         gridArea: "1/1",
@@ -304,7 +362,6 @@ const ExperienceTundraPage = () => {
                         alt="Glacier International Logo"
                         objectPosition={"50% 70%"}
                         className="tundraimage"
-                        
                         />
                         <div><Link to="/build-my-tundra"><button>Build Your Tundra</button></Link> <button>Tundra Brochure</button></div> 
                         {/* <span/> */}
@@ -314,28 +371,25 @@ const ExperienceTundraPage = () => {
                             <StaticImage
                                 className="experienceImgs"
                                 objectFit={"contain"}
-                                style={{width:"34px"}}
                                 src={`../images/social/instagram-icon.png`}
                                 alt="Tundra front on"
                             />
                             <StaticImage
                                 objectFit={"contain"}
                                 className="experienceImgs"
-                                style={{width:"34px"}}
                                 src={`../images/social/youtube-icon.png`}
                                 alt="Tundra front on"
                             />
                             <StaticImage
                                 objectFit={"contain"}
                                 className="experienceImgs"
-                                style={{width:"34px"}}
                                 src={`../images/social/facebook-icon.png`}
                                 alt="Tundra front on"
                             />
                             <span/>
                         </Social>
                 </div>
-            </div>
+            </EndGrid>
         </Layout>
     )
 }
