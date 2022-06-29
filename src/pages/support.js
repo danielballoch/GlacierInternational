@@ -12,7 +12,8 @@ const FAQ = styled.div`
     margin: 100px auto 0 auto;
 }
 margin-top: 100px;
-height: calc(100vh - 170px);
+/* height: calc(100vh - 170px); */
+height: auto;
 color: black;
 display: flex;
 justify-content: center;
@@ -20,6 +21,7 @@ align-items: center;
 flex-direction: column;
 font-family: seguo-ui, visby, sans-serif;
 h1 {
+    margin-top: 100px;
     color: white;
 }
 div {
