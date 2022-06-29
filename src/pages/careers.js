@@ -6,6 +6,38 @@ import {css} from '@emotion/react';
 import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 
+const GridHeroContainer = styled.div`
+display: grid;
+grid-template-columns: auto repeat(3, 30vw [col-start]) auto;
+max-height: 757;
+.img1, .img2, .img3 {
+    height: 70vh;
+    width: 100%;
+    position: relative;
+    placeItems: center;
+    display: grid; 
+    @media(max-width: 940px){
+        grid-row-start: 0 !important;
+        grid-row-end: 1 !important;
+    }
+}
+.img1 {
+    margin-top: calc(100px + 7vw);
+    grid-area: 5/2;
+}
+.img2 {
+    grid-area: 5/3;
+    margin-top: calc(100px + 2vw);
+}
+.img3 {
+    grid-area: 5/4;
+    margin-top: calc(100px + 6vw);
+}
+@media(max-width: 940px){
+    grid-template-rows: auto auto;
+}
+`
+
 const Container = styled.div`
 min-height: calc(100vh - 440px);
 height: auto;
@@ -34,23 +66,36 @@ const Hero = styled.div`
     place-items: center;
     @media(max-width: 940px){
         /* "auto repeat(3, 30vw [col-start]) auto" */
-        /* grid-row-start: 1;
-        grid-row-end: 4;
-        grid-column-start: 1;
-        grid-column-end: 6; */
-}
+        grid-row-start: 4;
+        grid-row-end: 7;
+        grid-column-start: 2;
+        grid-column-end: 5;
+        /* display: flex; */
     }
 `
 const HeroContent = styled.div`
 @media(max-width: 940px){
-    width: 100%;
+    width: auto;
     margin: 180px 0;
+    padding: 20px;
+    
+    h1 {
+    padding: 10px;
+    }
+    p {
+        padding: 10px;
+    }
+    button {
+        padding: 30px 60px !important;
+        margin-bottom: 40px !important;
+        width: 100% !important;
+    }
 }
 background-color: rgba(255,255,255, 0.9);
 color: black;
 width: 500px;
 margin-left: -15vw;
-margin-top: 40px;
+margin-top: 100px;
 padding: 50px 100px;
 box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 h1 {
@@ -212,47 +257,22 @@ align-items: center;
 const CareersPage = () => {
     return(
         <Layout invertNav={true}>
-            <div style={{ display: "grid", gridTemplateColumns: "auto repeat(3, 30vw [col-start]) auto", maxHeight: 757}}>
+            <GridHeroContainer>
             <StaticImage
                 src={`../images/careers/workshop.jpg`}
                 alt="Tundra front on"
-                style={{
-                        height: "70vh",
-                        gridArea: "5/2",
-                        width: "100%",
-                        position: "relative",
-                        placeItems: "center",
-                        display: "grid",
-                        marginTop: "calc(100px + 7vw)"
-                    }}
+                className="img1"
             />
             <StaticImage
                 src={`../images/about/AboutCraft.jpg`}
                 alt="Tundra front on"
-                style={{
-                        height: "70vh",
-                        gridArea: "5/3",
-                        width: "100%",
-                        position: "relative",
-                        placeItems: "center",
-                        display: "grid",
-                        marginTop: "calc(100px + 2vw)"
-
-                    }}
+                className="img2"
             />
             <StaticImage
                 src={`../images/careers/handshake2.jpg`}
                 alt="Tundra front on"
                 objectPosition="80% 100%"
-                style={{
-                        height: "70vh",
-                        gridArea: "5/4",
-                        width: "100%",
-                        position: "relative",
-                        placeItems: "center",
-                        display: "grid",
-                        marginTop: "calc(100px + 6vw)"
-                    }}
+                className="img3"
             />
             <Hero>
                 <HeroContent>
@@ -262,7 +282,7 @@ const CareersPage = () => {
                 <button>EXPLORE ROLES</button>
                 </HeroContent>
             </Hero>
-        </div>
+        </GridHeroContainer>
             <Values>
                 <h2>01 Freedom & Responsibility</h2>
                 <h2>02 Community</h2>

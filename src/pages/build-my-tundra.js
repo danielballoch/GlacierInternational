@@ -166,6 +166,22 @@ font-size: 1.5em;
         }
     }
 }
+.orderbtn {
+    background-color: #75ba75;
+    color: white;
+    width: 80%;
+    font-size: 20px;
+    letter-spacing: 1.4px;
+    padding: 14px;
+    font-weight: 600;
+    font-family: 'Heebo',sans-serif;
+    border: none;
+    margin: 40px auto 40px auto;
+    :hover {
+        border: none;
+        background-color: #4C974C;
+    }
+}
 
 display: flex;
 justify-content: left;
@@ -297,7 +313,7 @@ button {
     }
 }
 .orderbtn {
-    background-color: green;
+    background-color: #75ba75;
     color: white;
     width: 100%;
     font-size: 18px;
@@ -308,6 +324,7 @@ button {
     margin: 20px auto 0 auto;
     :hover {
         border: none;
+        background-color: #4C974C;
     }
 }
 .active {
@@ -418,6 +435,7 @@ const IndexPage = ({display=false}) => {
                     <button className={(activeColor[0] === color ? 'active' : '') } onClick={() => {setActiveColor([color,100, i])}}>{color}</button>
                 ))}
                 </div>
+                <button className="orderbtn">Complete Order</button>
             </CenterLeft>
         </Row>
         
