@@ -205,6 +205,34 @@ align-items: center;
 `
 
 const Price = styled.div`
+.up {
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    
+    margin: 1px;
+    border: none;
+    padding: 3px 6px;
+    border-radius: 30px;
+    span {
+        display: inline-block;
+        /* vertical-align: middle; */
+        height: 1px;
+        width: 1px;
+        border: solid #666;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        /* transform: rotate(-135deg);
+        -webkit-transform: rotate(-135deg); */
+    }
+}
+a:last-of-type {
+    :hover {
+        cursor: pointer ;
+    }
+}
 @media(max-width: 1050px) {
     width: 100%;
     left: 0;
@@ -234,6 +262,7 @@ box-shadow: rgba(33, 35, 38, 0.1) 0px -2px 5px -1px;
 /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 a {
     margin: 0 20px;
+   
 }
 `
 
@@ -252,6 +281,7 @@ p {
     flex-wrap: wrap;
 }
 button {
+    color: black;
     align-self: flex-start;
     background-color: white;
     padding: 22px 30px;
@@ -358,7 +388,7 @@ const IndexPage = ({display=false}) => {
       <Layout hideFooter={true} invertNav={true}>
         <Main style={pageStyles}>
         <title>Home Page</title>
-        <Price><a>Total Price: ${price} (NZD)</a><a>Finance Options</a></Price>
+        <Price><a>Total Price: ${price} (NZD)</a><a>Finance Options<span className="up"><span/></span></a></Price>
         <Row>
             <Center>
                 {/*Get image src from grades array based on active grade & color */}
@@ -432,7 +462,7 @@ const IndexPage = ({display=false}) => {
                         />
                     </Center>
 
-                    <Price><a>Total Price: ${price} (NZD)</a><a>Finance Options</a></Price>
+                    <Price><a>Total Price: ${price} (NZD)</a><a>Finance Options <span className="up"><span/></span></a></Price>
                     
                     <SelectionTab>
                         <button onClick={() => {if(selectionStage > 0){setSelectionStage(selectionStage - 1)}}}><span className="back"/></button>
