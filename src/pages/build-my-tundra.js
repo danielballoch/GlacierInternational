@@ -321,7 +321,7 @@ button {
     color: black;
 }
 `
-
+const isBrowser = typeof window !== "undefined";
 
 function getWindowDimensions(){
     if (isBrowser){
