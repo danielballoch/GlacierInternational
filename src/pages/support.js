@@ -146,8 +146,11 @@ const Social = styled.div`
             width: 100%;
         }
     }
+    a {
+        width: 60px;
+    }
     .socialImgs {
-        width: 20% !important;
+        width: 100% !important;
     }
 }
 display: flex;
@@ -161,13 +164,13 @@ p {
 }
 div {
     display: flex;
-    margin: 0 10px;
+    /* margin: 0 10px; */
     :hover {
         cursor: pointer;
     }
 }
 .socialImgs {
-    width: 70px;
+    width: 60px;
     :hover {
         cursor: pointer;
     }
