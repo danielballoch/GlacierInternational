@@ -323,39 +323,10 @@ button {
 `
 const isBrowser = typeof window !== "undefined";
 
-function getWindowDimensions(){
-    if (isBrowser){
-    const {innerWidth: width, innerHeight: height } = window;
-    return {
-        width,
-        height
-    };
-}
-}
 
-function useWindowDimensions() {
-    const [windowDimensions, setWindowDimensions] = useState(
-      getWindowDimensions()
-    );
-  
-    useEffect(() => {
-      function handleResize() {
-        setWindowDimensions(getWindowDimensions());
-      }
-  
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-    }, []);
-  
-    return windowDimensions;
-  }
 
 
 const IndexPage = ({display=false}) => {
-    let width;
-    if(isBrowser){
-        width = useWindowDimensions().width;
-    }
     
     const [price, setPrice] = useState(0);
 
@@ -382,7 +353,7 @@ const IndexPage = ({display=false}) => {
     useEffect(() => {
         if (price !== grades[activeGrade[2]]){setPrice(grades[activeGrade[2]].price)}
     });
-    if (width > 1050){
+    if (isBrowser && window.innerWidth > 1050){
   return (
       <Layout hideFooter={true} invertNav={true}>
         <Main style={pageStyles}>
@@ -402,7 +373,6 @@ const IndexPage = ({display=false}) => {
                     <div><h2>389 HP/479 Lb.-Ft.</h2><p>i-FORCE Engine </p></div>
                     <div><h2>12,000 Lbs. *</h2><p>Max Towing *</p></div>
                     <div><h2>1,940 Lbs. *</h2><p>Max Payload </p></div>
-                    <div><p>{width} {height}</p></div>
                 </div>
                 <p>Grade:</p>
                 {/*Display grade buttons, update activeGrade state onClick & if active use active class styling */}
