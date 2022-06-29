@@ -10,10 +10,13 @@ ${'' /* display: none; */}
 ${'' /* overflow-x: scroll; */}
 ${'' /* white-space: nowrap; */}
 @media(max-width: 940px){
+    p, h1, {
+        width: 98%;
+    }
 button {
     padding: 30px 20px !important;
     margin-top: 20px;
-    width: 100%;
+    width: 98%;
     font-size: 18px;
     color: black;
     border-radius: 4px;
