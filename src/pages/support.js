@@ -6,6 +6,8 @@ import {css} from '@emotion/react';
 import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 
+
+
 const FAQ = styled.div`
 @media(max-width: 940px){
     width: 80%;
@@ -285,30 +287,30 @@ const SupportTundraPage = () => {
                 <Social>
                 <p>Follow us on social media for updates, showcases, and more information </p>
                 <div>
-                    <Link to="https://www.instagram.com/glacier_international/">
+                    <a href="https://www.instagram.com/glacier_international/">
                     <StaticImage
                         className="socialImgs"
                         objectFit={"contain"}
                         src={`../images/social/instagram-icon.png`}
                         alt="Tundra front on"
                     />
-                    </Link>
-                    <Link to="https://www.youtube.com/channel/UC2CR408AOJqt5JNUFVt-nSQ">
+                    </a>
+                    <a href="https://www.youtube.com/channel/UC2CR408AOJqt5JNUFVt-nSQ">
                     <StaticImage
                         objectFit={"contain"}
                         className="socialImgs"
                         src={`../images/social/youtube-icon.png`}
                         alt="Tundra front on"
                     />
-                    </Link>
-                    <Link to="https://www.facebook.com/GlacierInt">
+                    </a>
+                    <a href="https://www.facebook.com/GlacierInt">
                     <StaticImage
                         objectFit={"contain"}
                         className="socialImgs"
                         src={`../images/social/facebook-icon.png`}
                         alt="Tundra front on"
                     />
-                    </Link>
+                    </a>
                 </div>
                 </Social>
                 </div>
