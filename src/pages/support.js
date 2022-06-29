@@ -294,24 +294,24 @@ const SupportTundraPage = () => {
                     <StaticImage
                         className="socialImgs"
                         objectFit={"contain"}
-                        src={`../images/social/instagram-icon.png`}
-                        alt="Tundra front on"
+                        src="../images/social/instagram-icon.png"
+                        alt="Instagram Logo"
                     />
                     </a>
                     <a href="https://www.youtube.com/channel/UC2CR408AOJqt5JNUFVt-nSQ">
                     <StaticImage
                         objectFit={"contain"}
                         className="socialImgs"
-                        src={`../images/social/youtube-icon.png`}
-                        alt="Tundra front on"
+                        src="../images/social/youtube-icon.png"
+                        alt="Youtube Logo"
                     />
                     </a>
                     <a href="https://www.facebook.com/GlacierInt">
                     <StaticImage
                         objectFit={"contain"}
                         className="socialImgs"
-                        src={`../images/social/facebook-icon.png`}
-                        alt="Tundra front on"
+                        src="../images/social/facebook-icon.png"
+                        alt="Facebook Logo"
                     />
                     </a>
                 </div>
