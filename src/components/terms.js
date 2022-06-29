@@ -10,7 +10,15 @@ ${'' /* display: none; */}
 ${'' /* overflow-x: scroll; */}
 ${'' /* white-space: nowrap; */}
 @media(max-width: 940px){
-
+button {
+    padding: 30px 20px !important;
+    margin-top: 20px;
+    width: 100%;
+    font-size: 18px;
+    color: black;
+    border-radius: 4px;
+    border: none;
+}
 }
 font-family: visby,sans-serif;
 transition: .5s;
