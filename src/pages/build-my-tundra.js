@@ -3,6 +3,8 @@ import styled from '@emotion/styled';
 import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 
+import PriceFinanceBar from "../components/buildMyTundra/priceFinanceBar"
+
 //import 1794 images
 import Black1794 from "../images/tundra/1794/Black1794.png"
 import Blue1794 from "../images/tundra/1794/Blue1794.png"
@@ -445,22 +447,23 @@ const IndexPage = ({display=false}) => {
     if (isBrowser && window.innerWidth > 1050){
         //potentially I could componentise out either the mobile & desktop version or individual elements within + their styles?
         //I think the latter, otherwise I'm going to run into issues with overlapping styles.
+        //I might actually be able to reuse components for tundra and sequoia and just insert content?
   return (
       <Layout hideFooter={true} invertNav={true}>
         <Main style={pageStyles}>
         <title>Home Page</title>
         {/* component1 */}
-        <div className={financePopup ? "popup" : "none"}>
+        {/* <div className={financePopup ? "popup" : "none"}>
             <p>Glacier International lease/loan options or any relevant information for finances.</p>
             <p>*to be updated/redesigned once more info is known here*</p>
         </div>
-        <Price><a>Total Price: ${price} (NZD)</a><a onClick={() => {setFinancePopup(!financePopup)}}>Finance Options<span className={financePopup ? "left up" : "left"}><span/></span></a></Price>
+        <Price><a>Total Price: ${price} (NZD)</a><a onClick={() => {setFinancePopup(!financePopup)}}>Finance Options<span className={financePopup ? "left up" : "left"}><span/></span></a></Price> */}
         
+        <PriceFinanceBar price={price}/>
         <Row>
             <Center>
                 {/*Get image src from grades array based on active grade & color */}
                 <img src={grades[activeGrade[2]].src[activeColor[2]]} 
-                // style={{width: "1100px"}}
                 />
             </Center>
             <CenterLeft>
@@ -490,10 +493,6 @@ const IndexPage = ({display=false}) => {
                 <button className="orderbtn">Complete Order</button>
             </CenterLeft>
         </Row>
-        
-        
-        
-
         </Main>
     </Layout>
   )
