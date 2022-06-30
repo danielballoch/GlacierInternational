@@ -408,7 +408,7 @@ button {
 `
 
 
-
+//needed so window.width doesn't thow error
 const isBrowser = typeof window !== "undefined";
 
 
@@ -437,22 +437,25 @@ const IndexPage = ({display=false}) => {
         {name: "SR5", colors: ["Midnight Black Metallic","Blueprint","Army Green","Magnetic Grey Metallic","Supersonic Red","Lunar Rock","Celestial Silver Metallic", "White"], src: [BlackSR5, BlueSR5, GreenSR5, GreySR5, RedSR5,RockSR5, SilverSR5, WhiteSR5], price: "55,490"},
         {name: "TRDPRO", colors: ["Midnight Black Metallic","Lunar Rock","Solar Octane", "White"], src: [BlackTRDPRO, RockTRDPRO, SolarTRDPRO, WhiteTRDPRO], price: "103,115"},
     ]
-    console.log(grades)
-    console.log(activeColor[0]+activeGrade[0])
+
+    //update price
     useEffect(() => {
         if (price !== grades[activeGrade[2]]){setPrice(grades[activeGrade[2]].price)}
     });
     if (isBrowser && window.innerWidth > 1050){
+        //potentially I could componentise out either the mobile & desktop version or individual elements within + their styles?
+        //I think the latter, otherwise I'm going to run into issues with overlapping styles.
   return (
       <Layout hideFooter={true} invertNav={true}>
         <Main style={pageStyles}>
         <title>Home Page</title>
-        
+        {/* component1 */}
         <div className={financePopup ? "popup" : "none"}>
             <p>Glacier International lease/loan options or any relevant information for finances.</p>
             <p>*to be updated/redesigned once more info is known here*</p>
         </div>
         <Price><a>Total Price: ${price} (NZD)</a><a onClick={() => {setFinancePopup(!financePopup)}}>Finance Options<span className={financePopup ? "left up" : "left"}><span/></span></a></Price>
+        
         <Row>
             <Center>
                 {/*Get image src from grades array based on active grade & color */}
@@ -543,10 +546,7 @@ const IndexPage = ({display=false}) => {
                         <button onClick={() => {if(selectionStage < 2){setSelectionStage(selectionStage + 1)}}}><span className="next"/></button>
                     </SelectionTab>
                     {featureSection}
-                    {/* <ButtonSection></ButtonSection> */}
-                    
-                    
-                    {/* <p>{selectionStage}</p> */}
+
                 </Main>
             </Layout>
         )
