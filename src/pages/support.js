@@ -170,7 +170,8 @@ div {
     }
 }
 .socialImgs {
-    width: 60px;
+    width: 50px;
+    margin-left: 20px;
     :hover {
         cursor: pointer;
     }
@@ -294,7 +295,7 @@ const SupportTundraPage = () => {
                     <StaticImage
                         className="socialImgs"
                         objectFit={"contain"}
-                        src="../images/social/instagram-icon.png"
+                        src="../images/social/instagramSmall.png"
                         alt="Instagram Logo"
                     />
                     </a>
@@ -302,7 +303,7 @@ const SupportTundraPage = () => {
                     <StaticImage
                         objectFit={"contain"}
                         className="socialImgs"
-                        src="../images/social/youtube-icon.png"
+                        src="../images/social/youtubeSmall.png"
                         alt="Youtube Logo"
                     />
                     </a>
@@ -310,7 +311,7 @@ const SupportTundraPage = () => {
                     <StaticImage
                         objectFit={"contain"}
                         className="socialImgs"
-                        src="../images/social/facebook-icon.png"
+                        src="../images/social/facebookSmall.png"
                         alt="Facebook Logo"
                     />
                     </a>

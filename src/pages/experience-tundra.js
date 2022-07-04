@@ -371,20 +371,20 @@ const ExperienceTundraPage = () => {
                             <StaticImage
                                 className="experienceImgs"
                                 objectFit={"contain"}
-                                src={`../images/social/instagram-icon.png`}
-                                alt="Tundra front on"
+                                src={`../images/social/instagramSmall.png`}
+                                alt="Instagram logo"
                             />
                             <StaticImage
                                 objectFit={"contain"}
                                 className="experienceImgs"
-                                src={`../images/social/youtube-icon.png`}
-                                alt="Tundra front on"
+                                src={`../images/social/youtubeSmall.png`}
+                                alt="Youtube logo"
                             />
                             <StaticImage
                                 objectFit={"contain"}
                                 className="experienceImgs"
-                                src={`../images/social/facebook-icon.png`}
-                                alt="Tundra front on"
+                                src={`../images/social/facebookSmall.png`}
+                                alt="Facebook logo"
                             />
                             <span/>
                         </Social>
