@@ -1,9 +1,11 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useCallback} from "react"
 import styled from '@emotion/styled';
 import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 
 import PriceFinanceBar from "../components/buildMyTundra/priceFinanceBar"
+import MainImage from "../components/buildMyTundra/mainImage"
+import FeatureBar from "../components/buildMyTundra/featureBar";
 
 //import 1794 images
 import Black1794 from "../images/tundra/1794/Black1794.png"
@@ -440,6 +442,16 @@ const IndexPage = ({display=false}) => {
         {name: "TRDPRO", colors: ["Midnight Black Metallic","Lunar Rock","Solar Octane", "White"], src: [BlackTRDPRO, RockTRDPRO, SolarTRDPRO, WhiteTRDPRO], price: "103,115"},
     ]
 
+    const [count, setCount] = useState(0);
+    const UpdateActiveGrade = useCallback(() => {
+            console.log("update grade")
+        },[grades]
+    );
+
+    // function UpdateActiveColor(){
+    //     (color) => {setCount(color); console.log(color)}
+    // }
+
     //update price
     useEffect(() => {
         if (price !== grades[activeGrade[2]]){setPrice(grades[activeGrade[2]].price)}
@@ -452,21 +464,13 @@ const IndexPage = ({display=false}) => {
       <Layout hideFooter={true} invertNav={true}>
         <Main style={pageStyles}>
         <title>Home Page</title>
-        {/* component1 */}
-        {/* <div className={financePopup ? "popup" : "none"}>
-            <p>Glacier International lease/loan options or any relevant information for finances.</p>
-            <p>*to be updated/redesigned once more info is known here*</p>
-        </div>
-        <Price><a>Total Price: ${price} (NZD)</a><a onClick={() => {setFinancePopup(!financePopup)}}>Finance Options<span className={financePopup ? "left up" : "left"}><span/></span></a></Price> */}
-        
         <PriceFinanceBar price={price}/>
+        
         <Row>
-            <Center>
-                {/*Get image src from grades array based on active grade & color */}
-                <img src={grades[activeGrade[2]].src[activeColor[2]]} 
-                />
-            </Center>
-            <CenterLeft>
+            <MainImage src={grades[activeGrade[2]].src[activeColor[2]]} />
+            <FeatureBar grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color); console.log(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}} count={count} increaseCount={(count) => {setCount(count); console.log(count)}}/>
+            
+            {/* <CenterLeft>
                 <h1>2022 Toyota Tundra</h1>
                 <div className="features">
                     <div><h2>437 HP/583 Lb.-Ft.</h2><p>i-FORCE MAX Engine</p></div>
@@ -475,23 +479,22 @@ const IndexPage = ({display=false}) => {
                     <div><h2>1,940 Lbs. *</h2><p>Max Payload </p></div>
                 </div>
                 <p>Grade:</p>
-                {/*Display grade buttons, update activeGrade state onClick & if active use active class styling */}
                 <div className="wrap">
-                {grades.map((grade, i) => (
-                    <button className={(activeGrade[0] === grade.name ? 'active' : '')} onClick={() => {setActiveGrade([grade.name, 32000, i]);setActiveColor(["Midnight Black Metallic",100, 0])}}>{grade.name}</button>
-                ))}
+                    {grades.map((grade, i) => (
+                        <button className={(activeGrade[0] === grade.name ? 'active' : '')} onClick={() => {setActiveGrade([grade.name, 32000, i]);setActiveColor(["Midnight Black Metallic",100, 0])}}>{grade.name}</button>
+                    ))}
                 </div>
                 <p>Colour:</p>
-                {/*Display color buttons based on activeGrade, update activeColor state onClick & if active use active class styling */}
+                
                 <div className="wrap">
-                {grades[activeGrade[2]].colors.map((color, i) => (
-                    <button className={(activeColor[0] === color ? 'active' : '') } onClick={() => {setActiveColor([color,100, i])}}>{color}</button>
-                ))}
+                    {grades[activeGrade[2]].colors.map((color, i) => (
+                        <button className={(activeColor[0] === color ? 'active' : '') } onClick={() => {setActiveColor([color,100, i])}}>{color}</button>
+                    ))}
                 </div>
                 
                 <p className="infoText">To put a 10% deposit down securing your Tundra build for 2022, please click the button for more info at our payment gateway.</p>
                 <button className="orderbtn">Complete Order</button>
-            </CenterLeft>
+            </CenterLeft> */}
         </Row>
         </Main>
     </Layout>
