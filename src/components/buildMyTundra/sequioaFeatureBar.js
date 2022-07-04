@@ -100,12 +100,12 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
 
     return(
         <CenterLeft>
-                <h1>2022 Toyota Tundra</h1>
+                <h1>2023 Toyota Sequia</h1>
                 <div className="features">
-                    <div><h2>437 HP/583 Lb.-Ft.</h2><p>i-FORCE MAX Engine</p></div>
-                    <div><h2>389 HP/479 Lb.-Ft.</h2><p>i-FORCE Engine </p></div>
-                    <div><h2>12,000 Lbs. *</h2><p>Max Towing *</p></div>
-                    <div><h2>1,940 Lbs. *</h2><p>Max Payload </p></div>
+                    <div><h2>437</h2><p>Horsepower</p></div>
+                    <div><h2>583 Lb.-Ft.</h2><p>Torque</p></div>
+                    <div><h2>9,000 Lbs.</h2><p>Max Towing *</p></div>
+                    <div><h2>7-8</h2><p>Seating</p></div>
                 </div>
                 <p>Grade:</p>
                 <div className="wrap">
@@ -129,7 +129,7 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
                     ))}
                 </div>
                 
-                <p className="infoText">To put a 10% deposit down securing your custom Tundra build for 2022, please click the button below for more info at our payment gateway.</p>
+                <p className="infoText">To put a 10% deposit down securing your custom Sequioa build for 2022, please click the button below for more info at our payment gateway.</p>
                 <button className="orderbtn">Complete Order</button>
             </CenterLeft>
     )

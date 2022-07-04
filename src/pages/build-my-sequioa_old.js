@@ -1,12 +1,7 @@
 import React, {useState, useEffect} from "react"
 import styled from '@emotion/styled';
+import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
-
-import PriceFinanceBar from "../components/buildMyTundra/priceFinanceBar"
-import MainImage from "../components/buildMyTundra/mainImage"
-import FeatureBar from "../components/buildMyTundra/sequioaFeatureBar";
-import MobileFeatureSection from "../components/buildMyTundra/mobileFeatureSection";
-import MobileSelectionTab from "../components/buildMyTundra/mobileSelectionTab";
 
 //import Capstone images
 import BlackCapstone from "../images/sequoia/Capstone/CAPSTONEBLACK.webp"
@@ -53,9 +48,14 @@ import GrayTRDPRO from "../images/sequoia/TRDPRO/TRDPROGRAY.webp"
 import SolarTRDPRO from "../images/sequoia/TRDPRO/TRDPROSOLAR.webp"
 import WhiteTRDPRO from "../images/sequoia/TRDPRO/TRDPROWHITE.webp"
 
+
+
+
+
+
 const pageStyles = {
     padding: 0,
-    margin: "100px 0 0 0",
+    margin: "100px 0",
     backgroundColor: "white"
   }
 
@@ -90,37 +90,90 @@ video {
         */
     }
 }
-.popup {
-    @media (max-width: 1050px){
-        top: 15%;
-        width: 80%;
-        left: 10%;
-    }
-    left: calc(35vw - 350px);
-    text-align: center;
-    width: 700px;
-    position: fixed;
+`
+
+const Center = styled.div`
+display: flex;
+position: fixed;
+top: calc(50vh - 20vh);
+left: calc(35vw - 20vw);
+width: 40vw;
+height: 40vh
+justify-content: center;
+flex-direction: column;
+align-items: center;
+`
+const CenterLeft = styled.div`
+z-index: 10;
+background-color: white;
+width: 30vw;
+min-height: 100vh;
+margin-left: 20px;
+box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.04);
+.features {
+    margin: 40px 20px 0px 26px;
     display: flex;
-    flex-direction: column;
-    top: 60%;
-    z-index: 100;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-    /* margin: 10px; */
-    /* padding: 20px; */
-    background-color: white;
-    border-radius: 10px;
-    color: black;
-    p {
-        padding: 20px;
-    }
-    a {
-        margin: 20px;
+    flex-wrap: wrap;
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: black;
+        padding: 10px 14px;
+        text-align: center;
+        h2 {
+            margin: 0;
+            color: #252525;
+        }
+        p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
     }
 }
-.none {
-    display: none;
+h1 {
+    margin: 60px 20px 0px 40px;
+    color: rgba(0,0,0,0.9);
+    font-size: 3em;
+    font-weight: 100;
+    text-align: left;
+}
+p {
+color: black;
+font-weight: 100;
+margin: 60px 20px 0px 40px;
+font-size: 1.5em;
+}
+display: flex;
+justify-content: left;
+flex-direction: column;
+align-items: left;
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 20px 0px 34px;
+}
+button {
+    align-self: flex-start;
+    background-color: white;
+    padding: 6px 20px;
+    border-radius: 50px;
+    margin: 10px 10px;
+    border: none;
+    transition: .3s;
+    border: solid 1px white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    :hover {
+        cursor: pointer;
+        border: solid 1px #0952BE;
+    }
+}
+.active {
+    border: solid 1px #0952BE;
+    
 }
 `
+
 const Row = styled.div`
 display: flex;
 justify-content: right;
@@ -128,21 +181,34 @@ flex-direction: row;
 align-items: center;
 `
 
-
-
-
-//needed so window.width doesn't thow error
-const isBrowser = typeof window !== "undefined";
+const Price = styled.div`
+position: fixed;
+display: flex;
+justify-content: center;
+align-items: center;
+bottom: 0;
+left: calc(35vw - 350px);
+text-align: center;
+width: 700px;
+height: 100px;
+background-color: white;
+color: black;
+border-radius: 50px 50px 0 0;
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+a {
+    margin: 0 20px;
+}
+`
 
 
 const IndexPage = ({display=false}) => {
-    
     const [price, setPrice] = useState(0);
-    const [activeGrade, setActiveGrade] = useState(["1794",32000, 0]);
-    const [activeColor, setActiveColor] = useState(["Supersonic Red",100, 5]);
+    console.log("Price: " + price)
+    const [model, setModel] = useState(["TRD PRO",32000])
+    const [activeGrade, setActiveGrade] = useState(["1794",32000, 0])
+    const [lift, setLift] = useState(0)
 
-    const [selectionStage, setSelectionStage] = useState(0);
-    
+    const [activeColor, setActiveColor] = useState(["Red",100, 5])
 
     const grades = [
         {name: "Capstone", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Wind Chill Pearl","Supersonic Red","Celestial Silver Metallic"], src: [BlackCapstone, BlueCapstone, GrayCapstone, PearlCapstone, RedCapstone, SilverCapstone], price: "128,723"},
@@ -151,40 +217,55 @@ const IndexPage = ({display=false}) => {
         {name: "SR5", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Army Green","Smoked Mesquite", "Supersonic Red","Rock", "Celestial Silver Metallic", "White"], src: [BlackSR5, BlueSR5, GraySR5, GreenSR5,MesquiteSR5, RedSR5,RockSR5, SilverSR5, WhiteSR5], price: "77,519"},
         {name: "TRD PRO", colors: ["Midnight Black Metallic","Magnetic Grey Metallic","Solar Octane", "White"], src: [BlackTRDPRO, GrayTRDPRO, SolarTRDPRO, WhiteTRDPRO], price: "117,866"},
     ]
-
-
-    //update price
+    console.log(grades)
+    console.log(activeColor[0]+activeGrade[0])
     useEffect(() => {
         if (price !== grades[activeGrade[2]]){setPrice(grades[activeGrade[2]].price)}
     });
-    if (isBrowser && window.innerWidth > 1050){
-        // desktop page
   return (
       <Layout hideFooter={true} invertNav={true}>
         <Main style={pageStyles}>
         <title>Home Page</title>
-        <PriceFinanceBar price={price}/>
+        <Price><a>Total Price: est ${price} (NZD)</a><a>Finance Options</a></Price>
         <Row>
-            <MainImage src={grades[activeGrade[2]].src[activeColor[2]]} />
-            <FeatureBar grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color); console.log(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}} />
+            <Center>
+                {/*Get image src from grades array based on active grade & color */}
+                <img src={grades[activeGrade[2]].src[activeColor[2]]} 
+                // style={{width: "1100px"}}
+                />
+            </Center>
+            <CenterLeft>
+                <h1>2023 Toyota Sequia</h1>
+                <div className="features">
+                    <div><h2>437</h2><p>Horsepower</p></div>
+                    <div><h2>583 Lb.-Ft.</h2><p>Torque</p></div>
+                    <div><h2>9,000 Lbs.</h2><p>Max Towing *</p></div>
+                    <div><h2>7-8</h2><p>Seating</p></div>
+                </div>
+                
+                <p>Grade:</p>
+                {/*Display grade buttons, update activeGrade state onClick & if active use active class styling */}
+                <div className="wrap">
+                {grades.map((grade, i) => (
+                    <button className={(activeGrade[0] === grade.name ? 'active' : '')} onClick={() => {setActiveGrade([grade.name, 32000, i]); setActiveColor(["Midnight Black Metallic",100, 0])}}>{grade.name}</button>
+                ))}
+                </div>
+                <p>Colour:</p>
+                {/*Display color buttons based on activeGrade, update activeColor state onClick & if active use active class styling */}
+                <div className="wrap">
+                {grades[activeGrade[2]].colors.map((color, i) => (
+                    <button className={(activeColor[0] === color ? 'active' : '') } onClick={() => {setActiveColor([color,100, i])}}>{color}</button>
+                ))}
+                </div>
+            </CenterLeft>
         </Row>
+        
+        
+        
+
         </Main>
     </Layout>
   )
-    } else {
-        // mobile page
-        return (
-            <Layout hideFooter={true} invertNav={true}>
-                <Main style={pageStyles}>
-                    <title>Home Page</title>
-                    <MainImage src={grades[activeGrade[2]].src[activeColor[2]]}/>
-                    <PriceFinanceBar price={price}/>
-                    <MobileSelectionTab selectionStage={selectionStage} updateSelectionStage={(newStageNumber) => {setSelectionStage(newStageNumber)}}/>
-                    <MobileFeatureSection selectionStage={selectionStage} grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color); console.log(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}} />
-                </Main>
-            </Layout>
-        )
-    }
 }
 
 export default IndexPage
