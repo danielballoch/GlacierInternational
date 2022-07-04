@@ -338,7 +338,7 @@ const CareersPage = () => {
                     className="experienceImgs"
                     objectPosition={"50% 50%"}
                     src={`../images/careers/careers1.jpg`}
-                    alt="Tundra front on"
+                    alt="Glacier engineer working on tundra"
                     
                 />
             </Link>
@@ -351,7 +351,7 @@ const CareersPage = () => {
                 className="experienceImgs"
                 objectPosition={"50% 50%"}
                 src={`../images/careers/careers2.jpg`}
-                alt="Sequoia front on"
+                alt="Glacier office/yard"
                 
             />
             </Link>
@@ -365,7 +365,7 @@ const CareersPage = () => {
                 className="experienceImgs"
                 objectPosition={"50% 0%"}
                 src={`../images/about/Soldimage.JPG`}
-                alt="Sequoia front on"
+                alt="Malcom next to sold Tundra"
                 
             />
             </Link>

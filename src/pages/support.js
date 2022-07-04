@@ -235,7 +235,7 @@ const SupportTundraPage = () => {
 
                 <ContactForm>
                     <h1>Contact Support Team</h1> 
-                    <p>If you have any additional questions or suggestions please contact a member of our support team through the form below and we will be in touch to help soon.</p>
+                    <p>If you have any additional questions or suggestions please contact a member of our support team through the form below and we will be in touch to help shortly.</p>
                     <form 
                     // onSubmit={handleSubmit(onSubmit)}
                     id="main-form"
