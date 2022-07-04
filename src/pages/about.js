@@ -43,7 +43,7 @@ height: 90vh;
         align-self: flex-start;
         width: 90vw;
         min-height: 150px;
-        height: 40vw;
+        height: 50vw;
     }
 }
 ` 
@@ -304,6 +304,7 @@ const AboutPage = () => {
                 src={`../images/about/AboutCraft.jpg`}
                 alt="Tundra front on"
                 className="imageclass"
+                objectPosition={"50% 20%"}
             />
             <ContainerLeft>
                 <h2>Our Craftsmanship</h2>
