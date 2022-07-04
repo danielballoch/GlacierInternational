@@ -92,7 +92,7 @@ button {
 `
 
 
-export default function FeatureBar ({grades, activeGrade, activeColor, updateActiveColor, updateActiveGrade, count, increaseCount}){
+export default function FeatureBar ({grades, activeGrade, activeColor, updateActiveColor, updateActiveGrade}){
 
     useEffect(() => {
 
@@ -116,10 +116,6 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
                         >{grade.name}</button>
                     ))}
                 </div>
-                <p>Count: {count}</p>
-                <button onClick={() => {increaseCount(count+1); console.log(count)}}>increase count + 1</button>
-                <button onClick={() => {increaseCount(count+3); console.log(count)}}>increase count + 3</button>
-                <button onClick={() => {increaseCount(count+5); console.log(count)}}>increase count + 5</button>
                     
                 <p>Colour:</p>
                         
