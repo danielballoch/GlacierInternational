@@ -94,6 +94,9 @@ const Container2 = styled.div`
         padding: 0 40px !important;
         /* text-align: center !important; */
     }
+    p:last-of-type {
+        margin-bottom: 20px;
+    }
     background-color: rgba(0,0,0,0) !important;
 }
 background-color: rgba(0,0,0,0.8);
