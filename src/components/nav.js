@@ -228,6 +228,9 @@ background: none;
 border: none;
 padding: 10px 20px;
 font-size: 1.5em;
+:first-of-type {
+    margin-top: 50px;
+}
 :hover{
         cursor: pointer;
     }
