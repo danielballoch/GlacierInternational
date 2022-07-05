@@ -176,7 +176,7 @@ const IndexPage = ({display=false}) => {
     if (isBrowser && window.innerWidth > 1050){
         // desktop page
   return (
-      <Layout hideFooter={true} invertNav={true}>
+      <Layout title="Build Your Tundra | Glacier International" hideFooter={true} invertNav={true}>
         <Main style={pageStyles}>
         <title>Home Page</title>
         <PriceFinanceBar price={price}/>

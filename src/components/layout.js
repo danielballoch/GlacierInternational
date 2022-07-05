@@ -17,7 +17,7 @@ import Terms from './terms'
 // import Footer from './footer'
 
 
-const Layout = ({ children, pageLocation, hideFooter, invertNav}) => {
+const Layout = ({ title, children, pageLocation, hideFooter, invertNav}) => {
     console.log("layout props", pageLocation)
 
     const [termsValue, setTermsValue] = useState(false);
@@ -52,7 +52,7 @@ const Layout = ({ children, pageLocation, hideFooter, invertNav}) => {
       <Helmet htmlAttributes={{lang: 'en'}}>
             <meta charSet="utf-8" lang="en"/>
             <meta name="description" content={data.site.siteMetadata.description}/>
-            <title>{data.site.siteMetadata.title}</title>
+            <title>{title}</title>
             <link rel="canonical" href={data.site.siteMetadata.siteUrl} />
 
             <link rel="preconnect" href="https://fonts.googleapis.com"/>

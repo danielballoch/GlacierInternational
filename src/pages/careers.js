@@ -258,7 +258,7 @@ align-items: center;
 
 const CareersPage = () => {
     return(
-        <Layout invertNav={true}>
+        <Layout title="Careers | Glacier International" invertNav={true}>
             <title>Careers</title>
             <GridHeroContainer>
             <StaticImage

@@ -231,7 +231,7 @@ button {
 const AboutPage = () => {
     const [videoOpen, setVideoOpen] = useState(false);
     return(
-        <Layout>
+        <Layout title="About Us | Glacier International">
         <title>About</title>
         <div style={{ display: "grid", maxHeight: 440}}>
             <StaticImage

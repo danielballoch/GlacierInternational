@@ -266,7 +266,7 @@ const ExperienceTundraPage = () => {
                             />  
     }
     return(
-        <Layout>
+        <Layout title="Experience Tundra | Glacier International">
         <title>Experience Tundra</title>
         {/* hero/video */}
              <div style={{ display: "grid", maxHeight: "100vh"}} id="homeSection">

@@ -160,7 +160,7 @@ const IndexPage = ({display=false}) => {
     if (isBrowser && window.innerWidth > 1050){
         // desktop page
   return (
-      <Layout hideFooter={true} invertNav={true}>
+      <Layout title="Build Your Sequoia | Glacier International" hideFooter={true} invertNav={true}>
         <Main style={pageStyles}>
         <title>Build my Sequoia</title>
         <PriceFinanceBar price={price}/>

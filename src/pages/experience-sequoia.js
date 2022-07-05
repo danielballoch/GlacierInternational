@@ -18,7 +18,7 @@ font-family: seguo-ui, visby, sans-serif;
 
 const ExperienceSequioaPage = () => {
     return(
-        <Layout invertNav={true}>
+        <Layout title="Experience Sequoia | Glacier International" invertNav={true}>
         <title>Experience Sequoia</title>
             <Container>
             <h1>Page under maintenence, please come back soon...</h1>
