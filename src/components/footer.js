@@ -67,7 +67,7 @@ const footer = ({hideFooter}) => {
                 <Links>
                     <div>
                         <Link to="/">Glacier International © 2022</Link>
-                        <Link to="">Privacy & Legal</Link>
+                        <Link to="/privacy&legal">Privacy & Legal</Link>
                     </div>
                     <div>
                         <Link to="/about">About Us</Link>

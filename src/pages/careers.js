@@ -66,7 +66,7 @@ const Hero = styled.div`
     place-items: center;
     @media(max-width: 940px){
         /* "auto repeat(3, 30vw [col-start]) auto" */
-        grid-row-start: 4;
+        grid-row-start: 5;
         grid-row-end: 7;
         grid-column-start: 2;
         grid-column-end: 5;
@@ -76,7 +76,8 @@ const Hero = styled.div`
 const HeroContent = styled.div`
 @media(max-width: 940px){
     width: auto;
-    margin: 180px 0;
+    /* margin: 180px 0; */
+    margin: -20px 0 180px 0;
     padding: 20px;
     
     h1 {
