@@ -364,7 +364,7 @@ const CareersPage = () => {
             <StaticImage 
                 className="experienceImgs"
                 objectPosition={"50% 0%"}
-                src={`../images/about/Soldimage.JPG`}
+                src={`../images/careers/careers3.jpg`}
                 alt="Malcom next to sold Tundra"
                 
             />
