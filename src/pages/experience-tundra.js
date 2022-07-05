@@ -267,6 +267,7 @@ const ExperienceTundraPage = () => {
     }
     return(
         <Layout>
+        <title>Experience Tundra</title>
         {/* hero/video */}
              <div style={{ display: "grid", maxHeight: "100vh"}} id="homeSection">
              <StaticImage

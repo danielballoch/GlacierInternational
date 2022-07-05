@@ -16,6 +16,7 @@ h1, p {
 export default function TermsPrivacy(){
     return (
         <Layout invertNav={true}>
+            <title>Privacy & Legal</title>
             <Center>
                 <h1>Terms & Conditions</h1>
                 <p>

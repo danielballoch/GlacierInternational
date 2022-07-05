@@ -201,7 +201,7 @@ const SupportTundraPage = () => {
 
     return(
         <Layout>
-        
+            <title>Support</title>
             <div style={{ display: "grid"}} id="homeSection">
             <StaticImage
                     className="experienceImgs"

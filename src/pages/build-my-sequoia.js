@@ -162,7 +162,7 @@ const IndexPage = ({display=false}) => {
   return (
       <Layout hideFooter={true} invertNav={true}>
         <Main style={pageStyles}>
-        <title>Home Page</title>
+        <title>Build my Sequoia</title>
         <PriceFinanceBar price={price}/>
         <Row>
             <MainImage src={grades[activeGrade[2]].src[activeColor[2]]} />

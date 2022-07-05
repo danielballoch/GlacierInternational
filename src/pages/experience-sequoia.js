@@ -19,6 +19,7 @@ font-family: seguo-ui, visby, sans-serif;
 const ExperienceSequioaPage = () => {
     return(
         <Layout invertNav={true}>
+        <title>Experience Sequoia</title>
             <Container>
             <h1>Page under maintenence, please come back soon...</h1>
             </Container>

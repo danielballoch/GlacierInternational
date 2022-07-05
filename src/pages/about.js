@@ -232,6 +232,7 @@ const AboutPage = () => {
     const [videoOpen, setVideoOpen] = useState(false);
     return(
         <Layout>
+        <title>About</title>
         <div style={{ display: "grid", maxHeight: 440}}>
             <StaticImage
                 src={`../images/about/AboutHero.png`}

@@ -259,6 +259,7 @@ align-items: center;
 const CareersPage = () => {
     return(
         <Layout invertNav={true}>
+            <title>Careers</title>
             <GridHeroContainer>
             <StaticImage
                 src={`../images/careers/workshop.jpg`}
