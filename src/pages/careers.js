@@ -125,7 +125,6 @@ const Values = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-around;
-margin-top: 15vw;
 margin:  15vw 100px 0 100px;
 h2 {
     font-weight: 100;
@@ -256,6 +255,7 @@ align-items: center;
 `
 
 
+
 const CareersPage = () => {
     return(
         <Layout invertNav={true}>
@@ -285,7 +285,9 @@ const CareersPage = () => {
                 </HeroContent>
             </Hero>
         </GridHeroContainer>
+
             <Values>
+            
                 <h2>01 Freedom & Responsibility</h2>
                 <h2>02 Community</h2>
                 <h2>03 "Where do I sign!?"</h2>

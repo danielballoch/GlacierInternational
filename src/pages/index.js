@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import Video from "../components/video"
-import GlacierVideo from "../images/TundraReelMed.mp4"
+import GlacierVideo from "../images/TundraReelBright.mp4"
 import styled from '@emotion/styled';
 import {css} from '@emotion/react';
 import { StaticImage } from "gatsby-plugin-image"
@@ -50,8 +50,46 @@ video {
 }
 `
 
+const LogoOver = styled.div`
+mix-blend-mode: darken;
+opacity: .7;
+width: 100%;
+height: 100vh;
+z-index: 2;
+position: relative;
+background-color: #000;
+text-align: center;
+border: 0;
+margin: 0;
+.cls-1 {
+    fill: #FFFFFF;
+    text-anchor: middle;
+    font-size: 150px;
+    font-family: Cardo;
+}
+.cls-2 {
+    fill: #FFFFFF;
+    text-anchor: middle;
+    font-size: 36px;
+    font-family: "Open Sans";
+    letter-spacing: 12px;
+}
+/* svg {
+    height: 100%;
+    margin: auto;
+    max-width: 80%;
+    overflow: hidden;
+    vertical-align: middle;
+    text-align: center;
+} */
+    ::after, ::before {
+    box-sizing: border-box;
+    }
+}
+`
+
 const CenterContent = styled.div`
-    max-width: 98vw;
+    /* max-width: 98vw; */
     width: 100%;
     height: 100%;
     display: flex;
@@ -59,9 +97,23 @@ const CenterContent = styled.div`
     justify-content: center;
     /* align-content: center; */
     /* background-color: rgba(0,0,0,0.5); */
-div {
+.herotext {
+    display: flex;
+    position: absolute;
+    z-index: 2;
+    opacity: .8;
+    top: 67vh;
+    width: 100%;
     
-    margin: auto;
+    justify-content: center;
+    margin: 0 auto;
+    p {
+        max-width: 900px;
+        width: 98%;
+    }
+}
+div {
+    margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -243,7 +295,7 @@ const IndexPage = () => {
                 <CenterContent>
                 
                     <div>
-                    <StaticImage
+                    {/* <StaticImage
                         src={`../images/Logo.png`}
                         alt="Glacier International Logo"
                          style={{
@@ -259,8 +311,20 @@ const IndexPage = () => {
                              height: "11.5vw",
                              overflow: "visible"
                             }}
-                    />  
-                    <p>Glacier International is a one-stop shop for importing, right hand drive re-manufacturing, and customising your Toyota Tundra. With cutting edge technology, the 2022 Toyota Tundra is a half-ton, meticulously engineered heavy metal machine, and our goal is to deliver it to Kiwis who value reliability, performance and class over anything else.</p>
+                    />   */}
+                    <LogoOver>
+                    {/* <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                    </svg> */}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="98vw" height="100vh" viewBox="89 0 700 194">
+                        <text id="GLACIER" class="cls-1" transform="translate(436.953 118.261) scale(.8)"><tspan x="0">GLACIER</tspan></text>
+                        <text id="_-_INTERNATIONAL_-" data-name="- INTERNATIONAL -" class="cls-2" transform="translate(438.978 159.767) scale(.8)"><tspan x="0">- INTERNATIONAL -</tspan></text>
+                    </svg>
+
+                    </LogoOver>
+                    <div className="herotext">
+                        <p>Glacier International is a one-stop shop for importing, right hand drive re-manufacturing, and customising your Toyota Tundra. With cutting edge technology, the 2022 Toyota Tundra is a half-ton, meticulously engineered heavy metal machine, and our goal is to deliver it to Kiwis who value reliability, performance and class over anything else.</p>
+                    </div>
                     {/* <a href="mailto:sales@glacier.nz"><button >Scroll Down</button></a> */}
                     </div>
                 </CenterContent>
