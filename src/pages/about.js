@@ -151,14 +151,14 @@ position:fixed;
 
 ${videoOpen === true &&`
 display: block;
-
+z-index: 110 !important;
 .dim {
     z-index: 50;
     transition: background-color .3s, z-index .1s;
     background-color: rgba(0,0,0,.3);
 }
 .overlay {
-    z-index: 100;
+    z-index: 110 !important;
     position: fixed;
     max-width: 900px;
     width: 100%;
