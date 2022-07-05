@@ -315,7 +315,7 @@ export default function Nav({pageLocation, invertNav}){
             <NavContent className={invertNav ? "invertNav" : ""}>
                 <Link to="/" alt="thoughtfulHQ logo">
                 <Logo>
-                    <StaticImage height="50" src="../images/Logo.png"/>
+                    <StaticImage height="50" src="../images/glacierLogo.png"/>
                 </Logo>
                 </Link>
                 <Links> 
