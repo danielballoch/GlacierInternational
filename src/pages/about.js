@@ -148,6 +148,13 @@ position:fixed;
     height: 100vh;
     background-color: rgba(255,255,255,0);
 }
+iframe {
+    width: 100%; 
+    height: 600px;
+    @media(max-width:980px){
+        height: 65%;
+    }
+}
 
 ${videoOpen === true &&`
 display: block;
@@ -166,6 +173,7 @@ z-index: 110 !important;
     top:15%;
     left: 50%;
     transform: translate(-50%, 0);
+    
 }
 
 button {
@@ -295,7 +303,7 @@ const AboutPage = () => {
                             <span className="hamburger-inner-active"></span>
                         </span>
                 </button>
-                <iframe width="100%" height="600px" src={(videoOpen ? "https://www.youtube.com/embed/videoseries?list=PLuYwryiueK-4mtYgDOpM9ZEWnhqUsrHgB&autoplay=1" : "https://www.youtube.com/embed/videoseries?list=PLuYwryiueK-4mtYgDOpM9ZEWnhqUsrHgB")} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+                <iframe  src={(videoOpen ? "https://www.youtube.com/embed/videoseries?list=PLuYwryiueK-4mtYgDOpM9ZEWnhqUsrHgB&autoplay=1" : "https://www.youtube.com/embed/videoseries?list=PLuYwryiueK-4mtYgDOpM9ZEWnhqUsrHgB")} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
             </div>
         </div>  
 
