@@ -17,6 +17,7 @@ max-height: 757;
     placeItems: center;
     display: grid; 
     @media(max-width: 940px){
+        height: 50vh !important;
         grid-row-start: 0 !important;
         grid-row-end: 1 !important;
     }
