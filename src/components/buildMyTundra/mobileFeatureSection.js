@@ -54,7 +54,7 @@ button {
 
 
 
-export default function MobileFeatureSection({selectionStage, grades, activeGrade, activeColor, updateActiveColor, updateActiveGrade}){
+export default function MobileFeatureSection({model, selectionStage, grades, activeGrade, activeColor, updateActiveColor, updateActiveGrade}){
     let featureSection;
         if (selectionStage === 0){
             featureSection = <FeatureSection>
@@ -75,7 +75,7 @@ export default function MobileFeatureSection({selectionStage, grades, activeGrad
                 </div>
             </FeatureSection>
         } else {
-            featureSection = <FeatureSection><p>To put a 10% deposit down securing your Tundra build for 2022, please click the button for more info at our payment gateway.</p><button className="orderbtn">Complete Order</button></FeatureSection>
+            featureSection = <FeatureSection><p>To put a 10% deposit down securing your {model} build for 2022, please click the button for more info at our payment gateway.</p><button className="orderbtn">Complete Order</button></FeatureSection>
         }
     return(
         featureSection

@@ -281,13 +281,12 @@ const CareersPage = () => {
                 <h1>Working at Glacier International</h1>
                 <p>Glacier International is a growing business based in Queenstown and we're on the hunt for automotive professionals to join our team.</p>
                 <p>We're working with state of the art machinary and are passionate about helping our customers, likewise were looking for people who are great at their craft, eager to learn, and have the same enthusiasim to get these high class machines out to all the thrill seekers and smart buyers across New Zealand.</p>
-                <button>EXPLORE ROLES</button>
+                <a href="#positions"><button >EXPLORE ROLES</button></a>
                 </HeroContent>
             </Hero>
         </GridHeroContainer>
 
             <Values>
-            
                 <h2>01 Freedom & Responsibility</h2>
                 <h2>02 Community</h2>
                 <h2>03 "Where do I sign!?"</h2>
@@ -332,8 +331,8 @@ const CareersPage = () => {
                 </p>
             </Container>
 
-            <ContainerSplit2>
-            <Link to={"/experience-tundra"} className="exHover" >
+            <ContainerSplit2 id="positions">
+            <Link  className="exHover" >
                 <div className="textBox">
                     <h1>Auto-electrical Engineers</h1>
                     <p>Short paragraph explaining position,learn more here.</p>
@@ -346,7 +345,7 @@ const CareersPage = () => {
                     
                 />
             </Link>
-            <Link to={"/experience-sequoia"} className="exHover">
+            <Link  className="exHover">
             <div className="textBox">
                 <h1>Logistics officers</h1>
                 <p>Short paragraph explaining position, learn more here.</p>
@@ -359,7 +358,7 @@ const CareersPage = () => {
                 
             />
             </Link>
-            <Link to={"/experience-sequoia"} className="exHover">
+            <Link  className="exHover">
             <div className="textBox">
                 <h1>Product Advisors</h1>
                 <p>Short paragraph explaining position, learn more here.</p>

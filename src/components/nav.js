@@ -283,14 +283,14 @@ export default function Nav({pageLocation, invertNav}){
             <InsideDrawerLink to="/build-my-tundra">
                 Build My Tundra
             </InsideDrawerLink>
-            <InsideDrawerLink to="/build-my-sequioa">
-                Build My Sequioa
+            <InsideDrawerLink to="/build-my-sequoia">
+                Build My Sequoia
             </InsideDrawerLink>
             <InsideDrawerLink to="/experience-tundra">
                 Experience Tundra
             </InsideDrawerLink>
-            <InsideDrawerLink to="/experience-sequioa">
-                Experience Sequioa
+            <InsideDrawerLink to="/experience-sequoia">
+                Experience Sequoia
             </InsideDrawerLink>
             <InsideDrawerLink to="/">
                 Home

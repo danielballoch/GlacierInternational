@@ -355,13 +355,13 @@ const IndexPage = () => {
         <DisplaySection>
             <div>
                 <h2>2023</h2>
-                <h1>2023 Toyota Sequioa</h1>
+                <h1>2023 Toyota Sequoia</h1>
                 <p>"The ultimate luxury SUV in New Zealand. Imported, right-hand drive remanufactured, and modified to your needs, exclusively by Glacier International."</p>
-                <div><Button to="/experience-sequioa">Experience Sequioa</Button><ButtonOutline to="/build-my-sequioa">Build Your Sequioa</ButtonOutline></div>
+                <div><Button to="/experience-sequoia">Experience Sequoia</Button><ButtonOutline to="/build-my-sequoia">Build Your Sequoia</ButtonOutline></div>
             </div>
         <div> 
             <StaticImage
-                src={`../images/homepageimages/sequioa.jpg`}
+                src={`../images/homepageimages/sequoia.jpg`}
                 alt="Glacier International Logo"
                 style={{
                     height: "100%"

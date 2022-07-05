@@ -100,7 +100,7 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
 
     return(
         <CenterLeft>
-                <h1>2023 Toyota Sequia</h1>
+                <h1>2023 Toyota Sequoia</h1>
                 <div className="features">
                     <div><h2>437</h2><p>Horsepower</p></div>
                     <div><h2>583 Lb.-Ft.</h2><p>Torque</p></div>
@@ -129,7 +129,7 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
                     ))}
                 </div>
                 
-                <p className="infoText">To put a 10% deposit down securing your custom Sequioa build for 2022, please click the button below for more info at our payment gateway.</p>
+                <p className="infoText">To put a 10% deposit down securing your custom Sequoia build for 2022, please click the button below for more info at our payment gateway.</p>
                 <button className="orderbtn">Complete Order</button>
             </CenterLeft>
     )
