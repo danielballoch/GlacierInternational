@@ -318,7 +318,7 @@ const IndexPage = () => {
                     </svg> */}
                     <svg xmlns="http://www.w3.org/2000/svg" width="98vw" height="100vh" viewBox="89 0 700 194">
                         <text id="GLACIER" class="cls-1" transform="translate(436.953 118.261) scale(.8)"><tspan x="0">GLACIER</tspan></text>
-                        <text id="_-_INTERNATIONAL_-" data-name="- INTERNATIONAL -" class="cls-2" transform="translate(438.978 159.767) scale(.8)"><tspan x="0">- INTERNATIONAL -</tspan></text>
+                        <text id="_-_INTERNATIONAL_-" data-name="- INTERNATIONAL -" class="cls-2" transform="translate(438.978 159.767) scale(.8)"><tspan x="0">&nbsp;-  INTERNATIONAL -</tspan></text>
                     </svg>
 
                     </LogoOver>
