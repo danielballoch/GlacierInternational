@@ -183,10 +183,10 @@ div {
 const Content = ({question, answer}) => {
     const [toggle, setToggle] = useState(true);
     return (
-        <ContentBox onClick={() => {setToggle(!toggle)}}>
+        <ContentBox itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" onClick={() => {setToggle(!toggle)}}>
             <div>
-                <b><p>{question}<span className={toggle ? "arrow" : "arrow down"}/></p></b>
-                <p className={toggle ? "toggle" : ""}>A: {answer}</p>
+                <b itemprop="name"><p>{question}<span className={toggle ? "arrow" : "arrow down"}/></p></b>
+                <p itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" className={toggle ? "toggle" : ""}>A: {answer}</p>
             </div>
         </ContentBox>
     )
@@ -200,7 +200,7 @@ const SupportTundraPage = () => {
 ]
 
     return(
-        <Layout title="Support | Glacier International">
+        <Layout title="Support | Glacier International" itemscope itemtype="https://schema.org/FAQPage">
             <title>Support</title>
             <div style={{ display: "grid"}} id="homeSection">
             <StaticImage
@@ -227,7 +227,7 @@ const SupportTundraPage = () => {
                 >
                 <div>
                 
-                <FAQ>
+                <FAQ >
                 <h1>Frequently Asked Questions</h1>    
                 {Questions.map((question, i) => (
                     <Content question={question.question} answer={question.answer} i={i}/>
