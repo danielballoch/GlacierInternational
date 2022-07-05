@@ -5,9 +5,12 @@ import styled from '@emotion/styled';
 const Center = styled.div`
 margin: 200px auto;
 max-width: 800px;
-height: calc(100vh - 400px);
+min-height: calc(100vh - 400px);
+height: 100%;
 width: 100%;
-padding: 10px;
+h1, p {
+    padding: 0 20px;
+}
 `
 
 export default function TermsPrivacy(){
