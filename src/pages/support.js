@@ -147,7 +147,8 @@ const Social = styled.div`
         }
     }
     a {
-        width: 60px;
+        width: 100%;
+        display: flex;
     }
     .socialImgs {
         width: 100% !important;
@@ -171,7 +172,7 @@ div {
 }
 .socialImgs {
     width: 50px;
-    margin-left: 20px;
+    margin: 0 10px;
     :hover {
         cursor: pointer;
     }
