@@ -281,8 +281,6 @@ const IndexPage = () => {
   if (isBrowser && window.innerWidth < 450){
     HeroVideo = GlacierVideoMobile;
     console.log("mobile video used");
-  } else {
-
   }
   return (
       <Layout title="Home | Glacier International">
