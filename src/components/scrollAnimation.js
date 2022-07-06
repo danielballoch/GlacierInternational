@@ -35,9 +35,9 @@ transform: scale(.5) ;
     animation-name: mouse-scroll;
     animation-iteration-count: infinite;
     @keyframes mouse-scroll {
-        0%   { top: 10%; opacity: 1; }
+        0%   { top: -30%; opacity: 1; }
         80% { opacity: 1; }
-        100% { top: 30%; opacity: 0; }
+        100% { top: -10%; opacity: 0; }
         position: absolute;
         }
       }
