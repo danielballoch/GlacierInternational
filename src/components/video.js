@@ -16,11 +16,9 @@ const Video = ({ videoSrcURL, videoTitle, ...props }) => (
       width="100%"
       loop
       muted
-      autoplay
-      autoPlay={true}
-      playsinline 
-      defaultMuted
-      oncontextmenu="return false;"  
+      autoPlay="true"
+      playsInline 
+      onContextMenu="return false;"  
       preload="auto"
       type="video/mp4"
       poster="/images/VideoBackup.jpg"
