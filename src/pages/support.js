@@ -200,7 +200,7 @@ const SupportTundraPage = () => {
 ]
 
     return(
-        <Layout title="Support | Glacier International" itemscope itemtype="https://schema.org/FAQPage">
+        <Layout title="Support | Glacier International" >
             <title>Support</title>
             <div style={{ display: "grid"}} id="homeSection">
             <StaticImage
@@ -227,7 +227,7 @@ const SupportTundraPage = () => {
                 >
                 <div>
                 
-                <FAQ >
+                <FAQ itemscope itemtype="https://schema.org/FAQPage">
                 <h1>Frequently Asked Questions</h1>    
                 {Questions.map((question, i) => (
                     <Content question={question.question} answer={question.answer} i={i}/>
