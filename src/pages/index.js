@@ -277,10 +277,12 @@ const isBrowser = typeof window !== "undefined";
 const IndexPage = () => {
   const [videoOpen, setVideoOpen] = useState(false);
   console.log(videoOpen)
-  let HeroVideo = GlacierVideo;
+  let HeroVideo;
   if (isBrowser && window.innerWidth < 450){
     HeroVideo = GlacierVideoMobile;
     console.log("mobile video used");
+  } else {
+    HeroVideo = GlacierVideo;
   }
   return (
       <Layout title="Home | Glacier International">
