@@ -16,7 +16,7 @@ const Video = ({ videoSrcURL, videoTitle, ...props }) => (
       width="100%"
       loop
       muted
-      autoPlay="true"
+      autoPlay={true}
       playsInline 
       onContextMenu="return false;"  
       preload="auto"
