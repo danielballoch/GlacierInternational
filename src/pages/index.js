@@ -283,9 +283,6 @@ const IndexPage = () => {
                 className="videoClass"
                 videoSrcURL={GlacierVideo}
                 videoTitle="Glacier Hero Video"
-                autoplay="autoplay" loop muted playsinline defaultMuted
-                oncontextmenu="return false;"  preload="auto"
-                type="video/mp4"
             />
             <div
                 style={{

@@ -10,12 +10,19 @@ const Video = ({ videoSrcURL, videoTitle, ...props }) => (
     >
     <video
       disablePictureInPicture
+      id="BgVideo"
       title={videoTitle}
       height="100%"
       width="100%"
       loop
       muted
-      autoPlay
+      autoplay
+      autoPlay={true}
+      playsinline 
+      defaultMuted
+      oncontextmenu="return false;"  
+      preload="auto"
+      type="video/mp4"
       >
       <source 
           src={videoSrcURL}
