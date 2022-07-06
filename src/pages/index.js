@@ -278,21 +278,22 @@ const IndexPage = () => {
   const [videoOpen, setVideoOpen] = useState(false);
   console.log(videoOpen)
   let HeroVideo;
-  if (isBrowser && window.innerWidth < 450){
-    HeroVideo = GlacierVideoMobile;
+  if (isBrowser && window.innerWidth <= 450){
+    HeroVideo = <Video className="videoClass" videoSrcURL={GlacierVideoMobile} videoTitle="Glacier Hero Video"/>
     console.log("mobile video used");
   } else if (isBrowser && window.innerWidth > 450) {
-    HeroVideo = GlacierVideo;
+    HeroVideo = HeroVideo = <Video className="videoClass" videoSrcURL={GlacierVideo} videoTitle="Glacier Hero Video"/>
   }
   return (
       <Layout title="Home | Glacier International">
         <Main style={pageStyles}>
         <div style={{ display: "grid", maxHeight: "100vh"}} id="homeSection">
-            <Video
+            {HeroVideo}
+            {/* <Video
                 className="videoClass"
                 videoSrcURL={HeroVideo}
                 videoTitle="Glacier Hero Video"
-            />
+            /> */}
             <div
                 style={{
                     gridArea: "1/1",
