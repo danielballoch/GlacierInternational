@@ -281,7 +281,7 @@ const IndexPage = () => {
   if (isBrowser && window.innerWidth < 450){
     HeroVideo = GlacierVideoMobile;
     console.log("mobile video used");
-  } else {
+  } else if (isBrowser && window.innerWidth > 450) {
     HeroVideo = GlacierVideo;
   }
   return (
