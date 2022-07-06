@@ -6,6 +6,7 @@ import {css} from '@emotion/react';
 import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import { Link } from 'gatsby'
+import ScrollAnimation from "../components/scrollAnimation";
 
 // import Terms from "../components/termsPopup"
 
@@ -282,7 +283,9 @@ const IndexPage = () => {
                 className="videoClass"
                 videoSrcURL={GlacierVideo}
                 videoTitle="Glacier Hero Video"
-                autoplay loop muted playsinline
+                autoplay="autoplay" loop muted playsinline defaultMuted
+                oncontextmenu="return false;"  preload="auto"
+                type="video/mp4"
             />
             <div
                 style={{
@@ -295,37 +298,16 @@ const IndexPage = () => {
                 <CenterContent>
                 
                     <div>
-                    {/* <StaticImage
-                        src={`../images/Logo.png`}
-                        alt="Glacier International Logo"
-                         style={{
-                             gridArea: "1/1",
-                             position: "relative",
-                             placeItems: "center",
-                             display: "grid",
-                             opacity: "1",
-                             mixBlendMode: "overlay",
-                             maxWidth: "1600px",
-                             width: "90vw",
-                             maxHeight: "600px",
-                             height: "11.5vw",
-                             overflow: "visible"
-                            }}
-                    />   */}
                     <LogoOver>
-                    {/* <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                    </svg> */}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="98vw" height="100vh" viewBox="89 0 700 194">
-                        <text id="GLACIER" class="cls-1" transform="translate(436.953 118.261) scale(.8)"><tspan x="0">GLACIER</tspan></text>
-                        <text id="_-_INTERNATIONAL_-" data-name="- INTERNATIONAL -" class="cls-2" transform="translate(438.978 159.767) scale(.8)"><tspan x="0">&nbsp;-  INTERNATIONAL -</tspan></text>
-                    </svg>
-
+                        <svg xmlns="http://www.w3.org/2000/svg" width="98vw" height="100vh" viewBox="89 0 700 194">
+                            <text id="GLACIER" class="cls-1" transform="translate(436.953 118.261) scale(.8)"><tspan x="0">GLACIER</tspan></text>
+                            <text id="_-_INTERNATIONAL_-" data-name="- INTERNATIONAL -" class="cls-2" transform="translate(438.978 159.767) scale(.8)"><tspan x="0">&nbsp;-  INTERNATIONAL -</tspan></text>
+                        </svg>
                     </LogoOver>
                     <div className="herotext">
                         <p>Glacier International is a one-stop shop for importing, right hand drive re-manufacturing, and customising your Toyota Tundra. With cutting edge technology, the 2022 Toyota Tundra is a half-ton, meticulously engineered heavy metal machine, and our goal is to deliver it to Kiwis who value reliability, performance and class over anything else.</p>
                     </div>
-                    {/* <a href="mailto:sales@glacier.nz"><button >Scroll Down</button></a> */}
+                        <ScrollAnimation/>
                     </div>
                 </CenterContent>
             </div>
