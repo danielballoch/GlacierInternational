@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import Video from "../components/video"
 import GlacierVideo from "../images/TundraReelBrightSmall.mp4"
-import GlacierVideoMobile from "../images/TundraReelMobile.mp4"
+import GlacierVideoMobile from "../images/TundraReelMobileSmall.mp4"
 import styled from '@emotion/styled';
 import {css} from '@emotion/react';
 import { StaticImage } from "gatsby-plugin-image"
