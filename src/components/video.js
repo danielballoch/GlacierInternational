@@ -23,6 +23,7 @@ const Video = ({ videoSrcURL, videoTitle, ...props }) => (
       oncontextmenu="return false;"  
       preload="auto"
       type="video/mp4"
+      poster="/images/VideoBackgup.jpg"
       >
       <source 
           src={videoSrcURL}
