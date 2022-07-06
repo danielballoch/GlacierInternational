@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import Video from "../components/video"
 import GlacierVideo from "../images/TundraReelBrightSmall.mp4"
+import GlacierVideoMobile from "../images/TundraReelMobile.mp4"
 import styled from '@emotion/styled';
 import {css} from '@emotion/react';
 import { StaticImage } from "gatsby-plugin-image"
@@ -271,17 +272,23 @@ const ButtonOutline = styled (Button)`
             }
 `
 
+const isBrowser = typeof window !== "undefined";
 
 const IndexPage = () => {
   const [videoOpen, setVideoOpen] = useState(false);
   console.log(videoOpen)
+  let HeroVideo = GlacierVideo;
+  if (isBrowser && window.innerWidth > 450){
+    HeroVideo = GlacierVideoMobile;
+    console.log("mobile video used");
+  }
   return (
       <Layout title="Home | Glacier International">
         <Main style={pageStyles}>
         <div style={{ display: "grid", maxHeight: "100vh"}} id="homeSection">
             <Video
                 className="videoClass"
-                videoSrcURL={GlacierVideo}
+                videoSrcURL={HeroVideo}
                 videoTitle="Glacier Hero Video"
             />
             <div
