@@ -276,7 +276,7 @@ const IndexPage = () => {
   const [videoOpen, setVideoOpen] = useState(false);
   console.log(videoOpen)
   return (
-      <Layout title="Homepage | Glacier International">
+      <Layout title="Home | Glacier International">
         <Main style={pageStyles}>
         <div style={{ display: "grid", maxHeight: "100vh"}} id="homeSection">
             <Video
