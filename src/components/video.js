@@ -1,4 +1,6 @@
 import React from "react"
+import Backup from "../images/HeroVideoBackup.jpg"
+
 const Video = ({ videoSrcURL, videoTitle, ...props }) => (
   <div 
   style={{
@@ -20,7 +22,7 @@ const Video = ({ videoSrcURL, videoTitle, ...props }) => (
       playsInline 
       preload="auto"
       type="video/mp4"
-      poster="/images/VideoBackup.jpg"
+      poster={Backup}
       >
       <source 
           src={videoSrcURL}

@@ -105,7 +105,7 @@ export default function Terms(){
                 <p>
                 "TOYOTA" and "TUNDRA" are registered trademarks of Toyota Motor Corporation. TUNDRA is used in the title of this website solely to identify the subject of interest to the website. Toyota Motor Corporation, Toyota Motor Sales, U.S.A., Inc. and their affiliated companies are not responsible in any way for the contents of the site, which are solely the responsibility of the publisher. The contents of the website do not reflect the policy or opinions of Toyota Motor Corporation, Toyota Motor Sales, U.S.A., Inc. or any of Toyota's affiliated companies. This website is not affiliated with, endorsed, sponsored, or supported by Toyota Motor Corporation, Toyota Motor Sales, U.S.A., Inc. or any of Toyota's affiliated companies.
                 </p>
-                <button onClick={() => {setMenuOpen(false); document.cookie = "termsAccepted=true; new Date(new Date().getTime()+60*60*1000*0.001).toGMTString()"; console.log("document cookie after click: " + document.cookie)}}> Accept Terms & Enter Website</button>
+                <button onClick={() => {setMenuOpen(false); document.cookie = "termsAccepted=true; new Date(new Date().getTime()+60*60*1000*0.001).toGMTString(); SameSite=None;"; console.log("document cookie after click: " + document.cookie)}}> Accept Terms & Enter Website</button>
             </div>
             
         </div> 

@@ -74,6 +74,7 @@ margin: 0;
     font-size: 36px;
     font-family: "Open Sans";
     letter-spacing: 12px;
+    margin-right: -12px;
 }
 /* svg {
     height: 100%;
@@ -296,9 +297,9 @@ const IndexPage = () => {
                 
                     <div>
                     <LogoOver>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="98vw" height="100vh" viewBox="89 0 700 194">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="89 0 700 194">
                             <text id="GLACIER" className="cls-1" transform="translate(436.953 118.261) scale(.8)"><tspan x="0">GLACIER</tspan></text>
-                            <text id="_-_INTERNATIONAL_-" data-name="- INTERNATIONAL -" className="cls-2" transform="translate(438.978 159.767) scale(.8)"><tspan x="0">&nbsp;-  INTERNATIONAL -</tspan></text>
+                            <text id="_-_INTERNATIONAL_-" data-name="- INTERNATIONAL -" className="cls-2" transform="translate(441.978 159.767) scale(.8)"><tspan x="0">- INTERNATIONAL -</tspan></text>
                         </svg>
                     </LogoOver>
                     <div className="herotext">
