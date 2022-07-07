@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { useEffect, useState } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
@@ -18,9 +18,8 @@ import Terms from './terms'
 
 
 const Layout = ({ title, children, pageLocation, hideFooter, invertNav}) => {
-    console.log("layout props", pageLocation)
 
-    const [termsValue, setTermsValue] = useState(false);
+    // const [termsValue, setTermsValue] = useState(false);
     // useEffect(() => {
     //     if (typeof window !== "undefined" && window.document){
     //         var tValue;
@@ -83,7 +82,8 @@ const Layout = ({ title, children, pageLocation, hideFooter, invertNav}) => {
           `}
         />
         {/* {(typeof window !== "undefined" && window.document) ? (termsValue !== "true" ?  <Terms/> : null ) : null} */}
-        {termsValue !== "true" ?  <Terms/> : null }
+        {/* {termsValue !== "true" ?  <Terms/> : null } */}
+        <Terms/>
         
         <Nav pageLocation={pageLocation} invertNav={invertNav}/>
         <main>{children}</main>

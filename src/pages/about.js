@@ -1,6 +1,5 @@
 import React, {useState} from "react"
 import { Link } from "gatsby"
-import Video from "../components/video"
 import styled from '@emotion/styled';
 import {css} from '@emotion/react';
 import { StaticImage } from "gatsby-plugin-image"
@@ -296,8 +295,8 @@ const AboutPage = () => {
 
         
         <div css={popupStyles({ videoOpen })} >
-            <div class="dim"/>
-            <div class="overlay">
+            <div className="dim"/>
+            <div className="overlay">
                 {/* <button onClick={() => {setVideoOpen(!videoOpen)}}>close</button> */}
                 <button css={popupStyles({ videoOpen })} onClick={() => setVideoOpen(!videoOpen)} aria-label="Navigation menu toggle">
                         <span className="hamburger-box">
@@ -311,7 +310,7 @@ const AboutPage = () => {
         <ContainerSplit>
             <StaticImage
                 src={`../images/about/AboutCraft.jpg`}
-                alt="Tundra front on"
+                alt="Glacier International Workshop Polishing Tundra"
                 className="imageclass"
                 objectPosition={"50% 20%"}
             />
@@ -329,7 +328,7 @@ const AboutPage = () => {
                     className="experienceImgs"
                     objectPosition={"50% 50%"}
                     src={`../images/about/tundraAbout.png`}
-                    alt="Tundra front on"
+                    alt="Red Tundra front on"
                 />
             </Link>
             <Link to={"/experience-sequoia"} className="exHover">
@@ -338,7 +337,7 @@ const AboutPage = () => {
                 className="experienceImgs"
                 objectPosition={"50% 50%"}
                 src={`../images/about/sequoiaAbout.png`}
-                alt="Sequoia front on"
+                alt="White Sequoia front on"
             />
             </Link>
             

@@ -46,8 +46,8 @@ transform: scale(.5) ;
 export default function ScrollAnimation(){
     return (
         <ScrollContainer>
-            <div class="scroll-msg-inner">
-                <div class="scroll-msg-wheel">
+            <div className="scroll-msg-inner">
+                <div className="scroll-msg-wheel">
                 </div>
             </div>
         </ScrollContainer>

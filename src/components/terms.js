@@ -1,9 +1,5 @@
 import React, {useState} from "react"
-import { Link } from 'gatsby'
-import styled from '@emotion/styled';
 import {css} from '@emotion/react';
-import scrollTo from 'gatsby-plugin-smoothscroll';
-import { StaticImage } from "gatsby-plugin-image";
 
 const termsStyles = ({menuOpen}) => css`
 ${'' /* display: none; */}
@@ -114,7 +110,6 @@ export default function Terms(){
             
         </div> 
     )
-    console.log(menuOpen)
     return (
     <div>    
 

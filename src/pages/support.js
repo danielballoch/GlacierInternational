@@ -1,14 +1,11 @@
 import React, {useState} from "react"
-import { Link } from "gatsby"
-import Video from "../components/video"
 import styled from '@emotion/styled';
-import {css} from '@emotion/react';
 import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 
 
 
-const FAQ = styled.div`
+const Faq = styled.div`
 @media(max-width: 940px){
     width: 80%;
     margin: 100px auto 0 auto;
@@ -227,12 +224,12 @@ const SupportTundraPage = () => {
                 >
                 <div>
                 
-                <FAQ itemscope itemtype="https://schema.org/FAQPage">
+                <Faq itemscope itemtype="https://schema.org/FAQPage">
                 <h1>Frequently Asked Questions</h1>    
                 {Questions.map((question, i) => (
                     <Content question={question.question} answer={question.answer} i={i}/>
                 ))}
-                </FAQ>
+                </Faq>
 
                 <ContactForm>
                     <h1>Contact Support Team</h1> 
@@ -280,7 +277,7 @@ const SupportTundraPage = () => {
                         </label>
                         <button 
                             type="submit" 
-                            class="g-recaptcha"
+                            className="g-recaptcha"
                             data-sitekey="site_key"
                             data-callback='onSubmit'
                             data-action='submit'

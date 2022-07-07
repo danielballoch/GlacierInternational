@@ -1,9 +1,8 @@
-import React, {useState} from "react"
+import React from "react"
 import Video from "../components/video"
 import GlacierVideo from "../images/TundraReelBrightSmall.mp4"
 import GlacierVideoMobile from "../images/TundraReelMobileSmall.mp4"
 import styled from '@emotion/styled';
-import {css} from '@emotion/react';
 import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import { Link } from 'gatsby'
@@ -157,12 +156,6 @@ button {
 `
 
 
-
-const Spacer = styled.div`
-height: 100px;
-background-color: white;
-`
-
 const DisplaySection = styled.div`
 background-color: white;
 height: 955px;
@@ -275,12 +268,9 @@ const ButtonOutline = styled (Button)`
 const isBrowser = typeof window !== "undefined";
 
 const IndexPage = () => {
-  const [videoOpen, setVideoOpen] = useState(false);
-  console.log(videoOpen)
   let HeroVideo;
   if (isBrowser && window.innerWidth <= 450){
     HeroVideo = <Video className="videoClass" videoSrcURL={GlacierVideoMobile} videoTitle="Glacier Hero Video"/>
-    console.log("mobile video used");
   } else if (isBrowser && window.innerWidth > 450) {
     HeroVideo = HeroVideo = <Video className="videoClass" videoSrcURL={GlacierVideo} videoTitle="Glacier Hero Video"/>
   }
@@ -307,8 +297,8 @@ const IndexPage = () => {
                     <div>
                     <LogoOver>
                         <svg xmlns="http://www.w3.org/2000/svg" width="98vw" height="100vh" viewBox="89 0 700 194">
-                            <text id="GLACIER" class="cls-1" transform="translate(436.953 118.261) scale(.8)"><tspan x="0">GLACIER</tspan></text>
-                            <text id="_-_INTERNATIONAL_-" data-name="- INTERNATIONAL -" class="cls-2" transform="translate(438.978 159.767) scale(.8)"><tspan x="0">&nbsp;-  INTERNATIONAL -</tspan></text>
+                            <text id="GLACIER" className="cls-1" transform="translate(436.953 118.261) scale(.8)"><tspan x="0">GLACIER</tspan></text>
+                            <text id="_-_INTERNATIONAL_-" data-name="- INTERNATIONAL -" className="cls-2" transform="translate(438.978 159.767) scale(.8)"><tspan x="0">&nbsp;-  INTERNATIONAL -</tspan></text>
                         </svg>
                     </LogoOver>
                     <div className="herotext">
@@ -333,7 +323,7 @@ const IndexPage = () => {
         <div> 
             <StaticImage
                 src={`../images/homepageimages/tundra.jpg`}
-                alt="Glacier International Logo"
+                alt="Tundra Image"
                 style={{
                     height: "100%"
                     }}
@@ -351,7 +341,7 @@ const IndexPage = () => {
         <div> 
             <StaticImage
                 src={`../images/homepageimages/sequoia.jpg`}
-                alt="Glacier International Logo"
+                alt="Sequoia Image"
                 style={{
                     height: "100%"
                     }}

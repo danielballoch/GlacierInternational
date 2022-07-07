@@ -192,33 +192,6 @@ border-bottom: rgba(255,255,255,0) 2px solid;
     }
 `
 
-const DrawerLink = styled.button`
-font-family: 'Open Sans';
-color: white;
-background: none;
-border: none;
-padding: 10px 20px;
-font-size: 1.5em;
-:hover{
-        cursor: pointer;
-    }
-
-`
-
-const DrawerLinkA = styled.a`
-font-family: 'Open Sans';
-color: white;
-text-align: center;
-text-decoration: none;
-background: none;
-border: none;
-padding: 10px 20px;
-font-size: 1.5em;
-:hover{
-        cursor: pointer;
-    }
-`
-
 const InsideDrawerLink = styled(Link)`
 font-family: 'Open Sans';
 color: white;
@@ -262,8 +235,6 @@ p {
 
 export default function Nav({pageLocation, invertNav}){
     const [menuOpen, setMenuOpen] = useState(false);
-    console.log('navbar props', pageLocation)
-    console.log("invertNav: " + invertNav)
     let NavigationLinks = <Links> 
         {/* <NavLink href="/build-my-tundra" >
             Build My Tundra
@@ -318,7 +289,7 @@ export default function Nav({pageLocation, invertNav}){
             <NavContent className={invertNav ? "invertNav" : ""}>
                 <Link to="/" aria-label="thoughtfulHQ logo" alt="thoughtfulHQ logo">
                 <Logo>
-                    <StaticImage height="50" src="../images/glacierLogo.png"/>
+                    <StaticImage height={50} src="../images/glacierLogo.png" alt="Glacier International Logo"/>
                 </Logo>
                 </Link>
                 <Links> 
