@@ -256,15 +256,15 @@ const AboutPage = () => {
         </div>
             
             <Container>
-                <h2>Our Story</h2>
+                <h2>Glacier International</h2>
                 <p>
-                Paragraph introducting brand, the who, what, where, why. Trying to excite the reader and establish the story of Glacier International. 
+                New Zealands only licenced Toyota remanufacture for road legal Tundra and Sequoia. The reliability of the Tundra has been common knowledge in North America for over 20 years and we believe New Zealanders deserve to experience the same level of quality, engineering, design and performance. Kiwis are a tough bunch and they deserve a truck that’s just as tough. Glacier International is your one-stop shop for importing, right hand drive remanufacturing, and customising your Hybrid Tundra, or Sequoia. 
                 </p>
                 <p>
-                Integer convallis dolor vitae est gravida, vitae elementum elit porttitor. Maecenas at posuere enim, at euismod urna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse vitae congue ante. Nam pharetra urna id enim elementum, at vehicula turpis rutrum. Donec aliquet fermentum ex, eu vehicula nisi fermentum eget. Etiam maximus luctus justo, a mattis nibh dignissim eu. 
+                Malcom King has loved motorsport, snowboarding, and trucks since he was little. Leaving school at 16 for a job as an apprentice Toyota Technician, he's now been working with Toyota vehicles for 21 years. Malcom started Glacier International with the dream of giving as many kiwis as possible the breath taking experience of driving a Tundra.
                 </p>
                 <p>
-                Vivamus feugiat eros ante, in eleifend nisi elementum vel. Mauris eleifend, justo eu dictum aliquet, magna lorem dignissim odio, at imperdiet leo magna sagittis enim. Vestibulum dignissim varius massa, sit amet fermentum nunc sollicitudin sit amet. Praesent nisi urna, vestibulum vel ante eget, rhoncus imperdiet lorem.
+                Why? Because until you drive a Tundra, you just can't comprehend what it's like.
                 </p>
             </Container>
             <Youtube2 style={{ display: "grid", maxHeight: 640}} id="homeSection">
