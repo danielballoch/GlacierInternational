@@ -15,6 +15,7 @@ const Container = styled.div`
     margin-bottom: 60px;
 }
 min-height: 515px;
+height: 100%;
 color: black;
 display: flex;
 justify-content: center;
@@ -23,6 +24,14 @@ flex-direction: column;
 p {
     max-width: 840px;
     text-align: center;
+}
+p:last-of-type {
+    padding-bottom: calc(1.5em + 35px);
+}
+h2 {
+    /* padding: 0;
+    margin: 0; */
+    padding-top: 1.5em;
 }
 `
 const ContainerSplit = styled(Container)`
@@ -256,15 +265,20 @@ const AboutPage = () => {
         </div>
             
             <Container>
-                <h2>Glacier International</h2>
+                <h2>Our Story</h2>
                 <p>
-                New Zealands only licenced Toyota remanufacture for road legal Tundra and Sequoia. The reliability of the Tundra has been common knowledge in North America for over 20 years and we believe New Zealanders deserve to experience the same level of quality, engineering, design and performance. Kiwis are a tough bunch and they deserve a truck that’s just as tough. Glacier International is your one-stop shop for importing, right hand drive remanufacturing, and customising your Hybrid Tundra, or Sequoia. 
+                The brain-child of Toyota qualified technicians, Glacier International is the only solution for discerning customers who covet right-hand-drive Tundra and Sequoia but demand proven OEM quality, reliability and performance.  
                 </p>
                 <p>
-                Malcom King has loved motorsport, snowboarding, and trucks since he was little. Leaving school at 16 for a job as an apprentice Toyota Technician, he's now been working with Toyota vehicles for 21 years. Malcom started Glacier International with the dream of giving as many kiwis as possible the breath taking experience of driving a Tundra.
+                “As a Toyota trained technician it was crucial for me to design a remanufacturing package that was indiscernible from OEM fit and finish. Our Tundra’s and Sequoia’s are guaranteed to meet or exceed our customers’ expectations.” 
+                -       Malcom King, Founder and President.   
                 </p>
                 <p>
-                Why? Because until you drive a Tundra, you just can't comprehend what it's like.
+                Glacier International was founded in 2016, is the only dedicated Tundra and Sequoia remanufacturer in New Zealand. With multiple satisfied customers Glacier International has forged a reputation for uncompromised remanufactured vehicles. 
+                </p>
+                <p>
+                “The team at Glacier International are friendly, professional and incredibly easy to deal with -  No request was too big or small and I couldn’t be happier with the finished product. My Tundra is by far the best truck I have ever owned and will be kept in my family for years to come.” 
+                - Blake Speirs, Customer. 
                 </p>
             </Container>
             <Youtube2 style={{ display: "grid", maxHeight: 640}} id="homeSection">
