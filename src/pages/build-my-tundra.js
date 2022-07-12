@@ -18,6 +18,16 @@ import Pearl1794 from "../images/tundra/1794/Pearl1794.png"
 import Red1794 from "../images/tundra/1794/Red1794.png"
 import Silver1794 from "../images/tundra/1794/Silver1794.png"
 
+//import 1794 Longbed images
+import Black1794Longbed from "../images/tundra/1794/Longbed/Black1794Longbed.png"
+import Blue1794Longbed from "../images/tundra/1794/Longbed/Blue1794Longbed.png"
+import Grey1794Longbed from "../images/tundra/1794/Longbed/Grey1794Longbed.png"
+import Green1794Longbed from "../images/tundra/1794/Longbed/Green1794Longbed.png"
+import Mesquite1794Longbed from "../images/tundra/1794/Longbed/Mesquite1794Longbed.png"
+import Pearl1794Longbed from "../images/tundra/1794/Longbed/Pearl1794Longbed.png"
+import Red1794Longbed from "../images/tundra/1794/Longbed/Red1794Longbed.png"
+import Silver1794Longbed from "../images/tundra/1794/Longbed/Silver1794Longbed.png"
+
 //import Capstone Images
 import BlackCapstone from "../images/tundra/Capstone/BlackCapstone.png"
 import BlueCapstone from "../images/tundra/Capstone/BlueCapstone.png"
@@ -45,21 +55,29 @@ import PearlPlatinum from "../images/tundra/Platinum/PearlPlatinum.png"
 import RedPlatinum from "../images/tundra/Platinum/RedPlatinum.png"
 import SilverPlatinum from "../images/tundra/Platinum/SilverPlatinum.png"
 
+//import Platinum Longbed Images
+import BlackPlatinumLongbed from "../images/tundra/Platinum/Longbed/BlackPlatinumLongbed.png"
+import BluePlatinumLongbed from "../images/tundra/Platinum/Longbed/BluePlatinumLongbed.png"
+import GreyPlatinumLongbed from "../images/tundra/Platinum/Longbed/GreyPlatinumLongbed.png"
+import PearlPlatinumLongbed from "../images/tundra/Platinum/Longbed/PearlPlatinumLongbed.png"
+import RedPlatinumLongbed from "../images/tundra/Platinum/Longbed/RedPlatinumLongbed.png"
+import SilverPlatinumLongbed from "../images/tundra/Platinum/Longbed/SilverPlatinumLongbed.png"
+
 //import SR Images
-import BlackSR from "../images/tundra/SR/BlackSR.png"
-import GreySR from "../images/tundra/SR/GreySR.png"
-import SilverSR from "../images/tundra/SR/SilverSR.png"
-import WhiteSR from "../images/tundra/SR/WhiteSR.png"
+// import BlackSR from "../images/tundra/SR/BlackSR.png"
+// import GreySR from "../images/tundra/SR/GreySR.png"
+// import SilverSR from "../images/tundra/SR/SilverSR.png"
+// import WhiteSR from "../images/tundra/SR/WhiteSR.png"
 
 //import SR5 Images
-import BlackSR5 from "../images/tundra/SR5/BlackSR5.png"
-import BlueSR5 from "../images/tundra/SR5/BlueSR5.png"
-import GreenSR5 from "../images/tundra/SR5/GreenSR5.png"
-import GreySR5 from "../images/tundra/SR5/GreySR5.png"
-import RedSR5 from "../images/tundra/SR5/RedSR5.png"
-import RockSR5 from "../images/tundra/SR5/RockSR5.png"
-import SilverSR5 from "../images/tundra/SR5/SilverSR5.png"
-import WhiteSR5 from "../images/tundra/SR5/WhiteSR5.png"
+// import BlackSR5 from "../images/tundra/SR5/BlackSR5.png"
+// import BlueSR5 from "../images/tundra/SR5/BlueSR5.png"
+// import GreenSR5 from "../images/tundra/SR5/GreenSR5.png"
+// import GreySR5 from "../images/tundra/SR5/GreySR5.png"
+// import RedSR5 from "../images/tundra/SR5/RedSR5.png"
+// import RockSR5 from "../images/tundra/SR5/RockSR5.png"
+// import SilverSR5 from "../images/tundra/SR5/SilverSR5.png"
+// import WhiteSR5 from "../images/tundra/SR5/WhiteSR5.png"
 
 //import TRDPRO Images
 import BlackTRDPRO from "../images/tundra/TRDPRO/BlackTRDPRO.png"
@@ -152,26 +170,28 @@ const isBrowser = typeof window !== "undefined";
 const IndexPage = ({display=false}) => {
     
     const [price, setPrice] = useState(0);
-    const [activeGrade, setActiveGrade] = useState(["1794",32000, 0]);
-    const [activeColor, setActiveColor] = useState(["Supersonic Red",100, 5]);
+    const [activeGrade, setActiveGrade] = useState(["Limited Hybrid TRD OFF ROAD",32000, 0]);
+    const [activeColor, setActiveColor] = useState(["Midnight Black Metallic",100, 5]);
+    const [activeBed, setActiveBed] = useState(0)
 
     const [selectionStage, setSelectionStage] = useState(0);
     
 
     const grades = [
-        {name: "1794", colors: ["Midnight Black Metallic","Blueprint", "Army Green","Magnetic Grey Metallic", "Smoked Mesquite", "Wind Chill Pearl", "Supersonic Red", "Celestial Silver Metallic"], src: [Black1794, Blue1794, Green1794, Grey1794, Mesquite1794, Pearl1794, Red1794, Silver1794], price: "89,091"},
-        {name: "Capstone", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Wind Chill Pearl","Supersonic Red","Celestial Silver Metallic"], src: [BlackCapstone, BlueCapstone, GreyCapstone, PearlCapstone, RedCapstone, SilverCapstone], price: "113,553"},
-        {name: "Limited", colors: ["Midnight Black Metallic","Blueprint","Army Green","Magnetic Grey Metallic","Smoked Mesquite","Wind Chill Pearl","Supersonic Red","Celestial Silver Metallic", "White"], src: [BlackLimited, BlueLimited, GreenLimited, GreyLimited,MesquiteLimited, PearlLimited, RedLimited, SilverLimited, WhiteLimited], price: "72,351"},
-        {name: "Platinum", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Wind Chill Pearl","Supersonic Red","Celestial Silver Metallic"], src: [BlackPlatinum, BluePlatinum, GreyPlatinum, PearlPlatinum, RedPlatinum, SilverPlatinum], price: "88,520"},
-        {name: "SR", colors: ["Midnight Black Metallic","Magnetic Grey Metallic","Celestial Silver Metallic", "White"], src: [BlackSR, GreySR, SilverSR, WhiteSR], price: "55,490"},
-        {name: "SR5", colors: ["Midnight Black Metallic","Blueprint","Army Green","Magnetic Grey Metallic","Supersonic Red","Lunar Rock","Celestial Silver Metallic", "White"], src: [BlackSR5, BlueSR5, GreenSR5, GreySR5, RedSR5,RockSR5, SilverSR5, WhiteSR5], price: "55,490"},
-        {name: "TRDPRO", colors: ["Midnight Black Metallic","Lunar Rock","Solar Octane", "White"], src: [BlackTRDPRO, RockTRDPRO, SolarTRDPRO, WhiteTRDPRO], price: "103,115"},
+        {name: "Limited Hybrid TRD OFF ROAD", colors: ["Midnight Black Metallic","Blueprint","Army Green","Magnetic Grey Metallic","Smoked Mesquite","Wind Chill Pearl","Supersonic Red","Celestial Silver Metallic", "White"], src: [BlackLimited, BlueLimited, GreenLimited, GreyLimited,MesquiteLimited, PearlLimited, RedLimited, SilverLimited, WhiteLimited], price: "185,000"},
+        {name: "Platinum Hybrid", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Wind Chill Pearl","Supersonic Red","Celestial Silver Metallic"], src: [BlackPlatinum, BluePlatinum, GreyPlatinum, PearlPlatinum, RedPlatinum, SilverPlatinum, BlackPlatinumLongbed, BluePlatinumLongbed, GreyPlatinumLongbed, PearlPlatinumLongbed, RedPlatinumLongbed, SilverPlatinumLongbed], price: "195,000", cab: ["Regular (5.5ft)", "Long Box (6.5ft)"]},
+        {name: "1794 Hybrid TRD OFF ROAD", colors: ["Midnight Black Metallic","Blueprint", "Army Green","Magnetic Grey Metallic", "Smoked Mesquite", "Wind Chill Pearl", "Supersonic Red", "Celestial Silver Metallic"], src: [Black1794, Blue1794, Green1794, Grey1794, Mesquite1794, Pearl1794, Red1794, Silver1794, Black1794Longbed, Blue1794Longbed, Green1794Longbed, Grey1794Longbed, Mesquite1794Longbed, Pearl1794Longbed, Red1794Longbed, Silver1794Longbed], price: "199,000", cab: ["Regular (5.5ft)", "Long Box (6.5ft)"]},
+        {name: "TRD PRO Hybrid", colors: ["Midnight Black Metallic","Lunar Rock","Solar Octane", "White"], src: [BlackTRDPRO, RockTRDPRO, SolarTRDPRO, WhiteTRDPRO], price: "219,000"},
+        {name: "Capstone Hybrid", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Wind Chill Pearl","Supersonic Red","Celestial Silver Metallic"], src: [BlackCapstone, BlueCapstone, GreyCapstone, PearlCapstone, RedCapstone, SilverCapstone], price: "249,000"},
+        // {name: "SR", colors: ["Midnight Black Metallic","Magnetic Grey Metallic","Celestial Silver Metallic", "White"], src: [BlackSR, GreySR, SilverSR, WhiteSR], price: "55,490"},
+        // {name: "SR5", colors: ["Midnight Black Metallic","Blueprint","Army Green","Magnetic Grey Metallic","Supersonic Red","Lunar Rock","Celestial Silver Metallic", "White"], src: [BlackSR5, BlueSR5, GreenSR5, GreySR5, RedSR5,RockSR5, SilverSR5, WhiteSR5], price: "55,490"},
     ]
 
 
     //update price
     useEffect(() => {
-        if (price !== grades[activeGrade[2]]){setPrice(grades[activeGrade[2]].price)}
+        if (price !== grades[activeGrade[2]]){setPrice(grades[activeGrade[(2)]].price)};
+        if (activeBed !== 0 && activeGrade[0] !== "Platinum Hybrid" && activeGrade[0] !== "1794 Hybrid TRD OFF ROAD"){setActiveBed(0)};
     });
     if (isBrowser && window.innerWidth > 1050){
         // desktop page
@@ -181,8 +201,8 @@ const IndexPage = ({display=false}) => {
         <title>Home Page</title>
         <PriceFinanceBar price={price}/>
         <Row>
-            <MainImage src={grades[activeGrade[2]].src[activeColor[2]]} />
-            <FeatureBar grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color); console.log(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}} />
+            <MainImage src={grades[activeGrade[2]].src[activeColor[(2)]+activeBed*grades[activeGrade[2]].src.length/2]} />
+            <FeatureBar grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color); console.log(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}} activeBed={activeBed} updateActiveBed={(bed) => setActiveBed(bed)} />
         </Row>
         </Main>
     </Layout>
@@ -193,10 +213,10 @@ const IndexPage = ({display=false}) => {
             <Layout hideFooter={true} invertNav={true}>
                 <Main style={pageStyles}>
                     <title>Home Page</title>
-                    <MainImage src={grades[activeGrade[2]].src[activeColor[2]]}/>
+                    <MainImage src={grades[activeGrade[2]].src[activeColor[2*activeBed]]}/>
                     <PriceFinanceBar price={price}/>
-                    <MobileSelectionTab selectionStage={selectionStage} updateSelectionStage={(newStageNumber) => {setSelectionStage(newStageNumber)}}/>
-                    <MobileFeatureSection model="Tundra" selectionStage={selectionStage} grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color); console.log(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}} />
+                    <MobileSelectionTab activeGrade={activeGrade} selectionStage={selectionStage} updateSelectionStage={(newStageNumber) => {setSelectionStage(newStageNumber)}}/>
+                    <MobileFeatureSection model="Tundra" selectionStage={selectionStage} grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color); console.log(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}}  activeBed={activeBed} updateActiveBed={(bed) => {setActiveBed(bed)}}/>
                 </Main>
             </Layout>
         )

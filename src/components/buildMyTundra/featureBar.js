@@ -92,11 +92,9 @@ button {
 `
 
 
-export default function FeatureBar ({grades, activeGrade, activeColor, updateActiveColor, updateActiveGrade}){
+export default function FeatureBar ({grades, activeGrade, activeColor, updateActiveColor, updateActiveGrade, activeBed, updateActiveBed}){
 
-    useEffect(() => {
-
-    })
+    
 
     return(
         <CenterLeft>
@@ -116,20 +114,34 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
                         >{grade.name}</button>
                     ))}
                 </div>
+
+                {activeGrade[0] === "Platinum Hybrid" || activeGrade[0] === "1794 Hybrid TRD OFF ROAD" ? 
+                <div>
+                    <p>Cab & Bed:</p>
+                    <div className="wrap">
+                        <button className={(activeBed === 0 ? 'active' : '')} onClick={() => {updateActiveBed(0); console.log("bed updated to 0")}}>Regular (5.5ft)</button> 
+                        <button className={(activeBed === 1 ? 'active' : '')} onClick={() => {updateActiveBed(1); console.log("bed updated to 1")}}>Long Box (6.5ft)</button> 
+                    </div>
+                      
+                </div> : null
+                }
                     
                 <p>Colour:</p>
                         
                 <div className="wrap">
                     {grades[activeGrade[2]].colors.map((color, i) => (
-                        <button className={(activeColor[0] === color ? 'active' : '') }
+                        <button className={(activeColor[0] === color ? 'active' : '')}
                         // onClick={updateActiveColor} 
                         onClick={() => {updateActiveColor([color, 100, i]); console.log("updatecolor run")}}
                         // onClick={() => {setActiveColor([color,100, i])}}
                         >{color}</button>
                     ))}
                 </div>
+
+                
                 
                 <p className="infoText">To put a 10% deposit down securing your custom Tundra build for 2022, please click the button below for more info at our payment gateway.</p>
+                
                 <button className="orderbtn">Complete Order</button>
             </CenterLeft>
     )

@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import styled from '@emotion/styled';
 
 
@@ -40,14 +40,28 @@ button {
 }
 `
 
-export default function MobileSelectionTab({selectionStage, updateSelectionStage}){
+export default function MobileSelectionTab({selectionStage, updateSelectionStage, activeGrade}){
+    const [selectionVar, setSelectionVar] = useState(0)
+    useEffect(() => {
+        if (activeGrade[0] === "Platinum Hybrid" || activeGrade[0] === "1794 Hybrid TRD OFF ROAD"){
+            setSelectionVar(1);
+            console.log("selection var: " + selectionVar)
+        } else if (selectionVar !== 0 && activeGrade[0] !== "Platinum Hybrid" && activeGrade[0] !== "1794 Hybrid TRD OFF ROAD") {
+            setSelectionVar(0);
+            console.log("selection var: " + selectionVar)
+        }
+    })
     return(
         <SelectionTab>
             <button onClick={() => {if(selectionStage > 0){updateSelectionStage(selectionStage - 1)}}}><span className="back"/></button>
             <button className={selectionStage === 0 ? "selected" : ""} onClick={() => {updateSelectionStage(0)}}>grade</button>
-            <button className={selectionStage === 1 ? "selected" : ""} onClick={() => {updateSelectionStage(1)}}>color</button>
-            <button className={selectionStage === 2 ? "selected" : ""} onClick={() => {updateSelectionStage(2)}}>order</button>
-            <button onClick={() => {if(selectionStage < 2){updateSelectionStage(selectionStage + 1)}}}><span className="next"/></button>
+            {activeGrade[0] === "Platinum Hybrid" || activeGrade[0] === "1794 Hybrid TRD OFF ROAD" ? 
+            <button className={selectionStage === 1 ? "selected" : ""} onClick={() => {updateSelectionStage(1)}}>bed</button> : null
+            }
+            
+            <button className={selectionStage === (1 + selectionVar) ? "selected" : ""} onClick={() => {updateSelectionStage(1 + selectionVar)}}>color</button>
+            <button className={selectionStage === (2 + selectionVar) ? "selected" : ""} onClick={() => {updateSelectionStage(2 + selectionVar)}}>order</button>
+            <button onClick={() => {if(selectionStage < (2 + selectionVar)){updateSelectionStage(selectionStage + 1)}}}><span className="next"/></button>
         </SelectionTab>
     )
 }

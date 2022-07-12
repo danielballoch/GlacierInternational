@@ -54,8 +54,9 @@ button {
 
 
 
-export default function MobileFeatureSection({model, selectionStage, grades, activeGrade, activeColor, updateActiveColor, updateActiveGrade}){
+export default function MobileFeatureSection({model, selectionStage, grades, activeGrade, activeColor, updateActiveColor, updateActiveGrade, activeBed, updateActiveBed}){
     let featureSection;
+    if (activeGrade[0] === "Platinum Hybrid" || activeGrade[0] === "1794 Hybrid TRD OFF ROAD"){
         if (selectionStage === 0){
             featureSection = <FeatureSection>
                 {/*Display grade buttons, update activeGrade state onClick & if active use active class styling */}
@@ -67,16 +68,49 @@ export default function MobileFeatureSection({model, selectionStage, grades, act
             </FeatureSection>
         } else if (selectionStage === 1){
             featureSection = <FeatureSection>
+
+                <div className="wrap">
+                    <button className={(activeBed === 1 ? 'active' : '')} onClick={() => {updateActiveBed(1)}}>Regular (5.5ft)</button> 
+                    <button className={(activeBed === 2 ? 'active' : '')} onClick={() => {updateActiveBed(2)}}>Long Box (6.5ft)</button> 
+                </div>
+            </FeatureSection>
+        } else if (selectionStage === 2){
+            featureSection = <FeatureSection>
                 {/*Display color buttons based on activeGrade, update activeColor state onClick & if active use active class styling */}
                 <div className="wrap">
                 {grades[activeGrade[2]].colors.map((color, i) => (
-                    <button className={(activeColor[0] === color ? 'active' : '') } onClick={() => {updateActiveColor([color,100, i])}}>{color}</button>
+                    <button className={(activeColor[0] === color ? 'active' : '')} onClick={() => {updateActiveColor([color,100, i])}}>{color}</button>
                 ))}
                 </div>
             </FeatureSection>
         } else {
             featureSection = <FeatureSection><p>To put a 10% deposit down securing your {model} build for 2022, please click the button for more info at our payment gateway.</p><button className="orderbtn">Complete Order</button></FeatureSection>
         }
+    }
+    else {
+        
+            if (selectionStage === 0){
+                featureSection = <FeatureSection>
+                    {/*Display grade buttons, update activeGrade state onClick & if active use active class styling */}
+                    <div className="wrap">
+                    {grades.map((grade, i) => (
+                        <button className={(activeGrade[0] === grade.name ? 'active' : '')} onClick={() => {updateActiveGrade([grade.name, 32000, i]);updateActiveColor(["Midnight Black Metallic",100, 0])}}>{grade.name}</button>
+                    ))}
+                    </div>
+                </FeatureSection>
+            } else if (selectionStage === 1){
+                featureSection = <FeatureSection>
+                    {/*Display color buttons based on activeGrade, update activeColor state onClick & if active use active class styling */}
+                    <div className="wrap">
+                    {grades[activeGrade[2]].colors.map((color, i) => (
+                        <button className={(activeColor[0] === color ? 'active' : '') } onClick={() => {updateActiveColor([color,100, i])}}>{color}</button>
+                    ))}
+                    </div>
+                </FeatureSection>
+            } else {
+                featureSection = <FeatureSection><p>To put a 10% deposit down securing your {model} build for 2022, please click the button for more info at our payment gateway.</p><button className="orderbtn">Complete Order</button></FeatureSection>
+            }
+    }
     return(
         featureSection
     )
