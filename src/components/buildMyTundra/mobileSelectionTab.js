@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useRef} from "react"
 import styled from '@emotion/styled';
 
 
@@ -45,18 +45,29 @@ button {
 
 export default function MobileSelectionTab({selectionStage, updateSelectionStage, activeGrade}){
     const [selectionVar, setSelectionVar] = useState(0)
+    const selectionTabInner = useRef(null)
     useEffect(() => {
         if (activeGrade[0] === "Platinum Hybrid" || activeGrade[0] === "1794 Hybrid TRD OFF ROAD"){
             setSelectionVar(1);
         } else if (selectionVar !== 0 && activeGrade[0] !== "Platinum Hybrid" && activeGrade[0] !== "1794 Hybrid TRD OFF ROAD") {
             setSelectionVar(0);
         }
+        
+        if (selectionStage === 0) {
+            selectionTabInner.current.scrollTo({left:0})
+        } else if (selectionStage === 1) {
+            selectionTabInner.current.scrollTo({left: 329/4-33})
+        } else if (selectionStage === 2) {
+            selectionTabInner.current.scrollTo({left: 2*329/4-33})
+        } else if (selectionStage === 3) {
+            selectionTabInner.current.scrollTo({left: 329})
+        }
     })
     return(
         <SelectionTab>
-            <button onClick={() => {if(selectionStage > 0){updateSelectionStage(selectionStage - 1)}}}><span className="back"/></button>
+            <button onClick={() => {if(selectionStage > 0){updateSelectionStage(selectionStage - 1); }}}><span className="back"/></button>
 
-            <div className="selectionTabInner">
+            <div ref={selectionTabInner} className="selectionTabInner">
                 <button className={selectionStage === 0 ? "selected" : ""} onClick={() => {updateSelectionStage(0)}}>grade</button>
                 {activeGrade[0] === "Platinum Hybrid" || activeGrade[0] === "1794 Hybrid TRD OFF ROAD" ? 
                 <button className={selectionStage === 1 ? "selected" : ""} onClick={() => {updateSelectionStage(1)}}>bed</button> : null
@@ -64,7 +75,7 @@ export default function MobileSelectionTab({selectionStage, updateSelectionStage
                 <button className={selectionStage === (1 + selectionVar) ? "selected" : ""} onClick={() => {updateSelectionStage(1 + selectionVar)}}>color</button>
                 <button className={selectionStage === (2 + selectionVar) ? "selected" : ""} onClick={() => {updateSelectionStage(2 + selectionVar)}}>order</button>
             </div>
-            <button onClick={() => {if(selectionStage < (2 + selectionVar)){updateSelectionStage(selectionStage + 1)}}}><span className="next"/></button>
+            <button onClick={() => {if(selectionStage < (2 + selectionVar)){updateSelectionStage(selectionStage + 1);  }}}><span className="next"/></button>
         </SelectionTab>
     )
 }
