@@ -45,10 +45,8 @@ export default function MobileSelectionTab({selectionStage, updateSelectionStage
     useEffect(() => {
         if (activeGrade[0] === "Platinum Hybrid" || activeGrade[0] === "1794 Hybrid TRD OFF ROAD"){
             setSelectionVar(1);
-            console.log("selection var: " + selectionVar)
         } else if (selectionVar !== 0 && activeGrade[0] !== "Platinum Hybrid" && activeGrade[0] !== "1794 Hybrid TRD OFF ROAD") {
             setSelectionVar(0);
-            console.log("selection var: " + selectionVar)
         }
     })
     return(
