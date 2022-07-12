@@ -70,8 +70,8 @@ export default function MobileFeatureSection({model, selectionStage, grades, act
             featureSection = <FeatureSection>
 
                 <div className="wrap">
-                    <button className={(activeBed === 1 ? 'active' : '')} onClick={() => {updateActiveBed(1)}}>Regular (5.5ft)</button> 
-                    <button className={(activeBed === 2 ? 'active' : '')} onClick={() => {updateActiveBed(2)}}>Long Box (6.5ft)</button> 
+                    <button className={(activeBed === 0 ? 'active' : '')} onClick={() => {updateActiveBed(0)}}>Regular (5.5ft)</button> 
+                    <button className={(activeBed === 1 ? 'active' : '')} onClick={() => {updateActiveBed(1)}}>Long Box (6.5ft)</button> 
                 </div>
             </FeatureSection>
         } else if (selectionStage === 2){
