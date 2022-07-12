@@ -7,7 +7,10 @@ display: flex;
 justify-content: center;
 margin: 40px 0 20px 0;
 color: black;
-
+.selectionTabInner {
+overflow-x: scroll;
+display: flex;
+}
 button {
     margin: 4px;
     background: none;
@@ -52,13 +55,15 @@ export default function MobileSelectionTab({selectionStage, updateSelectionStage
     return(
         <SelectionTab>
             <button onClick={() => {if(selectionStage > 0){updateSelectionStage(selectionStage - 1)}}}><span className="back"/></button>
-            <button className={selectionStage === 0 ? "selected" : ""} onClick={() => {updateSelectionStage(0)}}>grade</button>
-            {activeGrade[0] === "Platinum Hybrid" || activeGrade[0] === "1794 Hybrid TRD OFF ROAD" ? 
-            <button className={selectionStage === 1 ? "selected" : ""} onClick={() => {updateSelectionStage(1)}}>bed</button> : null
-            }
-            
-            <button className={selectionStage === (1 + selectionVar) ? "selected" : ""} onClick={() => {updateSelectionStage(1 + selectionVar)}}>color</button>
-            <button className={selectionStage === (2 + selectionVar) ? "selected" : ""} onClick={() => {updateSelectionStage(2 + selectionVar)}}>order</button>
+
+            <div className="selectionTabInner">
+                <button className={selectionStage === 0 ? "selected" : ""} onClick={() => {updateSelectionStage(0)}}>grade</button>
+                {activeGrade[0] === "Platinum Hybrid" || activeGrade[0] === "1794 Hybrid TRD OFF ROAD" ? 
+                <button className={selectionStage === 1 ? "selected" : ""} onClick={() => {updateSelectionStage(1)}}>bed</button> : null
+                }
+                <button className={selectionStage === (1 + selectionVar) ? "selected" : ""} onClick={() => {updateSelectionStage(1 + selectionVar)}}>color</button>
+                <button className={selectionStage === (2 + selectionVar) ? "selected" : ""} onClick={() => {updateSelectionStage(2 + selectionVar)}}>order</button>
+            </div>
             <button onClick={() => {if(selectionStage < (2 + selectionVar)){updateSelectionStage(selectionStage + 1)}}}><span className="next"/></button>
         </SelectionTab>
     )
