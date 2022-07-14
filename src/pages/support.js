@@ -115,7 +115,7 @@ form {
     }
     input, textarea {
         width: 100%;
-        padding: 10px 0;
+        padding: 10px;
     }
     button {
         border: none;

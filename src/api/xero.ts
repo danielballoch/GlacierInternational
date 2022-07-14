@@ -58,9 +58,8 @@ export default async function postNewPersonHandler(req, res) {
         const contacts = await xero.accountingApi.getContacts('');
 		// console.log('contacts: ', contacts.body.contacts);
 
-        
-
-
+        console.log(req.body)
+        res.json(req.body)
         return res.status(200).json();
     } catch(error){
         res.status(500).send(error)

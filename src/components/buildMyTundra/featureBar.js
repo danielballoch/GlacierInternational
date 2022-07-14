@@ -1,4 +1,5 @@
 import React, { useEffect } from "react"
+import { Link } from "gatsby";
 import styled from '@emotion/styled';
 
 const CenterLeft = styled.div`
@@ -142,7 +143,7 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
                 
                 <p className="infoText">To put a 10% deposit down securing your custom Tundra build for 2022, please click the button below for more info at our payment gateway.</p>
                 
-                <button className="orderbtn">Complete Order</button>
+                <Link to="/order-page"><button className="orderbtn">Complete Order</button></Link>
             </CenterLeft>
     )
 }
