@@ -55,22 +55,110 @@ export default async function postNewPersonHandler(req, res) {
 
 
     try {
-        const contacts = await xero.accountingApi.getContacts('');
-		// console.log('contacts: ', contacts.body.contacts);
 
-        console.log(req.body)
-        res.json(req.body)
-        return res.status(200).json();
+        const checkContactExists = await xero.accountingApi.getContacts('', undefined, undefined, undefined, undefined, undefined, undefined, undefined, req.body.name);
+        if (checkContactExists.body.contacts === undefined || checkContactExists.body.contacts.length === 0){
+            //if name is not in Xero contacts already, create contact with form info.
+            console.log("name is not in database")
+            const contact: Contact = {
+                name: req.body.name,
+                emailAddress: req.body.email,
+                phones: [
+                    {
+                        phoneNumber: req.body.mobile,
+                        phoneType: Phone.PhoneTypeEnum.MOBILE
+                    }
+                ]
+            };
+            const contacts: Contacts = {  
+                contacts: [contact]
+            }; 
+            await xero.accountingApi.createContacts('', contacts);
+            console.log(contact)
+            //now that the contact is created, use the contact & Build My Tundra info to create invoice.
+            //need to get accountId, so do check again now that it is created and used the id there
+            const getContactId = await xero.accountingApi.getContacts('', undefined, undefined, undefined, undefined, undefined, undefined, undefined, req.body.name)
+            console.log("I should be able to get the account created now")
+            let contactId;
+            if (getContactId.body.contacts !== undefined && getContactId.body.contacts.length !== 0){
+                contactId = getContactId.body.contacts[0].contactID;
+                console.log(contactId)
+            }
+            //now that I have id create invoice
+            const where = 'Status=="ACTIVE" AND Type=="SALES"';
+            const accounts = await xero.accountingApi.getAccounts('', undefined, where);
+            // console.log('accounts: ', accounts.body.accounts);
+            const contact2: Contact = {
+                contactID: contactId
+            };
+            const lineItem: LineItem = {
+                accountID: '',
+                description: 'Web Development',
+                quantity: 1.0,
+                unitAmount: 10.0
+            };
+            const invoice: Invoice = {
+                lineItems: [lineItem],
+                contact: contact2,
+                dueDate: '2009-09-25',
+                date: '2009-09-24',
+                type: Invoice.TypeEnum.ACCREC
+            };
+            const invoices: Invoices = {
+                invoices: [invoice]
+            };
+            const response = await xero.accountingApi.createInvoices('', invoices);
+            console.log('contact id is: ' + contactId);
+            console.log('invoices: ', response.body.invoices);
+            res.json(response)
+            return res.status(200).json();
+        } else {
+            console.log("name is in database");
+            console.log("Contact id is: " + checkContactExists.body.contacts[0].contactID);
+            //check through and make sure existing contact has necessary information to create invoice.
+            const where = 'Status=="ACTIVE" AND Type=="SALES"';
+            const accounts = await xero.accountingApi.getAccounts('', undefined, where);
+            // console.log('accounts: ', accounts.body.accounts);
+            const contact: Contact = {
+                contactID: checkContactExists.body.contacts[0].contactID
+            };
+            const lineItem: LineItem = {
+                accountID: '',
+                description: 'Web Development',
+                quantity: 1.0,
+                unitAmount: 10.0
+            };
+            const invoice: Invoice = {
+                lineItems: [lineItem],
+                contact: contact,
+                dueDate: '2009-09-25',
+                date: '2009-09-24',
+                type: Invoice.TypeEnum.ACCREC
+            };
+            const invoices: Invoices = {
+                invoices: [invoice]
+            };
+            const response = await xero.accountingApi.createInvoices('', invoices);
+            //now I need to get invoiceId so I can use emailInvoice.
+            console.log('invoices: ', response.body.invoices);
+            res.json(response.body.invoices);
+            return res.status(200).json();
+        }
+        
     } catch(error){
         res.status(500).send(error)
+        console.log(error)
     }
+
+
+    
    
   }
 
 
 
-
-
+        // const contacts = await xero.accountingApi.getContacts('');
+		// console.log('contacts: ', contacts.body.contacts);
 
   //create customer working
         // const contact: Contact = {
