@@ -93,7 +93,7 @@ button {
 `
 
 
-export default function FeatureBar ({grades, activeGrade, activeColor, updateActiveColor, updateActiveGrade, activeBed, updateActiveBed}){
+export default function FeatureBar ({grades, activeGrade, activeColor, updateActiveColor, updateActiveGrade, activeBed, updateActiveBed, price}){
 
     
 
@@ -143,7 +143,8 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
                 
                 <p className="infoText">To put a 10% deposit down securing your custom Tundra build for 2022, please click the button below for more info at our payment gateway.</p>
                 
-                <Link to="/order-page"><button className="orderbtn">Complete Order</button></Link>
+                <Link to="/order-page" state={{model: "2022 Tundra", grade: activeGrade[0], color: activeColor[0], bed: activeBed, price: price }}><button className="orderbtn">Complete Order</button></Link>
             </CenterLeft>
     )
 }
+//location in order-page

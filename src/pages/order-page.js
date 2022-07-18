@@ -58,7 +58,10 @@ p {
 }
 `
 
-export default function OrderPage (){
+export default function OrderPage ({location}){
+    let nf = new Intl.NumberFormat('en-US');
+    console.log(location.state)
+    console.log(Number(location.state.price))
     const {
         register,
         handleSubmit,
@@ -73,6 +76,11 @@ export default function OrderPage (){
             name: data.Name,
             phone: data.Phone,
             email: data.Email,
+            model: location.state.model,
+            grade: location.state.grade,
+            color: location.state.color,
+            bed: location.state.bed,
+            price: location.state.price
         }),
           headers: {
             "content-type": `application/json`,
@@ -84,18 +92,20 @@ export default function OrderPage (){
           })
       }
       console.log({ errors })
+      
     return(
         <Layout invertNav={true}>
             <Container>
             <h1>Order Details:</h1>
             <Flex>
-                <p>Model: 2022 Tundra</p>
-                <p>Grade: Platinum Hybrid</p>
-                <p>Bed & Cab: Regular (5.5ft)</p>
-                <p>Color: Midnight Black Metallic</p>
+                <p>Model: {location.state.model}</p>
+                <p>Grade: {location.state.grade}</p>
+                {location.state.bed === 0 ? <p>Bed & Cab: Regular (5.5ft)</p> 
+                : <p>Bed & Cab: Longbase (6.5ft)</p>}
+                <p>Color: {location.state.color}</p>
             </Flex>
-            <p>Total Price: $195,000 (NZD)</p>
-            <p>Deposit: $19,500 (NZD)</p>
+            <p>Total Price: ${nf.format(location.state.price)} (NZD)</p>
+            <p>Deposit: ${(Number(location.state.price) * 0.1).toLocaleString()} (NZD)</p>
             <hr></hr>
             <p>Please enter your information below to recive your deposit invoice of $19,500 via email, and secure your custom Tundra build.</p>
 

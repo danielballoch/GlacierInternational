@@ -51,8 +51,10 @@ export default async function postNewPersonHandler(req, res) {
     if(tokenSet.expired()){
         const validTokenSet = await xero.refreshToken();
     }
-
-
+    console.log(req.body);
+    let bed;
+    if (req.body.bed === 0){bed = " Regular (5.5ft) "} else {bed = " Longbase (6.5ft) "}
+    const description = "Customer order: " + req.body.model + " " + req.body.grade + bed + req.body.color;
 
     try {
 
@@ -93,9 +95,10 @@ export default async function postNewPersonHandler(req, res) {
             };
             const lineItem: LineItem = {
                 accountID: '',
-                description: 'Web Development',
+                item: req.body.model,
+                description: description,
                 quantity: 1.0,
-                unitAmount: 10.0
+                unitAmount: req.body.price
             };
             const invoice: Invoice = {
                 lineItems: [lineItem],
@@ -124,9 +127,10 @@ export default async function postNewPersonHandler(req, res) {
             };
             const lineItem: LineItem = {
                 accountID: '',
-                description: 'Web Development',
+                item: req.body.model,
+                description: description,
                 quantity: 1.0,
-                unitAmount: 10.0
+                unitAmount: req.body.price
             };
             const invoice: Invoice = {
                 lineItems: [lineItem],
@@ -143,6 +147,8 @@ export default async function postNewPersonHandler(req, res) {
             console.log('invoices: ', response.body.invoices);
             res.json(response.body.invoices);
             return res.status(200).json();
+
+            // const emailInvoice = await xero.accountingApi.emailInvoice()
         }
         
     } catch(error){

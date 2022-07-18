@@ -92,13 +92,14 @@ a {
 
 export default function PriceFinanceBar({price}){
     const [financePopup, setFinancePopup] = useState(false);
+    let nf = new Intl.NumberFormat('en-US');
 return (
         <PriceFinanceContainer>
             <div className={financePopup ? "popup" : "none"}>
                 <p>Glacier International lease/loan options or any relevant information for finances.</p>
                 <p>*to be updated/redesigned once more info is known here*</p>
             </div>
-            <Price><a>Total Price: ${price} (NZD)</a><a onClick={() => {setFinancePopup(!financePopup)}}>Finance Options<span className={financePopup ? "left up" : "left"}><span/></span></a></Price>
+            <Price><a>Total Price: ${nf.format(price)} (NZD)</a><a onClick={() => {setFinancePopup(!financePopup)}}>Finance Options<span className={financePopup ? "left up" : "left"}><span/></span></a></Price>
         </PriceFinanceContainer>
     )  
 }
