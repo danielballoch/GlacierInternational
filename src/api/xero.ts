@@ -20,7 +20,7 @@ export default async function postNewPersonHandler(req, res) {
     console.log(req.body);
     let bed;
     if (req.body.bed === 0){bed = " Regular (5.5ft) "} else {bed = " Longbase (6.5ft) "}
-    const description = "Customer order: " + req.body.model + " " + req.body.grade + bed + req.body.color;
+    const description = "Deposit Invoice for " + req.body.name + "'s custom " + req.body.model + " order. Order details: " + req.body.model + " " + req.body.grade + bed + req.body.color;
 
     try {
 
@@ -61,7 +61,7 @@ export default async function postNewPersonHandler(req, res) {
             };
             const lineItem: LineItem = {
                 accountID: '',
-                item: req.body.model,
+                item: {name: req.body.model},
                 description: description,
                 quantity: 1.0,
                 unitAmount: req.body.price
@@ -93,7 +93,7 @@ export default async function postNewPersonHandler(req, res) {
             };
             const lineItem: LineItem = {
                 accountID: '',
-                item: req.body.model,
+                item: {name: req.body.model},
                 description: description,
                 quantity: 1.0,
                 unitAmount: req.body.price
