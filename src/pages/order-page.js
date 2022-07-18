@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import styled from '@emotion/styled';
 import { useForm } from "react-hook-form"
+import { Link } from "gatsby";
 
 const Container = styled.div`
 margin: 200px auto;
@@ -96,18 +97,24 @@ export default function OrderPage ({location}){
         <Layout invertNav={true}>
             <Container>
             <h1>Order Details:</h1>
-            <Flex>
-                <p>Model: {location.state.model}</p>
-                <p>Grade: {location.state.grade}</p>
-                {location.state.bed === 0 ? <p>Bed & Cab: Regular (5.5ft)</p> 
-                : <p>Bed & Cab: Longbase (6.5ft)</p>}
-                <p>Color: {location.state.color}</p>
-            </Flex>
-            <p>Total Price: ${nf.format(location.state.price)} (NZD)</p>
-            <p>Deposit: ${(Number(location.state.price) * 0.1).toLocaleString()} (NZD)</p>
-            <hr></hr>
-            <p>Please enter your information below to recive your deposit invoice of $19,500 via email, and secure your custom Tundra build.</p>
-
+            {location.state && location.state.model ? 
+            <div>
+                <Flex>
+                    <p>Model: {location.state.model}</p>
+                    <p>Grade: {location.state.grade}</p>
+                    {location.state.bed === 0 ? <p>Bed & Cab: Regular (5.5ft)</p> 
+                    : <p>Bed & Cab: Longbase (6.5ft)</p>}
+                    <p>Color: {location.state.color}</p>
+                </Flex>
+                <p>Total Price: ${nf.format(location.state.price)} (NZD)</p>
+                <p>Deposit: ${(Number(location.state.price) * 0.1).toLocaleString()} (NZD)</p>
+                <hr/>
+                <p>Please enter your information below to recive your deposit invoice of ${(Number(location.state.price) * 0.1).toLocaleString()} via email, and secure your custom Tundra build.</p>
+            </div>
+            : <p>Loading data... if you have not come from the 'build your Tundra/Sequoia' page please <Link to="/">click here</Link></p>
+            }
+            
+            
             <form 
                     onSubmit={handleSubmit(onSubmit)}
                     id="main-form"
