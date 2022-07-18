@@ -61,7 +61,6 @@ p {
 export default function OrderPage ({location}){
     let nf = new Intl.NumberFormat('en-US');
     console.log(location.state)
-    console.log(Number(location.state.price))
     const {
         register,
         handleSubmit,
