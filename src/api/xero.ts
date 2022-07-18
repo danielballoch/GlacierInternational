@@ -61,7 +61,7 @@ export default async function postNewPersonHandler(req, res) {
             };
             const lineItem: LineItem = {
                 accountID: '',
-                item: {name: req.body.model},
+                item: {itemID: "1", name: "2022 Tundra", code: "1"},
                 description: description,
                 quantity: 1.0,
                 unitAmount: req.body.price
@@ -71,6 +71,8 @@ export default async function postNewPersonHandler(req, res) {
                 contact: contact2,
                 dueDate: '2009-09-25',
                 date: '2009-09-24',
+                reference: "custom Tundra reference",
+                status: Invoice.StatusEnum.AUTHORISED,
                 type: Invoice.TypeEnum.ACCREC
             };
             const invoices: Invoices = {
