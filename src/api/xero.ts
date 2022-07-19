@@ -61,7 +61,6 @@ export default async function postNewPersonHandler(req, res) {
             };
             const lineItem: LineItem = {
                 accountID: '',
-                item: {itemID: "1", name: "2022 Tundra", code: "1"},
                 description: description,
                 quantity: 1.0,
                 unitAmount: req.body.price
