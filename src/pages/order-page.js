@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import Layout from "../components/layout"
 import styled from '@emotion/styled';
 import { useForm } from "react-hook-form"
@@ -12,6 +12,17 @@ form {
     display: flex;
     flex-direction: column;
     text-align: left;
+    .submit-message {
+        display: flex;
+        margin: auto;
+        transition: .3s;
+        opacity: 1;
+    }
+    .submit-message-none {
+        display: flex;
+        opacity: 0;
+        margin: auto;
+    }
     div {
         display: flex;
         justify-content: space-between;
@@ -60,6 +71,7 @@ p {
 `
 
 export default function OrderPage ({location}){
+    const [formSent, setFormSent] = useState("");
     let nf = new Intl.NumberFormat('en-US');
     console.log(location.state)
     const {
@@ -69,6 +81,7 @@ export default function OrderPage ({location}){
     } = useForm()
     async function onSubmit(data){
         console.log("this is where form data should log")
+        setFormSent("sending")
         console.log(data)
         fetch(`/api/xero`, {
           method: `POST`,
@@ -89,6 +102,7 @@ export default function OrderPage ({location}){
           .then(res => res.json())
           .then(body => {
             console.log(`response from API:`, body);
+            setFormSent("sent");
           })
       }
       console.log({ errors })
@@ -158,6 +172,10 @@ export default function OrderPage ({location}){
                             data-callback='onSubmit'
                             data-action='submit'
                         >Submit</button>
+                        {formSent === "sending"? <p className="submit-message">Your order is sending, please stay on page.</p>
+                        : formSent === "sent" ? <p className="submit-message">Order submitted, your deposit invoice will be with you shortly.</p>
+                        : <p></p>
+                        }
                     </form>
             </Container>
         </Layout>

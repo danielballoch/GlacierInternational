@@ -63,7 +63,8 @@ export default async function postNewPersonHandler(req, res) {
                 accountID: '',
                 description: description,
                 quantity: 1.0,
-                unitAmount: req.body.price
+                accountCode: "200",
+                unitAmount: req.body.price/10
             };
             const invoice: Invoice = {
                 lineItems: [lineItem],
@@ -97,7 +98,8 @@ export default async function postNewPersonHandler(req, res) {
                 item: {name: req.body.model},
                 description: description,
                 quantity: 1.0,
-                unitAmount: req.body.price
+                accountCode: "200",
+                unitAmount: req.body.price/10
             };
             const invoice: Invoice = {
                 lineItems: [lineItem],
@@ -114,7 +116,7 @@ export default async function postNewPersonHandler(req, res) {
             console.log('invoices: ', response.body.invoices);
             res.json(response.body.invoices);
             return res.status(200).json();
-
+            // const getInvoice = await xero.accountingApi.getInvoice('',)
             // const emailInvoice = await xero.accountingApi.emailInvoice()
         }
         
