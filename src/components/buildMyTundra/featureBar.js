@@ -48,14 +48,14 @@ font-size: 1.5em;
 .orderbtn {
     background-color: #75ba75;
     color: white;
-    width: 80%;
+    width: 100%;
     font-size: 20px;
     letter-spacing: 1.4px;
     padding: 14px;
     font-weight: 600;
     font-family: 'Heebo',sans-serif;
     border: none;
-    margin: 40px auto 40px auto;
+    margin: 40px auto;
     :hover {
         border: none;
         background-color: #4C974C;
@@ -90,6 +90,11 @@ button {
 .active {
     border: solid 1px #0952BE;
 }
+`
+
+const StyledLink = styled(Link)`
+width: 80%;
+margin: auto;
 `
 
 
@@ -143,7 +148,7 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
                 
                 <p className="infoText">To put a 10% deposit down securing your custom Tundra build for 2022, please click the button below for more info at our payment gateway.</p>
                 
-                <Link to="/order-page" state={{model: "2022 Tundra", grade: activeGrade[0], color: activeColor[0], bed: activeBed, price: price }}><button className="orderbtn">Complete Order</button></Link>
+                <StyledLink to="/order-page" state={{model: "2022 Tundra", grade: activeGrade[0], color: activeColor[0], bed: activeBed, price: price }}><button className="orderbtn">Complete Order</button></StyledLink>
             </CenterLeft>
     )
 }
