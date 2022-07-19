@@ -17,10 +17,27 @@ export default async function postNewPersonHandler(req, res) {
     if(tokenSet.expired()){
         const validTokenSet = await xero.refreshToken();
     }
+
+
+    var today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    
+    let currentDate = mm + '/' + dd + '/' + yyyy;
+    console.log(currentDate)
+    let nextWeek = mm + '/' + (Number(dd) + 7) + '/' + yyyy;
+    console.log(nextWeek)
+
+
+
+
+
     console.log(req.body);
     let bed;
     if (req.body.bed === 0){bed = " Regular (5.5ft) "} else {bed = " Longbase (6.5ft) "}
     const description = "Deposit Invoice for " + req.body.name + "'s custom " + req.body.model + " order. Order details: " + req.body.model + " " + req.body.grade + bed + req.body.color;
+
 
     try {
 
@@ -33,7 +50,7 @@ export default async function postNewPersonHandler(req, res) {
                 emailAddress: req.body.email,
                 phones: [
                     {
-                        phoneNumber: req.body.mobile,
+                        phoneNumber: req.body.phone,
                         phoneType: Phone.PhoneTypeEnum.MOBILE
                     }
                 ]
@@ -69,8 +86,8 @@ export default async function postNewPersonHandler(req, res) {
             const invoice: Invoice = {
                 lineItems: [lineItem],
                 contact: contact2,
-                dueDate: '2009-09-25',
-                date: '2009-09-24',
+                dueDate: nextWeek,
+                date: currentDate,
                 reference: "custom Tundra reference",
                 status: Invoice.StatusEnum.AUTHORISED,
                 type: Invoice.TypeEnum.ACCREC
@@ -104,8 +121,8 @@ export default async function postNewPersonHandler(req, res) {
             const invoice: Invoice = {
                 lineItems: [lineItem],
                 contact: contact,
-                dueDate: '2009-09-25',
-                date: '2009-09-24',
+                dueDate: nextWeek,
+                date: currentDate,
                 type: Invoice.TypeEnum.ACCREC
             };
             const invoices: Invoices = {
