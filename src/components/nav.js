@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import { Link } from 'gatsby'
 import styled from '@emotion/styled';
 import {css} from '@emotion/react';
@@ -94,6 +94,7 @@ width: 100%;
 display: flex;
 flex-direction: column;
 justify-content: center;
+align-items: center;
 transform: translateY(-3%);
 button:hover {
     cursor: pointer;
@@ -127,7 +128,7 @@ const backdropStyle = ({menuOpen}) => css`
 ${menuOpen === true &&`
 z-index: 200;
 transition: background-color .3s, z-index .1s;
-background-color: rgba(0,0,0,.8);
+background-color: rgba(255,255,255,.95);
 `}
 `
 
@@ -193,20 +194,66 @@ border-bottom: rgba(255,255,255,0) 2px solid;
 `
 
 const InsideDrawerLink = styled(Link)`
+display: flex;
 font-family: 'Open Sans';
-color: white;
+color: black;
 text-align: center;
 text-decoration: none;
 background: none;
 border: none;
 padding: 10px 20px;
 font-size: 1.5em;
+align-items: center;
+justify-content: space-between;
+width: 700px;
 :first-of-type {
     margin-top: 50px;
 }
 :hover{
         cursor: pointer;
     }
+    .arrow {
+  height: 3px;
+  width: 3px;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  /* margin-left: 400px; */
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  /* transition: .3s; */
+}
+`
+
+const Button = styled(Link)`
+/* width: 190px; */
+text-align: center;
+background-color: black;
+border: solid 1px black;
+border-radius: 2px;
+padding: 10px 30px;
+/* margin: 40px 20px; */
+font-family: 'Open Sans';
+font-size: 16px;
+weight: 200;    
+text-decoration: none;
+color: white;
+:hover {
+    cursor: pointer;
+    }
+
+            
+`
+const ButtonOutline = styled (Button)` 
+    background-color: rgba(0,0,0,0);
+    color: black;
+    transition: .3s;
+            :hover {
+                cursor: pointer;
+                background-color: rgba(0,0,0,1) ;
+                color: white
+            }
 `
 
 
@@ -230,11 +277,39 @@ p {
     margin-left: 20px;
 }
 `
+const NavLower = styled.div`
+display: flex;
+width: 860px;
+margin-top: 80px;
+`
+const VehicleBox = styled.div`
+display: flex;
+flex-direction: column;
+width: 50%;
+.imageBox {
+    margin: 10px auto;
+    height: 180px;
+    width: 94%;
+}
+.buttonBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+`
 
 
 
 export default function Nav({pageLocation, invertNav}){
     const [menuOpen, setMenuOpen] = useState(false);
+    const [navInverted, setNavInverted] = useState(false);
+    useEffect(() => {
+        if (invertNav && !navInverted){setNavInverted(true)}
+    });
+
+
+
+
     let NavigationLinks = <Links> 
         {/* <NavLink href="/build-my-tundra" >
             Build My Tundra
@@ -251,7 +326,7 @@ export default function Nav({pageLocation, invertNav}){
     } 
     let DrawerLinks = (
         <div css={sidebarStyles({ menuOpen })}  onClick={() => {setMenuOpen(false)}}>
-            <InsideDrawerLink to="/build-my-tundra">
+            {/* <InsideDrawerLink to="/build-my-tundra">
                 Build My Tundra
             </InsideDrawerLink>
             <InsideDrawerLink to="/build-my-sequoia">
@@ -262,20 +337,36 @@ export default function Nav({pageLocation, invertNav}){
             </InsideDrawerLink>
             <InsideDrawerLink to="/experience-sequoia">
                 Experience Sequoia
-            </InsideDrawerLink>
+            </InsideDrawerLink> */}
             <InsideDrawerLink to="/">
-                Home
+                Home <span className="arrow"/>
             </InsideDrawerLink>
             <InsideDrawerLink to="/about">
-                About Us
+                About Us <span className="arrow"/>
             </InsideDrawerLink>
             
             <InsideDrawerLink to="/careers">
-                Careers
+                Careers <span className="arrow"/>
             </InsideDrawerLink>
             <InsideDrawerLink to="/support">
-                Support
+                Support <span className="arrow"/>
             </InsideDrawerLink>
+            <NavLower>
+                <VehicleBox>
+                    <StaticImage className="imageBox" src={`../images/Nav/TRDSequoia.png`}/>
+                    <div className="buttonBox">
+                        <Button>Experience Sequoia</Button>
+                        <ButtonOutline>Build My Sequoia</ButtonOutline>
+                    </div>
+                </VehicleBox>
+                <VehicleBox>
+                    <StaticImage className="imageBox" src={`../images/Nav/TRDTundra.png`}/>
+                    <div className="buttonBox">
+                        <Button>Experience Tundra</Button>
+                        <ButtonOutline>Build My Tundra</ButtonOutline>
+                    </div>
+                </VehicleBox>
+            </NavLower>
             {/* 
             <DrawerLinkA onClick={() => {scrollTo("#contactSection","center"); setMenuOpen(!menuOpen)}}>
                 Contact
@@ -286,15 +377,15 @@ export default function Nav({pageLocation, invertNav}){
     return (
     <div>    
         <Navbar>
-            <NavContent className={invertNav ? "invertNav" : ""}>
+            <NavContent className={navInverted ? "invertNav" : ""}>
                 <Link to="/" aria-label="thoughtfulHQ logo" alt="thoughtfulHQ logo">
                 <Logo>
-                    <StaticImage height={50} src="../images/glacierLogo.png" alt="Glacier International Logo"/>
+                    <StaticImage height={50} src={`../images/glacierLogo.png`} alt="Glacier International Logo"/>
                 </Logo>
                 </Link>
                 <Links> 
                     {NavigationLinks}
-                    <button css={styles({ menuOpen })} onClick={() => setMenuOpen(!menuOpen)} aria-label="Navigation menu toggle">
+                    <button css={styles({ menuOpen })} onClick={() => {setMenuOpen(!menuOpen); setNavInverted(!navInverted)}} aria-label="Navigation menu toggle">
                         <span className="hamburger-box">
                             <span className={menuOpen? "hamburger-inner hamburger-inner-active" : "hamburger-inner"}></span>
                         </span>
