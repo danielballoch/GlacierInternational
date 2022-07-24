@@ -96,7 +96,7 @@ export default async function postNewPersonHandler(req, res) {
                 invoices: [invoice]
             };
             const response = await xero.accountingApi.createInvoices('', invoices);
-            console.log('contact id is: ' + contactId);
+            console.log('contact id is: ' + contact2);
             console.log('invoices: ', response.body.invoices);
             res.json(response)
 
@@ -107,27 +107,20 @@ export default async function postNewPersonHandler(req, res) {
             let invoiceResponse;
 
             try {
-                invoiceResponse = await xero.accountingApi.getInvoices(undefined, undefined, undefined, undefined, undefined, undefined, contactIDList, undefined, undefined, undefined, undefined, undefined, undefined);
+                invoiceResponse = await xero.accountingApi.getInvoices('', undefined, undefined, undefined, undefined, undefined, contactIDList, undefined, undefined, undefined, undefined, undefined, undefined);
                 console.log(invoiceResponse.body || invoiceResponse.response.statusCode)
+                invoiceID = invoiceResponse.body.invoices[0].invoiceID;
+                console.log(contactId)
             } catch (err) {
                 const error = JSON.stringify(err.response.body, null, 2)
                 console.log(`Status Code: ${err.response.statusCode} => ${error}`);
-            }
-            if (invoiceResponse.body.invoices !== undefined && invoiceResponse.body.contacts.length !== 0){
-                invoiceID = invoiceResponse.body.invoices[0].invoiceID;
-                console.log(contactId)
-            }
-            else{
-                // Use whatever error code is appropriate. Probably doesn't matter.
-                res.status(3000).send("Problem retrieving invoice ID")
-                console.log("Problem retrieving invoice ID")
             }
             // ###
             // Getting the invoice as a PDF, in case you wanna show it to the customer immediately.
             let invoicePDF;
             let InvoicePDFResponse;
             try {
-                const InvoicePDFResponse = await xero.accountingApi.getInvoiceAsPdf(xero.clientId, invoiceID);
+                const InvoicePDFResponse = await xero.accountingApi.getInvoiceAsPdf('', invoiceID);
                 console.log(InvoicePDFResponse.response.statusCode)
                 //res.send(InvoicePDFResponse.body); //You may want to do this and display the invoice to the customer as a PDF.
                 invoicePDF = InvoicePDFResponse.body;
@@ -140,11 +133,11 @@ export default async function postNewPersonHandler(req, res) {
             const requestEmpty: RequestEmpty = { };
             let emailInvoice;
             try {
-                const emailInvoice = await xero.accountingApi.emailInvoice(xero.clientId, invoiceID, requestEmpty);
+                const emailInvoice = await xero.accountingApi.emailInvoice('', invoiceID, requestEmpty);
                 console.log('Invoice successfully emailed' || emailInvoice.response.statusCode)
             } catch (err) {
                 const error = JSON.stringify(err.response.body, null, 2)
-                console.log(`Status Code: ${err.response.statusCode} => ${error}`);
+                console.log(`Probem emailing invoice`);
             }
             
 
@@ -191,27 +184,20 @@ export default async function postNewPersonHandler(req, res) {
             let invoiceResponse;
 
             try {
-                invoiceResponse = await xero.accountingApi.getInvoices(undefined, undefined, undefined, undefined, undefined, undefined, contactIDList, undefined, undefined, undefined, undefined, undefined, undefined);
+                invoiceResponse = await xero.accountingApi.getInvoices('', undefined, undefined, undefined, undefined, undefined, contactIDList, undefined, undefined, undefined, undefined, undefined, undefined);
                 console.log(invoiceResponse.body || invoiceResponse.response.statusCode)
+                invoiceID = invoiceResponse.body.invoices[0].invoiceID;
+                console.log(contactId)
             } catch (err) {
                 const error = JSON.stringify(err.response.body, null, 2)
                 console.log(`Status Code: ${err.response.statusCode} => ${error}`);
-            }
-            if (invoiceResponse.body.invoices !== undefined && invoiceResponse.body.contacts.length !== 0){
-                invoiceID = invoiceResponse.body.invoices[0].invoiceID;
-                console.log(contactId)
-            }
-            else{
-                // Use whatever error code is appropriate. Probably doesn't matter.
-                res.status(3000).send("Problem retrieving invoice ID")
-                console.log("Problem retrieving invoice ID")
             }
             // ###
             // Getting the invoice as a PDF, in case you wanna show it to the customer immediately.
             let invoicePDF;
             let InvoicePDFResponse;
             try {
-                const InvoicePDFResponse = await xero.accountingApi.getInvoiceAsPdf(xero.clientId, invoiceID);
+                const InvoicePDFResponse = await xero.accountingApi.getInvoiceAsPdf('', invoiceID);
                 console.log(InvoicePDFResponse.response.statusCode)
                 //res.send(InvoicePDFResponse.body); //You may want to do this and display the invoice to the customer as a PDF.
                 invoicePDF = InvoicePDFResponse.body;
@@ -224,7 +210,7 @@ export default async function postNewPersonHandler(req, res) {
             const requestEmpty: RequestEmpty = { };
             let emailInvoice;
             try {
-                const emailInvoice = await xero.accountingApi.emailInvoice(xero.clientId, invoiceID, requestEmpty);
+                const emailInvoice = await xero.accountingApi.emailInvoice('', invoiceID, requestEmpty);
                 console.log('Invoice successfully emailed' || emailInvoice.response.statusCode)
             } catch (err) {
                 const error = JSON.stringify(err.response.body, null, 2)
