@@ -113,7 +113,7 @@ export default async function postNewPersonHandler(req, res) {
                 console.log(contactId)
             } catch (err) {
                 const error = JSON.stringify(err.response.body, null, 2)
-                console.log(`Status Code: ${err.response.statusCode} => ${error}`);
+                console.log(`Failed to get invoice ID`);
             }
             // ###
             // Getting the invoice as a PDF, in case you wanna show it to the customer immediately.
@@ -126,7 +126,7 @@ export default async function postNewPersonHandler(req, res) {
                 invoicePDF = InvoicePDFResponse.body;
             } catch (err) {
                 const error = JSON.stringify(err.response.body, null, 2)
-                console.log(`Status Code: ${err.response.statusCode} => ${error}`);
+                console.log(`Failed to generate PDF of invoice`);
             }
             // ###
             // Emailing the invoice
