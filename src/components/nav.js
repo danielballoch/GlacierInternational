@@ -81,6 +81,7 @@ ${menuOpen === true &&`
 const sidebarStyles = ({menuOpen}) => css`
 ${'' /* display: none; */}
 overflow-x: none;
+overflow-y: scroll;
 white-space: nowrap;
 transition: .5s;
 transition-delay: 0;
@@ -205,7 +206,16 @@ padding: 10px 20px;
 font-size: 1.5em;
 align-items: center;
 justify-content: space-between;
-width: 700px;
+width: 100%;
+max-width: 700px;
+@media(max-width: 850px){
+    width: 80%;
+    padding: 5px 20px;
+    :first-of-type {
+        margin-top: 60px !important;
+    }
+    /* margin: 0 40px; */
+}
 :first-of-type {
     margin-top: 50px;
 }
@@ -242,8 +252,9 @@ color: white;
 :hover {
     cursor: pointer;
     }
-
-            
+@media(max-width: 420px){
+    padding: 8px 15px;
+}        
 `
 const ButtonOutline = styled (Button)` 
     background-color: rgba(0,0,0,0);
@@ -279,22 +290,31 @@ p {
 `
 const NavLower = styled.div`
 display: flex;
-width: 860px;
+width: 100%;
+max-width: 860px;
 margin-top: 80px;
+@media(max-width: 850px){
+flex-direction: column;
+margin-top: 0;
+}
 `
 const VehicleBox = styled.div`
 display: flex;
 flex-direction: column;
 width: 50%;
+min-width: 300px;
 .imageBox {
     margin: 10px auto;
-    height: 180px;
+    max-height: 180px;
     width: 94%;
 }
 .buttonBox {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+@media(max-width: 850px){
+margin: auto;
 }
 `
 
