@@ -138,8 +138,8 @@ const isBrowser = typeof window !== "undefined";
 const IndexPage = ({display=false}) => {
     
     const [price, setPrice] = useState(0);
-    const [activeGrade, setActiveGrade] = useState(["1794",32000, 0]);
-    const [activeColor, setActiveColor] = useState(["Supersonic Red",100, 5]);
+    const [activeGrade, setActiveGrade] = useState(["SR5",32000, 0]);
+    const [activeColor, setActiveColor] = useState(["Midnight Black Metallic",100, 5]);
 
     const [selectionStage, setSelectionStage] = useState(0);
     
@@ -166,7 +166,7 @@ const IndexPage = ({display=false}) => {
         <PriceFinanceBar price={price}/>
         <Row>
             <MainImage src={grades[activeGrade[2]].src[activeColor[2]]} />
-            <FeatureBar grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color); console.log(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}} />
+            <FeatureBar grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color); console.log(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}} price={price}/>
         </Row>
         </Main>
     </Layout>

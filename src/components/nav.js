@@ -326,18 +326,6 @@ export default function Nav({pageLocation, invertNav}){
     } 
     let DrawerLinks = (
         <div css={sidebarStyles({ menuOpen })}  onClick={() => {setMenuOpen(false)}}>
-            {/* <InsideDrawerLink to="/build-my-tundra">
-                Build My Tundra
-            </InsideDrawerLink>
-            <InsideDrawerLink to="/build-my-sequoia">
-                Build My Sequoia
-            </InsideDrawerLink>
-            <InsideDrawerLink to="/experience-tundra">
-                Experience Tundra
-            </InsideDrawerLink>
-            <InsideDrawerLink to="/experience-sequoia">
-                Experience Sequoia
-            </InsideDrawerLink> */}
             <InsideDrawerLink to="/">
                 Home <span className="arrow"/>
             </InsideDrawerLink>
@@ -355,23 +343,18 @@ export default function Nav({pageLocation, invertNav}){
                 <VehicleBox>
                     <StaticImage className="imageBox" src={`../images/Nav/TRDSequoia.png`}/>
                     <div className="buttonBox">
-                        <Button>Experience Sequoia</Button>
-                        <ButtonOutline>Build My Sequoia</ButtonOutline>
+                        <Button to="/experience-sequoia">Experience Sequoia</Button>
+                        <ButtonOutline to="/build-my-sequoia">Build My Sequoia</ButtonOutline>
                     </div>
                 </VehicleBox>
                 <VehicleBox>
                     <StaticImage className="imageBox" src={`../images/Nav/TRDTundra.png`}/>
                     <div className="buttonBox">
-                        <Button>Experience Tundra</Button>
-                        <ButtonOutline>Build My Tundra</ButtonOutline>
+                        <Button to="/experience-tundra">Experience Tundra</Button>
+                        <ButtonOutline to="/build-my-tundra">Build My Tundra</ButtonOutline>
                     </div>
                 </VehicleBox>
             </NavLower>
-            {/* 
-            <DrawerLinkA onClick={() => {scrollTo("#contactSection","center"); setMenuOpen(!menuOpen)}}>
-                Contact
-            </DrawerLinkA> 
-            */}
         </div> 
     )
     return (

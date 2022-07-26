@@ -128,7 +128,8 @@ export default function OrderPage ({location}){
                     <p>Model: {location.state.model}</p>
                     <p>Grade: {location.state.grade}</p>
                     {location.state.bed === 0 ? <p>Bed & Cab: Regular (5.5ft)</p> 
-                    : <p>Bed & Cab: Longbase (6.5ft)</p>}
+                    : location.state.bed === 1 ? <p>Bed & Cab: Longbase (6.5ft)</p>
+                    : null }
                     <p>Color: {location.state.color}</p>
                 </Flex>
                 <p>Total Price: ${nf.format(location.state.price)} (NZD)</p>

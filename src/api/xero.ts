@@ -40,7 +40,7 @@ export default async function postNewPersonHandler(req, res) {
 
     console.log(req.body);
     let bed;
-    if (req.body.bed === 0){bed = " Regular (5.5ft) "} else {bed = " Longbase (6.5ft) "}
+    if (req.body.bed === 0){bed = " Regular (5.5ft) "} else if (req.body.bed === 1) {bed = " Longbase (6.5ft) "} else {bed = " "}
     const description = "Deposit Invoice for " + req.body.name + "'s custom " + req.body.model + " order. Order details: " + req.body.model + " " + req.body.grade + bed + req.body.color;
 
 

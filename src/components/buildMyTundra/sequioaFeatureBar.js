@@ -1,4 +1,5 @@
 import React, { useEffect } from "react"
+import { Link } from "gatsby";
 import styled from '@emotion/styled';
 
 const CenterLeft = styled.div`
@@ -91,8 +92,13 @@ button {
 }
 `
 
+const StyledLink = styled(Link)`
+width: 80%;
+margin: auto;
+`
 
-export default function FeatureBar ({grades, activeGrade, activeColor, updateActiveColor, updateActiveGrade}){
+
+export default function FeatureBar ({grades, activeGrade, activeColor, updateActiveColor, updateActiveGrade, price}){
 
     useEffect(() => {
 
@@ -130,7 +136,7 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
                 </div>
                 
                 <p className="infoText">To put a 10% deposit down securing your custom Sequoia build for 2022, please click the button below for more info at our payment gateway.</p>
-                <button className="orderbtn">Complete Order</button>
+                <StyledLink to="/order-page" state={{model: "2023 Sequoia", grade: activeGrade[0], color: activeColor[0], bed: 3, price: price }}><button className="orderbtn">Complete Order</button></StyledLink>
             </CenterLeft>
     )
 }
