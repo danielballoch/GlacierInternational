@@ -18,16 +18,21 @@ export default async function postNewPersonHandler(req, res) {
         const validTokenSet = await xero.refreshToken();
     }
 
-
+    //creating dates for invoices, checking if I need to add a month + days, or just 7 days to the due date for invoice (nextWeek).
     var today = new Date();
-    let dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var dd = today.getDate();
+    var mm = today.getMonth();
     var yyyy = today.getFullYear();
     
     let currentDate = mm + '/' + dd + '/' + yyyy;
-    console.log(currentDate)
-    let nextWeek = mm + '/' + (Number(dd) + 0) + '/' + yyyy;
-    console.log(nextWeek)
+    let lastDate = (new Date(yyyy, mm, 0)).getDate();
+
+    let nextWeek; 
+    if (Number(dd) + 7 > lastDate){
+        nextWeek = (mm+1) + '/' + (7 + (dd - lastDate)) + '/' + yyyy;
+    } else {
+        nextWeek = mm + '/' + (dd + 7) + '/' + yyyy;
+    }
 
 
 
