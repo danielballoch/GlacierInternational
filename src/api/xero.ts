@@ -26,7 +26,7 @@ export default async function postNewPersonHandler(req, res) {
     
     let currentDate = mm + '/' + dd + '/' + yyyy;
     console.log(currentDate)
-    let nextWeek = mm + '/' + (Number(dd) + 7) + '/' + yyyy;
+    let nextWeek = mm + '/' + (Number(dd) + 0) + '/' + yyyy;
     console.log(nextWeek)
 
 
@@ -151,6 +151,7 @@ export default async function postNewPersonHandler(req, res) {
             const where = 'Status=="ACTIVE" AND Type=="SALES"';
             const accounts = await xero.accountingApi.getAccounts('', undefined, where);
             // console.log('accounts: ', accounts.body.accounts);
+            const contactId = checkContactExists.body.contacts[0].contactID;
             const contact: Contact = {
                 contactID: checkContactExists.body.contacts[0].contactID
             };
