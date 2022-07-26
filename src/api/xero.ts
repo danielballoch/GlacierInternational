@@ -47,7 +47,7 @@ export default async function postNewPersonHandler(req, res) {
     try {
 
         const checkContactExists = await xero.accountingApi.getContacts('', undefined, undefined, undefined, undefined, undefined, undefined, undefined, req.body.name);
-        if (checkContactExists.body.contacts === undefined || checkContactExists.body.contacts.length === 0){
+        if (checkContactExists.body.contacts === undefined || checkContactExists.body.contacts.length === 0 || req.body.name !== checkContactExists.body.contacts[0].name){
             //if name is not in Xero contacts already, create contact with form info.
             console.log("name is not in database")
             const contact: Contact = {
@@ -64,15 +64,22 @@ export default async function postNewPersonHandler(req, res) {
                 contacts: [contact]
             }; 
             await xero.accountingApi.createContacts('', contacts);
-            console.log(contact)
             //now that the contact is created, use the contact & Build My Tundra info to create invoice.
             //need to get accountId, so do check again now that it is created and used the id there
             const getContactId = await xero.accountingApi.getContacts('', undefined, undefined, undefined, undefined, undefined, undefined, undefined, req.body.name)
-            console.log("I should be able to get the account created now")
             let contactId;
             if (getContactId.body.contacts !== undefined && getContactId.body.contacts.length !== 0){
-                contactId = getContactId.body.contacts[0].contactID;
-                console.log(contactId)
+                //getContactId is returning if contacts include all characters, not specific order/name so need to check which includes specific name as in else 
+                let CorrectArrayIndex;
+                console.log("is this showing up>??")
+                getContactId.body.contacts.forEach((contact, i) => {
+                    if (contact.name === req.body.name){
+                        CorrectArrayIndex = i;
+                    }
+                })
+                //here I need to make sure getContactId.body.contact[?].name === req.body.name
+                //the question mark is what I'm figuring out, I need to see which one it's on 
+                contactId = getContactId.body.contacts[CorrectArrayIndex].contactID;
             }
             //now that I have id create invoice
             const where = 'Status=="ACTIVE" AND Type=="SALES"';
@@ -150,7 +157,9 @@ export default async function postNewPersonHandler(req, res) {
             return res.status(200).json();
 
         } else {
+            console.log()
             console.log("name is in database");
+            console.log(checkContactExists.body.contacts[0].name)
             console.log("Contact id is: " + checkContactExists.body.contacts[0].contactID);
             //check through and make sure existing contact has necessary information to create invoice.
             const where = 'Status=="ACTIVE" AND Type=="SALES"';
