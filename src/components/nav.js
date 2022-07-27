@@ -20,7 +20,6 @@ const styles = ({menuOpen}) => css`
     background-color: transparent;
     border: 0;
     margin: 0;
-    overflow: visible;
 .hamburger-box {
     width: 40px;
     height: 24px;
@@ -86,11 +85,15 @@ white-space: nowrap;
 transition: .5s;
 transition-delay: 0;
 position: fixed;
-top: 0;
+top: 100px;
+bottom: 0;
+${'' /* margin-top: 100px; */}
+${'' /* margin-bottom: 100px; */}
 right:0;
 opacity: 0;
 z-index: -400;
-height: 100%;
+${'' /* height: 100%; */}
+${'' /* min-height: 200vh; */}
 width: 100%;
 display: flex;
 flex-direction: column;
@@ -119,10 +122,8 @@ const backdropStyle = ({menuOpen}) => css`
     transition-delay: .3s;
     transition: background-color .3s, z-index .4s;
     width: 100%;
-    overflow: auto
     padding: 0;
     margin: 0;
-    overflow: hidden;
     height: 100vh;
     background-color: rgba(255,255,255,0);
 
@@ -147,6 +148,9 @@ margin: auto;
 justify-content: center;
 width: 100%;
 z-index: 1000;
+@media(max-width: 440px){
+
+}
 /* background-color: rgba(255, 255, 255, 0.92);  */
 /* inset */
 /* box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;  */
@@ -212,12 +216,9 @@ max-width: 700px;
     width: 80%;
     padding: 5px 20px;
     :first-of-type {
-        margin-top: 140px !important;
+        margin-top: 100px !important;
     }
     /* margin: 0 40px; */
-}
-:first-of-type {
-    margin-top: 50px;
 }
 :hover{
         cursor: pointer;
@@ -315,6 +316,9 @@ min-width: 300px;
 }
 @media(max-width: 850px){
 margin: auto;
+:last-of-type {
+    margin-bottom: 100px;
+}
 }
 `
 
