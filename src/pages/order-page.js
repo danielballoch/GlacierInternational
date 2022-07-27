@@ -6,8 +6,11 @@ import { Link } from "gatsby";
 
 const Container = styled.div`
 margin: 200px auto;
-height: 90vh;
-width: 800px;
+min-height: 90vh;
+heiht: 100%;
+max-width: 800px;
+width: 90%;
+/* margin: 0 10px; */
 form {
     display: flex;
     flex-direction: column;
@@ -26,6 +29,7 @@ form {
     div {
         display: flex;
         justify-content: space-between;
+        width: 100%;
         label {
             width: 45%;
         }
@@ -37,7 +41,9 @@ form {
         }
     }
     input, textarea {
+        box-sizing: border-box;
         width: 100%;
+        margin: 0;
         padding: 10px;
     }
     button {
@@ -65,8 +71,9 @@ form {
 const Flex = styled.div`
 display: flex;
 flex-wrap: wrap;
+width: 100%;
 p {
-    padding-right: 10px;
+    /* padding-right: 10px; */
 }
 `
 

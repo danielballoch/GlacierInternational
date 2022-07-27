@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby";
 import styled from '@emotion/styled';
 
 
@@ -51,10 +52,13 @@ button {
     border: solid 1px #0952BE;
 }
 `
+const StyledLink = styled(Link)`
+width: 80%;
+margin: auto;
+`
 
 
-
-export default function MobileFeatureSection({model, selectionStage, grades, activeGrade, activeColor, updateActiveColor, updateActiveGrade, activeBed, updateActiveBed}){
+export default function MobileFeatureSection({model, selectionStage, grades, activeGrade, activeColor, updateActiveColor, updateActiveGrade, activeBed, updateActiveBed, price}){
     let featureSection;
     if (activeGrade[0] === "Platinum Hybrid" || activeGrade[0] === "1794 Hybrid TRD OFF ROAD"){
         if (selectionStage === 0){
@@ -84,7 +88,7 @@ export default function MobileFeatureSection({model, selectionStage, grades, act
                 </div>
             </FeatureSection>
         } else {
-            featureSection = <FeatureSection><p>To put a 10% deposit down securing your {model} build for 2022, please click the button for more info at our payment gateway.</p><button className="orderbtn">Complete Order</button></FeatureSection>
+            featureSection = <FeatureSection><p>To put a 10% deposit down securing your {model} build for 2022, please click the button for more info at our payment gateway.</p><StyledLink to="/order-page" state={{model: "2022 Tundra", grade: activeGrade[0], color: activeColor[0], bed: activeBed, price: price }}><button className="orderbtn">Complete Order</button></StyledLink></FeatureSection>
         }
     }
     else {

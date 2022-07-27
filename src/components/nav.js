@@ -212,7 +212,7 @@ max-width: 700px;
     width: 80%;
     padding: 5px 20px;
     :first-of-type {
-        margin-top: 120px !important;
+        margin-top: 140px !important;
     }
     /* margin: 0 40px; */
 }
