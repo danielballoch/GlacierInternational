@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import {css} from '@emotion/react';
 
 const termsStyles = ({menuOpen}) => css`
@@ -90,8 +90,14 @@ background-color: rgba(0,0,0,.8);
 
 
 export default function Terms(){
-
-    const [menuOpen, setMenuOpen] = useState(true);
+    useEffect (() => {
+        console.log(sessionStorage.getItem('name'))
+        if(sessionStorage.getItem('terms') !== 'accepted'){
+            setMenuOpen(true);
+        }
+    })
+ 
+    const [menuOpen, setMenuOpen] = useState(false);
     let DrawerLinks = (
         <div css={termsStyles({ menuOpen })}>
             <div>
@@ -105,7 +111,7 @@ export default function Terms(){
                 <p>
                 "TOYOTA" and "TUNDRA" are registered trademarks of Toyota Motor Corporation. TUNDRA is used in the title of this website solely to identify the subject of interest to the website. Toyota Motor Corporation, Toyota Motor Sales, U.S.A., Inc. and their affiliated companies are not responsible in any way for the contents of the site, which are solely the responsibility of the publisher. The contents of the website do not reflect the policy or opinions of Toyota Motor Corporation, Toyota Motor Sales, U.S.A., Inc. or any of Toyota's affiliated companies. This website is not affiliated with, endorsed, sponsored, or supported by Toyota Motor Corporation, Toyota Motor Sales, U.S.A., Inc. or any of Toyota's affiliated companies.
                 </p>
-                <button onClick={() => {setMenuOpen(false); document.cookie = "termsAccepted=true; new Date(new Date().getTime()+60*60*1000*0.001).toGMTString(); SameSite=None; Secure;"; console.log("document cookie after click: " + document.cookie)}}> Accept Terms & Enter Website</button>
+                <button crossorgin='anonymous' onClick={() => {setMenuOpen(false); sessionStorage.setItem('terms','accepted');}}> Accept Terms & Enter Website</button>
             </div>
             
         </div> 

@@ -1,10 +1,3 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
@@ -13,9 +6,18 @@ import { Global, css } from '@emotion/react'
 import Nav from './nav'
 import Footer from './footer'
 import Terms from './terms'
+// import { CookiesProvider, useCookies } from 'react-cookie';
+import styled from '@emotion/styled';
+
 // import { CookiesProvider, useCookies } from 'react-cookie'
 // import Footer from './footer'
 
+const CookieTest = styled.div`
+display: fixed;
+width: 100px;
+height: 100px;
+background-color: red;
+`
 
 const Layout = ({ title, children, pageLocation, hideFooter, invertNav}) => {
 
@@ -45,6 +47,7 @@ const Layout = ({ title, children, pageLocation, hideFooter, invertNav}) => {
     }
   `)
 
+//   const [cookies, setCookie] = useCookies(['name']);
   return (
     <>
       <div>
@@ -86,6 +89,7 @@ const Layout = ({ title, children, pageLocation, hideFooter, invertNav}) => {
         <Terms/>
         
         <Nav pageLocation={pageLocation} invertNav={invertNav}/>
+        {/* <CookieTest>hello</CookieTest> */}
         <main>{children}</main>
         <Footer hideFooter={hideFooter}/>
       </div>
