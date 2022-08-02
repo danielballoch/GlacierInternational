@@ -367,7 +367,7 @@ const ExperienceTundraPage = () => {
                         objectPosition={"50% 70%"}
                         className="tundraimage"
                         />
-                        <div><button>Tundra Brochure</button><Link to="/build-my-tundra"><button>Build Your Tundra</button></Link></div> 
+                        <div><a href="https://www.toyota.com/tundra/ebrochure/" target="_blank"><button>Tundra Brochure</button></a><Link to="/build-my-tundra"><button>Build Your Tundra</button></Link></div> 
                         {/* <span/> */}
                         
                         </Container>
