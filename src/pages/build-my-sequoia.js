@@ -162,7 +162,6 @@ const IndexPage = ({display=false}) => {
   return (
       <Layout title="Build Your Sequoia | Glacier International" hideFooter={true} invertNav={true}>
         <Main style={pageStyles}>
-        <title>Build my Sequoia</title>
         <PriceFinanceBar price={price}/>
         <Row>
             <MainImage src={grades[activeGrade[2]].src[activeColor[2]]} />
@@ -174,9 +173,8 @@ const IndexPage = ({display=false}) => {
     } else {
         // mobile page
         return (
-            <Layout hideFooter={true} invertNav={true}>
+            <Layout title="Build Your Sequoia | Glacier International" hideFooter={true} invertNav={true}>
                 <Main style={pageStyles}>
-                    <title>Home Page</title>
                     <MainImage src={grades[activeGrade[2]].src[activeColor[2]]}/>
                     <PriceFinanceBar price={price}/>
                     <MobileSelectionTab selectionStage={selectionStage} updateSelectionStage={(newStageNumber) => {setSelectionStage(newStageNumber)}} activeGrade={activeGrade}/>

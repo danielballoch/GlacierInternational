@@ -16,7 +16,6 @@ h1, p {
 export default function TermsPrivacy(){
     return (
         <Layout title="Privacy & Legal | Glacier International" invertNav={true}>
-            <title>Privacy & Legal</title>
             <Center>
                 <h1>Terms & Conditions</h1>
                 <p>

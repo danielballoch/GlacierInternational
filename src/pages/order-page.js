@@ -126,7 +126,7 @@ export default function OrderPage ({location}){
       console.log({ errors })
       
     return(
-        <Layout invertNav={true}>
+        <Layout title="Order Page | Glacier International" invertNav={true}>
             <Container>
             <h1>Order Details:</h1>
             {location.state && location.state.model ? 

@@ -259,7 +259,6 @@ align-items: center;
 const CareersPage = () => {
     return(
         <Layout title="Careers | Glacier International" invertNav={true}>
-            <title>Careers</title>
             <GridHeroContainer>
             <StaticImage
                 src={`../images/careers/workshop.jpg`}
