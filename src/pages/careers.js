@@ -279,8 +279,7 @@ const CareersPage = () => {
             <Hero>
                 <HeroContent>
                 <h1>Working at Glacier International</h1>
-                <p>Glacier International is a growing business based in Queenstown and we're on the hunt for automotive professionals to join our team.</p>
-                <p>We're working with state of the art machinary and are passionate about helping our customers, likewise were looking for people who are great at their craft, eager to learn, and have the same enthusiasim to get these high class machines out to all the thrill seekers and smart buyers across New Zealand.</p>
+                <p>Located at the Innovation and Technology Park at Highlands Cromwell. We are now accepting applications for Automotive professionals to join our team. </p>
                 <a href="#positions"><button >EXPLORE ROLES</button></a>
                 </HeroContent>
             </Hero>
@@ -321,13 +320,10 @@ const CareersPage = () => {
             <Container>
                 <h1>How To Apply</h1>
                 <p>
-                Paragraph explaining conversion and customisation, introducting vechicles more leading readers to want to learn more. Integer convallis dolor vitae est gravida, vitae elementum elit porttitor. Maecenas at posuere enim, at euismod urna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse vitae congue ante. Nam pharetra urna id enim elementum, at vehicula turpis rutrum. 
+                At Glacier International we prioritise the customer and the team. We desire people focused, motivated team members to enhance the customer experience. 
                 </p>
                 <p>
-                Donec aliquet fermentum ex, eu vehicula nisi fermentum eget. Etiam maximus luctus justo, a mattis nibh dignissim eu. Vivamus feugiat eros ante, in eleifend nisi elementum vel. Mauris eleifend, justo eu dictum aliquet, magna lorem dignissim odio, at imperdiet leo magna sagittis enim. Vestibulum dignissim varius massa, sit amet fermentum nunc sollicitudin sit amet. Praesent nisi urna, vestibulum vel ante eget, rhoncus imperdiet lorem. 
-                </p>
-                <p>
-                Send us your resume and why you want to work for us at careers@glacier.nz
+                Email us your resume and why you want to work with us.  
                 </p>
             </Container>
 

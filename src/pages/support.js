@@ -191,6 +191,7 @@ const Content = ({question, answer}) => {
 
 const SupportTundraPage = () => {
     const Questions = [
+    {question: "Why is there such a price difference from USA to NZ?", answer: "Due to Covid 19 pandemic causing global chip shortage there is a large supply and demand challenge with ripple effects for the next 4 years. The result of this is that on most occasions if we don’t act within 12 hours a Sequoia or Tundra is sold to one of our 374 million Family members in North America so if we say 'act fast' it's not due to fear of missing out, you just will miss out that day, so that’s why we encourage 12 hour commitment."},
     {question: "Are the Tundra and Sequoia mechanically insured?", answer: "All Tundras and Sequoias sold are MTA Assured for 1 year, and you can find a list on reccomended MTA service centers for any future check ups or modifications here."},
     {question: "Does Glacier International service vehicles also?", answer: "Yes. We keep up with our clients and offer the best services availible at our Queenstown base; We also have a list of trusted mechanics availivle here. For any more information please email support@glacier.co.nz"},
     {question: " Are there finance options available for the Tundra & Sequoia?", answer: "Yes, currently we offer..."}

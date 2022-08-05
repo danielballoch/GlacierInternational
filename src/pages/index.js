@@ -303,7 +303,7 @@ const IndexPage = () => {
                         </svg>
                     </LogoOver>
                     <div className="herotext">
-                        <p>Glacier International is a one-stop shop for importing, right hand drive re-manufacturing, and customising your Toyota Tundra. With cutting edge technology, the 2022 Toyota Tundra is a half-ton, meticulously engineered heavy metal machine, and our goal is to deliver it to Kiwis who value reliability, performance and class over anything else.</p>
+                        <p>Glacier International is a one-stop shop for importing, right hand drive re-manufacturing, and customising your Toyota Tundra. With cutting edge technology, the 2023 Toyota Tundra is a half-ton, meticulously engineered heavy metal machine, and our goal is to deliver it to Kiwis who value reliability, performance and class over anything else.</p>
                     </div>
                         <ScrollAnimation/>
                     </div>
@@ -312,27 +312,8 @@ const IndexPage = () => {
         </div>
        
         </Main>
-        {/* <Spacer/> */}
-        {/* Tundra section */}
-        <DisplaySection>
-            <div>
-                <h2>2022</h2>
-                <h1>2022 Toyota Tundra</h1>
-                <p>"The only Hybrid truck in New Zealand. Imported, right-hand drive remanufactured, and modified to your needs, exclusively by Glacier International."</p>
-                <div><Button to="/experience-tundra">Experience Tundra</Button><ButtonOutline to="/build-my-tundra">Build Your Tundra</ButtonOutline></div>
-            </div>
-        <div> 
-            <StaticImage
-                src={`../images/homepageimages/tundra.jpg`}
-                alt="Tundra Image"
-                style={{
-                    height: "100%"
-                    }}
-                />  
-        </div>
-        </DisplaySection>
-        {/* Sequioa section */}
-        <DisplaySection>
+         {/* Sequioa section */}
+         <DisplaySection>
             <div>
                 <h2>2023</h2>
                 <h1>2023 Toyota Sequoia</h1>
@@ -349,6 +330,25 @@ const IndexPage = () => {
                 />  
         </div>
         </DisplaySection>
+        {/* Tundra section */}
+        <DisplaySection>
+            <div>
+                <h2>2023</h2>
+                <h1>2023 Toyota Tundra</h1>
+                <p>"The only Hybrid truck in New Zealand. Imported, right-hand drive remanufactured, and modified to your needs, exclusively by Glacier International."</p>
+                <div><Button to="/experience-tundra">Experience Tundra</Button><ButtonOutline to="/build-my-tundra">Build Your Tundra</ButtonOutline></div>
+            </div>
+        <div> 
+            <StaticImage
+                src={`../images/homepageimages/tundra.jpg`}
+                alt="Tundra Image"
+                style={{
+                    height: "100%"
+                    }}
+                />  
+        </div>
+        </DisplaySection>
+       
            
     </Layout>
   )

@@ -145,11 +145,11 @@ const IndexPage = ({display=false}) => {
     
 
     const grades = [
-        {name: "SR5", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Army Green","Smoked Mesquite", "Supersonic Red","Rock", "Celestial Silver Metallic", "White"], src: [BlackSR5, BlueSR5, GraySR5, GreenSR5,MesquiteSR5, RedSR5,RockSR5, SilverSR5, WhiteSR5], price: 180000},
-        {name: "Limited", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic", "Army Green", "Smoked Mesquite", "Wind Chill Pearl", "Supersonic Red", "Celestial Silver Metallic", "White"], src: [BlackLimited, BlueLimited, GrayLimited, GreenLimited, MesquiteLimited, PearlLimited, RedLimited, SilverLimited, WhiteLimited], price: 185000},
-        {name: "Platinum", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Wind Chill Pearl", "Supersonic Red", "Celestial Silver Metallic"], src: [BlackPlatinum, BluePlatinum, GrayPlatinum, PearlPlatinum, RedPlatinum, SilverPlatinum], price: 195000},
-        {name: "TRD PRO", colors: ["Midnight Black Metallic","Magnetic Grey Metallic","Solar Octane", "White"], src: [BlackTRDPRO, GrayTRDPRO, SolarTRDPRO, WhiteTRDPRO], price: 219000},
-        {name: "Capstone", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Wind Chill Pearl","Supersonic Red","Celestial Silver Metallic"], src: [BlackCapstone, BlueCapstone, GrayCapstone, PearlCapstone, RedCapstone, SilverCapstone], price: 249000},
+        {name: "SR5", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Army Green","Smoked Mesquite", "Supersonic Red","Rock", "Celestial Silver Metallic", "White"], src: [BlackSR5, BlueSR5, GraySR5, GreenSR5,MesquiteSR5, RedSR5,RockSR5, SilverSR5, WhiteSR5], price: 205000},
+        {name: "Limited", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic", "Army Green", "Smoked Mesquite", "Wind Chill Pearl", "Supersonic Red", "Celestial Silver Metallic", "White"], src: [BlackLimited, BlueLimited, GrayLimited, GreenLimited, MesquiteLimited, PearlLimited, RedLimited, SilverLimited, WhiteLimited], price: 225000},
+        {name: "Platinum", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Wind Chill Pearl", "Supersonic Red", "Celestial Silver Metallic"], src: [BlackPlatinum, BluePlatinum, GrayPlatinum, PearlPlatinum, RedPlatinum, SilverPlatinum], price: 245000},
+        {name: "TRD PRO", colors: ["Midnight Black Metallic","Magnetic Grey Metallic","Solar Octane", "White"], src: [BlackTRDPRO, GrayTRDPRO, SolarTRDPRO, WhiteTRDPRO], price: 265000},
+        {name: "Capstone", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Wind Chill Pearl","Supersonic Red","Celestial Silver Metallic"], src: [BlackCapstone, BlueCapstone, GrayCapstone, PearlCapstone, RedCapstone, SilverCapstone], price: 265000},
     ]
 
 

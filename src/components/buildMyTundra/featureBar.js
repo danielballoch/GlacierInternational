@@ -104,7 +104,7 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
 
     return(
         <CenterLeft>
-                <h1>2022 Toyota Tundra</h1>
+                <h1>2023 Toyota Tundra</h1>
                 <div className="features">
                     <div><h2>437 HP/583 Lb.-Ft.</h2><p>i-FORCE MAX Engine</p></div>
                     <div><h2>389 HP/479 Lb.-Ft.</h2><p>i-FORCE Engine </p></div>
@@ -146,9 +146,9 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
 
                 
                 
-                <p className="infoText">To put a 10% deposit down securing your custom Tundra build for 2022, please click the button below for more info at our payment gateway.</p>
+                <p className="infoText">To put a 10% deposit down securing your custom Tundra build for 2023, please click the button below for more info at our payment gateway.</p>
                 
-                <StyledLink to="/order-page" state={{model: "2022 Tundra", grade: activeGrade[0], color: activeColor[0], bed: activeBed, price: price }}><button className="orderbtn">Complete Order</button></StyledLink>
+                <StyledLink to="/order-page" state={{model: "2023 Tundra", grade: activeGrade[0], color: activeColor[0], bed: activeBed, price: price }}><button className="orderbtn">Complete Order</button></StyledLink>
             </CenterLeft>
     )
 }

@@ -266,7 +266,7 @@ const AboutPage = () => {
             <Container>
                 <h2>Our Story</h2>
                 <p>
-                The brain-child of Toyota qualified technicians, Glacier International is the only solution for discerning customers who covet right-hand-drive Tundra and Sequoia but demand proven OEM quality, reliability and performance.  
+                The brain-child of Toyota qualified technicians, Glacier International is the only solution for discerning customers who covet our right-hand-drive Sequoia or Tundra and demand proven OEM (Original Equipment Manufacture) quality, reliability and performance.
                 </p>
                 <p>
                 “As a Toyota trained technician it was crucial for me to design a remanufacturing package that was indiscernible from OEM fit and finish. Our Tundra’s and Sequoia’s are guaranteed to meet or exceed our customers’ expectations.” 
@@ -329,8 +329,7 @@ const AboutPage = () => {
             />
             <ContainerLeft>
                 <h2>Our Craftsmanship</h2>
-                <p>Paragraph explaining conversion and customisation, introducting vechicles more leading readers to want to learn more. Integer convallis dolor vitae est gravida, vitae elementum elit porttitor. Maecenas at posuere enim, at euismod urna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse vitae congue ante. Nam pharetra urna id enim elementum, at vehicula turpis rutrum.</p>
-                <p>Donec aliquet fermentum ex, eu vehicula nisi fermentum eget. Etiam maximus luctus justo, a mattis nibh dignissim eu. Vivamus feugiat eros ante, in eleifend nisi elementum vel. Mauris eleifend, justo eu dictum aliquet, magna lorem dignissim odio, at imperdiet leo magna sagittis enim. Vestibulum dignissim varius massa, sit amet fermentum nunc sollicitudin sit amet. Praesent nisi urna, vestibulum vel ante eget, rhoncus imperdiet lorem.</p>
+                <p>Partnering with leading additive manufacturing and design specialists to produce injection moulded aesthetic components.</p>
             </ContainerLeft>
         </ContainerSplit>
 
