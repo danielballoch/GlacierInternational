@@ -119,8 +119,17 @@ export default function OrderPage ({location}){
         })
           .then(res => res.json())
           .then(body => {
-            console.log(`response from API:`, body);
-            setFormSent("sent");
+            // console.log(`response from API:`, body);
+            console.log("Response status: ", body.response.statusCode);
+            if (body.response.statusCode === 200){
+                console.log("sent!")
+                setFormSent("sent");
+            } else {
+                console.log("error!")
+                setFormSent("error");
+            }
+            
+            
           })
       }
       console.log({ errors })
@@ -140,9 +149,9 @@ export default function OrderPage ({location}){
                     <p>Color: {location.state.color}</p>
                 </Flex>
                 <p>Total Price: ${nf.format(location.state.price)} (NZD)</p>
-                <p>Deposit: ${(Number(location.state.price) * 0.1).toLocaleString()} (NZD)</p>
+                <p>Deposit: ${(Number(location.state.price) * 0.75).toLocaleString()} (NZD)</p>
                 <hr/>
-                <p>Please enter your information below to recive your deposit invoice of ${(Number(location.state.price) * 0.1).toLocaleString()} via email, and secure your custom Tundra build.</p>
+                <p>Please enter your information below to recive your 75% deposit invoice of ${(Number(location.state.price) * 0.75).toLocaleString()} via email, and secure your custom Tundra build.</p>
             </div>
             : <p>Loading data... if you have not come from the 'build your Tundra/Sequoia' page please <Link to="/">click here</Link></p>
             }
@@ -193,6 +202,7 @@ export default function OrderPage ({location}){
                         >Submit</button>
                         {formSent === "sending"? <p className="submit-message">Your order is sending, please stay on page.</p>
                         : formSent === "sent" ? <p className="submit-message">Order submitted, your deposit invoice will be with you shortly.</p>
+                        : formSent === "error" ? <p className="submit-message">Sorry, there's been an error submitting your form. Please contact our support team at ceo@glacier.nz</p>
                         : <p></p>
                         }
                     </form>

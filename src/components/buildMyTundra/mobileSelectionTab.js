@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 const SelectionTab = styled.div`
 display: flex;
 justify-content: center;
-margin: 40px 0 20px 0;
+margin: 0 0 20px 0;
 color: black;
 .selectionTabInner {
 overflow-x: scroll;

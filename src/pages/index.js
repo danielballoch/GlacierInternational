@@ -303,7 +303,7 @@ const IndexPage = () => {
                         </svg>
                     </LogoOver>
                     <div className="herotext">
-                        <p>Glacier International is a one-stop shop for importing, right hand drive re-manufacturing, and customising your Toyota Tundra. With cutting edge technology, the 2023 Toyota Tundra is a half-ton, meticulously engineered heavy metal machine, and our goal is to deliver it to Kiwis who value reliability, performance and class over anything else.</p>
+                        <p>Glacier International is a one-stop shop for importing, right hand drive re-manufacturing, and customising your Toyota Tundra or Sequioa. With cutting edge technology, the 2023 Toyota Sequoia and Tundra are meticulously engineered luxury hybrid machines, and our goal is to deliver it to Kiwis who value reliability, performance and class over anything else.</p>
                     </div>
                         <ScrollAnimation/>
                     </div>

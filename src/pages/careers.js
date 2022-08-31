@@ -295,8 +295,7 @@ const CareersPage = () => {
                     <span>01<div className="verticalLine"/><div className="horizontalLine"/><div className="verticalLine"/></span>
                     <div>
                         <h2>01 Freedom & Responsibility</h2>
-                        <p>Glacier International is a growing business based in Queenstown and we're on the hunt for automotive professionals to join our team.</p>
-                        <p>We're working with state of the art machinary and are passionate about helping our customers, likewise were looking for people who are great at their craft, eager to learn, and have the same enthusiasim to get these high class machines out to all the thrill seekers and smart buyers across New Zealand.</p>
+                        <p>"Glacier International is a growing business based in the Innovation and Technology Park at the Highlands Cromwell and we’re on the hunt for automotive professionals to join our team”</p>
                     </div>
                 </div>
 
@@ -304,7 +303,7 @@ const CareersPage = () => {
                     <span>02<div className="verticalLine"/><div className="horizontalLine"/><div className="verticalLine"/></span>
                     <div>
                     <h2>02 Community</h2>
-                    <p>We're a growing tight-knit team focused on quality, and we believe the path to quality is getting the right people for the job, and doing all we can to make sure everyones interested, happy, and excited about what their work.</p>
+                    <p>We're a growing tight-knit team focused on quality, and we believe the path to quality is getting the right people for the job, and doing all we can to make sure everyones interested, happy, and excited about their work.</p>
                     </div>
                 </div>
 
@@ -331,7 +330,7 @@ const CareersPage = () => {
             <Link  className="exHover" >
                 <div className="textBox">
                     <h1>Auto-electrical Engineers</h1>
-                    <p>Short paragraph explaining position,learn more here.</p>
+                    <p>If you enjoy forward thinking, joining our wiring team will bring you job satisfaction. The re manufacturing process requires the best of the best with attention to detail and workmanship. </p>
                 </div>
                 <StaticImage
                     className="experienceImgs"
@@ -344,7 +343,7 @@ const CareersPage = () => {
             <Link  className="exHover">
             <div className="textBox">
                 <h1>Logistics officers</h1>
-                <p>Short paragraph explaining position, learn more here.</p>
+                <p>The reward of arranging logistics of Sequoia’s and Tundra’s requires self motivation and professionalism as you deliver for the customers their pride and joy from the heart of Texas. </p>
             </div>
             <StaticImage 
                 className="experienceImgs"
@@ -357,7 +356,7 @@ const CareersPage = () => {
             <Link  className="exHover">
             <div className="textBox">
                 <h1>Product Advisors</h1>
-                <p>Short paragraph explaining position, learn more here.</p>
+                <p>Passion for product creates success. The main role is enjoying the interactions with customers on their journey to select a hybrid Sequoia or Tundra that best suits their needs and style. </p>
             </div>
             
             <StaticImage 

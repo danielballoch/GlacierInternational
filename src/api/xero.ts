@@ -1,12 +1,17 @@
 import fetch from "node-fetch"
 import { XeroClient, HistoryRecords, Invoice, Invoices, LineItem, Contact, Contacts, Phone } from 'xero-node';
 
+// let ID = "";
+let SECRET = "";
+// if (process.env.CLIENTID){ID = process.env.CLIENTID;}
+if (process.env.CLIENTSECRET){SECRET = process.env.CLIENTSECRET;}
+
+
 const xero = new XeroClient({
-    clientId: 'A9C32A4AAAB348BBAAD31AF8C62BCE9B',
-    clientSecret: '71uTeSllja28yAPV9zF16QItkPXaZ4FXz0FjFiIQO5j00J8L',
+    clientId: process.env.CLIENTID ?? "",
+    clientSecret: SECRET,
     grantType: 'client_credentials'
   });
-
 
 export default async function postNewPersonHandler(req, res) {
     // POST data to an authenticated API
@@ -93,7 +98,7 @@ export default async function postNewPersonHandler(req, res) {
                 description: description,
                 quantity: 1.0,
                 accountCode: "200",
-                unitAmount: req.body.price/10
+                unitAmount: (req.body.price*0.75)
             };
             const invoice: Invoice = {
                 lineItems: [lineItem],

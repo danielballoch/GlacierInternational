@@ -99,7 +99,9 @@ return (
                 <p>Glacier International lease/loan options or any relevant information for finances.</p>
                 <p>*to be updated/redesigned once more info is known here*</p>
             </div>
-            <Price><a>Total Price: ${nf.format(price)} (NZD)</a><a onClick={() => {setFinancePopup(!financePopup)}}>Finance Options<span className={financePopup ? "left up" : "left"}><span/></span></a></Price>
+            <Price><a>Total Price: ${nf.format(price)} (NZD)</a>
+            {/* <a onClick={() => {setFinancePopup(!financePopup)}}>Finance Options<span className={financePopup ? "left up" : "left"}><span/></span></a> */}
+            </Price>
         </PriceFinanceContainer>
     )  
 }
