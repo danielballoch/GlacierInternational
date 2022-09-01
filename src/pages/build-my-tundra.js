@@ -44,8 +44,21 @@ import GreyLimited from "../images/tundra/Limited/GreyLimited.png"
 import MesquiteLimited from "../images/tundra/Limited/MesquiteLimited.png"
 import PearlLimited from "../images/tundra/Limited/PearlLimited.png"
 import RedLimited from "../images/tundra/Limited/RedLimited.png"
+import RockLimited from "../images/tundra/Limited/RockLimited.png"
 import SilverLimited from "../images/tundra/Limited/SilverLimited.png"
 import WhiteLimited from "../images/tundra/Limited/WhiteLimited.png"
+
+//import Limited Longbed Images
+import BlackLimitedLongbed from "../images/tundra/Limited/Longbox/BlackLimitedLongbox.png"
+import BlueLimitedLongbed from "../images/tundra/Limited/Longbox/BlueLimitedLongbox.png"
+import GreenLimitedLongbed from "../images/tundra/Limited/Longbox/GreenLimitedLongbox.png"
+import GreyLimitedLongbed from "../images/tundra/Limited/Longbox/GreyLimitedLongbox.png"
+import MesquiteLimitedLongbed from "../images/tundra/Limited/Longbox/MesquiteLimitedLongbox.png"
+import PearlLimitedLongbed from "../images/tundra/Limited/Longbox/PearlLimitedLongbox.png"
+import RedLimitedLongbed from "../images/tundra/Limited/Longbox/RedLimitedLongbox.png"
+import RockLimitedLongbed from "../images/tundra/Limited/Longbox/RockLimitedLongbox.png"
+import SilverLimitedLongbed from "../images/tundra/Limited/Longbox/SilverLimitedLongbox.png"
+import WhiteLimitedLongbed from "../images/tundra/Limited/Longbox/WhiteLimitedLongbox.png"
 
 //import Platinum Images
 import BlackPlatinum from "../images/tundra/Platinum/BlackPlatinum.png"
@@ -178,7 +191,7 @@ const IndexPage = ({display=false}) => {
     
 
     const grades = [
-        {name: "Limited Hybrid TRD OFF ROAD", colors: ["Midnight Black Metallic","Blueprint","Army Green","Magnetic Grey Metallic","Smoked Mesquite","Wind Chill Pearl","Supersonic Red","Celestial Silver Metallic", "White"], src: [BlackLimited, BlueLimited, GreenLimited, GreyLimited,MesquiteLimited, PearlLimited, RedLimited, SilverLimited, WhiteLimited], price: 205000},
+        {name: "Limited Hybrid TRD OFF ROAD", colors: ["Midnight Black Metallic","Blueprint","Army Green","Magnetic Grey Metallic","Smoked Mesquite","Wind Chill Pearl","Supersonic Red","Lunar Rock","Celestial Silver Metallic", "White"], src: [BlackLimited, BlueLimited, GreenLimited, GreyLimited,MesquiteLimited, PearlLimited, RedLimited, RockLimited, SilverLimited, WhiteLimited, BlackLimitedLongbed, BlueLimitedLongbed, GreenLimitedLongbed, GreyLimitedLongbed,MesquiteLimitedLongbed, PearlLimitedLongbed, RedLimitedLongbed, RockLimitedLongbed, SilverLimitedLongbed, WhiteLimitedLongbed], price: 205000, cab: ["Regular (5.5ft)", "Long Box (6.5ft)"]},
         {name: "Platinum Hybrid", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Wind Chill Pearl","Supersonic Red","Celestial Silver Metallic"], src: [BlackPlatinum, BluePlatinum, GreyPlatinum, PearlPlatinum, RedPlatinum, SilverPlatinum, BlackPlatinumLongbed, BluePlatinumLongbed, GreyPlatinumLongbed, PearlPlatinumLongbed, RedPlatinumLongbed, SilverPlatinumLongbed], price: 225000, cab: ["Regular (5.5ft)", "Long Box (6.5ft)"]},
         {name: "1794 Hybrid TRD OFF ROAD", colors: ["Midnight Black Metallic","Blueprint", "Army Green","Magnetic Grey Metallic", "Smoked Mesquite", "Wind Chill Pearl", "Supersonic Red", "Celestial Silver Metallic"], src: [Black1794, Blue1794, Green1794, Grey1794, Mesquite1794, Pearl1794, Red1794, Silver1794, Black1794Longbed, Blue1794Longbed, Green1794Longbed, Grey1794Longbed, Mesquite1794Longbed, Pearl1794Longbed, Red1794Longbed, Silver1794Longbed], price: 245000, cab: ["Regular (5.5ft)", "Long Box (6.5ft)"]},
         {name: "TRD PRO Hybrid", colors: ["Midnight Black Metallic","Lunar Rock","Solar Octane", "White"], src: [BlackTRDPRO, RockTRDPRO, SolarTRDPRO, WhiteTRDPRO], price: 265000},
@@ -191,7 +204,7 @@ const IndexPage = ({display=false}) => {
     //update price
     useEffect(() => {
         if (price !== grades[activeGrade[2]]){setPrice(grades[activeGrade[(2)]].price)};
-        if (activeBed !== 0 && activeGrade[0] !== "Platinum Hybrid" && activeGrade[0] !== "1794 Hybrid TRD OFF ROAD"){setActiveBed(0)};
+        if (activeBed !== 0 && activeGrade[0] !== "Platinum Hybrid" && activeGrade[0] !== "1794 Hybrid TRD OFF ROAD" && activeGrade[0] !== "Limited Hybrid TRD OFF ROAD"){setActiveBed(0)};
     });
     if (isBrowser && window.innerWidth > 1050){
         // desktop page

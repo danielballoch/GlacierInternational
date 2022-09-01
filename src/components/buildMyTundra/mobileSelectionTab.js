@@ -18,6 +18,7 @@ button {
     font-size: 16px;
     padding: 10px 20px;
     color: #666;
+    
     :hover {
         cursor: pointer;
     }

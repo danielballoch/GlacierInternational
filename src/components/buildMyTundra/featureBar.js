@@ -106,10 +106,9 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
         <CenterLeft>
                 <h1>2023 Toyota Tundra</h1>
                 <div className="features">
-                    <div><h2>437 HP/583 Lb.-Ft.</h2><p>i-FORCE MAX Engine</p></div>
-                    <div><h2>389 HP/479 Lb.-Ft.</h2><p>i-FORCE Engine </p></div>
-                    <div><h2>12,000 Lbs. *</h2><p>Max Towing *</p></div>
-                    <div><h2>1,940 Lbs. *</h2><p>Max Payload </p></div>
+                    <div><h2>325kw</h2><p>i-FORCE MAX Engine</p></div>
+                    <div><h2>790nm</h2><p>Torque</p></div>
+                    <div><h2>5 Tonne *</h2><p>Max Towing *</p></div>
                 </div>
                 <p>Grade:</p>
                 <div className="wrap">
@@ -121,7 +120,7 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
                     ))}
                 </div>
 
-                {activeGrade[0] === "Platinum Hybrid" || activeGrade[0] === "1794 Hybrid TRD OFF ROAD" ? 
+                {activeGrade[0] === "Limited Hybrid TRD OFF ROAD" || activeGrade[0] === "Platinum Hybrid" || activeGrade[0] === "1794 Hybrid TRD OFF ROAD" ? 
                 <div>
                     <p>Cab & Bed:</p>
                     <div className="wrap">

@@ -225,7 +225,7 @@ align-items: center;
         position: absolute;
         z-index: 100;
         text-align: left;
-        width: 33%;
+        width: 25%;
         text-decoration: underline solid 1px rgba(255,255,255,0);
         p,h1 {
             margin: 10px 20px;
@@ -244,7 +244,7 @@ align-items: center;
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 33.33%;
+    width: 25%;
     transition: .5s;
     :hover {
         /* filter: brightness(140%); */
@@ -329,6 +329,19 @@ const CareersPage = () => {
             <ContainerSplit2 id="positions">
             <Link  className="exHover" >
                 <div className="textBox">
+                    <h1>Automotive Engineers</h1>
+                    <p>Do you have passion and experience working with Toyota vehicles? The skill to step up to the next level producing RHD Sequoia’s and Tundra’s? Work closely with our supportive independent certifier on our step by step process.</p>
+                </div>
+                <StaticImage
+                    className="experienceImgs"
+                    objectPosition={"50% 50%"}
+                    src={`../images/careers/careers1.jpg`}
+                    alt="Glacier engineer working on tundra"
+                    
+                />
+            </Link>
+            <Link  className="exHover" >
+                <div className="textBox">
                     <h1>Auto-electrical Engineers</h1>
                     <p>If you enjoy forward thinking, joining our wiring team will bring you job satisfaction. The re manufacturing process requires the best of the best with attention to detail and workmanship. </p>
                 </div>
@@ -358,7 +371,6 @@ const CareersPage = () => {
                 <h1>Product Advisors</h1>
                 <p>Passion for product creates success. The main role is enjoying the interactions with customers on their journey to select a hybrid Sequoia or Tundra that best suits their needs and style. </p>
             </div>
-            
             <StaticImage 
                 className="experienceImgs"
                 objectPosition={"50% 0%"}

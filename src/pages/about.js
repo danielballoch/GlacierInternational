@@ -44,7 +44,7 @@ height: 90vh;
         width: 35vw;
 }
 @media(max-width: 940px){
-    flex-direction: column;
+    flex-direction: column-reverse;
     height: auto;
     .imageclass {
         margin: 100px 0 0 0;
