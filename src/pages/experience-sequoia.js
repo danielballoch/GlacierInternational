@@ -266,7 +266,7 @@ const ExperienceTundraPage = () => {
                             />  
     }
     return(
-        <Layout title="Experience Tundra | Glacier International">
+        <Layout title="Experience Sequoia | Glacier International">
         {/* hero/video */}
              <div style={{ display: "grid", maxHeight: "100vh"}} id="homeSection">
              <StaticImage
@@ -292,7 +292,7 @@ const ExperienceTundraPage = () => {
                     >
                         <Container>
                         <h1>EXPERIENCE SEQUOIA</h1>
-                        <p>"The all-new 2023 Sequoia is the toughest, most capable, and advanced full-size truck we’ve ever seen."</p>
+                        <p>"The all-new 2023 Sequoia is the ultimate hybrid SUV for luxery aesthetics, power, and efficiency."</p>
                         <iframe src="https://www.youtube.com/embed/P4I_Pus8Xc8?list=PLuYwryiueK-6dsfdxI1lQmeOX8mLf_9G0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
                         </Container>
                 </div>
@@ -358,15 +358,15 @@ const ExperienceTundraPage = () => {
                         }}
                     >
                         <Container>
-                        <h1>2022 TOYOTA TUNDRA</h1>
+                        <h1>2023 TOYOTA SEQUOIA</h1>
                         <p>Available now for pre-order in New Zealand -  exclusively from Glacier International.</p>
                         <StaticImage
-                        src={`../images/experienceTundra/last.jpg`}
+                        src={`../images/about/sequoiaAbout.png`}
                         alt="Glacier International Logo"
                         objectPosition={"50% 70%"}
                         className="tundraimage"
                         />
-                        <div><a href="https://www.toyota.com/tundra/ebrochure/" target="_blank"><button>Tundra Brochure</button></a><Link to="/build-my-tundra"><button>Build Your Tundra</button></Link></div> 
+                        <div><a href="https://www.toyota.com/tundra/ebrochure/" target="_blank"><button>Sequoia Brochure</button></a><Link to="/build-my-tundra"><button>Build Your Sequoia</button></Link></div> 
                         {/* <span/> */}
                         
                         </Container>

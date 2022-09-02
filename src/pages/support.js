@@ -233,7 +233,7 @@ const SupportTundraPage = () => {
 
                 <ContactForm>
                     <h1>Contact Support Team</h1> 
-                    <p>If you have any additional questions or suggestions please contact a member of our support team through the form below and we will be in touch to help shortly. <a href="https://www.youtube.com/watch?v=ZcqURqtJGjc&list=PLuYwryiueK-4mtYgDOpM9ZEWnhqUsrHgB">Click here</a> for some breathtaking Tundra action in the meantime!</p>
+                    <p>If you have any additional questions or suggestions please contact a member of our support team through the form below and we will be in touch to help. We shouldn't take long but for some breathtaking Tundra action in the meantime, <a href="https://www.youtube.com/watch?v=ZcqURqtJGjc&list=PLuYwryiueK-4mtYgDOpM9ZEWnhqUsrHgB" target="_blank">Click here</a>!</p>
                     <form 
                     // onSubmit={handleSubmit(onSubmit)}
                     id="main-form"
