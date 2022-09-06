@@ -1,7 +1,9 @@
-import React, {useState} from "react"
+import React, {useRef, useEffect, useState} from "react"
 import styled from '@emotion/styled';
 import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
+import { useForm } from "react-hook-form"
+import ReCAPTCHA from "react-google-recaptcha";
 
 
 
@@ -114,7 +116,7 @@ form {
         }
     }
     input, textarea {
-        width: 100%;
+        width: calc(100% - 24px);
         padding: 10px;
     }
     button {
@@ -123,6 +125,12 @@ form {
         background-color: white;
         padding: 16px 0;
         margin: 10px 0;
+        :hover {
+            cursor: pointer;
+        }
+    }
+    .nzcheck {
+        display: none;
     }
 }
 
@@ -177,28 +185,81 @@ div {
 
 `
 
-const Content = ({question, answer}) => {
+const Content = ({question, answer,i}) => {
     const [toggle, setToggle] = useState(true);
     return (
         <ContentBox itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" onClick={() => {setToggle(!toggle)}}>
-            <div>
-                <b itemprop="name"><p>{question}<span className={toggle ? "arrow" : "arrow down"}/></p></b>
-                <p itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" className={toggle ? "toggle" : ""}>A: {answer}</p>
+            <div key={"question " + i}>
+                <b itemProp="name"><p>{question}<span className={toggle ? "arrow" : "arrow down"}/></p></b>
+                <p itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer" className={toggle ? "toggle" : ""}>A: {answer}</p>
             </div>
         </ContentBox>
     )
 } 
 
 const SupportTundraPage = () => {
+    const reRef = useRef();
+    const [serverState, setServerState] = useState({
+        formSent: false,
+    });
     const Questions = [
-    {question: "Why is there such a price difference from USA to NZ?", answer: "Due to Covid 19 pandemic causing global chip shortage there is a large supply and demand challenge with ripple effects for the next 4 years. The result of this is that on most occasions if we don’t act within 12 hours a Sequoia or Tundra is sold to one of our 374 million Family members in North America so if we say 'act fast' its not due to fear of missing out, you just will miss out that day, so that’s why we encourage 12 hour commitment. Due to the supply challenges there are more expenses involved over and about the USD to NZD exchange rate, international shipping and compliance in NZ. Our price is your out the door price all inclusive NZD."},
-    {question: "Are the RHD Sequoia and Tundra under warranty and insured?", answer: "Yes. Glacier International matches Canadian OEM powertrain warranty. All RHD Sequoia and Tundras we sell are sold with a 3 year 60,000KM comprehensive warranty. Also 3 year 100,000km powertrain warranty including the Hybrid battery. We have comprehensive insurance during the international logistics process."},
-    {question: "Does Glacier International service vehicles also?", answer: "Yes. We keep up with our clients and offer the best services available at our Innovation and Technology Park Highlands base. We also have a list of trusted MTA assured service providers nationwide. For any more information please email support!"},
-    {question: " Are there finance options available for the Tundra & Sequoia?", answer: "No, generally a finance company will require registration plates, the plate are not issued until the Right Hand Drive Re-manufacturing is complete. You will need to find an alternative for finance. We are a service provider and Re-manufacture, not a finance company."}
-]
+        {question: "Why is there such a price difference from USA to NZ?", answer: "Due to Covid 19 pandemic causing global chip shortage there is a large supply and demand challenge with ripple effects for the next 4 years. The result of this is that on most occasions if we don’t act within 12 hours a Sequoia or Tundra is sold to one of our 374 million Family members in North America so if we say 'act fast' its not due to fear of missing out, you just will miss out that day, so that’s why we encourage 12 hour commitment. Due to the supply challenges there are more expenses involved over and above the USD to NZD exchange rate, international shipping and compliance in NZ. Our price is your out-the-door final price all inclusive NZD."},
+        {question: "Are the RHD Sequoia and Tundra under warranty and insured?", answer: "Yes. Glacier International matches Canadian OEM powertrain warranty. All RHD Sequoia and Tundras we sell are sold with a 3 year 60,000KM comprehensive warranty. Also 3 year 100,000km powertrain warranty including the Hybrid battery. We have comprehensive insurance during the international logistics process."},
+        {question: "Does Glacier International service vehicles also?", answer: "Yes. We keep up with our clients, offer the best services available at our Innovation and Technology Park Highlands base. We also have a list of trusted MTA assured service providers nationwide. For any more information please email support!"},
+        {question: " Are there finance options available for the Sequoia & Tundra?", answer: "No, generally a finance company will require registration plates, the plates are not issued until the Right Hand Drive Re-manufacturing is complete. You will need to find an alternative for finance. We are a service provider and Re-manufacture, not a finance company."}
+    ] 
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm()
+
+    async function onSubmit(data){
+        console.log("anything happening?")
+        // const token = await reRef.current.executeAsync();
+        reRef.current.reset();
+        console.log("this is where form data should log")
+        console.log("data: ", data)
+        // console.log("token: ", token)
+        
+        
+        fetch(`/api/sendgrid`, {
+          method: `POST`,
+          body: JSON.stringify({
+            name: data.Name,
+            phone: data.Phone,
+            email: data.Email,
+            message:data.Message
+        }),
+          headers: {
+            "content-type": `application/json`,
+          },
+        })
+          .then(res => res.json())
+          .then(body => {
+            console.log(`response from API:`, body);
+          })
+          .then(setServerState({formSent: true}))
+      }
+      console.log({ errors })
+      useEffect(() => {
+          if (serverState.formSent === true) {
+            setTimeout(() => {
+                setServerState({
+                    formSent: false
+                })
+            }, 3000)
+          }
+      })
 
     return(
         <Layout title="Support | Glacier International" >
+            <ReCAPTCHA 
+            sitekey={process.env.GATSBY_RE_SITEKEY} 
+            size="invisible"
+            ref={reRef} 
+            />
             <div style={{ display: "grid"}} id="homeSection">
             <StaticImage
                     className="experienceImgs"
@@ -224,7 +285,7 @@ const SupportTundraPage = () => {
                 >
                 <div>
                 
-                <Faq itemscope itemtype="https://schema.org/FAQPage">
+                <Faq itemScope itemType="https://schema.org/FAQPage">
                 <h1>Frequently Asked Questions</h1>    
                 {Questions.map((question, i) => (
                     <Content question={question.question} answer={question.answer} i={i}/>
@@ -235,17 +296,19 @@ const SupportTundraPage = () => {
                     <h1>Contact Support Team</h1> 
                     <p>If you have any additional questions or suggestions please contact a member of our support team through the form below and we will be in touch to help. We shouldn't take long but for some breathtaking Tundra action in the meantime, <a href="https://www.youtube.com/watch?v=ZcqURqtJGjc&list=PLuYwryiueK-4mtYgDOpM9ZEWnhqUsrHgB" target="_blank">Click here</a>!</p>
                     <form 
-                    // onSubmit={handleSubmit(onSubmit)}
+                    onSubmit={handleSubmit(onSubmit)}
                     id="main-form"
                     // action="/api/sendgrid" method="POST"
                     >
                         <div>
+                            <input type="checkbox" name="NZ" value="1"  className="nzcheck" tabIndex="-1" autocomplete="off" {...register("NZ")}/>
                             <label htmlFor="name">
                                     <p>Name:</p>
                                     <input 
                                         type="text" 
                                         name="name" 
                                         required  
+                                        {...register("Name", { required: true, maxLength: 100 })} 
                                     />
                             </label>
                             
@@ -255,6 +318,7 @@ const SupportTundraPage = () => {
                                     type="phone" 
                                     name="phone" 
                                     required
+                                    {...register("Phone", { required: true})}
                                 />
                             </label>
                         </div>                        
@@ -264,6 +328,7 @@ const SupportTundraPage = () => {
                                 type="email" 
                                 name="email" 
                                 required
+                                {...register("Email", { required: true, pattern: /^\S+@\S+$/i })}
                             />
                         </label>
                         <label htmlFor="message">
@@ -273,8 +338,10 @@ const SupportTundraPage = () => {
                                 id="message" 
                                 rows="5" 
                                 required
+                                {...register("Message", { required: true, maxLength: 2000 })} 
                             />
                         </label>
+                        <input type="checkbox" name="fax" value="1"  className="nzcheck" tabIndex="-1" autocomplete="off" {...register("Fax")}/>
                         <button 
                             type="submit" 
                             className="g-recaptcha"

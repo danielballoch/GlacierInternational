@@ -323,8 +323,8 @@ const ExperienceTundraPage = () => {
                     >
                         <Container2>
                             <h2>LUXURY MEETS POWER</h2>
-                            <p>The 2022 Tundra gives you the freedom to adventure from wharf to mountains without worry. Whether you need a boat towed cross country, a horse float to the local trail, or have the trailer loaded up for a work haul, the Tundra can handle it. </p>
-                            <p>With a towing capacity of up to 12,000 lb, the 2022 Tundra has the muscle to deliver big payloads with ease and confidence.</p>
+                            <p>The 2023 Sequoia gives you the freedom to adventure from wharf to mountains without worry. Whether you need a boat towed cross country, a horse float to the local trail, or have the trailer loaded up for a work haul, the Sequoia can handle it. </p>
+                            <p>With a towing capacity of up to 4 Tonne, the 2023 Sequoia has the muscle to deliver big payloads with ease and confidence.</p>
                             <p>Put simply less worry, more fun, and all the braging rights.</p>
                         </Container2>
                 </div>
@@ -340,7 +340,7 @@ const ExperienceTundraPage = () => {
                 <div className="premText">
                         <Container3>
                         <h2>TOUGH ON THE OUTSIDE PREMIUM ON THE INSIDE</h2>
-                        <p>Tundra’s exceptional interior stands apart with its premium materials and quality feel that both driver and passengers will enjoy</p>
+                        <p>Sequoias’s exceptional interior stands apart with its premium materials and quality feel that both driver and passengers will enjoy</p>
                         </Container3>
                 </div>
             </ExperienceContainer>
@@ -366,7 +366,7 @@ const ExperienceTundraPage = () => {
                         objectPosition={"50% 70%"}
                         className="tundraimage"
                         />
-                        <div><a href="https://www.toyota.com/tundra/ebrochure/" target="_blank"><button>Sequoia Brochure</button></a><Link to="/build-my-tundra"><button>Build Your Sequoia</button></Link></div> 
+                        <div><a href="https://www.toyota.com/tundra/ebrochure/" target="_blank"><button>Sequoia Brochure</button></a><Link to="/build-my-sequoia"><button>Build Your Sequoia</button></Link></div> 
                         {/* <span/> */}
                         
                         </Container>

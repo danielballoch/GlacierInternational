@@ -292,7 +292,7 @@ const ExperienceTundraPage = () => {
                     >
                         <Container>
                         <h1>EXPERIENCE TUNDRA</h1>
-                        <p>"The all-new 2022 Tundra is the toughest, most capable, and advanced full-size truck we’ve ever seen."</p>
+                        <p>"The all-new 2023 Tundra is the toughest, most capable, and advanced full-size truck we’ve ever seen."</p>
                         <iframe src="https://www.youtube.com/embed/videoseries?list=PLuYwryiueK-4mtYgDOpM9ZEWnhqUsrHgB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
                         </Container>
                 </div>
@@ -323,8 +323,8 @@ const ExperienceTundraPage = () => {
                     >
                         <Container2>
                             <h2>LUXURY MEETS POWER</h2>
-                            <p>The 2022 Tundra gives you the freedom to adventure from wharf to mountains without worry. Whether you need a boat towed cross country, a horse float to the local trail, or have the trailer loaded up for a work haul, the Tundra can handle it. </p>
-                            <p>With a towing capacity of up to 12,000 lb, the 2022 Tundra has the muscle to deliver big payloads with ease and confidence.</p>
+                            <p>The 2023 Tundra gives you the freedom to adventure from wharf to mountains without worry. Whether you need a boat towed cross country, a horse float to the local trail, or have the trailer loaded up for a work haul, the Tundra can handle it. </p>
+                            <p>With a towing capacity of up to 5 tonne, the 2023 Tundra has the muscle to deliver big payloads with ease and confidence.</p>
                             <p>Put simply less worry, more fun, and all the braging rights.</p>
                         </Container2>
                 </div>
@@ -358,7 +358,7 @@ const ExperienceTundraPage = () => {
                         }}
                     >
                         <Container>
-                        <h1>2022 TOYOTA TUNDRA</h1>
+                        <h1>2023 TOYOTA TUNDRA</h1>
                         <p>Available now for pre-order in New Zealand -  exclusively from Glacier International.</p>
                         <StaticImage
                         src={`../images/experienceTundra/last.jpg`}

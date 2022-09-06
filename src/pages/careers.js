@@ -279,7 +279,7 @@ const CareersPage = () => {
             <Hero>
                 <HeroContent>
                 <h1>Working at Glacier International</h1>
-                <p>Located at the Innovation and Technology Park at Highlands Cromwell. We are now accepting applications for Automotive professionals to join our team. </p>
+                <p>Located at the Innovation and Technology Park at Highlands Cromwell. We are now accepting applications for Automotive professionals to join our team.</p>
                 <a href="#positions"><button >EXPLORE ROLES</button></a>
                 </HeroContent>
             </Hero>
@@ -295,7 +295,7 @@ const CareersPage = () => {
                     <span>01<div className="verticalLine"/><div className="horizontalLine"/><div className="verticalLine"/></span>
                     <div>
                         <h2>01 Freedom & Responsibility</h2>
-                        <p>"Glacier International is a growing business based in the Innovation and Technology Park at the Highlands Cromwell and we’re on the hunt for automotive professionals to join our team”</p>
+                        <p>"Glacier International is a growing business based in the Innovation and Technology Park at the Highlands Cromwell and we’re on the hunt for automotive professionals to join our team”.</p>
                     </div>
                 </div>
 
@@ -303,7 +303,7 @@ const CareersPage = () => {
                     <span>02<div className="verticalLine"/><div className="horizontalLine"/><div className="verticalLine"/></span>
                     <div>
                     <h2>02 Community</h2>
-                    <p>We're a growing tight-knit team focused on quality, and we believe the path to quality is getting the right people for the job, and doing all we can to make sure everyones interested, happy, and excited about their work.</p>
+                    <p>We are a growing, tight-knit team focused on quality. We believe the path to quality is getting the right people for the job, and doing all we can to make sure everyones interested, happy, and excited about their work.</p>
                     </div>
                 </div>
 
@@ -312,7 +312,7 @@ const CareersPage = () => {
                     <div>
                         <h2>03 "Where do I sign!?"</h2>
                         <p>"Where do I sign" is our expression for passion, enthusiasim, attention to detail, and prioritisation.</p>
-                        <p>Whether your in the workshop, on the phone, or in the courtyard, the goal should always be to push toward a great customer experience - our aim is always to make our customers line up, with smiles stretching across their face, and say things like "where do I sign!?"</p>
+                        <p>Whether your in the workshop, on the phone, or in the courtyard, the goal should always be to push toward a great customer experience. Our aim is always to make our customers line up, with smiles ear to ear saying "where do I sign!?"</p>
                     </div>
                 </div>
             </Values2>
