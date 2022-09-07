@@ -365,14 +365,14 @@ export default function Nav({pageLocation, invertNav}){
             </InsideDrawerLink>
             <NavLower>
                 <VehicleBox>
-                    <StaticImage className="imageBox" src={`../images/Nav/TRDSequoia.png`}/>
+                    <StaticImage className="imageBox" src={`../images/Nav/TRDSequoia.png`} alt="White Sequoia"/>
                     <div className="buttonBox">
                         <Button to="/experience-sequoia">Experience Sequoia</Button>
                         <ButtonOutline to="/build-my-sequoia">Build My Sequoia</ButtonOutline>
                     </div>
                 </VehicleBox>
                 <VehicleBox>
-                    <StaticImage className="imageBox" src={`../images/Nav/TRDTundra.png`}/>
+                    <StaticImage className="imageBox" src={`../images/Nav/TRDTundra.png`} alt="White Tundra"/>
                     <div className="buttonBox">
                         <Button to="/experience-tundra">Experience Tundra</Button>
                         <ButtonOutline to="/build-my-tundra">Build My Tundra</ButtonOutline>

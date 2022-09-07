@@ -28,7 +28,7 @@ align-items: center;
 export default function MainImage ({src}){
     return(
         <Center>
-            <img src={src}/>
+            <img alt="Custom Sequoia/Tundra" src={src}/>
         </Center>
     )
 }

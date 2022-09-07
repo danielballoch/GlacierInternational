@@ -64,16 +64,18 @@ export default async(req, res) => {
             if(req.body.Fax || req.body.NZ){
                 spam = " (spam)"
             }
-                message.to = process.env.SENDGRID_AUTHORIZED_EMAIL
+                message.to = "sales@glacier.nz"
                 message.subject = "Glacier support form submission from "+ req.body.name + spam
                 message.text = "Name: " + req.body.name + " Phone: " + req.body.phone + " Email: " + req.body.email + " Message: " + req.body.message  
                 message.html = "Name: " + req.body.name + "<br/>" + " Phone: " + req.body.phone + "<br/>" + " Email: " + req.body.email + "<br/>" + "<br/>" + " Message: " + req.body.message 
             }
         return sendgrid.send(message).then(
         () => {
+            message.subject = "(Backup) Glacier support form submission from "+ req.body.name;
+            sendgrid.send(message);
             res.status(200).json({
             message: "I will send email",
-            })
+            });
         },
         error => {
             console.error(error)

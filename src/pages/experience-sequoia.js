@@ -293,14 +293,14 @@ const ExperienceTundraPage = () => {
                         <Container>
                         <h1>EXPERIENCE SEQUOIA</h1>
                         <p>"The all-new 2023 Sequoia is the ultimate hybrid SUV for luxery aesthetics, power, and efficiency."</p>
-                        <iframe src="https://www.youtube.com/embed/P4I_Pus8Xc8?list=PLuYwryiueK-6dsfdxI1lQmeOX8mLf_9G0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/P4I_Pus8Xc8?list=PLuYwryiueK-6dsfdxI1lQmeOX8mLf_9G0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowFullscreen></iframe>
                         </Container>
                 </div>
             </div>
             {/* Luxury */}
             <div style={{ display: "grid", maxHeight: "100vh"}} id="homeSection">
              <StaticImage
-                        src={`../images/experienceTundra/collage1.png`}
+                        src={`../images/experienceSequoia/sequoiaCollage1.png`}
                         alt="Glacier International Logo"
                         objectPosition={"60% 50%"}
                          style={{
@@ -332,7 +332,7 @@ const ExperienceTundraPage = () => {
             {/* Sideview */}
             <ExperienceContainer >
              <StaticImage
-                        src={`../images/experienceTundra/side.jpg`}
+                        src={`../images/experienceSequoia/sequoiaThree.png`}
                         alt="Glacier International Logo"
                         objectPosition={"50% 100%"}
                         className={"sideimg"}
