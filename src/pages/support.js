@@ -199,6 +199,7 @@ const Content = ({question, answer,i}) => {
 
 const SupportTundraPage = () => {
     const reRef = useRef();
+    
     const [serverState, setServerState] = useState({
         formSent: false,
     });
@@ -217,11 +218,11 @@ const SupportTundraPage = () => {
 
     async function onSubmit(data){
         console.log("anything happening?")
-        // const token = await reRef.current.executeAsync();
+        const token = await reRef.current.executeAsync();
         reRef.current.reset();
         console.log("this is where form data should log")
         console.log("data: ", data)
-        // console.log("token: ", token)
+        console.log("token: ", token)
         
         
         fetch(`/api/sendgrid`, {
@@ -230,7 +231,8 @@ const SupportTundraPage = () => {
             name: data.Name,
             phone: data.Phone,
             email: data.Email,
-            message:data.Message
+            message:data.Message,
+            token
         }),
           headers: {
             "content-type": `application/json`,
