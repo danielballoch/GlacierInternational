@@ -88,7 +88,7 @@ export default function MobileFeatureSection({model, selectionStage, grades, act
                 </div>
             </FeatureSection>
         } else {
-            featureSection = <FeatureSection><p>To put a 10% deposit down securing your {model} build for 2023, please click the button for more info at our payment gateway.</p><StyledLink to="/order-page" state={{model: "2023 Tundra", grade: activeGrade[0], color: activeColor[0], bed: activeBed, price: price }}><button className="orderbtn">Complete Order</button></StyledLink></FeatureSection>
+            featureSection = <FeatureSection><p>To put a 75% deposit down securing your {model} build for 2023, please click the button for more info at our payment gateway.</p><StyledLink to="/order-page" state={{model: "2023 Tundra", grade: activeGrade[0], color: activeColor[0], bed: activeBed, price: price }}><button className="orderbtn">Complete Order</button></StyledLink></FeatureSection>
         }
     }
     else {
@@ -112,7 +112,7 @@ export default function MobileFeatureSection({model, selectionStage, grades, act
                     </div>
                 </FeatureSection>
             } else {
-                featureSection = <FeatureSection><p>To put a 10% deposit down securing your {model} build for 2023, please click the button for more info at our payment gateway.</p><StyledLink to="/order-page" state={{model: "2023 Tundra", grade: activeGrade[0], color: activeColor[0], bed: activeBed, price: price }}><button className="orderbtn">Complete Order</button></StyledLink></FeatureSection>
+                featureSection = <FeatureSection><p>To put a 75% deposit down securing your {model} build for 2023, please click the button for more info at our payment gateway.</p><StyledLink to="/order-page" state={{model: "2023 Tundra", grade: activeGrade[0], color: activeColor[0], bed: activeBed, price: price }}><button className="orderbtn">Complete Order</button></StyledLink></FeatureSection>
             }
     }
     return(

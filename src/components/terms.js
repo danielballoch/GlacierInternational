@@ -103,7 +103,7 @@ export default function Terms(){
             <div>
                 <h1>Terms & Conditions</h1>
                 <p>
-                Glacier International is an independent vehicle importer & trader, and is not affiliated in any way with Toyota Motor Corporation.  All logos, images, products and company names and trademarks including TOYOTA, TUNDRA and TRD are and remain the property of their respective owners. 
+                Glacier International is an independent vehicle importer & trader, and is not affiliated in any way with Toyota Motor Corporation.  All logos, images, products and company names and trademarks including TOYOTA, SEQUOIA, TUNDRA and TRD are and remain the property of their respective owners. 
                 </p>
                 <p>
                 All goods and services offered by Glacier International are not provided by or with the authorisation of Toyota Motor Corporation and Glacier International is not affiliated or endorsed by Toyota Motor Corporation in any way. 

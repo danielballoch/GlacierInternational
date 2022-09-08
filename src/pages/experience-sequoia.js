@@ -292,7 +292,7 @@ const ExperienceTundraPage = () => {
                     >
                         <Container>
                         <h1>EXPERIENCE SEQUOIA</h1>
-                        <p>"The all-new 2023 Sequoia is the ultimate hybrid SUV for luxery aesthetics, power, and efficiency."</p>
+                        <p>"The all-new 2023 Sequoia is the ultimate hybrid SUV for luxury aesthetics, power, and efficiency."</p>
                         <iframe src="https://www.youtube.com/embed/P4I_Pus8Xc8?list=PLuYwryiueK-6dsfdxI1lQmeOX8mLf_9G0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowFullscreen></iframe>
                         </Container>
                 </div>
