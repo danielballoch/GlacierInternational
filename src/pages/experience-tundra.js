@@ -252,7 +252,7 @@ const ExperienceTundraPage = () => {
     let bottomBackground;
     if (isBrowser && window.innerWidth > 1050){
         bottomBackground =  <StaticImage
-                                src="../images/experienceTundra/collage2.png"
+                                src="../images/experienceTundra/collage2Re.png"
                                 alt="Tundra collage"
                                 className="tundraCollage"
                                 objectPosition={"50% 50%"}
@@ -293,7 +293,7 @@ const ExperienceTundraPage = () => {
                         <Container>
                         <h1>EXPERIENCE TUNDRA</h1>
                         <p>"The all-new 2023 Tundra is the toughest, most capable, and advanced full-size truck we’ve ever seen."</p>
-                        <iframe src="https://www.youtube.com/embed/videoseries?list=PLuYwryiueK-4mtYgDOpM9ZEWnhqUsrHgB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/videoseries?list=PLuYwryiueK-4mtYgDOpM9ZEWnhqUsrHgB" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowFullscreen></iframe>
                         </Container>
                 </div>
             </div>

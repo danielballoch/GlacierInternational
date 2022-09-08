@@ -71,8 +71,14 @@ export default async(req, res) => {
             }
         return sendgrid.send(message).then(
         () => {
+            //send backup & support email
             message.subject = "(Backup) Glacier support form submission from "+ req.body.name;
             sendgrid.send(message);
+                message.to = req.body.email
+                message.subject = "Hey " + req.body.name + " your Glacier support form has been submitted!"
+                message.text = "Name: " + req.body.name + " Phone: " + req.body.phone + " Email: " + req.body.email + " Message: " + req.body.message  
+                message.html = "Hey " + req.body.name + ",<br/>Thanks for the enquiry.<br/><br/> Your support form message has been hauled down to Glacier International headquarters on the back of one of our hybrid Tundra's. As soon as our support crew can stop admiring the machinery, one of them will read through and be in touch to help! (We generally reply in less than 24hrs, for a quicker reply time please call .........)<br/><br/><em> Your message: " + req.body.message + "</em>"
+                sendgrid.send(message);
             res.status(200).json({
             message: "I will send email",
             });

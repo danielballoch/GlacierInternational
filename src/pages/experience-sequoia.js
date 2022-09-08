@@ -5,6 +5,7 @@ import {css} from '@emotion/react';
 import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import { Link } from "gatsby"
+import SequoiaBrochure from "../../static/Glacier_Int_Sequoia_2023.pdf"
 
 const Container = styled.div`
 /* margin-top: 100px; */
@@ -252,7 +253,7 @@ const ExperienceTundraPage = () => {
     let bottomBackground;
     if (isBrowser && window.innerWidth > 1050){
         bottomBackground =  <StaticImage
-                                src="../images/experienceTundra/collage2.png"
+                                src="../images/experienceTundra/collage2Re.png"
                                 alt="Tundra collage"
                                 className="tundraCollage"
                                 objectPosition={"50% 50%"}
@@ -270,7 +271,7 @@ const ExperienceTundraPage = () => {
         {/* hero/video */}
              <div style={{ display: "grid", maxHeight: "100vh"}} id="homeSection">
              <StaticImage
-                        src={`../images/experienceTundra/platinum.jpg`}
+                        src={`../images/experienceSequoia/SequoiaHero.png`}
                         alt="Glacier International Logo"
                          style={{
                              gridArea: "1/1",
@@ -332,7 +333,7 @@ const ExperienceTundraPage = () => {
             {/* Sideview */}
             <ExperienceContainer >
              <StaticImage
-                        src={`../images/experienceSequoia/sequoiaThree.png`}
+                        src={`../images/experienceSequoia/SequoiaInterior.jpeg`}
                         alt="Glacier International Logo"
                         objectPosition={"50% 100%"}
                         className={"sideimg"}
@@ -340,7 +341,7 @@ const ExperienceTundraPage = () => {
                 <div className="premText">
                         <Container3>
                         <h2>TOUGH ON THE OUTSIDE PREMIUM ON THE INSIDE</h2>
-                        <p>Sequoias’s exceptional interior stands apart with its premium materials and quality feel that both driver and passengers will enjoy</p>
+                        <p>Sequoia’s exceptional interior stands apart with its premium materials and quality feel that both driver and passengers will enjoy</p>
                         </Container3>
                 </div>
             </ExperienceContainer>
@@ -361,12 +362,12 @@ const ExperienceTundraPage = () => {
                         <h1>2023 TOYOTA SEQUOIA</h1>
                         <p>Available now for pre-order in New Zealand -  exclusively from Glacier International.</p>
                         <StaticImage
-                        src={`../images/about/sequoiaAbout.png`}
+                        src={`../images/experienceSequoia/SequoiaRed.jpeg`}
                         alt="Glacier International Logo"
                         objectPosition={"50% 70%"}
                         className="tundraimage"
                         />
-                        <div><a href="https://www.toyota.com/tundra/ebrochure/" target="_blank"><button>Sequoia Brochure</button></a><Link to="/build-my-sequoia"><button>Build Your Sequoia</button></Link></div> 
+                        <div><a href={SequoiaBrochure} target="_blank"><button>Sequoia Brochure</button></a><Link to="/build-my-sequoia"><button>Build Your Sequoia</button></Link></div> 
                         {/* <span/> */}
                         
                         </Container>
