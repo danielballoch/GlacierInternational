@@ -87,6 +87,43 @@ p {
 `
 
 const ContactForm = styled.div`
+
+.form-message {
+position: absolute;
+margin: auto;
+left: 0;
+right: 0;
+display: flex;
+justify-content: center;
+border-radius: 5px;
+align-items: center;
+width: 870px;
+height: 570px;
+z-index: 100;
+background-color: rgba(255,255,255, 0.95);
+transition: background-color .6s;
+p {
+    transition: 1s;
+    color: black;
+    max-width: 450px;
+    font-size: 20px;
+}
+}
+
+.hidden {
+    position: absolute;
+    width: 860px;
+    height: 0px;
+    z-index: 100;
+    background-color: rgba(255,255,255, 0);
+    p {
+        display: none; 
+        color: white; 
+        transition: 1s;
+    }
+    transition: .6s;
+}
+
 @media(max-width: 940px){
     width: 80%;
     margin: 100px auto 0 auto;
@@ -251,7 +288,7 @@ const SupportTundraPage = () => {
                 setServerState({
                     formSent: false
                 })
-            }, 3000)
+            }, 5000)
           }
       })
 
@@ -293,14 +330,15 @@ const SupportTundraPage = () => {
                     <Content question={question.question} answer={question.answer} i={i}/>
                 ))}
                 </Faq>
-
                 <ContactForm>
+                    <div className={serverState.formSent? "form-message" : "hidden"}>
+                        <p>Thank you for sending your enquiry, a support team member will be in touch shortly.</p>
+                    </div>
                     <h1>Contact Support Team</h1> 
                     <p>If you have any additional questions or suggestions please contact a member of our support team through the form below and we will be in touch to help. We shouldn't take long but for some breathtaking Tundra action in the meantime, <a href="https://www.youtube.com/watch?v=ZcqURqtJGjc&list=PLuYwryiueK-4mtYgDOpM9ZEWnhqUsrHgB" target="_blank">Click here</a>!</p>
                     <form 
                     onSubmit={handleSubmit(onSubmit)}
                     id="main-form"
-                    // action="/api/sendgrid" method="POST"
                     >
                         <div>
                             <input type="checkbox" name="NZ" value="1"  className="nzcheck" tabIndex="-1" autocomplete="off" {...register("NZ")}/>
@@ -345,6 +383,7 @@ const SupportTundraPage = () => {
                         </label>
                         <input type="checkbox" name="fax" value="1"  className="nzcheck" tabIndex="-1" autocomplete="off" {...register("Fax")}/>
                         <button 
+                            onClick={() => {setServerState(true); console.log("server state true")}}
                             type="submit" 
                             className="g-recaptcha"
                             data-sitekey="site_key"
