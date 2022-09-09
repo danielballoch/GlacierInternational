@@ -371,24 +371,30 @@ const ExperienceTundraPage = () => {
                         
                         </Container>
                         <Social>
+                            <a href="https://www.instagram.com/glacier_international/">
                             <StaticImage
                                 className="experienceImgs"
                                 objectFit={"contain"}
                                 src={`../images/social/instagramSmall.png`}
                                 alt="Instagram logo"
                             />
+                            </a>
+                            <a href="https://www.youtube.com/channel/UC2CR408AOJqt5JNUFVt-nSQ/playlists">
                             <StaticImage
                                 objectFit={"contain"}
                                 className="experienceImgs"
                                 src={`../images/social/youtubeSmall.png`}
                                 alt="Youtube logo"
                             />
+                            </a>
+                            <a href="https://www.facebook.com/GlacierInt">
                             <StaticImage
                                 objectFit={"contain"}
                                 className="experienceImgs"
                                 src={`../images/social/facebookSmall.png`}
                                 alt="Facebook logo"
                             />
+                            </a>
                             <span/>
                         </Social>
                 </div>

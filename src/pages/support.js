@@ -405,7 +405,7 @@ const SupportTundraPage = () => {
                         alt="Instagram Logo"
                     />
                     </a>
-                    <a href="https://www.youtube.com/channel/UC2CR408AOJqt5JNUFVt-nSQ">
+                    <a href="https://www.youtube.com/channel/UC2CR408AOJqt5JNUFVt-nSQ/playlists">
                     <StaticImage
                         objectFit={"contain"}
                         className="socialImgs"
