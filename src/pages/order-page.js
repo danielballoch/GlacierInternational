@@ -151,7 +151,7 @@ export default function OrderPage ({location}){
                 <p>Total Price: ${nf.format(location.state.price)} (NZD)</p>
                 <p>Deposit: ${(Number(location.state.price) * 0.75).toLocaleString()} (NZD)</p>
                 <hr/>
-                <p>Please enter your information below to recive your 75% deposit invoice of ${(Number(location.state.price) * 0.75).toLocaleString()} via email, and secure your custom Tundra build.</p>
+                <p>Please enter your information below to recive your 75% deposit invoice of ${(Number(location.state.price) * 0.75).toLocaleString()} via email, and secure your custom Tundra build to be delivered by 4th quarter of 2023.</p>
             </div>
             : <p>Loading data... if you have not come from the 'build your Tundra/Sequoia' page please <Link to="/">click here</Link></p>
             }

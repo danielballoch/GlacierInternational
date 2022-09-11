@@ -135,7 +135,7 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
                     ))}
                 </div>
                 
-                <p className="infoText">To put a 75% deposit down securing your custom Sequoia build for 2022, please click the button below for more info at our payment gateway.</p>
+                <p className="infoText">To put a 75% deposit down securing your custom Sequoia build to be delivered by 4th quarter of 2023, please click the button below for more info at our payment gateway.</p>
                 <StyledLink to="/order-page" state={{model: "2023 Sequoia", grade: activeGrade[0], color: activeColor[0], bed: 3, price: price }}><button className="orderbtn">Complete Order</button></StyledLink>
             </CenterLeft>
     )
