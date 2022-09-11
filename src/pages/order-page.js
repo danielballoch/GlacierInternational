@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import Layout from "../components/layout"
 import styled from '@emotion/styled';
 import { useForm } from "react-hook-form"
@@ -78,6 +78,29 @@ p {
 `
 
 export default function OrderPage ({location}){
+    const [order, setOrder] = useState([]);
+    {/* Here I need to check for location & add to cache || if no location, check for localstorage and set that as state */}
+    useEffect(() => {
+        const localOrder = JSON.parse(localStorage.getItem('order'));
+        console.log("localOrder: ", localOrder);
+        if(location.state.model && order.length === 0 ){
+            setOrder({
+                model: location.state.model,
+                grade: location.state.grade,
+                color: location.state.color,
+                bed: location.state.bed,
+                price: location.state.price
+            })
+            localStorage.setItem('order', JSON.stringify(order));
+        } else if (!location && localOrder){
+            console.log("localstorage worksl")
+            setOrder(localOrder);
+        }
+
+        
+        
+        
+      }, [order]);
     const [formSent, setFormSent] = useState("");
     let nf = new Intl.NumberFormat('en-US');
     var today = new Date();
@@ -89,7 +112,6 @@ export default function OrderPage ({location}){
     console.log(today)
     dd = Number(dd) + 7;
     today = mm + '/' + dd + '/' + yyyy;
-    console.log(today)
     
     console.log(location.state)
     const {
@@ -120,12 +142,12 @@ export default function OrderPage ({location}){
           .then(res => res.json())
           .then(body => {
             // console.log(`response from API:`, body);
-            console.log("Response status: ", body.response.statusCode);
+            // console.log("Response status: ", body.response.statusCode);
             if (body.response.statusCode === 200){
                 console.log("sent!")
                 setFormSent("sent");
             } else {
-                console.log("error!")
+                console.log("error!", body)
                 setFormSent("error");
             }
             
@@ -138,11 +160,11 @@ export default function OrderPage ({location}){
         <Layout title="Order Page | Glacier International" invertNav={true}>
             <Container>
             <h1>Order Details:</h1>
+            {/* Here I need to add check for cached model/build */}
             {location.state && location.state.model ? 
             <div>
                 <Flex>
-                    <p>Model: {location.state.model}</p>
-                    <p>Grade: {location.state.grade}</p>
+                    <p>Model: {location.state.model} Grade: {location.state.grade} &nbsp;</p>
                     {location.state.bed === 0 ? <p>Bed & Cab: Regular (5.5ft)</p> 
                     : location.state.bed === 1 ? <p>Bed & Cab: Longbase (6.5ft)</p>
                     : null }
