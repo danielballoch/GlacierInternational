@@ -179,7 +179,7 @@ export default async function postNewPersonHandler(req, res) {
                 description: description,
                 quantity: 1.0,
                 accountCode: "200",
-                unitAmount: req.body.price/10
+                unitAmount: (req.body.price*0.75)
             };
             const invoice: Invoice = {
                 lineItems: [lineItem],
