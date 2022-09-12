@@ -146,7 +146,7 @@ export default function OrderPage ({location}){
             if (body.response.statusCode === 200){
                 console.log("sent!");
                 setFormSent("sent");
-                navigate("/", {state: {formSent: true}});
+                navigate("/", {state: {formSent: true, model: location.state.model}});
             } else {
                 console.log("error!", body)
                 setFormSent("error");

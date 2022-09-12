@@ -91,6 +91,7 @@ button {
 const Container2 = styled.div`
 @media(max-width: 940px){
     width: auto;
+    height: 100%;
     p, h2 {
         padding: 0 40px !important;
         /* text-align: center !important; */
@@ -98,7 +99,7 @@ const Container2 = styled.div`
     p:last-of-type {
         margin-bottom: 20px;
     }
-    background-color: rgba(0,0,0,0) !important;
+    background-color: rgba(0,0,0,0.6) !important;
 }
 background-color: rgba(0,0,0,0.8);
 color: white;

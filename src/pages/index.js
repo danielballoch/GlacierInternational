@@ -5,7 +5,7 @@ import GlacierVideoMobile from "../images/TundraReelMobileSmall.mp4"
 import styled from '@emotion/styled';
 import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
-import { Link } from 'gatsby'
+import { Link} from 'gatsby'
 import ScrollAnimation from "../components/scrollAnimation";
 
 // import Terms from "../components/termsPopup"
@@ -38,11 +38,11 @@ color: white;
     max-width: 500px;
     max-height: 300px;
     height: 100%;
-    width: 100%;
+    width: 90%;
     border-radius: 5px;
     background-color: rgba(255,255,255,0.95);
     z-index: 200;
-    transition: background-color .6s;
+    transition: .3s;
     p {
         transition: 1s;
         font-size: 20px;
@@ -51,17 +51,12 @@ color: white;
         /* padding: 80px; */
     }
 }
-.dontShow {
-    position: absolute;
+.showSentEnd {
+    opacity:0 ;
     height: 0px;
-    z-index: 100;
-    background-color: rgba(255,255,255, 0);
-    p {
-        display: none; 
-        color: white; 
-        transition: 1s;
-    }
-    transition: .6s;
+}
+.dontShow {
+   display: none;
 }
 h1 {
     color: white;
@@ -309,7 +304,7 @@ const ButtonOutline = styled (Button)`
 const isBrowser = typeof window !== "undefined";
 
 const IndexPage = ({location}) => {
-    const [showSent, setShowSent] = useState({message: ""});
+  const [showSent, setShowSent] = useState({message: ""});
   let HeroVideo;
   if (isBrowser && window.innerWidth <= 450){
     HeroVideo = <Video className="videoClass" videoSrcURL={GlacierVideoMobile} videoTitle="Glacier Hero Video"/>
@@ -317,20 +312,25 @@ const IndexPage = ({location}) => {
     HeroVideo = HeroVideo = <Video className="videoClass" videoSrcURL={GlacierVideo} videoTitle="Glacier Hero Video"/>
   }
   useEffect(() => {
-    if (location.state && location.state.formSent && showSent.message !== "show" && showSent.message !== "shown"){
-        console.log("use Effect running 2")
-        console.log(location.state.formSent)
+    
+    if (location.state && location.state.formSent && showSent.message === ""){
         setShowSent({message: "show"});
+        
         setTimeout(() => {
             setShowSent({message: "shown"})
-        }, 5000);
+        }, 6000)
+        setTimeout(() => {
+            setShowSent({message: "dontShow"});
+            window.history.replaceState({}, document.title);
+            // navigate("", {state:{}})
+        }, 6300);
     }
-})
+}, [showSent.message])
 
   return (
       <Layout title="Home | Glacier International">
         <Main style={pageStyles}>
-        <div className={showSent.message === "show" ? "showSent" : "dontShow"}><p>Your order has been sent and an invoice from Glacier International will be with you shortly!</p></div>
+        <div className={showSent.message === "show" ? "showSent" : showSent.message === "shown" ? "showSent showSentEnd" : "dontShow"}><p>Thank you! Your custom {location.state ? location.state.model : "Tundra/Sequoia"} build has been sent through. An invoice will be in your inbox in the next 10 minutes.</p></div>
         <div style={{ display: "grid", maxHeight: "100vh"}} id="homeSection">
             {HeroVideo}
             {/* <Video
@@ -356,6 +356,7 @@ const IndexPage = ({location}) => {
                         </svg>
                     </LogoOver>
                     <div className="herotext">
+                        {/* <button onClick={() => {setShowSent({message: "show"}); console.log("button click")}}>Test</button>  */}
                         <p>Glacier International is a one-stop shop for importing, right hand drive re-manufacturing, and customising your Toyota Sequoia or Tundra. With cutting edge technology, the 2023 Toyota Sequoia and Tundra are meticulously engineered luxury hybrid machines, and our goal is to deliver them to Kiwis who value reliability, performance and class over anything else.</p>
                     </div>
                         <ScrollAnimation/>
