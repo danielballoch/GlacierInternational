@@ -14,7 +14,7 @@
 // import fetch from "node-fetch"
 
 // using gatsby example with dynamic data
-const sendgrid = require("@sendgrid/mail")
+import sendgrid from "@sendgrid/mail"
 //Your API Key from Sendgrid
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
 const message = {
@@ -64,7 +64,7 @@ export default async(req, res) => {
             if(req.body.Fax || req.body.NZ){
                 spam = " (spam)"
             }
-                message.to = "sales@glacier.nz"
+                message.to = "daniel@thoughtfulhq.com"
                 message.subject = "Glacier support form submission from "+ req.body.name + spam
                 message.text = "Name: " + req.body.name + " Phone: " + req.body.phone + " Email: " + req.body.email + " Message: " + req.body.message  
                 message.html = "Name: " + req.body.name + "<br/>" + " Phone: " + req.body.phone + "<br/>" + " Email: " + req.body.email + "<br/>" + "<br/>" + " Message: " + req.body.message 
@@ -73,6 +73,7 @@ export default async(req, res) => {
         () => {
             //send backup & support email
             message.subject = "(Backup) Glacier support form submission from "+ req.body.name;
+            message.to = "daniel@thoughtfulhq.com"
             sendgrid.send(message);
                 message.to = req.body.email
                 message.subject = "Hey " + req.body.name + " your Glacier support form has been submitted!"
