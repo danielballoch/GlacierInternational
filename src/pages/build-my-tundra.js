@@ -205,6 +205,7 @@ const IndexPage = ({display=false}) => {
     useEffect(() => {
         if (price !== grades[activeGrade[2]]){setPrice(grades[activeGrade[(2)]].price)};
         if (activeBed !== 0 && activeGrade[0] !== "Platinum Hybrid" && activeGrade[0] !== "1794 Hybrid TRD OFF ROAD" && activeGrade[0] !== "Limited Hybrid TRD OFF ROAD"){setActiveBed(0)};
+        
     });
     if (isBrowser && window.innerWidth > 1050){
         // desktop page

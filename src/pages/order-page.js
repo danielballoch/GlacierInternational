@@ -222,7 +222,7 @@ export default function OrderPage ({location}){
                             data-sitekey="site_key"
                             data-callback='onSubmit'
                             data-action='submit'
-                        >Submit</button>
+                        >{formSent === "sending" ? "Order is Sending" : "Submit"}</button>
                         {formSent === "sending"? <p className="submit-message">Your order is sending, please stay on page. We will redirect you to the homepage once sent.</p>
                         : formSent === "sent" ? <p className="submit-message">Order submitted, your deposit invoice will be with you shortly.</p>
                         : formSent === "error" ? <p className="submit-message">Sorry, there's been an error submitting your form. Please contact our support team at ceo@glacier.nz</p>
