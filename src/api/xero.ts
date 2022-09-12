@@ -1,4 +1,3 @@
-import fetch from "node-fetch"
 import { XeroClient, HistoryRecords, Invoice, Invoices, LineItem, Contact, Contacts, Phone } from 'xero-node';
 
 // let ID = "";
