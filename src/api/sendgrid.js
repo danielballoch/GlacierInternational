@@ -14,7 +14,7 @@
 // import fetch from "node-fetch"
 
 // using gatsby example with dynamic data
-import sendgrid from "@sendgrid/mail"
+const sendgrid = require("@sendgrid/mail")
 //Your API Key from Sendgrid
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
 const message = {
