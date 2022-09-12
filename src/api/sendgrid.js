@@ -11,7 +11,7 @@
 
 
 
-import fetch from "node-fetch"
+// import fetch from "node-fetch"
 
 
 
@@ -27,18 +27,18 @@ const message = {
 
 //so without this seciton and node-fetch it works
 
-async function validateHuman(token){
-    console.log("validate human running")
-const secret = process.env.RECAPTCHA_KEY;
-const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`,
-    {
-        method: "POST",
-    } 
-)
-//this is where It's failing??
-const data = await response.json();
-return data.success;
-}
+// async function validateHuman(token){
+//     console.log("validate human running")
+// const secret = process.env.RECAPTCHA_KEY;
+// const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`,
+//     {
+//         method: "POST",
+//     } 
+// )
+// //this is where It's failing??
+// const data = await response.json();
+// return data.success;
+// }
 
 
 //main function
@@ -48,8 +48,8 @@ export default async(req, res) => {
     // console.log(req.body);
 
     //this is where I'm getting response error, validate token function above
-    const human = await validateHuman(req.body.token);
-    // const human = true;
+    // const human = await validateHuman(req.body.token);
+    const human = true;
     if (!human){
         console.log("this message shows we're getting to the !human part")
         res.status(400);
