@@ -99,11 +99,6 @@ margin: auto;
 
 
 export default function FeatureBar ({grades, activeGrade, activeColor, updateActiveColor, updateActiveGrade, price}){
-
-    useEffect(() => {
-
-    })
-
     return(
         <CenterLeft>
                 <h1>2023 Toyota Sequoia</h1>

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Video from "../components/video"
 import GlacierVideo from "../images/TundraReelBrightSmall.mp4"
 import GlacierVideoMobile from "../images/TundraReelMobileSmall.mp4"
@@ -23,6 +23,46 @@ const Main = styled.div`
 padding: 0;
 margin: 0;
 color: white;
+.showSent {
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: calc(50vh - 150px) auto;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    align-items: center;
+   
+    color: black;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    max-width: 500px;
+    max-height: 300px;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.95);
+    z-index: 200;
+    transition: background-color .6s;
+    p {
+        transition: 1s;
+        font-size: 20px;
+        text-align: center;
+        padding: 0 20px;
+        /* padding: 80px; */
+    }
+}
+.dontShow {
+    position: absolute;
+    height: 0px;
+    z-index: 100;
+    background-color: rgba(255,255,255, 0);
+    p {
+        display: none; 
+        color: white; 
+        transition: 1s;
+    }
+    transition: .6s;
+}
 h1 {
     color: white;
     font-family: sans-serif;
@@ -268,16 +308,29 @@ const ButtonOutline = styled (Button)`
 
 const isBrowser = typeof window !== "undefined";
 
-const IndexPage = () => {
+const IndexPage = ({location}) => {
+    const [showSent, setShowSent] = useState({message: ""});
   let HeroVideo;
   if (isBrowser && window.innerWidth <= 450){
     HeroVideo = <Video className="videoClass" videoSrcURL={GlacierVideoMobile} videoTitle="Glacier Hero Video"/>
   } else if (isBrowser && window.innerWidth > 450) {
     HeroVideo = HeroVideo = <Video className="videoClass" videoSrcURL={GlacierVideo} videoTitle="Glacier Hero Video"/>
   }
+  useEffect(() => {
+    if (location.state && location.state.formSent && showSent.message !== "show" && showSent.message !== "shown"){
+        console.log("use Effect running 2")
+        console.log(location.state.formSent)
+        setShowSent({message: "show"});
+        setTimeout(() => {
+            setShowSent({message: "shown"})
+        }, 5000);
+    }
+})
+
   return (
       <Layout title="Home | Glacier International">
         <Main style={pageStyles}>
+        <div className={showSent.message === "show" ? "showSent" : "dontShow"}><p>Your order has been sent and an invoice from Glacier International will be with you shortly!</p></div>
         <div style={{ display: "grid", maxHeight: "100vh"}} id="homeSection">
             {HeroVideo}
             {/* <Video

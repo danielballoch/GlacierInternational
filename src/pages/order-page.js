@@ -146,7 +146,7 @@ export default function OrderPage ({location}){
             if (body.response.statusCode === 200){
                 console.log("sent!");
                 setFormSent("sent");
-                navigate("/");
+                navigate("/", {state: {formSent: true}});
             } else {
                 console.log("error!", body)
                 setFormSent("error");
@@ -156,7 +156,7 @@ export default function OrderPage ({location}){
           })
       }
       console.log({ errors })
-      
+      console.log(location.state)
     return(
         <Layout title="Order Page | Glacier International" invertNav={true}>
             <Container>
