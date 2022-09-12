@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react"
 import Layout from "../components/layout"
 import styled from '@emotion/styled';
 import { useForm } from "react-hook-form"
-import { Link } from "gatsby";
+import { navigate, Link } from "gatsby";
 
 const Container = styled.div`
 margin: 200px auto;
@@ -141,11 +141,12 @@ export default function OrderPage ({location}){
         })
           .then(res => res.json())
           .then(body => {
-            // console.log(`response from API:`, body);
+            console.log(`response from API:`, body);
             // console.log("Response status: ", body.response.statusCode);
             if (body.response.statusCode === 200){
-                console.log("sent!")
+                console.log("sent!");
                 setFormSent("sent");
+                navigate("/");
             } else {
                 console.log("error!", body)
                 setFormSent("error");
@@ -222,7 +223,7 @@ export default function OrderPage ({location}){
                             data-callback='onSubmit'
                             data-action='submit'
                         >Submit</button>
-                        {formSent === "sending"? <p className="submit-message">Your order is sending, please stay on page.</p>
+                        {formSent === "sending"? <p className="submit-message">Your order is sending, please stay on page. We will redirect you to the homepage once sent.</p>
                         : formSent === "sent" ? <p className="submit-message">Order submitted, your deposit invoice will be with you shortly.</p>
                         : formSent === "error" ? <p className="submit-message">Sorry, there's been an error submitting your form. Please contact our support team at ceo@glacier.nz</p>
                         : <p></p>

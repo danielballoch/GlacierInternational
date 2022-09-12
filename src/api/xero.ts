@@ -105,7 +105,7 @@ export default async function postNewPersonHandler(req, res) {
                 contact: contact2,
                 dueDate: nextWeek,
                 date: currentDate,
-                reference: "custom Tundra reference",
+                reference: "custom Sequoia/Tundra reference",
                 status: Invoice.StatusEnum.AUTHORISED,
                 type: Invoice.TypeEnum.ACCREC
             };
@@ -187,6 +187,8 @@ export default async function postNewPersonHandler(req, res) {
                 contact: contact,
                 dueDate: nextWeek,
                 date: currentDate,
+                reference: "custom Sequoia/Tundra reference",
+                status: Invoice.StatusEnum.AUTHORISED,
                 type: Invoice.TypeEnum.ACCREC
             };
             const invoices: Invoices = {
@@ -195,7 +197,7 @@ export default async function postNewPersonHandler(req, res) {
             const response = await xero.accountingApi.createInvoices('', invoices);
             //now I need to get invoiceId so I can use emailInvoice.
             console.log('invoices: ', response.body.invoices);
-            res.json(response.body.invoices);
+            res.json(response);
 
             // ###
             // Getting the invoice ID
