@@ -205,9 +205,10 @@ const IndexPage = ({display=false}) => {
     useEffect(() => {
         if (price !== grades[activeGrade[2]]){setPrice(grades[activeGrade[(2)]].price)};
         if (activeBed !== 0 && activeGrade[0] !== "Platinum Hybrid" && activeGrade[0] !== "1794 Hybrid TRD OFF ROAD" && activeGrade[0] !== "Limited Hybrid TRD OFF ROAD"){setActiveBed(0)};
-        
+
     });
     if (isBrowser && window.innerWidth > 1050){
+        console.log("desktop page")
         // desktop page
   return (
       <Layout title="Build Your Tundra | Glacier International" hideFooter={true} invertNav={true}>
@@ -221,6 +222,7 @@ const IndexPage = ({display=false}) => {
     </Layout>
   )
     } else {
+        console.log("mobile page")
         // mobile page
         return (
             <Layout title="Build Your Tundra | Glacier International" hideFooter={true} invertNav={true}>

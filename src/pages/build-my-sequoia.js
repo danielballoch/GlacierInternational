@@ -158,6 +158,7 @@ const IndexPage = ({display=false}) => {
         if (price !== grades[activeGrade[2]]){setPrice(grades[activeGrade[2]].price)}
     });
     if (isBrowser && window.innerWidth > 1050){
+        console.log("desktop page")
         // desktop page
   return (
       <Layout title="Build Your Sequoia | Glacier International" hideFooter={true} invertNav={true}>
@@ -171,6 +172,7 @@ const IndexPage = ({display=false}) => {
     </Layout>
   )
     } else {
+        console.log("mobile page")
         // mobile page
         return (
             <Layout title="Build Your Sequoia | Glacier International" hideFooter={true} invertNav={true}>
