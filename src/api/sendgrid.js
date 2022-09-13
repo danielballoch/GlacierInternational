@@ -68,6 +68,7 @@ export default async(req, res) => {
                 spam = " (spam)"
             }
                 message.to = "danielkingballoch@gmail.com"
+                message.from = "sales@glacier.nz";
                 message.subject = "Glacier support form submission from "+ req.body.name + spam
                 message.text = "Name: " + req.body.name + " Phone: " + req.body.phone + " Email: " + req.body.email + " Message: " + req.body.message  
                 message.html = "Name: " + req.body.name + "<br/>" + " Phone: " + req.body.phone + "<br/>" + " Email: " + req.body.email + "<br/>" + "<br/>" + " Message: " + req.body.message 

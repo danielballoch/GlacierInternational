@@ -22,21 +22,35 @@ export default async function postNewPersonHandler(req, res) {
         const validTokenSet = await xero.refreshToken();
     }
 
-    //creating dates for invoices, checking if I need to add a month + days, or just 7 days to the due date for invoice (nextWeek).
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth();
-    var yyyy = today.getFullYear();
-    
-    let currentDate = mm + '/' + dd + '/' + yyyy;
-    let lastDate = (new Date(yyyy, mm, 0)).getDate();
-
-    let nextWeek; 
-    if (Number(dd) + 7 > lastDate){
-        nextWeek = (mm+1) + '/' + (7 + (dd - lastDate)) + '/' + yyyy;
-    } else {
-        nextWeek = mm + '/' + (dd + 7) + '/' + yyyy;
+    const getDate = () => {
+        let today = new Date();
+        let dd = today.getDate();
+        let mm = (today.getMonth() + 1);
+        let yyyy = today.getFullYear();
+        let currentDate = mm + '/' + dd + '/' + yyyy;
+        return currentDate;
     }
+
+    const getNextWeek = () => {
+        let today = new Date();
+        let dd = today.getDate();
+        let mm = (today.getMonth() + 1);
+        let yyyy = today.getFullYear();
+        let lastDate = (new Date(yyyy, mm, 0)).getDate();
+        let nextWeek; 
+        if (Number(dd) + 7 > lastDate){
+            nextWeek = (mm+1) + '/' + (7 + (dd - lastDate)) + '/' + yyyy;
+        } else {
+            nextWeek = mm + '/' + (dd + 7) + '/' + yyyy;
+        }
+        return nextWeek;
+    }
+
+
+
+    //creating dates for invoices, checking if I need to add a month + days, or just 7 days to the due date for invoice (nextWeek).
+
+   
 
 
 
@@ -49,7 +63,10 @@ export default async function postNewPersonHandler(req, res) {
 
 
     try {
-
+        let currentDate = getDate();
+        let nextWeek = getNextWeek();
+        console.log(currentDate, nextWeek);
+        console.log(new Date())
         const checkContactExists = await xero.accountingApi.getContacts('', undefined, undefined, undefined, undefined, undefined, undefined, undefined, req.body.name);
         if (checkContactExists.body.contacts === undefined || checkContactExists.body.contacts.length === 0 || req.body.name !== checkContactExists.body.contacts[0].name){
             //if name is not in Xero contacts already, create contact with form info.
@@ -207,8 +224,10 @@ export default async function postNewPersonHandler(req, res) {
             try {
                 invoiceResponse = await xero.accountingApi.getInvoices('', undefined, undefined, undefined, undefined, undefined, contactIDList, undefined, undefined, undefined, undefined, undefined, undefined);
                 console.log(invoiceResponse.body || invoiceResponse.response.statusCode)
-                invoiceID = invoiceResponse.body.invoices[0].invoiceID;
+                //I feel like this here isn't right? like should this really be invoices[0] if there's multiple invoices??
+                console.log("invoice array length: ", (invoiceResponse.body.invoices.length))
                 console.log(contactId)
+                invoiceID = invoiceResponse.body.invoices[(invoiceResponse.body.invoices.length-1)].invoiceID;
             } catch (err) {
                 const error = JSON.stringify(err.response.body, null, 2)
                 console.log(`Status Code: ${err.response.statusCode} => ${error}`);
