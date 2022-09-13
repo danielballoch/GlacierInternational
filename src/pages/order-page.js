@@ -49,6 +49,7 @@ form {
     }
     .buttonWrap {
         display: flex;
+        flex-direction: row;
     }
     .backBtn {
         width: 24%;
@@ -144,7 +145,8 @@ export default function OrderPage ({location}){
         fetch(`/api/xero`, {
           method: `POST`,
           body: JSON.stringify({
-            name: data.Name,
+            firstname: data.FirstName,
+            lastname: data.LastName,
             phone: data.Phone,
             email: data.Email,
             model: location.state.model,
@@ -152,6 +154,7 @@ export default function OrderPage ({location}){
             color: location.state.color,
             bed: location.state.bed,
             price: location.state.price,
+            name: data.Name,
             companynumber: data.CompanyNumber,
             address1: data.Address1,
             address2: data.Address2,
@@ -207,19 +210,31 @@ export default function OrderPage ({location}){
             }
             
             {formStage === 0 ? 
+            <div>
             <form 
                     id="main-form"
                     // action="/api/sendgrid" method="POST"
-                    >
-                            <label htmlFor="name">
-                                    <p>Full Name:</p>
-                                    <input 
-                                        type="text" 
-                                        name="name" 
-                                        required
-                                        {...register("Name", { required: true})}  
-                                    />
-                            </label>
+                    >       
+                            <div>
+                                <label htmlFor="firstname">
+                                        <p>First Name:</p>
+                                        <input 
+                                            type="text" 
+                                            name="firstname" 
+                                            required
+                                            {...register("FirstName", { required: true})}  
+                                        />
+                                </label>
+                                <label htmlFor="lastname">
+                                        <p>Last Name:</p>
+                                        <input 
+                                            type="text" 
+                                            name="lastname" 
+                                            required
+                                            {...register("LastName", { required: true})}  
+                                        />
+                                </label>
+                            </div>
                             
                             <label htmlFor="phone">
                                 <p>Phone Number:</p>
@@ -253,21 +268,35 @@ export default function OrderPage ({location}){
                         <button className="submitBtn" onClick={()=> setFormStage(1)}>Next</button>
                         
                     </form>
+                    </div>
                 :   
                     <form onSubmit={handleSubmit(onSubmit)}>
-                            <label htmlFor="companynumber">
-                                    <p>Company Registration Number:</p>
-                                    <input 
-                                        type="text" 
-                                        name="companynumber" 
-                                        required
-                                        {...register("CompanyNumber", { required: true})}  
-                                    />
-                            </label>
+                            <div>
+                                <label htmlFor="name">
+                                            <p>Company Name:</p>
+                                            <input 
+                                                type="text" 
+                                                name="name" 
+                                                required
+                                                {...register("Name", { required: true})}  
+                                            />
+                                </label>
+                                <label htmlFor="companynumber">
+                                        <p>Company Registration Number:</p>
+                                        <input 
+                                            value={formStage === 0? "" : undefined}
+                                            type="text" 
+                                            name="companynumber" 
+                                            required
+                                            {...register("CompanyNumber", { required: true})}  
+                                        />
+                                </label>
+                            </div>
                             
                             <label htmlFor="addressline1">
                                 <p>Address Line 1:</p>
                                 <input 
+                                    placeholder=""
                                     type="addressline1" 
                                     name="addressline1" 
                                     required
@@ -276,8 +305,10 @@ export default function OrderPage ({location}){
                             </label>
 
                             <label htmlFor="addressline2">
+                            
                                 <p>Address Line 2:</p>
                                 <input 
+                                    placeholder=""
                                     type="addressline2" 
                                     name="addressline2" 
                                     {...register("Address2", { required: false})}
@@ -288,6 +319,7 @@ export default function OrderPage ({location}){
                                 <label htmlFor="city">
                                     <p>City:</p>
                                     <input 
+                                        placeholder=""
                                         type="city" 
                                         name="city" 
                                         {...register("City", { required: true})}
@@ -339,6 +371,7 @@ export default function OrderPage ({location}){
                         }
 
                     </form>
+                    
                 
                 }
             </Container>

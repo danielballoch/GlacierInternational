@@ -74,6 +74,8 @@ export default async function postNewPersonHandler(req, res) {
             console.log("name is not in database")
             const contact: Contact = {
                 name: req.body.name,
+                firstName: req.body.firstname,
+                lastName: req.body.lastname,
                 emailAddress: req.body.email,
                 companyNumber: req.body.companynumber,
                 phones: [
@@ -94,10 +96,10 @@ export default async function postNewPersonHandler(req, res) {
                     }
                 ]
             };
-
             const contacts: Contacts = {  
                 contacts: [contact]
             };
+            // let photoID = req.body.photoid;
             console.log(contacts);
             await xero.accountingApi.createContacts('', contacts);
             //now that the contact is created, use the contact & Build My Tundra info to create invoice.
@@ -117,7 +119,9 @@ export default async function postNewPersonHandler(req, res) {
                 //the question mark is what I'm figuring out, I need to see which one it's on 
                 contactId = getContactId.body.contacts[CorrectArrayIndex].contactID;
             }
-            //now that I have id create invoice
+            //now that I have id create invoice 
+            //&& add photo id attachment to contact 
+            // await xero.accountingApi.createContactAttachmentByFileName('',contactId,photoID,)
             const where = 'Status=="ACTIVE" AND Type=="SALES"';
             const accounts = await xero.accountingApi.getAccounts('', undefined, where);
             // console.log('accounts: ', accounts.body.accounts);
