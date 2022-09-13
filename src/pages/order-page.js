@@ -15,6 +15,7 @@ form {
     display: flex;
     flex-direction: column;
     text-align: left;
+    
     .submit-message {
         display: flex;
         margin: auto;
@@ -46,17 +47,32 @@ form {
         margin: 0;
         padding: 10px;
     }
+    .buttonWrap {
+        display: flex;
+    }
+    .backBtn {
+        width: 24%;
+        background-color: grey;
+        :hover {
+            background-color: dimgrey;
+        }
+        margin: 40px 0;
+    }
+    .submitBtn {
+        width: 80%;
+        margin: 40px auto;
+    }
     button {
     background-color: #4C974C;
     color: white;
-    width: 80%;
+    width: 74%;
     font-size: 20px;
     letter-spacing: 1.4px;
     padding: 14px;
     font-weight: 600;
     font-family: 'Heebo',sans-serif;
     border: none;
-    margin: 40px auto 40px auto;
+    margin: 40px 0;
     border-radius: 5px;
     transition: .3s;
     :hover {
@@ -79,11 +95,12 @@ p {
 
 export default function OrderPage ({location}){
     const [order, setOrder] = useState([]);
+    const [formStage, setFormStage] = useState(0);
     {/* Here I need to check for location & add to cache || if no location, check for localstorage and set that as state */}
     useEffect(() => {
         const localOrder = JSON.parse(localStorage.getItem('order'));
         console.log("localOrder: ", localOrder);
-        if(location.state.model && order.length === 0 ){
+        if(location.state && location.state.model && order.length === 0 ){
             setOrder({
                 model: location.state.model,
                 grade: location.state.grade,
@@ -122,7 +139,8 @@ export default function OrderPage ({location}){
     async function onSubmit(data){
         console.log("this is where form data should log")
         setFormSent("sending")
-        console.log(data)
+        console.log("Raw form data: ", data)
+        console.log("PhotoID: ", data.PhotoID)
         fetch(`/api/xero`, {
           method: `POST`,
           body: JSON.stringify({
@@ -133,7 +151,15 @@ export default function OrderPage ({location}){
             grade: location.state.grade,
             color: location.state.color,
             bed: location.state.bed,
-            price: location.state.price
+            price: location.state.price,
+            companynumber: data.CompanyNumber,
+            address1: data.Address1,
+            address2: data.Address2,
+            city: data.City,
+            region: data.Region,
+            postalcode: data.PostalCode,
+            country: data.Country,
+            photoid: data.PhotoID
         }),
           headers: {
             "content-type": `application/json`,
@@ -157,6 +183,7 @@ export default function OrderPage ({location}){
       }
       console.log({ errors })
       console.log(location.state)
+      console.log("form stage: ", formStage)
     return(
         <Layout title="Order Page | Glacier International" invertNav={true}>
             <Container>
@@ -179,13 +206,11 @@ export default function OrderPage ({location}){
             : <p>Loading data... if you have not come from the 'build your Tundra/Sequoia' page please <Link to="/">click here</Link></p>
             }
             
-            
+            {formStage === 0 ? 
             <form 
-                    onSubmit={handleSubmit(onSubmit)}
                     id="main-form"
                     // action="/api/sendgrid" method="POST"
                     >
-                        <div>
                             <label htmlFor="name">
                                     <p>Full Name:</p>
                                     <input 
@@ -204,8 +229,7 @@ export default function OrderPage ({location}){
                                     required
                                     {...register("Phone", { required: true})}
                                 />
-                            </label>
-                        </div>                        
+                            </label>                      
                         <label htmlFor="email">
                             <p>Email Address:</p>
                             <input 
@@ -215,20 +239,108 @@ export default function OrderPage ({location}){
                                 {...register("Email", { required: true, pattern: /^\S+@\S+$/i })}
                             />
                         </label>
+                        <label htmlFor="photoid">
+                            <p>Photo ID (Drivers Licence or Passport):</p>
+                            <input 
+                                type="file" 
+                                name="photoid" 
+                                required
+                                accept="image/png, image/jpeg, image/jpg, image/gif"
+                                {...register("PhotoID", { required: true})}
+                                onChange={(e)=> {console.log("Photo change: ", e.currentTarget.files[0] )}}
+                            />
+                        </label>
+                        <button className="submitBtn" onClick={()=> setFormStage(1)}>Next</button>
+                        
+                    </form>
+                :   
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                            <label htmlFor="companynumber">
+                                    <p>Company Registration Number:</p>
+                                    <input 
+                                        type="text" 
+                                        name="companynumber" 
+                                        required
+                                        {...register("CompanyNumber", { required: true})}  
+                                    />
+                            </label>
+                            
+                            <label htmlFor="addressline1">
+                                <p>Address Line 1:</p>
+                                <input 
+                                    type="addressline1" 
+                                    name="addressline1" 
+                                    required
+                                    {...register("Address1", { required: true})}
+                                />
+                            </label>
 
-                        <button 
+                            <label htmlFor="addressline2">
+                                <p>Address Line 2:</p>
+                                <input 
+                                    type="addressline2" 
+                                    name="addressline2" 
+                                    {...register("Address2", { required: false})}
+                                />
+                            </label>  
+
+                            <div>    
+                                <label htmlFor="city">
+                                    <p>City:</p>
+                                    <input 
+                                        type="city" 
+                                        name="city" 
+                                        {...register("City", { required: true})}
+                                    />
+                                </label>  
+                                <label htmlFor="region">
+                                    <p>Region:</p>
+                                    <input 
+                                        type="region" 
+                                        name="region" 
+                                        {...register("Region", { required: true})}
+                                    />
+                                </label>  
+                            </div>   
+                            <div>
+                                <label htmlFor="postalcode">
+                                    <p>Postal Code:</p>
+                                    <input 
+                                        type="postalcode" 
+                                        name="postalcode" 
+                                        {...register("PostalCode", { required: true})}
+                                    />
+                                </label>     
+                                <label htmlFor="country">
+                                    <p>Country:</p>
+                                    <input 
+                                        type="country" 
+                                        name="country" 
+                                        {...register("Country", { required: true})}
+                                    />
+                                </label>  
+                            </div>    
+                            <div className="buttonWrap">
+                            <button className="backBtn" onClick={()=> setFormStage(0)}>Back</button>
+                            <button 
                             type="submit" 
                             className="g-recaptcha"
                             data-sitekey="site_key"
                             data-callback='onSubmit'
                             data-action='submit'
-                        >{formSent === "sending" ? "Order is Sending" : "Submit"}</button>
+                            >{formSent === "sending" ? "Order is Sending" : "Submit"}</button>
+                            </div>
+                        
+                        
                         {formSent === "sending"? <p className="submit-message">Your order is sending, please stay on page. We will redirect you to the homepage once sent.</p>
                         : formSent === "sent" ? <p className="submit-message">Order submitted, your deposit invoice will be with you shortly.</p>
                         : formSent === "error" ? <p className="submit-message">Sorry, there's been an error submitting your form. Please contact our support team at ceo@glacier.nz</p>
                         : <p></p>
                         }
+
                     </form>
+                
+                }
             </Container>
         </Layout>
     )

@@ -1,4 +1,4 @@
-import { XeroClient, HistoryRecords, Invoice, Invoices, LineItem, Contact, Contacts, Phone } from 'xero-node';
+import { XeroClient, HistoryRecords, Invoice, Invoices, LineItem, Contact, Contacts, Phone, Address } from 'xero-node';
 
 // let ID = "";
 let SECRET = "";
@@ -57,6 +57,7 @@ export default async function postNewPersonHandler(req, res) {
 
 
     console.log(req.body);
+    console.log(req.body.photoid)
     let bed;
     if (req.body.bed === 0){bed = " Regular (5.5ft) "} else if (req.body.bed === 1) {bed = " Longbase (6.5ft) "} else {bed = " "}
     const description = "Deposit Invoice for " + req.body.name + "'s custom " + req.body.model + " order. Order details: " + req.body.model + " " + req.body.grade + bed + req.body.color;
@@ -74,16 +75,30 @@ export default async function postNewPersonHandler(req, res) {
             const contact: Contact = {
                 name: req.body.name,
                 emailAddress: req.body.email,
+                companyNumber: req.body.companynumber,
                 phones: [
                     {
                         phoneNumber: req.body.phone,
                         phoneType: Phone.PhoneTypeEnum.MOBILE
                     }
+                ],
+                addresses: [
+                    {
+                        addressType: Address.AddressTypeEnum.POBOX,
+                        addressLine1: req.body.address1,
+                        addressLine2: req.body.address2,
+                        city: req.body.city,
+                        region: req.body.region,
+                        postalCode: req.body.postalcode,
+                        country: req.body.country
+                    }
                 ]
             };
+
             const contacts: Contacts = {  
                 contacts: [contact]
-            }; 
+            };
+            console.log(contacts);
             await xero.accountingApi.createContacts('', contacts);
             //now that the contact is created, use the contact & Build My Tundra info to create invoice.
             //need to get accountId, so do check again now that it is created and used the id there
@@ -170,7 +185,7 @@ export default async function postNewPersonHandler(req, res) {
                 console.log('Invoice successfully emailed' || emailInvoice.response.statusCode)
             } catch (err) {
                 const error = JSON.stringify(err.response.body, null, 2)
-                console.log(`Probem emailing invoice`);
+                console.log(`Problem emailing invoice`, error);
             }
             
 
