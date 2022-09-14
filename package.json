@@ -18,6 +18,8 @@
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@sendgrid/mail": "^7.7.0",
+    "body-parser": "^1.20.0",
+    "busboy": "^1.6.0",
     "gatsby": "^4.22.0",
     "gatsby-plugin-emotion": "^7.14.0",
     "gatsby-plugin-google-gtag": "^4.20.0",

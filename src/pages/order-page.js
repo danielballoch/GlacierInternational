@@ -89,14 +89,12 @@ const Flex = styled.div`
 display: flex;
 flex-wrap: wrap;
 width: 100%;
-p {
-    /* padding-right: 10px; */
-}
 `
 
 export default function OrderPage ({location}){
     const [order, setOrder] = useState([]);
     const [formStage, setFormStage] = useState(0);
+    const [initialFormData, setInitialFormData] = useState();
     {/* Here I need to check for location & add to cache || if no location, check for localstorage and set that as state */}
     useEffect(() => {
         const localOrder = JSON.parse(localStorage.getItem('order'));
@@ -120,35 +118,29 @@ export default function OrderPage ({location}){
         
       }, [order]);
     const [formSent, setFormSent] = useState("");
-    let nf = new Intl.NumberFormat('en-US');
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
+
     
-    today = mm + '/' + dd + '/' + yyyy;
-    console.log(today)
-    dd = Number(dd) + 7;
-    today = mm + '/' + dd + '/' + yyyy;
-    
-    console.log(location.state)
+
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm()
+
+
     async function onSubmit(data){
         console.log("this is where form data should log")
         setFormSent("sending")
         console.log("Raw form data: ", data)
-        console.log("PhotoID: ", data.PhotoID)
+        console.log("PhotoID: ", JSON.stringify({photoid: data.PhotoID}))
+        console.log("Initial Form Data: ",initialFormData)
         fetch(`/api/xero`, {
           method: `POST`,
           body: JSON.stringify({
-            firstname: data.FirstName,
-            lastname: data.LastName,
-            phone: data.Phone,
-            email: data.Email,
+            firstname: initialFormData.firstname,
+            lastname: initialFormData.lastname,
+            phone: initialFormData.phone,
+            email: initialFormData.email,
             model: location.state.model,
             grade: location.state.grade,
             color: location.state.color,
@@ -184,9 +176,40 @@ export default function OrderPage ({location}){
             
           })
       }
+
+
+      const {
+        register: register2,
+        handleSubmit: handleSubmit2,
+        formState: { errors: errors2 },
+    } = useForm()
+
+
+    async function onSubmit2(data){
+        setFormStage(1);
+        setInitialFormData({firstname: data.FirstName, lastname: data.LastName, phone: data.Phone, email: data.Email});
+        console.log("Raw form data: ", data)
+        fetch(`/api/sendgrid2`, {
+          method: `POST`,
+          body: JSON.stringify({
+            firstname: data.FirstName,
+            lastname: data.LastName,
+            phone: data.Phone,
+            email: data.Email,
+        }),
+          headers: {
+            "content-type": `application/json`,
+          },
+        })
+          .then(res => res.json())
+          .then(body => {
+            console.log(`response from API:`, body);
+          })
+      }
       console.log({ errors })
       console.log(location.state)
       console.log("form stage: ", formStage)
+      let nf = new Intl.NumberFormat('en-US');
     return(
         <Layout title="Order Page | Glacier International" invertNav={true}>
             <Container>
@@ -204,17 +227,17 @@ export default function OrderPage ({location}){
                 <p>Total Price: ${nf.format(location.state.price)} (NZD)</p>
                 <p>Deposit: ${(Number(location.state.price) * 0.75).toLocaleString()} (NZD)</p>
                 <hr/>
-                <p>Please enter your information below to recive your 75% deposit invoice of ${(Number(location.state.price) * 0.75).toLocaleString()} via email, and secure your custom Tundra build to be delivered by 4th quarter of 2023.</p>
+                <p>Please enter your information below to receive your 75% deposit invoice of ${(Number(location.state.price) * 0.75).toLocaleString()} via email, and secure your custom Tundra build to be delivered by 4th quarter of 2023.</p>
             </div>
             : <p>Loading data... if you have not come from the 'build your Tundra/Sequoia' page please <Link to="/">click here</Link></p>
             }
             
             {formStage === 0 ? 
             <div>
-            <form 
+                
+                <form key={1} onSubmit={handleSubmit2(onSubmit2)}
                     id="main-form"
-                    // action="/api/sendgrid" method="POST"
-                    >       
+                >       
                             <div>
                                 <label htmlFor="firstname">
                                         <p>First Name:</p>
@@ -222,7 +245,7 @@ export default function OrderPage ({location}){
                                             type="text" 
                                             name="firstname" 
                                             required
-                                            {...register("FirstName", { required: true})}  
+                                            {...register2("FirstName", { required: true})}  
                                         />
                                 </label>
                                 <label htmlFor="lastname">
@@ -231,7 +254,7 @@ export default function OrderPage ({location}){
                                             type="text" 
                                             name="lastname" 
                                             required
-                                            {...register("LastName", { required: true})}  
+                                            {...register2("LastName", { required: true})}  
                                         />
                                 </label>
                             </div>
@@ -242,7 +265,7 @@ export default function OrderPage ({location}){
                                     type="phone" 
                                     name="phone" 
                                     required
-                                    {...register("Phone", { required: true})}
+                                    {...register2("Phone", { required: true})}
                                 />
                             </label>                      
                         <label htmlFor="email">
@@ -251,28 +274,19 @@ export default function OrderPage ({location}){
                                 type="email" 
                                 name="email" 
                                 required
-                                {...register("Email", { required: true, pattern: /^\S+@\S+$/i })}
+                                {...register2("Email", { required: true, pattern: /^\S+@\S+$/i })}
                             />
                         </label>
-                        <label htmlFor="photoid">
-                            <p>Photo ID (Drivers Licence or Passport):</p>
-                            <input 
-                                type="file" 
-                                name="photoid" 
-                                required
-                                accept="image/png, image/jpeg, image/jpg, image/gif"
-                                {...register("PhotoID", { required: true})}
-                                onChange={(e)=> {console.log("Photo change: ", e.currentTarget.files[0] )}}
-                            />
-                        </label>
-                        <button className="submitBtn" onClick={()=> setFormStage(1)}>Next</button>
-                        
+                    
+                        <button className="submitBtn" >Next</button>
+                        {/* onClick={()=> {setFormStage(1)}} */}
                     </form>
                     </div>
-                :   
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                            <div>
-                                <label htmlFor="name">
+                :  formStage === 1 ?     
+                        <div>
+                            <form key={2}>
+                                <div>
+                                    <label htmlFor="name">
                                             <p>Company Name:</p>
                                             <input 
                                                 type="text" 
@@ -280,19 +294,37 @@ export default function OrderPage ({location}){
                                                 required
                                                 {...register("Name", { required: true})}  
                                             />
+                                    </label>
+                                    <label htmlFor="companynumber">
+                                            <p>Company Registration Number:</p>
+                                            <input 
+                                                value={formStage === 0? "" : undefined}
+                                                type="text" 
+                                                name="companynumber" 
+                                                required
+                                                {...register("CompanyNumber", { required: true})}  
+                                            />
+                                    </label>
+                                </div>
+                                <label htmlFor="photoid">
+                                    <p>Photo ID (Drivers Licence or Passport):</p>
+                                    <input 
+                                        type="file" 
+                                        name="photoid" 
+                                        required
+                                        accept="image/png, image/jpeg, image/jpg, image/gif"
+                                        {...register("PhotoID", { required: true})}
+                                        onChange={(e)=> {console.log("Photo change: ", e.currentTarget.files[0] )}}
+                                    />
                                 </label>
-                                <label htmlFor="companynumber">
-                                        <p>Company Registration Number:</p>
-                                        <input 
-                                            value={formStage === 0? "" : undefined}
-                                            type="text" 
-                                            name="companynumber" 
-                                            required
-                                            {...register("CompanyNumber", { required: true})}  
-                                        />
-                                </label>
+                            <div className="buttonWrap">
+                                <button className="backBtn" onClick={()=> setFormStage(0)}>Back</button>
+                                <button onClick={()=> setFormStage(2)}>Next</button>
                             </div>
-                            
+                        </form>
+                    </div>
+                    :
+                    <form key={3} onSubmit={handleSubmit(onSubmit)}>
                             <label htmlFor="addressline1">
                                 <p>Address Line 1:</p>
                                 <input 
@@ -353,7 +385,7 @@ export default function OrderPage ({location}){
                                 </label>  
                             </div>    
                             <div className="buttonWrap">
-                            <button className="backBtn" onClick={()=> setFormStage(0)}>Back</button>
+                            <button className="backBtn" onClick={()=> setFormStage(1)}>Back</button>
                             <button 
                             type="submit" 
                             className="g-recaptcha"
@@ -369,10 +401,7 @@ export default function OrderPage ({location}){
                         : formSent === "error" ? <p className="submit-message">Sorry, there's been an error submitting your form. Please contact our support team at ceo@glacier.nz</p>
                         : <p></p>
                         }
-
                     </form>
-                    
-                
                 }
             </Container>
         </Layout>
