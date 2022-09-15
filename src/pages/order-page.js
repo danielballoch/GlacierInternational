@@ -167,13 +167,12 @@ export default function OrderPage ({location}){
             if (body.response.statusCode === 200){
                 console.log("sent!");
                 setFormSent("sent");
-                navigate("/", {state: {formSent: true, model: location.state.model}});
+                // navigate("/", {state: {formSent: true, model: location.state.model}});
+                navigate("/invoice", {state: {body}})
             } else {
                 console.log("error!", body)
                 setFormSent("error");
             }
-            
-            
           })
       }
 
@@ -215,7 +214,7 @@ export default function OrderPage ({location}){
             <Container>
             <h1>Order Details:</h1>
             {/* Here I need to add check for cached model/build */}
-            {location.state && location.state.model ? 
+            {location && location.state? 
             <div>
                 <Flex>
                     <p>Model: {location.state.model} Grade: {location.state.grade} &nbsp;</p>
@@ -229,7 +228,7 @@ export default function OrderPage ({location}){
                 <hr/>
                 <p>Please enter your information below to receive your 75% deposit invoice of ${(Number(location.state.price) * 0.75).toLocaleString()} via email, and secure your custom Tundra build to be delivered by 4th quarter of 2023.</p>
             </div>
-            : <p>Loading data... if you have not come from the 'build your Tundra/Sequoia' page please <Link to="/">click here</Link></p>
+            : <p>Loading data...{location.state? "hellow" : "hello2"}if you have not come from the 'build your Tundra/Sequoia' page please <Link to="/">click here</Link></p>
             }
             
             {formStage === 0 ? 
