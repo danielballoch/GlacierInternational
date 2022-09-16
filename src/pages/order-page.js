@@ -324,7 +324,8 @@ export default function OrderPage ({location}){
                                             />
                                     </label>
                                 </div>
-                                <form id="photoidform" name="photoidform" method="POST" data-netlify="true" >
+                        </form>
+                        <form id="photoidform" name="photoidform" method="POST" data-netlify="true" >
                                     <label htmlFor="photoid">
                                         <p>Photo ID (Drivers Licence or Passport):</p>
                                         <input 
@@ -339,7 +340,6 @@ export default function OrderPage ({location}){
                                         <button type="submit" onClick={()=> setFormStage(2)}>Next</button>
                                     </div>
                                 </form>
-                        </form>
                     </div>
                     :
                     <form key={3} onSubmit={handleSubmit(onSubmit)}>
