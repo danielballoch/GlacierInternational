@@ -397,7 +397,7 @@ const SupportTundraPage = () => {
                 <Social>
                 <p>Follow us on social media for updates, showcases, and more information </p>
                 <div>
-                    <a href="https://www.instagram.com/glacier_international/">
+                    <a href="https://www.instagram.com/glacier_international/" target="_blank">
                     <StaticImage
                         className="socialImgs"
                         objectFit={"contain"}
@@ -405,7 +405,7 @@ const SupportTundraPage = () => {
                         alt="Instagram Logo"
                     />
                     </a>
-                    <a href="https://www.youtube.com/channel/UC2CR408AOJqt5JNUFVt-nSQ/playlists">
+                    <a href="https://www.youtube.com/channel/UC2CR408AOJqt5JNUFVt-nSQ/playlists" target="_blank">
                     <StaticImage
                         objectFit={"contain"}
                         className="socialImgs"
@@ -413,7 +413,7 @@ const SupportTundraPage = () => {
                         alt="Youtube Logo"
                     />
                     </a>
-                    <a href="https://www.facebook.com/GlacierInt">
+                    <a href="https://www.facebook.com/GlacierInt" target="_blank">
                     <StaticImage
                         objectFit={"contain"}
                         className="socialImgs"

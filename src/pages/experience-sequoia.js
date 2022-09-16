@@ -373,7 +373,7 @@ const ExperienceTundraPage = () => {
                         
                         </Container>
                         <Social>
-                            <a href="https://www.instagram.com/glacier_international/">
+                            <a href="https://www.instagram.com/glacier_international/" target="_blank">
                             <StaticImage
                                 className="experienceImgs"
                                 objectFit={"contain"}
@@ -381,7 +381,7 @@ const ExperienceTundraPage = () => {
                                 alt="Instagram logo"
                             />
                             </a>
-                            <a href="https://www.youtube.com/channel/UC2CR408AOJqt5JNUFVt-nSQ/playlists">
+                            <a href="https://www.youtube.com/channel/UC2CR408AOJqt5JNUFVt-nSQ/playlists" target="_blank">
                             <StaticImage
                                 objectFit={"contain"}
                                 className="experienceImgs"
@@ -389,7 +389,7 @@ const ExperienceTundraPage = () => {
                                 alt="Youtube logo"
                             />
                             </a>
-                            <a href="https://www.facebook.com/GlacierInt">
+                            <a href="https://www.facebook.com/GlacierInt" target="_blank">
                             <StaticImage
                                 objectFit={"contain"}
                                 className="experienceImgs"
