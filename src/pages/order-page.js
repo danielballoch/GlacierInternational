@@ -139,7 +139,6 @@ export default function OrderPage ({location}){
         console.log("this is where form data should log")
         setFormSent("sending")
         console.log("Raw form data: ", data)
-        console.log("PhotoID: ", JSON.stringify({photoid: data.PhotoID}))
         console.log("Initial Form Data: ",initialFormData)
         fetch(`/api/xero`, {
           method: `POST`,
@@ -160,8 +159,7 @@ export default function OrderPage ({location}){
             city: data.City,
             region: data.Region,
             postalcode: data.PostalCode,
-            country: data.Country,
-            photoid: data.PhotoID
+            country: data.Country
         }),
           headers: {
             "content-type": `application/json`,
@@ -326,21 +324,21 @@ export default function OrderPage ({location}){
                                             />
                                     </label>
                                 </div>
-                                <label htmlFor="photoid">
-                                    <p>Photo ID (Drivers Licence or Passport):</p>
-                                    <input 
-                                        type="file" 
-                                        name="photoid" 
-                                        required
-                                        accept="image/png, image/jpeg, image/jpg, image/gif"
-                                        {...register("PhotoID", { required: true})}
-                                        onChange={(e)=> {console.log("Photo change: ", e.currentTarget.files[0] )}}
-                                    />
-                                </label>
-                            <div className="buttonWrap">
-                                <button className="backBtn" onClick={()=> setFormStage(0)}>Back</button>
-                                <button onClick={()=> setFormStage(2)}>Next</button>
-                            </div>
+                                <form id="photoidform" name="photoidform" method="POST" data-netlify="true" >
+                                    <label htmlFor="photoid">
+                                        <p>Photo ID (Drivers Licence or Passport):</p>
+                                        <input 
+                                            type="file" 
+                                            name="photoid" 
+                                            required
+                                            accept="image/png, image/jpeg, image/jpg, image/gif"
+                                        />
+                                    </label>
+                                    <div className="buttonWrap">
+                                        <button className="backBtn" onClick={()=> setFormStage(0)}>Back</button>
+                                        <button type="submit" onClick={()=> setFormStage(2)}>Next</button>
+                                    </div>
+                                </form>
                         </form>
                     </div>
                     :
