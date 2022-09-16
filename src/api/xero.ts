@@ -62,6 +62,28 @@ export default async function postNewPersonHandler(req, res) {
     if (req.body.bed === 0){bed = " Regular (5.5ft) "} else if (req.body.bed === 1) {bed = " Longbase (6.5ft) "} else {bed = " "}
     const description = "Deposit Invoice for " + req.body.name + "'s custom " + req.body.model + " order. Order details: " + req.body.model + " " + req.body.grade + bed + req.body.color;
 
+    //price reset to make sure there's no funny business 
+    let safePrice = 0;
+    console.log("Price check 1", safePrice)
+    if (req.body.model === "2023 Tundra"){
+        console.log("Tundra price setting", req.body.grade)
+        if(req.body.grade === "Limited Hybrid TRD OFF ROAD"){safePrice = 205000} 
+        else if(req.body.grade === "Platinum Hybrid"){safePrice = 225000} 
+        else if(req.body.grade === "1794 Hybrid TRD OFF ROAD"){safePrice = 245000} 
+        else if(req.body.grade === "TRD PRO Hybrid"){safePrice = 265000} 
+        else if(req.body.grade === "Capstone Hybrid"){safePrice = 205000} 
+    } else if (req.body.model === "2023 Sequoia"){
+        console.log("Sequoia price setting", req.body.grade)
+        if(req.body.grade === "SR5"){safePrice = 205000} 
+        else if(req.body.grade === "Limited"){safePrice = 225000} 
+        else if(req.body.grade === "Platinum"){safePrice = 245000} 
+        else if(req.body.grade === "TRD PRO"){safePrice = 265000} 
+        else if(req.body.grade === "Capstone"){safePrice = 205000} 
+    } else {
+        console.log("req.body.model must be wrong")
+    }
+    console.log("Price check 2:", safePrice)
+
 
     try {
         let currentDate = getDate();
@@ -128,12 +150,13 @@ export default async function postNewPersonHandler(req, res) {
             const contact2: Contact = {
                 contactID: contactId
             };
+            console.log("Price check: ", safePrice)
             const lineItem: LineItem = {
                 accountID: '',
                 description: description,
                 quantity: 1.0,
                 accountCode: "200",
-                unitAmount: (req.body.price*0.75)
+                unitAmount: (safePrice*0.75)
             };
             const invoice: Invoice = {
                 lineItems: [lineItem],
@@ -215,7 +238,7 @@ export default async function postNewPersonHandler(req, res) {
                 description: description,
                 quantity: 1.0,
                 accountCode: "200",
-                unitAmount: (req.body.price*0.75)
+                unitAmount: (safePrice*0.75)
             };
             const invoice: Invoice = {
                 lineItems: [lineItem],

@@ -55,6 +55,7 @@ export default function InvoicePage({location}){
 
     //should probably check if localStorage is different from location and not empty then avoid call if I don't need it 
     async function GetOnlineInvoice(){
+
             fetch(`/api/xero2`, {
                 method: `POST`,
                 body: JSON.stringify({
