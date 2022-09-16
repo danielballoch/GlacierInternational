@@ -67,6 +67,8 @@ const Layout = ({ title, children, pageLocation, hideFooter, invertNav}) => {
               margin: 0;
               padding: 0;
               background: white;
+              font-family: "Open Sans";
+              color: #050505;
               min-height: '100vh';
               max-width: '100vw';
               overflow-x: 'hidden';

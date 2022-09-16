@@ -22,13 +22,20 @@ const xero = new XeroClient({
         const validTokenSet = await xero.refreshToken();
     }
     try {
+        console.log("start of api call")
         const onlineInvoice = await xero.accountingApi.getOnlineInvoice('',req.body.invoiceID)
         console.log(onlineInvoice)
+        // const onlinePayment = await xero.accountingApi.getPaymentServices('')
+        // console.log(onlinePayment)
+        
+        
         res.send(onlineInvoice);
         return res.status(200).json()
     } catch (err) {
         const error = JSON.stringify(err.response.body, null, 2)
         console.log(`Problem getting invoiceID`, error);
+        return res.status(500).json(error)
     }
+
     
 }

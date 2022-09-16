@@ -92,31 +92,38 @@ width: 100%;
 `
 
 export default function OrderPage ({location}){
-    const [order, setOrder] = useState([]);
+    const [order, setOrder] = useState();
     const [formStage, setFormStage] = useState(0);
     const [initialFormData, setInitialFormData] = useState();
+    console.log("state: ",order)
+    console.log("location: ",location)
     {/* Here I need to check for location & add to cache || if no location, check for localstorage and set that as state */}
     useEffect(() => {
-        const localOrder = JSON.parse(localStorage.getItem('order'));
-        console.log("localOrder: ", localOrder);
-        if(location.state && location.state.model && order.length === 0 ){
-            setOrder({
-                model: location.state.model,
-                grade: location.state.grade,
-                color: location.state.color,
-                bed: location.state.bed,
-                price: location.state.price
-            })
-            localStorage.setItem('order', JSON.stringify(order));
-        } else if (!location && localOrder){
-            console.log("localstorage worksl")
-            setOrder(localOrder);
+        if (location.state){
+            localStorage.setItem('model',location.state.model);
+            localStorage.setItem('grade',location.state.grade);
+            localStorage.setItem('color',location.state.color);
+            localStorage.setItem('bed',location.state.bed);
+            localStorage.setItem('price',location.state.price);
+            setOrder(
+                {model: localStorage.getItem('model'), 
+                grade: localStorage.getItem('grade'),
+                color: localStorage.getItem('color'),
+                bed: localStorage.getItem('bed'),
+                price: localStorage.getItem('price'),
+                },  
+            )
+        } else if (localStorage.getItem('model') && !location.state){
+            setOrder(
+                {model: localStorage.getItem('model'), 
+                grade: localStorage.getItem('grade'),
+                color: localStorage.getItem('color'),
+                bed: localStorage.getItem('bed'),
+                price: localStorage.getItem('price'),
+                },  
+            )
         }
-
-        
-        
-        
-      }, [order]);
+      }, [location]);
     const [formSent, setFormSent] = useState("");
 
     
@@ -141,11 +148,11 @@ export default function OrderPage ({location}){
             lastname: initialFormData.lastname,
             phone: initialFormData.phone,
             email: initialFormData.email,
-            model: location.state.model,
-            grade: location.state.grade,
-            color: location.state.color,
-            bed: location.state.bed,
-            price: location.state.price,
+            model: order.model,
+            grade: order.grade,
+            color: order.color,
+            bed: order.bed,
+            price: order.price,
             name: data.Name,
             companynumber: data.CompanyNumber,
             address1: data.Address1,
@@ -214,21 +221,21 @@ export default function OrderPage ({location}){
             <Container>
             <h1>Order Details:</h1>
             {/* Here I need to add check for cached model/build */}
-            {location && location.state? 
+            {order? 
             <div>
                 <Flex>
-                    <p>Model: {location.state.model} Grade: {location.state.grade} &nbsp;</p>
-                    {location.state.bed === 0 ? <p>Bed & Cab: Regular (5.5ft)</p> 
-                    : location.state.bed === 1 ? <p>Bed & Cab: Longbase (6.5ft)</p>
+                    <p>Model: {order.model} Grade: {order.grade} &nbsp;</p>
+                    {order.bed === 0 ? <p>Bed & Cab: Regular (5.5ft)</p> 
+                    : order.bed === 1 ? <p>Bed & Cab: Longbase (6.5ft)</p>
                     : null }
-                    <p>Color: {location.state.color}</p>
+                    <p>Color: {order.color}</p>
                 </Flex>
-                <p>Total Price: ${nf.format(location.state.price)} (NZD)</p>
-                <p>Deposit: ${(Number(location.state.price) * 0.75).toLocaleString()} (NZD)</p>
+                <p>Total Price: ${nf.format(order.price)} (NZD)</p>
+                <p>Deposit: ${(Number(order.price) * 0.75).toLocaleString()} (NZD)</p>
                 <hr/>
-                <p>Please enter your information below to receive your 75% deposit invoice of ${(Number(location.state.price) * 0.75).toLocaleString()} via email, and secure your custom Tundra build to be delivered by 4th quarter of 2023.</p>
+                <p>Please enter your information below to receive your 75% deposit invoice of ${(Number(order.price) * 0.75).toLocaleString()} via email, and secure your custom Tundra build to be delivered by 4th quarter of 2023.</p>
             </div>
-            : <p>Loading data...{location.state? "hellow" : "hello2"}if you have not come from the 'build your Tundra/Sequoia' page please <Link to="/">click here</Link></p>
+            : <p>Loading data...{order? "hello" : "hello2"}if you have not come from the 'build your Tundra/Sequoia' page please <Link to="/">click here</Link></p>
             }
             
             {formStage === 0 ? 
@@ -395,7 +402,7 @@ export default function OrderPage ({location}){
                             </div>
                         
                         
-                        {formSent === "sending"? <p className="submit-message">Your order is sending, please stay on page. We will redirect you to the homepage once sent.</p>
+                        {formSent === "sending"? <p className="submit-message">Your order is sending, please stay on page. We will redirect you to the invoice page once created.</p>
                         : formSent === "sent" ? <p className="submit-message">Order submitted, your deposit invoice will be with you shortly.</p>
                         : formSent === "error" ? <p className="submit-message">Sorry, there's been an error submitting your form. Please contact our support team at ceo@glacier.nz</p>
                         : <p></p>
