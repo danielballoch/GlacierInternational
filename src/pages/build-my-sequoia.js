@@ -171,7 +171,7 @@ const IndexPage = ({display=false}) => {
         </Main>
     </Layout>
   )
-    } else {
+    } else if (isBrowser && window.innerWidth < 1050) {
         console.log("mobile page")
         // mobile page
         return (
@@ -184,7 +184,9 @@ const IndexPage = ({display=false}) => {
                 </Main>
             </Layout>
         )
-    }
+    } else { return (
+        <div>Loading...</div>
+    )}
 }
 
 export default IndexPage

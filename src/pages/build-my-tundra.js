@@ -211,17 +211,17 @@ const IndexPage = ({display=false}) => {
         console.log("desktop page")
         // desktop page
   return (
-      <Layout title="Build Your Tundra | Glacier International" hideFooter={true} invertNav={true}>
-        <Main style={pageStyles}>
-        <PriceFinanceBar price={price}/>
-        <Row>
-            <MainImage src={grades[activeGrade[2]].src[activeColor[(2)]+activeBed*grades[activeGrade[2]].src.length/2]}/>
-            <FeatureBar grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color); console.log(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}} activeBed={activeBed} updateActiveBed={(bed) => setActiveBed(bed)} price={price}/>
-        </Row>
-        </Main>
-    </Layout>
+        <Layout title="Build Your Tundra | Glacier International" hideFooter={true} invertNav={true}>
+            <Main style={pageStyles}>
+                <PriceFinanceBar price={price}/>
+                <Row>
+                    <MainImage src={grades[activeGrade[2]].src[activeColor[(2)]+activeBed*grades[activeGrade[2]].src.length/2]}/>
+                    <FeatureBar grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color); console.log(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}} activeBed={activeBed} updateActiveBed={(bed) => setActiveBed(bed)} price={price}/>
+                </Row>
+            </Main>
+        </Layout>
   )
-    } else {
+    } else if (isBrowser && window.innerWidth < 1050){
         console.log("mobile page")
         // mobile page
         return (
@@ -234,7 +234,9 @@ const IndexPage = ({display=false}) => {
                 </Main>
             </Layout>
         )
-    }
+    } else { return (
+        <div>Loading...</div>
+    )}
 }
 
 export default IndexPage
