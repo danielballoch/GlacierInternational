@@ -184,7 +184,7 @@ const IndexPage = ({display=false}) => {
     
     const [price, setPrice] = useState(0);
     const [activeGrade, setActiveGrade] = useState(["Limited Hybrid TRD OFF ROAD",32000, 0]);
-    const [activeColor, setActiveColor] = useState(["Midnight Black Metallic",100, 5]);
+    const [activeColor, setActiveColor] = useState(["Midnight Black Metallic",100, 0]);
     const [activeBed, setActiveBed] = useState(0)
 
     const [selectionStage, setSelectionStage] = useState(0);
@@ -209,6 +209,7 @@ const IndexPage = ({display=false}) => {
     });
     if (isBrowser && window.innerWidth > 1050){
         console.log("desktop page")
+        console.log("Active color: ",activeColor[0])
         // desktop page
   return (
         <Layout title="Build Your Tundra | Glacier International" hideFooter={true} invertNav={true}>
