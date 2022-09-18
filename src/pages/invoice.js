@@ -8,6 +8,7 @@ const Wrapper = styled.div`
 max-width: 800px;
 min-height: 61vh;
 margin: 200px auto 100px auto;
+padding: 10px;
 `
 
 export default function InvoicePage({location}){

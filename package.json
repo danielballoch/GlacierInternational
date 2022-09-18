@@ -39,6 +39,7 @@
     "react-google-recaptcha": "^2.1.0",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.34.2",
+    "vertx": "^0.0.1-security",
     "xero-node": "^4.21.0"
   }
 }

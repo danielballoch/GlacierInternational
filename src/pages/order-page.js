@@ -188,12 +188,11 @@ export default function OrderPage ({location}){
         formState: { errors: errors2 },
     } = useForm()
 
-
     async function onSubmit2(data){
         setFormStage(1);
         setInitialFormData({firstname: data.FirstName, lastname: data.LastName, phone: data.Phone, email: data.Email});
         console.log("Raw form data: ", data)
-        fetch(`/api/sendgrid2`, {
+        fetch(`/api/activeCampaign`, {
           method: `POST`,
           body: JSON.stringify({
             firstname: data.FirstName,
@@ -210,6 +209,27 @@ export default function OrderPage ({location}){
             console.log(`response from API:`, body);
           })
       }
+    // async function onSubmit2(data){
+    //     setFormStage(1);
+    //     setInitialFormData({firstname: data.FirstName, lastname: data.LastName, phone: data.Phone, email: data.Email});
+    //     console.log("Raw form data: ", data)
+    //     fetch(`/api/sendgrid2`, {
+    //       method: `POST`,
+    //       body: JSON.stringify({
+    //         firstname: data.FirstName,
+    //         lastname: data.LastName,
+    //         phone: data.Phone,
+    //         email: data.Email,
+    //     }),
+    //       headers: {
+    //         "content-type": `application/json`,
+    //       },
+    //     })
+    //       .then(res => res.json())
+    //       .then(body => {
+    //         console.log(`response from API:`, body);
+    //       })
+    //   }
       console.log({ errors })
       console.log(location.state)
       console.log("form stage: ", formStage)
