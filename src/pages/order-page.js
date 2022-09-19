@@ -394,13 +394,6 @@ export default function OrderPage ({location}){
                                                 Don’t fill this out: <input name="bot-field" onChange={handleChange} />
                                             </label>
                                         </p>
-                                        <p>
-                                            <label>
-                                                Your name:
-                                                <br />
-                                                <input type="text" name="name" onChange={handleChange} />
-                                            </label>
-                                        </p>
                                         <label htmlFor="attachment">
                                             <p>Photo ID (Drivers Licence or Passport):</p>
                                             <input 
