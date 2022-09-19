@@ -330,7 +330,7 @@ export default function OrderPage ({location}){
                                     </label>
                                 </div>
                         </form>
-                        <form id="photoidform" name="photoidform" method="POST" data-netlify="true" >
+                        <form id="photoidform" name="photoidform" method="POST" data-netlify="true" netlify >
                                     <label htmlFor="photoid">
                                         <p>Photo ID (Drivers Licence or Passport):</p>
                                         <input 
@@ -339,6 +339,7 @@ export default function OrderPage ({location}){
                                             required
                                             accept="image/png, image/jpeg, image/jpg, image/gif"
                                         />
+                                        <input type="hidden" name="form-name" value="name_of_my_form" />
                                     </label>
                                     <div className="buttonWrap">
                                         <button className="backBtn" onClick={()=> setFormStage(0)}>Back</button>

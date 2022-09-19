@@ -260,16 +260,14 @@ const SupportTundraPage = () => {
         console.log("this is where form data should log")
         console.log("data: ", data)
         console.log("token: ", token)
-        
-        
-        fetch(`/api/sendgrid`, {
+        // active campaign fetch for data
+        fetch(`/api/activeCampaign`, {
           method: `POST`,
           body: JSON.stringify({
-            name: data.Name,
+            firstName: data.Name,
             phone: data.Phone,
             email: data.Email,
-            message:data.Message,
-            token
+            order: data.Message,
         }),
           headers: {
             "content-type": `application/json`,
@@ -280,8 +278,29 @@ const SupportTundraPage = () => {
             console.log(`response from API:`, body);
           })
           .then(setServerState({formSent: true}))
+        // sendgrid fetch as backup + for auto responder
+          fetch(`/api/sendgrid`, {
+            method: `POST`,
+            body: JSON.stringify({
+              name: data.Name,
+              phone: data.Phone,
+              email: data.Email,
+              message:data.Message,
+              token
+          }),
+            headers: {
+              "content-type": `application/json`,
+            },
+          })
+            .then(res => res.json())
+            .then(body => {
+              console.log(`response from API:`, body);
+            })
+            .then(setServerState({formSent: true}))
       }
-      console.log({ errors })
+    
+  
+      
       useEffect(() => {
           if (serverState.formSent === true) {
             setTimeout(() => {

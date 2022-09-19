@@ -66,21 +66,21 @@ export default async function postNewPersonHandler(req, res) {
     
     console.log("Price check 1")
     function GetPrice(){
-        let safePrice = 0;
+        let safePrice = 265000;
         if (req.body.model === "2023 Tundra"){
             console.log("Tundra price setting", req.body.grade)
             if(req.body.grade === "Limited Hybrid TRD OFF ROAD"){safePrice = 205000} 
             else if(req.body.grade === "Platinum Hybrid"){safePrice = 225000} 
             else if(req.body.grade === "1794 Hybrid TRD OFF ROAD"){safePrice = 245000} 
             else if(req.body.grade === "TRD PRO Hybrid"){safePrice = 265000} 
-            else if(req.body.grade === "Capstone Hybrid"){safePrice = 205000} 
+            else if(req.body.grade === "Capstone Hybrid"){safePrice = 265000} 
         } else if (req.body.model === "2023 Sequoia"){
             console.log("Sequoia price setting", req.body.grade)
             if(req.body.grade === "SR5"){safePrice = 205000} 
             else if(req.body.grade === "Limited"){safePrice = 225000} 
             else if(req.body.grade === "Platinum"){safePrice = 245000} 
             else if(req.body.grade === "TRD PRO"){safePrice = 265000} 
-            else if(req.body.grade === "Capstone"){safePrice = 205000} 
+            else if(req.body.grade === "Capstone"){safePrice = 265000} 
         } else {
             console.log("req.body.model must be wrong")
         }
