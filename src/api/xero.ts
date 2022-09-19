@@ -63,29 +63,34 @@ export default async function postNewPersonHandler(req, res) {
     const description = "Deposit Invoice for " + req.body.name + "'s custom " + req.body.model + " order. Order details: " + req.body.model + " " + req.body.grade + bed + req.body.color;
 
     //price reset to make sure there's no funny business 
-    let safePrice = 0;
-    console.log("Price check 1", safePrice)
-    if (req.body.model === "2023 Tundra"){
-        console.log("Tundra price setting", req.body.grade)
-        if(req.body.grade === "Limited Hybrid TRD OFF ROAD"){safePrice = 205000} 
-        else if(req.body.grade === "Platinum Hybrid"){safePrice = 225000} 
-        else if(req.body.grade === "1794 Hybrid TRD OFF ROAD"){safePrice = 245000} 
-        else if(req.body.grade === "TRD PRO Hybrid"){safePrice = 265000} 
-        else if(req.body.grade === "Capstone Hybrid"){safePrice = 205000} 
-    } else if (req.body.model === "2023 Sequoia"){
-        console.log("Sequoia price setting", req.body.grade)
-        if(req.body.grade === "SR5"){safePrice = 205000} 
-        else if(req.body.grade === "Limited"){safePrice = 225000} 
-        else if(req.body.grade === "Platinum"){safePrice = 245000} 
-        else if(req.body.grade === "TRD PRO"){safePrice = 265000} 
-        else if(req.body.grade === "Capstone"){safePrice = 205000} 
-    } else {
-        console.log("req.body.model must be wrong")
+    
+    console.log("Price check 1")
+    function GetPrice(){
+        let safePrice = 0;
+        if (req.body.model === "2023 Tundra"){
+            console.log("Tundra price setting", req.body.grade)
+            if(req.body.grade === "Limited Hybrid TRD OFF ROAD"){safePrice = 205000} 
+            else if(req.body.grade === "Platinum Hybrid"){safePrice = 225000} 
+            else if(req.body.grade === "1794 Hybrid TRD OFF ROAD"){safePrice = 245000} 
+            else if(req.body.grade === "TRD PRO Hybrid"){safePrice = 265000} 
+            else if(req.body.grade === "Capstone Hybrid"){safePrice = 205000} 
+        } else if (req.body.model === "2023 Sequoia"){
+            console.log("Sequoia price setting", req.body.grade)
+            if(req.body.grade === "SR5"){safePrice = 205000} 
+            else if(req.body.grade === "Limited"){safePrice = 225000} 
+            else if(req.body.grade === "Platinum"){safePrice = 245000} 
+            else if(req.body.grade === "TRD PRO"){safePrice = 265000} 
+            else if(req.body.grade === "Capstone"){safePrice = 205000} 
+        } else {
+            console.log("req.body.model must be wrong")
+        }
+        console.log("Price check 2:", safePrice)
+        return safePrice;
     }
-    console.log("Price check 2:", safePrice)
-
 
     try {
+        let safePrice = GetPrice();
+        console.log("safePrice: ",safePrice)
         let currentDate = getDate();
         let nextWeek = getNextWeek();
         console.log(currentDate, nextWeek);
@@ -216,7 +221,7 @@ export default async function postNewPersonHandler(req, res) {
             }
             
 
-            
+            console.log("safePrice: ",safePrice)
             return res.status(200).json();
 
         } else {

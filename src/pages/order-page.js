@@ -209,27 +209,7 @@ export default function OrderPage ({location}){
             console.log(`response from API:`, body);
           })
       }
-    // async function onSubmit2(data){
-    //     setFormStage(1);
-    //     setInitialFormData({firstname: data.FirstName, lastname: data.LastName, phone: data.Phone, email: data.Email});
-    //     console.log("Raw form data: ", data)
-    //     fetch(`/api/sendgrid2`, {
-    //       method: `POST`,
-    //       body: JSON.stringify({
-    //         firstname: data.FirstName,
-    //         lastname: data.LastName,
-    //         phone: data.Phone,
-    //         email: data.Email,
-    //     }),
-    //       headers: {
-    //         "content-type": `application/json`,
-    //       },
-    //     })
-    //       .then(res => res.json())
-    //       .then(body => {
-    //         console.log(`response from API:`, body);
-    //       })
-    //   }
+
       console.log({ errors })
       console.log(location.state)
       console.log("form stage: ", formStage)
@@ -274,7 +254,7 @@ export default function OrderPage ({location}){
             <div>
                 
                 <form key={1} onSubmit={handleSubmit2(onSubmit2)}
-                    id="main-form"
+                    id="autocomplete"
                 >       
                             <div>
                                 <label htmlFor="firstname">

@@ -2,9 +2,12 @@ import fetch from "node-fetch"
 //post contact
 //first need to check contact isn't in database
 //this is all good for xero initial data but need to change for 
+
+//need to add check for if email address already exists
 export default async(req, res) => {
     console.log(req.body)
     const url = 'https://glacier.api-us1.com/api/3/contacts';
+    console.log("body test: ")
     const options = {
     method: 'POST',
     headers: {
@@ -14,10 +17,10 @@ export default async(req, res) => {
     },
     body: JSON.stringify({
         contact: {
-        email: req.email,
-        firstName: req.firstName,
-        lastName: req.lastName,
-        phone: req.phone
+        email: req.body.email,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        phone: req.body.phone
         }
     })
     };

@@ -60,6 +60,8 @@ const Layout = ({ title, children, pageLocation, hideFooter, invertNav}) => {
             <link rel="preconnect" href="https://fonts.googleapis.com"/>
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
             <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100&family=Open+Sans&display=swap" rel="stylesheet"/> 
+            {/* <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBHN6Wv8CGtS9AnKBioiTBo0xT1-9BnO8&libraries=places&callback=initMap"/> */}
+
       </Helmet>
       <Global
           styles={css`
