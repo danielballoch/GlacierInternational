@@ -404,6 +404,7 @@ export default function OrderPage ({location}){
                                                 accept="image/png, image/jpeg, image/jpg, image/gif"
                                             />
                                          </label>
+                                         <input type="hidden" name="form-name" value="file-upload" />
                                    
                                     <div className="buttonWrap">
                                         <button className="backBtn" onClick={()=> setFormStage(0)}>Back</button>
