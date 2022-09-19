@@ -109,6 +109,7 @@ export default function OrderPage ({location}){
     const [order, setOrder] = useState();
     const [formStage, setFormStage] = useState(0);
     const [initialFormData, setInitialFormData] = useState();
+    const [fileUploadData, setFileUploadData] = useState();
     console.log("state: ",order)
     console.log("location: ",location)
     {/* Here I need to check for location & add to cache || if no location, check for localstorage and set that as state */}
@@ -147,6 +148,18 @@ export default function OrderPage ({location}){
         handleSubmit,
         formState: { errors },
     } = useForm()
+
+
+    //fileUploadForm code (netlify)
+    function encode(data) {
+        const formData = new FormData()
+      
+        for (const key of Object.keys(data)) {
+          formData.append(key, data[key])
+        }
+      
+        return formData
+    }
 
 
     async function onSubmit(data){
@@ -233,6 +246,29 @@ export default function OrderPage ({location}){
       console.log(location.state)
       console.log("form stage: ", formStage)
       let nf = new Intl.NumberFormat('en-US');
+
+      //fileUploadForm code (netlify)
+      const handleChange = (e) => {
+        setFileUploadData({ ...fileUploadData, [e.target.name]: e.target.value })
+      }
+    
+      const handleAttachment = (e) => {
+        setFileUploadData({ ...fileUploadData, [e.target.name]: e.target.files[0] })
+      }
+    
+      const handleSubmit3 = (e) => {
+        e.preventDefault()
+        const form = e.target
+        fetch('/', {
+          method: 'POST',
+          body: encode({
+            'form-name': form.getAttribute('name'),
+            ...fileUploadData,
+          }),
+        }).then(setFormStage(2))
+          .catch((error) => alert(error))
+      }
+
     return(
         <Layout title="Order Page | Glacier International" invertNav={true}>
             <Container>
@@ -344,22 +380,43 @@ export default function OrderPage ({location}){
                                     </label>
                                 </div>
                         </form>
-                        <form id="photoidform" name="photoidform" method="POST" data-netlify="true" netlify >
-                                    <label htmlFor="photoid">
-                                        <p>Photo ID (Drivers Licence or Passport):</p>
-                                        <input 
-                                            type="file" 
-                                            name="photoid" 
-                                            required
-                                            accept="image/png, image/jpeg, image/jpg, image/gif"
-                                        />
-                                        <input type="hidden" name="form-name" value="name_of_my_form" />
-                                    </label>
+                        <form 
+                            name="file-upload" 
+                            method="post" 
+                            data-netlify="true" 
+                            data-netlify-honeypot="bot-field"
+                            netlify
+                            onSubmit={handleSubmit3} 
+                        >
+                                    
+                                        <p hidden>
+                                            <label>
+                                                Don’t fill this out: <input name="bot-field" onChange={handleChange} />
+                                            </label>
+                                        </p>
+                                        <p>
+                                            <label>
+                                                Your name:
+                                                <br />
+                                                <input type="text" name="name" onChange={handleChange} />
+                                            </label>
+                                        </p>
+                                        <label htmlFor="attachment">
+                                            <p>Photo ID (Drivers Licence or Passport):</p>
+                                            <input 
+                                                onChange={handleAttachment}
+                                                type="file" 
+                                                name="attachment" 
+                                                required
+                                                accept="image/png, image/jpeg, image/jpg, image/gif"
+                                            />
+                                         </label>
+                                   
                                     <div className="buttonWrap">
                                         <button className="backBtn" onClick={()=> setFormStage(0)}>Back</button>
-                                        <button type="submit" onClick={()=> setFormStage(2)}>Next</button>
+                                        <button type="submit">Next</button>
                                     </div>
-                                </form>
+                        </form>
                     </div>
                     : formStage === 2 ?   
                     <form key={3}>
