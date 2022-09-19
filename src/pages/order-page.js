@@ -15,7 +15,21 @@ form {
     display: flex;
     flex-direction: column;
     text-align: left;
-    
+    .checkboxes {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        font-size: 18px;
+        margin: 6px;
+        label {
+            
+        }
+        input {
+            width: 18px;
+            margin: 1px 8px;
+            padding: 1px;
+        }
+    }
     .submit-message {
         display: flex;
         margin: auto;
@@ -347,8 +361,8 @@ export default function OrderPage ({location}){
                                     </div>
                                 </form>
                     </div>
-                    :
-                    <form key={3} onSubmit={handleSubmit(onSubmit)}>
+                    : formStage === 2 ?   
+                    <form key={3}>
                             <label htmlFor="addressline1">
                                 <p>Address Line 1:</p>
                                 <input 
@@ -376,6 +390,7 @@ export default function OrderPage ({location}){
                                     <p>City:</p>
                                     <input 
                                         placeholder=""
+                                        required
                                         type="city" 
                                         name="city" 
                                         {...register("City", { required: true})}
@@ -386,6 +401,7 @@ export default function OrderPage ({location}){
                                     <input 
                                         type="region" 
                                         name="region" 
+                                        required
                                         {...register("Region", { required: true})}
                                     />
                                 </label>  
@@ -396,6 +412,7 @@ export default function OrderPage ({location}){
                                     <input 
                                         type="postalcode" 
                                         name="postalcode" 
+                                        required
                                         {...register("PostalCode", { required: true})}
                                     />
                                 </label>     
@@ -404,11 +421,43 @@ export default function OrderPage ({location}){
                                     <input 
                                         type="country" 
                                         name="country" 
+                                        required
                                         {...register("Country", { required: true})}
                                     />
                                 </label>  
                             </div>    
                             <div className="buttonWrap">
+                                        <button className="backBtn" onClick={()=> setFormStage(1)}>Back</button>
+                                        <button type="submit" onClick={()=> setFormStage(3)}>Next</button>
+                                    </div>
+                            
+                    </form>
+                    : 
+                    <form key={4} onSubmit={handleSubmit(onSubmit)}>
+                    <h2>Purchasers Acknowledgement and Agreement</h2>
+                    <p>
+                    I acknowledge that I have read, understood, and agree to be bound by the terms and conditions attached to this Agreement.
+                    If applicable, I acknowledge that I have been provided with a Consumer Information Notice (CIN) associated with the Vehicle and I have read, understand and accept the contents of the CIN.
+                    I acknowledges that this offer to purchase will not be binding unless and until it is signed by Glacier International Limited.
+                    I certify that the Vehicle is being acquired for the purposes of my business.
+                    </p>
+                        <div className="checkboxes">
+                            <input type="radio"  required name="accept1"></input>
+                            <label for="accept1">Yes</label>
+                        </div>
+                        <div className="checkboxes">
+                            <input type="radio"  required name="accept1"></input>
+                            <label for="accept2">No</label>
+                        </div>
+                    <p>
+                    Important: If YES the parties agree that the provisions of the Consumer Guarantees Act 1993 will not apply
+                    Agreed upon by Purchaser, Digital portal.
+                    </p>
+                    <div className="checkboxes">
+                    <input type="checkbox" required name="accept2"></input>
+                    <label for="accept2">Accept Terms</label>
+                    </div>
+                    <div className="buttonWrap">
                             <button className="backBtn" onClick={()=> setFormStage(1)}>Back</button>
                             <button 
                             type="submit" 
