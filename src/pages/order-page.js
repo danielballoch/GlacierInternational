@@ -140,6 +140,7 @@ export default function OrderPage ({location}){
         setFormSent("sending")
         console.log("Raw form data: ", data)
         console.log("Initial Form Data: ",initialFormData)
+
         fetch(`/api/xero`, {
           method: `POST`,
           body: JSON.stringify({
@@ -192,13 +193,17 @@ export default function OrderPage ({location}){
         setFormStage(1);
         setInitialFormData({firstname: data.FirstName, lastname: data.LastName, phone: data.Phone, email: data.Email});
         console.log("Raw form data: ", data)
+        console.log("hello")
+        let build = (order.color + " " + order.model +" "+ order.grade +" "+ " bed option: "+ order.bed +" $"+ order.price)
+        console.log("Build: ", build)
         fetch(`/api/activeCampaign`, {
           method: `POST`,
           body: JSON.stringify({
-            firstname: data.FirstName,
-            lastname: data.LastName,
+            firstName: data.FirstName,
+            lastName: data.LastName,
             phone: data.Phone,
             email: data.Email,
+            order: build,
         }),
           headers: {
             "content-type": `application/json`,

@@ -20,7 +20,13 @@ export default async(req, res) => {
         email: req.body.email,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        phone: req.body.phone
+        phone: req.body.phone,
+        fieldValues: [
+            {
+                field: 1,
+                value: req.body.order
+            }
+        ]
         }
     })
     };
