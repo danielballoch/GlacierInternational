@@ -21,6 +21,7 @@ export default async(req, res) => {
             contactID = response.contacts[0].id
             //if contact exists do something here
             console.log("Contact Id: ", contactID)
+            return res.status(200).json(contactID);
         } else {
             //otherwise create contact
             const url = 'https://glacier.api-us1.com/api/3/contacts';
@@ -65,7 +66,7 @@ export default async(req, res) => {
                         const addTag = await fetch(url3, options3);
                         const tagResponse = await addTag.json()
                         console.log("tag response", tagResponse);
-                        return res.status(200).json(tagResponse);
+                        return res.status(200).json(ID);
 
                     } catch(err) {
                         const error = JSON.stringify(err)

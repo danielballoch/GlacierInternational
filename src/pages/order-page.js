@@ -132,6 +132,7 @@ export default function OrderPage ({location}){
     const [initialFormData, setInitialFormData] = useState();
     const [fileUploadData, setFileUploadData] = useState();
     const [locationData, setLocationData] = useState();
+    const [activeCampaignID, setActiveCampaignID] = useState();
  
     console.log("state: ",order)
     console.log("location: ",location)
@@ -166,6 +167,9 @@ export default function OrderPage ({location}){
                 price: localStorage.getItem('price'),
                 },  
             )
+            if (localStorage.getItem('model')){
+                setActiveCampaignID(localStorage.getItem('ID'))
+            }
         }
       }, [location]);
     const [formSent, setFormSent] = useState("");
@@ -194,6 +198,17 @@ export default function OrderPage ({location}){
     const { handleSubmit: handleSubmit4, register: register4, setFocus, setValue, formState: { errors:errors4 } } = useForm({});
 
     const onSubmit4 = (data) => {
+        fetch('/api/activeCampaignTags', {
+            method: 'POST',
+            body: JSON.stringify({
+                ID: activeCampaignID,
+                formStage: formStage,
+            }),
+            headers: {
+              "content-type": `application/json`,
+            },
+        })
+        .catch((error) => alert(error))
         console.log("onSubmit4 is running")
         setFormStage(3);
         setLocationData({address1: data.address1, address2: data.address2, city: data.location, postalCode: data.postalCode, country: data.country })
@@ -233,6 +248,19 @@ export default function OrderPage ({location}){
         var city = array[0];
         var region = array[1];
         console.log("city/region", city, region)
+        //fetch activeCampaign for tag
+        fetch('/api/activeCampaignTags', {
+            method: 'POST',
+            body: JSON.stringify({
+                ID: activeCampaignID,
+                formStage: formStage,
+            }),
+            headers: {
+              "content-type": `application/json`,
+            },
+        })
+        .catch((error) => alert(error))
+        //fetch xero for invoice
         fetch(`/api/xero`, {
           method: `POST`,
           body: JSON.stringify({
@@ -308,6 +336,8 @@ export default function OrderPage ({location}){
           .then(res => res.json())
           .then(body => {
             console.log(`response from API:`, body);
+            localStorage.setItem('ID',body);
+            setActiveCampaignID(body)
           })
       }
 
@@ -326,6 +356,20 @@ export default function OrderPage ({location}){
       }
     
       const handleSubmit3 = (e) => {
+        //fetch activeCampaign with id & formStage?
+        //create activeCampaign2 which will recieve these calls and add associated tag
+        fetch('/api/activeCampaignTags', {
+            method: 'POST',
+            body: JSON.stringify({
+                ID: activeCampaignID,
+                formStage: formStage,
+            }),
+            headers: {
+              "content-type": `application/json`,
+            },
+        })
+        .catch((error) => alert(error))
+        //file upload netli
         e.preventDefault()
         const form = e.target
         fetch('/', {
@@ -336,7 +380,7 @@ export default function OrderPage ({location}){
           }),
         }).then(setFormStage(2))
           .catch((error) => alert(error))
-      }
+        }
 
     return(
         <Layout title="Order Page | Glacier International" invertNav={true}>
