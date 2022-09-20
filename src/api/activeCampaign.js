@@ -5,42 +5,97 @@ import fetch from "node-fetch"
 
 //need to add check for if email address already exists
 export default async(req, res) => {
+    //first step is I need to get contact based on name
     console.log(req.body)
-    const url = 'https://glacier.api-us1.com/api/3/contacts';
-    console.log("body test: ")
-    const options = {
-    method: 'POST',
-    headers: {
-        accept: 'application/json',
-        'content-type': 'application/json',
-        'Api-Token': '8acea08daabd9aac50ba58c8edda55ea9746d45b9d53451de62da2cc53b1755863530396'
-    },
-    body: JSON.stringify({
-        contact: {
-        email: req.body.email,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        phone: req.body.phone,
-        fieldValues: [
-            {
-                field: 1,
-                value: req.body.order
-            }
-        ]
-        }
-    })
-    };
+   
+    const url2 = `https://glacier.api-us1.com/api/3/contacts?email=${req.body.email}`;
+    const options2 = {method: 'GET', headers: {accept: 'application/json','content-type': 'application/json',
+    'Api-Token': '8acea08daabd9aac50ba58c8edda55ea9746d45b9d53451de62da2cc53b1755863530396'}};
+    console.log("url2: ",url2)
+    let contactID;
+    //check for contact
     try {
-        console.log("123")
-        const contacts = await fetch(url, options)
+        const contacts = await fetch(url2, options2)
         const response = await contacts.json()
-        return res.status(200).json(response)
+        if(response && response.contacts[0]){
+            contactID = response.contacts[0].id
+            //if contact exists do something here
+            console.log("Contact Id: ", contactID)
+        } else {
+            //otherwise create contact
+            const url = 'https://glacier.api-us1.com/api/3/contacts';
+            const options = {
+            method: 'POST',
+            headers: {
+                accept: 'application/json',
+                'content-type': 'application/json',
+                'Api-Token': '8acea08daabd9aac50ba58c8edda55ea9746d45b9d53451de62da2cc53b1755863530396'
+            },
+            body: JSON.stringify({
+                contact: {
+                email: req.body.email,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                phone: req.body.phone,
+                fieldValues: [
+                    {
+                        field: 1,
+                        value: req.body.order
+                    }
+                ]
+                }
+            })
+            };
+            try {
+                const contacts = await fetch(url, options)
+                const response = await contacts.json()
+                const getID = await fetch(url2,options2)
+                const Contact = await getID.json()
+                let ID;
+                if (Contact && Contact.contacts[0]){
+                    ID = Contact.contacts[0].id
+                    const url3 = 'https://glacier.api-us1.com/api/3/contactTags';
+                    const options3 = {
+                        method: 'POST',
+                        headers: {accept: 'application/json', 'content-type': 'application/json',
+                        'Api-Token': '8acea08daabd9aac50ba58c8edda55ea9746d45b9d53451de62da2cc53b1755863530396'},
+                        body: JSON.stringify({contactTag: {contact: ID, tag: 3}})
+                    };
+                    try {
+                        const addTag = await fetch(url3, options3);
+                        const tagResponse = await addTag.json()
+                        console.log("tag response", tagResponse);
+                        return res.status(200).json(tagResponse);
+
+                    } catch(err) {
+                        const error = JSON.stringify(err)
+                        console.log(err)
+                        console.log(`Problem adding contact`, error);
+                        return res.status(500).json(error)
+                    }
+                    
+                    //now add tag
+                }
+                console.log("ID: ", ID)
+                //then get contactID, and post tag (hardcode tagID for now)
+                return res.status(200).json(ID)
+            } catch(err) {
+                const error = JSON.stringify(err)
+                console.log(err)
+                console.log(`Problem adding contact`, error);
+                return res.status(500).json(error)
+            }
+
+        }    
+    // res.status(200).json(response)
     } catch(err) {
         const error = JSON.stringify(err)
         console.log(err)
         console.log(`Problem adding contact`, error);
-        return res.status(500).json(error)
+        // res.status(500).json(error)
     }
+
+   
 
 }
 //might want to use a test api key
