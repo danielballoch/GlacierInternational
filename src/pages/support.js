@@ -139,6 +139,23 @@ form {
     display: flex;
     flex-direction: column;
     text-align: left;
+    body, label, p {
+            font-size: 18px !important;
+        }
+        form {
+            font-size: 18px !important;
+            h2 {
+                font-size: 24px !important;
+            }
+        }
+        p,label, input{
+            font-size: 18px !important;
+        }
+        div {
+            p {
+                font-size: 18px !important;
+            }
+        }
     div {
         display: flex;
         justify-content: space-between;
