@@ -15,12 +15,14 @@ width: 90%;
 /* margin: 0 10px; */
 form {
     @media(max-width: 500px){
-        font-size: 30px !important;
         body, label, p {
             font-size: 18px !important;
         }
         form {
             font-size: 18px !important;
+            h2 {
+                font-size: 24px !important;
+            }
         }
         p,label, input{
             font-size: 18px !important;
