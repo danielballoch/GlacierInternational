@@ -252,7 +252,9 @@ export default function OrderPage ({location}){
             city: city,
             region: region,
             postalcode: locationData.postalCode,
-            country: locationData.Country
+            country: locationData.Country,
+            companyTerm: data.CompanyTerm,
+            personalTerm: data.personalTerm
         }),
           headers: {
             "content-type": `application/json`,
@@ -550,12 +552,10 @@ export default function OrderPage ({location}){
                     I certify that the Vehicle is being acquired for the purposes of my business.
                     </p>
                         <div className="checkboxes">
-                            <input type="radio"  required name="accept1" {...register("CompanyYes")} />
-                            <label htmlFor="accept1">Yes</label>
-                        </div>
-                        <div className="checkboxes">
-                            <input type="radio"  required name="accept1" {...register("CompanyNo")} />
-                            <label for="accept2">No</label>
+                            <input type="radio"  value="Company" name="radio" {...register("CompanyTerm")} />
+                            <label >Yes</label>
+                            <input type="radio"  value="Personal" name="radio" {...register("CompanyTerm")} />
+                            <label>No</label>
                         </div>
                     <p>
                     Important: If YES the parties agree that the provisions of the Consumer Guarantees Act 1993 will not apply
@@ -573,7 +573,7 @@ export default function OrderPage ({location}){
                             data-sitekey="site_key"
                             data-callback='onSubmit'
                             data-action='submit'
-                            >{formSent === "sending" ? "Order is Sending" : "Submit"}</button>
+                            >{formSent === "sending" ? "Order is Sending" : "Purchase Now"}</button>
                             </div>
                         
                         
