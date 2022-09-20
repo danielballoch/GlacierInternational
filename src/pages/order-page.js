@@ -1,4 +1,5 @@
 import React, {useEffect, useState, useRef} from "react"
+
 import Layout from "../components/layout"
 import styled from '@emotion/styled';
 import { useForm } from "react-hook-form"
@@ -112,6 +113,7 @@ export default function OrderPage ({location}){
     const [initialFormData, setInitialFormData] = useState();
     const [fileUploadData, setFileUploadData] = useState();
     const [locationData, setLocationData] = useState();
+ 
     console.log("state: ",order)
     console.log("location: ",location)
     //google autocomplete
