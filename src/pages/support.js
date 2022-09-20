@@ -148,7 +148,7 @@ form {
                 font-size: 24px !important;
             }
         }
-        p,label, input{
+        p,label, input, textarea{
             font-size: 18px !important;
         }
         div {
