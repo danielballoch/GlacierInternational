@@ -371,7 +371,7 @@ const IndexPage = ({location}) => {
             <div>
                 <h2>2023</h2>
                 <h1>2023 Toyota Sequoia</h1>
-                <p>aRt{process.env.GOOGLE_PLACES}3"The ultimate luxury SUV in New Zealand. Imported, right-hand drive remanufactured, and modified to your needs, exclusively by Glacier International."</p>
+                <p>"The ultimate luxury SUV in New Zealand. Imported, right-hand drive remanufactured, and modified to your needs, exclusively by Glacier International."</p>
                 <div><Button to="/experience-sequoia">Experience Sequoia</Button><ButtonOutline to="/build-my-sequoia">Build Your Sequoia</ButtonOutline></div>
             </div>
         <div> 
