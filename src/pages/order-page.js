@@ -377,7 +377,9 @@ export default function OrderPage ({location}){
           body: encode({
             'form-name': form.getAttribute('name'),
             ...fileUploadData,
-          }),
+          }),headers: {
+            "content-type": `multipart/form-data`,
+          },
         }).then(setFormStage(2))
           .catch((error) => alert(error))
         }
