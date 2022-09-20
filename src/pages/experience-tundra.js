@@ -252,7 +252,7 @@ const ExperienceTundraPage = () => {
     let bottomBackground;
     if (isBrowser && window.innerWidth > 1050){
         bottomBackground =  <StaticImage
-                                src="../images/experienceTundra/collage2Re.png"
+                                src="../images/experienceTundra/collage2Re.jpg"
                                 alt="Tundra collage"
                                 className="tundraCollage"
                                 objectPosition={"50% 50%"}
@@ -300,7 +300,7 @@ const ExperienceTundraPage = () => {
             {/* Luxury */}
             <div style={{ display: "grid", maxHeight: "100vh"}} id="homeSection">
              <StaticImage
-                        src={`../images/experienceTundra/collage1.png`}
+                        src={`../images/experienceTundra/collage1RE.jpg`}
                         alt="Glacier International Logo"
                         objectPosition={"60% 50%"}
                          style={{
@@ -361,7 +361,7 @@ const ExperienceTundraPage = () => {
                         <h1>2023 TOYOTA TUNDRA</h1>
                         <p>Available now for pre-order in New Zealand -  exclusively from Glacier International.</p>
                         <StaticImage
-                        src={`../images/experienceTundra/last.jpg`}
+                        src={`../images/experienceTundra/LastRe.jpg`}
                         alt="Glacier International Logo"
                         objectPosition={"50% 70%"}
                         className="tundraimage"
