@@ -14,6 +14,23 @@ max-width: 800px;
 width: 90%;
 /* margin: 0 10px; */
 form {
+    @media(max-width: 500px){
+        font-size: 30px !important;
+        body, label, p {
+            font-size: 18px !important;
+        }
+        form {
+            font-size: 18px !important;
+        }
+        p,label, input{
+            font-size: 18px !important;
+        }
+        div {
+            p {
+                font-size: 18px !important;
+            }
+        }
+    }
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -495,27 +512,6 @@ export default function OrderPage ({location}){
                                 />
                                 {errors.location && <span className="validation-error">Error: Location is required.</span>}
                                 </label>
-                            {/* <div>    
-                                <label htmlFor="city">
-                                    <p>City:</p>
-                                    <input 
-                                        placeholder=""
-                                        required
-                                        type="city" 
-                                        name="city" 
-                                        {...register4("City", { required: true})}
-                                    />
-                                </label>  
-                                <label htmlFor="region">
-                                    <p>Region:</p>
-                                    <input 
-                                        type="region" 
-                                        name="region" 
-                                        required
-                                        {...register4("Region", { required: true})}
-                                    />
-                                </label>  
-                            </div>    */}
                             <div>
                                 <label htmlFor="postalcode">
                                     <p>Postal Code:</p>
@@ -552,11 +548,11 @@ export default function OrderPage ({location}){
                     I certify that the Vehicle is being acquired for the purposes of my business.
                     </p>
                         <div className="checkboxes">
-                            <input type="radio"  required name="accept1"></input>
+                            <input type="radio"  required name="accept1" {...register("CompanyYes")} />
                             <label htmlFor="accept1">Yes</label>
                         </div>
                         <div className="checkboxes">
-                            <input type="radio"  required name="accept1"></input>
+                            <input type="radio"  required name="accept1" {...register("CompanyNo")} />
                             <label for="accept2">No</label>
                         </div>
                     <p>

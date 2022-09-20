@@ -65,6 +65,9 @@ const Layout = ({ title, children, pageLocation, hideFooter, invertNav}) => {
       <Global
           styles={css`
             body {
+            @media(max-width: 500px){
+                font-size: 18px;
+            }
               margin: 0;
               padding: 0;
               background: white;
