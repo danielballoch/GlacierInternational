@@ -194,7 +194,7 @@ export default function OrderPage ({location}){
             autoComplete = await googleAutoCompleteSvc.initAutoComplete(address1Ref.current, handleAddressSelect);
         }
         loadGoogleMaps();
-    })
+    },[])
     const { handleSubmit: handleSubmit4, register: register4, setFocus, setValue, formState: { errors:errors4 } } = useForm({});
 
     const onSubmit4 = (data) => {
@@ -209,7 +209,7 @@ export default function OrderPage ({location}){
             },
         })
         .catch((error) => alert(error))
-        console.log("onSubmit4 is running")
+        console.log(errors4)
         setFormStage(3);
         setLocationData({address1: data.address1, address2: data.address2, city: data.location, postalCode: data.postalCode, country: data.country })
         console.log("Location Data: ", locationData)
@@ -339,9 +339,9 @@ export default function OrderPage ({location}){
             localStorage.setItem('ID',body);
             setActiveCampaignID(body)
           })
+          .catch((error) => {
+            console.log(error);console.log(errors2)})
       }
-
-      console.log({ errors })
       console.log(location.state)
       console.log("form stage: ", formStage)
       let nf = new Intl.NumberFormat('en-US');
@@ -356,6 +356,7 @@ export default function OrderPage ({location}){
       }
     
       const handleSubmit3 = (e) => {
+        e.preventDefault()
         //fetch activeCampaign with id & formStage?
         //create activeCampaign2 which will recieve these calls and add associated tag
         fetch('/api/activeCampaignTags', {
@@ -370,7 +371,7 @@ export default function OrderPage ({location}){
         })
         .catch((error) => alert(error))
         //file upload netli
-        e.preventDefault()
+
         const form = e.target
         fetch('/', {
           method: 'POST',
@@ -500,7 +501,6 @@ export default function OrderPage ({location}){
                             method="post" 
                             data-netlify="true" 
                             data-netlify-honeypot="bot-field"
-                            netlify
                             onSubmit={handleSubmit3} 
                         >
                                     
@@ -599,9 +599,9 @@ export default function OrderPage ({location}){
                     </p>
                         <div className="checkboxes">
                             <input type="radio"  value="Company" name="radio" {...register("CompanyTerm")} />
-                            <label >Yes</label>
+                            <label htmlFor="Company">Yes</label>
                             <input type="radio"  value="Personal" name="radio" {...register("CompanyTerm")} />
-                            <label>No</label>
+                            <label htmlFor="radio">No</label>
                         </div>
                     <p>
                     Important: If YES the parties agree that the provisions of the Consumer Guarantees Act 1993 will not apply
@@ -609,7 +609,7 @@ export default function OrderPage ({location}){
                     </p>
                     <div className="checkboxes">
                     <input type="checkbox" required name="accept2"></input>
-                    <label for="accept2">Accept Terms</label>
+                    <label htmlFor="accept2">Accept Terms</label>
                     </div>
                     <div className="buttonWrap">
                             <button className="backBtn" onClick={()=> setFormStage(1)}>Back</button>
