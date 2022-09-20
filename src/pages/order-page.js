@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from "react"
+import React, {useEffect, useState, useRef} from "react"
 import Layout from "../components/layout"
 import styled from '@emotion/styled';
 import { useForm } from "react-hook-form"
 import { navigate, Link } from "gatsby";
+import useGooglePlaceAutoComplete from "../components/google_place_autocomplete";
 
 const Container = styled.div`
 margin: 200px auto;
@@ -110,8 +111,15 @@ export default function OrderPage ({location}){
     const [formStage, setFormStage] = useState(0);
     const [initialFormData, setInitialFormData] = useState();
     const [fileUploadData, setFileUploadData] = useState();
+    const [locationData, setLocationData] = useState();
     console.log("state: ",order)
     console.log("location: ",location)
+    //google autocomplete
+    const address1Ref = useRef();
+    const googleAutoCompleteSvc = useGooglePlaceAutoComplete();
+    let autoComplete = "";
+
+
     {/* Here I need to check for location & add to cache || if no location, check for localstorage and set that as state */}
     useEffect(() => {
         if (location.state){
@@ -141,6 +149,35 @@ export default function OrderPage ({location}){
       }, [location]);
     const [formSent, setFormSent] = useState("");
 
+
+
+    //google places functions
+    const handleAddressSelect = async () => {
+        let addressObj = await googleAutoCompleteSvc.getFullAddress(autoComplete);
+        address1Ref.current.value = addressObj.address1;
+        setValue("address1", addressObj.address1);
+        setValue("location", `${addressObj.locality}, ${addressObj.adminArea1Long}`);
+        setValue("country", addressObj.countryLong);
+        setValue("postalCode", addressObj.postalCode);
+        setFocus("address2");
+    };
+
+    useEffect(()=>{
+        async function loadGoogleMaps() {
+            // initialize the Google Place Autocomplete widget and bind it to an input element.
+            // eslint-disable-next-line
+            autoComplete = await googleAutoCompleteSvc.initAutoComplete(address1Ref.current, handleAddressSelect);
+        }
+        loadGoogleMaps();
+    })
+    const { handleSubmit: handleSubmit4, register: register4, setFocus, setValue, formState: { errors:errors4 } } = useForm({});
+
+    const onSubmit4 = (data) => {
+        console.log("onSubmit4 is running")
+        setFormStage(3);
+        setLocationData({address1: data.address1, address2: data.address2, city: data.location, postalCode: data.postalCode, country: data.country })
+        console.log("Location Data: ", locationData)
+    }
     
 
     const {
@@ -163,11 +200,18 @@ export default function OrderPage ({location}){
 
 
     async function onSubmit(data){
+
         console.log("this is where form data should log")
         setFormSent("sending")
         console.log("Raw form data: ", data)
         console.log("Initial Form Data: ",initialFormData)
-
+        console.log("Location Data", locationData)
+        //split location
+        var array = locationData.city.split(',');
+        console.log("Split Array", array)
+        var city = array[0];
+        var region = array[1];
+        console.log("city/region", city, region)
         fetch(`/api/xero`, {
           method: `POST`,
           body: JSON.stringify({
@@ -182,12 +226,12 @@ export default function OrderPage ({location}){
             price: order.price,
             name: data.Name,
             companynumber: data.CompanyNumber,
-            address1: data.Address1,
-            address2: data.Address2,
-            city: data.City,
-            region: data.Region,
-            postalcode: data.PostalCode,
-            country: data.Country
+            address1: locationData.address1,
+            address2: locationData.address2,
+            city: city,
+            region: region,
+            postalcode: locationData.postalCode,
+            country: locationData.Country
         }),
           headers: {
             "content-type": `application/json`,
@@ -215,6 +259,8 @@ export default function OrderPage ({location}){
         handleSubmit: handleSubmit2,
         formState: { errors: errors2 },
     } = useForm()
+    //Updated for google places
+   
 
     async function onSubmit2(data){
         setFormStage(1);
@@ -413,7 +459,7 @@ export default function OrderPage ({location}){
                         </form>
                     </div>
                     : formStage === 2 ?   
-                    <form key={3}>
+                    <form key={3} onSubmit={handleSubmit4(onSubmit4)}>
                             <label htmlFor="addressline1">
                                 <p>Address Line 1:</p>
                                 <input 
@@ -421,7 +467,8 @@ export default function OrderPage ({location}){
                                     type="addressline1" 
                                     name="addressline1" 
                                     required
-                                    {...register("Address1", { required: true})}
+                                    {...register4("address1", { required: true})}
+                                    ref={address1Ref}
                                 />
                             </label>
 
@@ -432,11 +479,21 @@ export default function OrderPage ({location}){
                                     placeholder=""
                                     type="addressline2" 
                                     name="addressline2" 
-                                    {...register("Address2", { required: false})}
+                                    {...register4("address2", { required: false})}
                                 />
-                            </label>  
-
-                            <div>    
+                            </label> 
+                            
+                                <label htmlFor="city">
+                                <p>City, State/Province:</p>
+                                <input
+                                    type="text"
+                                    name="city"
+                                    className="form-field"
+                                    {...register4("location", { required: true })}
+                                />
+                                {errors.location && <span className="validation-error">Error: Location is required.</span>}
+                                </label>
+                            {/* <div>    
                                 <label htmlFor="city">
                                     <p>City:</p>
                                     <input 
@@ -444,7 +501,7 @@ export default function OrderPage ({location}){
                                         required
                                         type="city" 
                                         name="city" 
-                                        {...register("City", { required: true})}
+                                        {...register4("City", { required: true})}
                                     />
                                 </label>  
                                 <label htmlFor="region">
@@ -453,10 +510,10 @@ export default function OrderPage ({location}){
                                         type="region" 
                                         name="region" 
                                         required
-                                        {...register("Region", { required: true})}
+                                        {...register4("Region", { required: true})}
                                     />
                                 </label>  
-                            </div>   
+                            </div>    */}
                             <div>
                                 <label htmlFor="postalcode">
                                     <p>Postal Code:</p>
@@ -464,7 +521,7 @@ export default function OrderPage ({location}){
                                         type="postalcode" 
                                         name="postalcode" 
                                         required
-                                        {...register("PostalCode", { required: true})}
+                                        {...register4("postalCode", { required: true})}
                                     />
                                 </label>     
                                 <label htmlFor="country">
@@ -473,13 +530,13 @@ export default function OrderPage ({location}){
                                         type="country" 
                                         name="country" 
                                         required
-                                        {...register("Country", { required: true})}
+                                        {...register4("country", { required: true})}
                                     />
                                 </label>  
                             </div>    
                             <div className="buttonWrap">
                                         <button className="backBtn" onClick={()=> setFormStage(1)}>Back</button>
-                                        <button type="submit" onClick={()=> setFormStage(3)}>Next</button>
+                                        <button type="submit">Next</button>
                                     </div>
                             
                     </form>
@@ -494,7 +551,7 @@ export default function OrderPage ({location}){
                     </p>
                         <div className="checkboxes">
                             <input type="radio"  required name="accept1"></input>
-                            <label for="accept1">Yes</label>
+                            <label htmlFor="accept1">Yes</label>
                         </div>
                         <div className="checkboxes">
                             <input type="radio"  required name="accept1"></input>
