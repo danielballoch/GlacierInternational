@@ -271,12 +271,8 @@ const SupportTundraPage = () => {
     } = useForm()
 
     async function onSubmit(data){
-        console.log("anything happening?")
         const token = await reRef.current.executeAsync();
         reRef.current.reset();
-        console.log("this is where form data should log")
-        console.log("data: ", data)
-        console.log("token: ", token)
         // active campaign fetch for data
         fetch(`/api/activeCampaign`, {
           method: `POST`,
