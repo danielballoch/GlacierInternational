@@ -55,11 +55,13 @@ const Layout = ({ title, children, pageLocation, hideFooter, invertNav}) => {
             <meta name="description" content={data.site.siteMetadata.description}/>
             <title>{title}</title>
             <link rel="canonical" href={data.site.siteMetadata.siteUrl} />
-
+            {/* <script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GATSBY_GOOGLE_PLACES}&libraries=places`} async></script> */}
+            <script async src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GATSBY_GOOGLE_PLACES}&libraries=places`}/>
             <link rel="preconnect" href="https://fonts.googleapis.com"/>
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
             <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100&family=Open+Sans&display=swap" rel="stylesheet"/> 
-            <script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GATSBY_GOOGLE_PLACES}&libraries=places`} async></script>
+            
+            
 
       </Helmet>
       <Global

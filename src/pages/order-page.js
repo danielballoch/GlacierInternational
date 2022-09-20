@@ -133,9 +133,8 @@ export default function OrderPage ({location}){
     const [fileUploadData, setFileUploadData] = useState();
     const [locationData, setLocationData] = useState();
     const [activeCampaignID, setActiveCampaignID] = useState();
- 
-    console.log("state: ",order)
-    console.log("location: ",location)
+    const [addressInput, setAddressInput] = useState();
+
     //google autocomplete
     const address1Ref = useRef();
     const googleAutoCompleteSvc = useGooglePlaceAutoComplete();
@@ -194,7 +193,7 @@ export default function OrderPage ({location}){
             autoComplete = await googleAutoCompleteSvc.initAutoComplete(address1Ref.current, handleAddressSelect);
         }
         loadGoogleMaps();
-    },[])
+    })
     const { handleSubmit: handleSubmit4, register: register4, setFocus, setValue, formState: { errors:errors4 } } = useForm({});
 
     const onSubmit4 = (data) => {
@@ -212,7 +211,6 @@ export default function OrderPage ({location}){
         console.log(errors4)
         setFormStage(3);
         setLocationData({address1: data.address1, address2: data.address2, city: data.location, postalCode: data.postalCode, country: data.country })
-        console.log("Location Data: ", locationData)
     }
     
 
@@ -237,17 +235,11 @@ export default function OrderPage ({location}){
 
     async function onSubmit(data){
 
-        console.log("this is where form data should log")
         setFormSent("sending")
-        console.log("Raw form data: ", data)
-        console.log("Initial Form Data: ",initialFormData)
-        console.log("Location Data", locationData)
         //split location
         var array = locationData.city.split(',');
-        console.log("Split Array", array)
         var city = array[0];
         var region = array[1];
-        console.log("city/region", city, region)
         //fetch activeCampaign for tag
         fetch('/api/activeCampaignTags', {
             method: 'POST',
@@ -316,10 +308,7 @@ export default function OrderPage ({location}){
     async function onSubmit2(data){
         setFormStage(1);
         setInitialFormData({firstname: data.FirstName, lastname: data.LastName, phone: data.Phone, email: data.Email});
-        console.log("Raw form data: ", data)
-        console.log("hello")
         let build = (order.color + " " + order.model +" "+ order.grade +" "+ " bed option: "+ order.bed +" $"+ order.price)
-        console.log("Build: ", build)
         fetch(`/api/activeCampaign`, {
           method: `POST`,
           body: JSON.stringify({
@@ -342,8 +331,6 @@ export default function OrderPage ({location}){
           .catch((error) => {
             console.log(error);console.log(errors2)})
       }
-      console.log(location.state)
-      console.log("form stage: ", formStage)
       let nf = new Intl.NumberFormat('en-US');
 
       //fileUploadForm code (netlify)
@@ -498,8 +485,8 @@ export default function OrderPage ({location}){
                         </form>
                         <form 
                             name="file-upload" 
+                            netlify
                             method="post" 
-                            data-netlify="true" 
                             data-netlify-honeypot="bot-field"
                             onSubmit={handleSubmit3} 
                         >
