@@ -114,7 +114,7 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
                 <div className="wrap">
                     {grades.map((grade, i) => (
                         <button className={(activeGrade[0] === grade.name ? 'active' : '')} 
-                        onClick={() => {updateActiveGrade([grade.name, 32000, i]); console.log("updategrade run")}}
+                        onClick={() => {updateActiveGrade([grade.name, 32000, i])}}
                         // onClick={() => {setActiveGrade([grade.name, 32000, i]);setActiveColor(["Midnight Black Metallic",100, 0])}}
                         >{grade.name}</button>
                     ))}
@@ -124,8 +124,8 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
                 <div>
                     <p>Cab & Bed:</p>
                     <div className="wrap">
-                        <button className={(activeBed === 0 ? 'active' : '')} onClick={() => {updateActiveBed(0); console.log("bed updated to 0")}}>Regular (5.5ft)</button> 
-                        <button className={(activeBed === 1 ? 'active' : '')} onClick={() => {updateActiveBed(1); console.log("bed updated to 1")}}>Long Box (6.5ft)</button> 
+                        <button className={(activeBed === 0 ? 'active' : '')} onClick={() => {updateActiveBed(0); }}>Regular (5.5ft)</button> 
+                        <button className={(activeBed === 1 ? 'active' : '')} onClick={() => {updateActiveBed(1); }}>Long Box (6.5ft)</button> 
                     </div>
                       
                 </div> : null
