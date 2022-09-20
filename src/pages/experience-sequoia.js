@@ -254,7 +254,7 @@ const ExperienceTundraPage = () => {
     let bottomBackground;
     if (isBrowser && window.innerWidth > 1050){
         bottomBackground =  <StaticImage
-                                src="../images/experienceTundra/collage2Re.png"
+                                src="../images/experienceTundra/collage2Re.jpg"
                                 alt="Tundra collage"
                                 className="tundraCollage"
                                 objectPosition={"50% 50%"}
