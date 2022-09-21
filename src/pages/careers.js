@@ -322,7 +322,7 @@ const CareersPage = () => {
                 At Glacier International we prioritise the customer and the team. We desire people focused, motivated team members to enhance the customer experience. 
                 </p>
                 <p>
-                Email us your resume and why you want to work with us.  
+                Email us your resume and why you want to work with us at careers@glacier.nz.  
                 </p>
             </Container>
 

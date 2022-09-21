@@ -67,8 +67,8 @@ export default async(req, res) => {
             if(req.body.Fax || req.body.NZ){
                 spam = " (spam)"
             }
-                message.to = "sales@glacier.nz"
-                message.from = "sales@glacier.nz";
+                message.to = "support@glacier.nz"
+                message.from = "support@glacier.nz";
                 message.subject = "Glacier support form submission from "+ req.body.name + spam
                 message.text = "Name: " + req.body.name + " Phone: " + req.body.phone + " Email: " + req.body.email + " Message: " + req.body.message  
                 message.html = "Name: " + req.body.name + "<br/>" + " Phone: " + req.body.phone + "<br/>" + " Email: " + req.body.email + "<br/>" + "<br/>" + " Message: " + req.body.message 

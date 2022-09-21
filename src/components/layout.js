@@ -59,7 +59,8 @@ const Layout = ({ title, children, pageLocation, hideFooter, invertNav}) => {
             <script async src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GATSBY_GOOGLE_PLACES}&libraries=places`}/>
             <link rel="preconnect" href="https://fonts.googleapis.com"/>
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-            <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100&family=Open+Sans&display=swap" rel="stylesheet"/> 
+            <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100&family=Open+Sans&display=swap" rel="stylesheet"/>
+            <meta name="facebook-domain-verification" content="0ggy6szrx5oij65a9ek2c0su9dt2au" /> 
             
             
 

@@ -15,14 +15,16 @@ export default async(req, res) => {
         }
         if (req.body) {
                 console.log(req.body)
-                message.to = "daniel@thoughtfulhq.com"
+                message.to = "sales@glacier.nz"
                 message.from = "sales@glacier.nz";
-                message.subject = "Glacier Initial form section completed by " + req.body.firstname
+                message.subject = "(Backup) Glacier Initial form section completed by " + req.body.firstname
                 message.text = "Name: " + req.body.name + " Phone: " + req.body.phone + " Email: " + req.body.email
-                message.html = "Name: " + req.body.firstname + " " + req.body.lastname + "<br/>" + " Phone: " + req.body.phone + "<br/>" + " Email: " + req.body.email + "<br/> This data will go to Oliver eventually in his CRM" 
+                message.html = "Name: " + req.body.firstname + " " + req.body.lastname + "<br/>" + " Phone: " + req.body.phone + "<br/>" + " Email: " + req.body.email 
             }
         return sendgrid.send(message).then(
             () => {
+                message.to = "daniel@thoughtfulhq.com"
+                sendgrid.send(message);
                 console.log("message should be sent");
                 res.status(200).json({message: "form submitted"});
             }
