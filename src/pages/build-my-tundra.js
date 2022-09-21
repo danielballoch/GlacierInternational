@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react"
+import {Helmet} from 'react-helmet'
 import styled from '@emotion/styled';
 import Layout from "../components/layout"
 
@@ -213,6 +214,10 @@ const IndexPage = ({display=false}) => {
         // desktop page
   return (
         <Layout title="Build Your Tundra | Glacier International" hideFooter={true} invertNav={true}>
+            <Helmet>
+                <title>Build Your 2023 Toyota Tundra| Customise Toyota Tundra in NZ</title>
+                <meta name='description' content='Experience the new 2023 Toyota Tundra, where luxury meets power. Customise your right-hand drive Toyota Tundra exclusively in NZ at Glacier International today!' />
+            </Helmet>
             <Main style={pageStyles}>
                 <PriceFinanceBar price={price}/>
                 <Row>

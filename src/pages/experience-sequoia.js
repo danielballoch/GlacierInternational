@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import {Helmet} from 'react-helmet'
 import Video from "../components/video"
 import styled from '@emotion/styled';
 import {css} from '@emotion/react';
@@ -269,6 +270,10 @@ const ExperienceTundraPage = () => {
     }
     return(
         <Layout title="Experience Sequoia | Glacier International">
+            <Helmet>
+                <title>Experience 2023 Toyota Sequoia | New Toyota Hybrid SUV</title>
+                <meta name='description' content='2023 Toyota Sequoia is ideal hybrid SUV for luxury design, strength, and efficiency. Available for pre-order in NZ. Experience Toyota Sequoia Today!' />
+            </Helmet>
         {/* hero/video */}
              <div style={{ display: "grid", maxHeight: "100vh"}} id="homeSection">
              <StaticImage

@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import {Helmet} from 'react-helmet'
 import Video from "../components/video"
 import styled from '@emotion/styled';
 import {css} from '@emotion/react';
@@ -267,6 +268,10 @@ const ExperienceTundraPage = () => {
     }
     return(
         <Layout title="Experience Tundra | Glacier International">
+            <Helmet>
+                <title>Experience 2023 Toyota Tundra | New Right Hand Drive Tundra</title>
+                <meta name='description' content='Discover the new 2023 Toyota Tundra, the toughest, most capable, and most advanced full-size Tundra in New Zealand. Experience the new Toyota Tundra today!' />
+            </Helmet>
         {/* hero/video */}
              <div style={{ display: "grid", maxHeight: "100vh"}} id="homeSection">
              <StaticImage

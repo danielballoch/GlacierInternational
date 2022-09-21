@@ -1,4 +1,5 @@
 import React, { useEffect } from "react"
+import {Helmet} from 'react-helmet'
 import Layout from "../components/layout"
 import styled from '@emotion/styled';
 
@@ -16,6 +17,10 @@ h1, p {
 export default function TermsPrivacy(){
     return (
         <Layout title="Privacy & Legal | Glacier International" invertNav={true}>
+            <Helmet>
+                <title>Privacy Policy | Glacier International</title>
+                <meta name='description' content='Read the terms and conditions of Glacier International about custom build Toyota Hybrid SUVs and Trucks services in NZ.' />
+            </Helmet>
             <Center>
                 <h1>Terms & Conditions</h1>
                 <p>
