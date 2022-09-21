@@ -328,7 +328,7 @@ const SupportTundraPage = () => {
     return(
         <Layout title="Support | Glacier International" >
             <Helmet>
-                <meta name='title' content='Contact Us for all Toyota Sequoia &lt; Tundra Enquiries' />
+                <title>Contact Us for all Toyota Sequoia &lt; Tundra Enquiries</title>
                 <meta name='description' content='We would love to hear from you. Message us or give us a call if you need any help with our Toyota Hybrid SUVs.' />
             </Helmet>
             <ReCAPTCHA 

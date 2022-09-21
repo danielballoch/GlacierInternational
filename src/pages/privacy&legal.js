@@ -18,7 +18,7 @@ export default function TermsPrivacy(){
     return (
         <Layout title="Privacy & Legal | Glacier International" invertNav={true}>
             <Helmet>
-                <meta name='title' content='Privacy Policy | Glacier International' />
+                <title>Privacy Policy | Glacier International</title>
                 <meta name='description' content='Read the terms and conditions of Glacier International about custom build Toyota Hybrid SUVs and Trucks services in NZ.' />
             </Helmet>
             <Center>

@@ -261,7 +261,7 @@ const CareersPage = () => {
     return(
         <Layout title="Careers | Glacier International" invertNav={true}>
             <Helmet>
-                <meta name='title' content='Professional Careers | Join the Glacier International Team' />
+                <title>Professional Careers | Join the Glacier International Team</title>
                 <meta name='description' content='We are now accepting applications for professionals to join our team and help deliver luxury Toyota Hybrid SUVs to Kiwis. Email us today.' />
             </Helmet>
             <GridHeroContainer>

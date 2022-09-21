@@ -327,7 +327,7 @@ const IndexPage = ({location}) => {
   return (
       <Layout title="Home | Glacier International">
         <Helmet>
-            <meta name='title' content='2023 Toyota Sequoia &lt; Tundra | Right Hand Drive Hybrid SUV' />
+            <title>2023 Toyota Sequoia & Tundra | Right Hand Drive Hybrid SUV</title>
             <meta name='description' content='Glacier International is a one-stop shop importing Toyota Hybrid SUVs and remanufacturing right-hand drive Toyota Sequoia and Tundra models in New Zealand.' />
         </Helmet>
         <Main style={pageStyles}>

@@ -271,7 +271,7 @@ const ExperienceTundraPage = () => {
     return(
         <Layout title="Experience Sequoia | Glacier International">
             <Helmet>
-                <meta name='title' content='Experience 2023 Toyota Sequoia | New Toyota Hybrid SUV' />
+                <title>Experience 2023 Toyota Sequoia | New Toyota Hybrid SUV</title>
                 <meta name='description' content='2023 Toyota Sequoia is ideal hybrid SUV for luxury design, strength, and efficiency. Available for pre-order in NZ. Experience Toyota Sequoia Today!' />
             </Helmet>
         {/* hero/video */}

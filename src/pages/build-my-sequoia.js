@@ -164,7 +164,7 @@ const IndexPage = ({display=false}) => {
   return (
       <Layout title="Build Your Sequoia | Glacier International" hideFooter={true} invertNav={true}>
         <Helmet>
-            <meta name='title' content='Build Your 2023 Toyota Sequoia | Customise Hybrid SUV' />
+            <title>Build Your 2023 Toyota Sequoia | Customise Hybrid SUV</title>
             <meta name='description' content='The 2023 Toyota Sequoia is the ideal hybrid SUV for luxury design, strength, and efficiency. Available for pre-order in NZ. Experience Toyota Sequoia Today!' />
         </Helmet>
         <Main style={pageStyles}>

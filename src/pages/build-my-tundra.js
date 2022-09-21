@@ -215,7 +215,7 @@ const IndexPage = ({display=false}) => {
   return (
         <Layout title="Build Your Tundra | Glacier International" hideFooter={true} invertNav={true}>
             <Helmet>
-                <meta name='title' content='Build Your 2023 Toyota Tundra| Customise Toyota Tundra in NZ' />
+                <title>Build Your 2023 Toyota Tundra| Customise Toyota Tundra in NZ</title>
                 <meta name='description' content='Experience the new 2023 Toyota Tundra, where luxury meets power. Customise your right-hand drive Toyota Tundra exclusively in NZ at Glacier International today!' />
             </Helmet>
             <Main style={pageStyles}>

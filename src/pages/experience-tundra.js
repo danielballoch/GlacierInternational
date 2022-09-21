@@ -269,7 +269,7 @@ const ExperienceTundraPage = () => {
     return(
         <Layout title="Experience Tundra | Glacier International">
             <Helmet>
-                <meta name='title' content='Experience 2023 Toyota Tundra | New Right Hand Drive Tundra' />
+                <title>Experience 2023 Toyota Tundra | New Right Hand Drive Tundra</title>
                 <meta name='description' content='Discover the new 2023 Toyota Tundra, the toughest, most capable, and most advanced full-size Tundra in New Zealand. Experience the new Toyota Tundra today!' />
             </Helmet>
         {/* hero/video */}

@@ -242,7 +242,7 @@ const AboutPage = () => {
     return(
         <Layout title="About Us | Glacier International">
         <Helmet>
-            <meta name='title' content='One-Stop-Shop for Right-Hand Drive Toyota Sequoia & Tundra' />
+            <title>One-Stop-Shop for Right-Hand Drive Toyota Sequoia & Tundra</title>
             <meta name='description' content='Glacier International team helps Kiwis who value reliability, performance and class to deliver the best right-hand drive Toyota Sequoia and Tundra in NZ.' />
         </Helmet>
         <div style={{ display: "grid", maxHeight: 440}}>
