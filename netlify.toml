@@ -1,8 +1,13 @@
 [[redirects]]
   from = "https://www.tundra.nz"
   to = "https://www.glacier.nz"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
 
-# A redirect rule with many of the supported properties
 [[redirects]]
   from = "https://tundra.nz"
   to = "https://www.glacier.nz"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
