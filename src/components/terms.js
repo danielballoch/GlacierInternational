@@ -39,9 +39,12 @@ div {
     margin-top: 100px;
     padding: 100px 0;
     width: 800px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
     @media(max-width: 940px){
         width: 90%;
-        overflow-y: scroll;
+        
     }
     
 }
