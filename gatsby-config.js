@@ -31,6 +31,8 @@ module.exports = {
       // You can add multiple tracking ids and a pageview event will be fired for all of them.
       trackingIds: [
         "G-8DKZL1G63Q", // Google Analytics / GA
+        "GTM-58BSLR5",
+
       ],
       pluginConfig: {
         // Puts tracking script in the head instead of the body
@@ -38,5 +40,23 @@ module.exports = {
         origin: "https://www.googletagmanager.com",
       },
     },
-  },]
+  },
+  {
+    resolve: "gatsby-plugin-google-tagmanager",
+    options: {
+      id: "GTM-58BSLR5",
+      // Include GTM in development.
+      //
+      // Defaults to false meaning GTM will only be loaded in production.
+      includeInDevelopment: false,
+
+      // datalayer to be set before GTM is loaded
+      // should be an object or a function that is executed in the browser
+      //
+      // Defaults to null
+      defaultDataLayer: { platform: "gatsby" },
+    },
+  },
+]
+
 };
