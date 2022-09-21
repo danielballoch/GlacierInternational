@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { useForm } from "react-hook-form"
 import { navigate, Link } from "gatsby";
 import useGooglePlaceAutoComplete from "../components/google_place_autocomplete";
-import TermsAndConditions from "../../static/TermsAndConditionsGlacierInternationalLimited.pdf"
+import TermsAndConditions from "../../static/TermsAndConditionsGlacierInternationalLimited.pdf";
 
 const Container = styled.div`
 margin: 200px auto;
@@ -580,17 +580,17 @@ export default function OrderPage ({location}){
                     <form key={4} onSubmit={handleSubmit(onSubmit)}>
                     <h2>Purchasers Acknowledgement and Agreement</h2>
                     <p>
-                    I acknowledge that I have read, understood, and agree to be bound by the <a href={TermsAndConditions} target="_blank">terms and conditions</a> attached to this Agreement.
-                    If applicable, I acknowledge that I have been provided with a Consumer Information Notice (CIN) associated with the Vehicle and I have read, understand and accept the contents of the CIN.
-                    I acknowledges that this offer to purchase will not be binding unless and until it is signed by Glacier International Limited.
-                    I certify that the Vehicle is being acquired for the purposes of my business.
+                        I acknowledge that I have read, understood, and agree to be bound by the <a href={TermsAndConditions} target="_blank">terms and conditions</a> attached to this Agreement.
+                        If applicable, I acknowledge that I have been provided with a Consumer Information Notice (CIN) associated with the Vehicle and I have read, understand and accept the contents of the CIN.
+                        I acknowledges that this offer to purchase will not be binding unless and until it is signed by Glacier International Limited.
+                        I certify that the Vehicle is being acquired for the purposes of my business.
                     </p>
-                        <div className="checkboxes">
-                            <input type="radio"  value="Company" name="radio" {...register("CompanyTerm")} />
-                            <label htmlFor="Company">Yes</label>
-                            <input type="radio"  value="Personal" name="radio" {...register("CompanyTerm")} />
-                            <label htmlFor="radio">No</label>
-                        </div>
+                    <div className="checkboxes">
+                        <input type="radio"  value="Company" name="radio" {...register("CompanyTerm")} />
+                        <label htmlFor="Company">Yes</label>
+                        <input type="radio"  value="Personal" name="radio" {...register("CompanyTerm")} />
+                        <label htmlFor="radio">No</label>
+                    </div>
                     <p>
                     Important: If YES the parties agree that the provisions of the Consumer Guarantees Act 1993 will not apply
                     Agreed upon by Purchaser, Digital portal.
@@ -609,6 +609,8 @@ export default function OrderPage ({location}){
                             data-action='submit'
                             >{formSent === "sending" ? "Order is Sending" : "Purchase Now"}</button>
                             </div>
+                        
+                        
                         {formSent === "sending"? <p className="submit-message">Your order is sending, please stay on page. We will redirect you to the invoice page once created.</p>
                         : formSent === "sent" ? <p className="submit-message">Order submitted, your deposit invoice will be with you shortly.</p>
                         : formSent === "error" ? <p className="submit-message">Sorry, there's been an error submitting your form. Please contact our support team at ceo@glacier.nz</p>

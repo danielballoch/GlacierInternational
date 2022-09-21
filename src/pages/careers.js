@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import {Helmet} from 'react-helmet'
 import { Link } from 'gatsby'
 import Video from "../components/video"
 import styled from '@emotion/styled';
@@ -259,6 +260,10 @@ align-items: center;
 const CareersPage = () => {
     return(
         <Layout title="Careers | Glacier International" invertNav={true}>
+            <Helmet>
+                <meta name='title' content='Professional Careers | Join the Glacier International Team' />
+                <meta name='description' content='We are now accepting applications for professionals to join our team and help deliver luxury Toyota Hybrid SUVs to Kiwis. Email us today.' />
+            </Helmet>
             <GridHeroContainer>
             <StaticImage
                 src={`../images/careers/workshop.jpg`}

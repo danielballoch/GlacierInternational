@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import {Helmet} from 'react-helmet'
 import Video from "../components/video"
 import GlacierVideo from "../images/TundraReelBrightSmall.mp4"
 import GlacierVideoMobile from "../images/TundraReelMobileSmall.mp4"
@@ -9,10 +10,6 @@ import { Link} from 'gatsby'
 import ScrollAnimation from "../components/scrollAnimation";
 
 // import Terms from "../components/termsPopup"
-
-
-
-
 
 const pageStyles = {
     padding: 0,
@@ -329,6 +326,10 @@ const IndexPage = ({location}) => {
 
   return (
       <Layout title="Home | Glacier International">
+        <Helmet>
+            <meta name='title' content='2023 Toyota Sequoia &lt; Tundra | Right Hand Drive Hybrid SUV' />
+            <meta name='description' content='Glacier International is a one-stop shop importing Toyota Hybrid SUVs and remanufacturing right-hand drive Toyota Sequoia and Tundra models in New Zealand.' />
+        </Helmet>
         <Main style={pageStyles}>
         <div className={showSent.message === "show" ? "showSent" : showSent.message === "shown" ? "showSent showSentEnd" : "dontShow"}><p>Thank you! Your custom {location.state ? location.state.model : "Tundra/Sequoia"} build has been sent through. An invoice will be in your inbox in the next 10 minutes.</p></div>
         <div style={{ display: "grid", maxHeight: "100vh"}} id="homeSection">

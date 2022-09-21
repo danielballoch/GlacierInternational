@@ -1,4 +1,5 @@
 import React, {useRef, useEffect, useState} from "react"
+import {Helmet} from 'react-helmet'
 import styled from '@emotion/styled';
 import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
@@ -326,6 +327,10 @@ const SupportTundraPage = () => {
 
     return(
         <Layout title="Support | Glacier International" >
+            <Helmet>
+                <meta name='title' content='Contact Us for all Toyota Sequoia &lt; Tundra Enquiries' />
+                <meta name='description' content='We would love to hear from you. Message us or give us a call if you need any help with our Toyota Hybrid SUVs.' />
+            </Helmet>
             <ReCAPTCHA 
             sitekey={process.env.GATSBY_RE_SITEKEY} 
             size="invisible"

@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import {Helmet} from 'react-helmet'
 import { Link } from "gatsby"
 import styled from '@emotion/styled';
 import {css} from '@emotion/react';
@@ -240,6 +241,10 @@ const AboutPage = () => {
     const [videoOpen, setVideoOpen] = useState(false);
     return(
         <Layout title="About Us | Glacier International">
+        <Helmet>
+            <meta name='title' content='One-Stop-Shop for Right-Hand Drive Toyota Sequoia & Tundra' />
+            <meta name='description' content='Glacier International team helps Kiwis who value reliability, performance and class to deliver the best right-hand drive Toyota Sequoia and Tundra in NZ.' />
+        </Helmet>
         <div style={{ display: "grid", maxHeight: 440}}>
             <StaticImage
                 src={`../images/about/AboutHero.png`}

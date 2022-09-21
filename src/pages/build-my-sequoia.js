@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react"
+import {Helmet} from 'react-helmet'
 import styled from '@emotion/styled';
 import Layout from "../components/layout"
 
@@ -162,6 +163,10 @@ const IndexPage = ({display=false}) => {
         // desktop page
   return (
       <Layout title="Build Your Sequoia | Glacier International" hideFooter={true} invertNav={true}>
+        <Helmet>
+            <meta name='title' content='Build Your 2023 Toyota Sequoia | Customise Hybrid SUV' />
+            <meta name='description' content='The 2023 Toyota Sequoia is the ideal hybrid SUV for luxury design, strength, and efficiency. Available for pre-order in NZ. Experience Toyota Sequoia Today!' />
+        </Helmet>
         <Main style={pageStyles}>
         <PriceFinanceBar price={price}/>
         <Row>
