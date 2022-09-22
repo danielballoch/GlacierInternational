@@ -159,7 +159,6 @@ const IndexPage = ({display=false}) => {
         if (price !== grades[activeGrade[2]]){setPrice(grades[activeGrade[2]].price)}
     });
     if (isBrowser && window.innerWidth > 1050){
-        console.log("desktop page")
         // desktop page
   return (
       <Layout title="Build Your Sequoia | Glacier International" hideFooter={true} invertNav={true}>
@@ -171,13 +170,12 @@ const IndexPage = ({display=false}) => {
         <PriceFinanceBar price={price}/>
         <Row>
             <MainImage src={grades[activeGrade[2]].src[activeColor[2]]} />
-            <FeatureBar grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color); console.log(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}} price={price}/>
+            <FeatureBar grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}} price={price}/>
         </Row>
         </Main>
     </Layout>
   )
     } else if (isBrowser && window.innerWidth < 1050) {
-        console.log("mobile page")
         // mobile page
         return (
             <Layout title="Build Your Sequoia | Glacier International" hideFooter={true} invertNav={true}>
@@ -185,7 +183,7 @@ const IndexPage = ({display=false}) => {
                     <MainImage src={grades[activeGrade[2]].src[activeColor[2]]}/>
                     <PriceFinanceBar price={price}/>
                     <MobileSelectionTab selectionStage={selectionStage} updateSelectionStage={(newStageNumber) => {setSelectionStage(newStageNumber)}} activeGrade={activeGrade}/>
-                    <MobileFeatureSection price={price} model="Sequoia" selectionStage={selectionStage} grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color); console.log(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}} />
+                    <MobileFeatureSection price={price} model="Sequoia" selectionStage={selectionStage} grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}} />
                 </Main>
             </Layout>
         )

@@ -209,8 +209,6 @@ const IndexPage = ({display=false}) => {
 
     });
     if (isBrowser && window.innerWidth > 1050){
-        console.log("desktop page")
-        console.log("Active color: ",activeColor[0])
         // desktop page
   return (
         <Layout title="Build Your Tundra | Glacier International" hideFooter={true} invertNav={true}>
@@ -222,13 +220,12 @@ const IndexPage = ({display=false}) => {
                 <PriceFinanceBar price={price}/>
                 <Row>
                     <MainImage src={grades[activeGrade[2]].src[activeColor[(2)]+activeBed*grades[activeGrade[2]].src.length/2]}/>
-                    <FeatureBar grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color); console.log(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}} activeBed={activeBed} updateActiveBed={(bed) => setActiveBed(bed)} price={price}/>
+                    <FeatureBar grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}} activeBed={activeBed} updateActiveBed={(bed) => setActiveBed(bed)} price={price}/>
                 </Row>
             </Main>
         </Layout>
   )
     } else if (isBrowser && window.innerWidth < 1050){
-        console.log("mobile page")
         // mobile page
         return (
             <Layout title="Build Your Tundra | Glacier International" hideFooter={true} invertNav={true}>
@@ -236,7 +233,7 @@ const IndexPage = ({display=false}) => {
                     <MainImage src={grades[activeGrade[2]].src[activeColor[(2)]+activeBed*grades[activeGrade[2]].src.length/2]}/>
                     <PriceFinanceBar price={price}/>
                     <MobileSelectionTab activeGrade={activeGrade} selectionStage={selectionStage} updateSelectionStage={(newStageNumber) => {setSelectionStage(newStageNumber)}}/>
-                    <MobileFeatureSection price={price} model="Tundra" selectionStage={selectionStage} grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color); console.log(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}}  activeBed={activeBed} updateActiveBed={(bed) => {setActiveBed(bed)}}/>
+                    <MobileFeatureSection price={price} model="Tundra" selectionStage={selectionStage} grades={grades} activeGrade={activeGrade} activeColor={activeColor} updateActiveColor={(color) => {setActiveColor(color);}} updateActiveGrade={(grade) => {setActiveGrade(grade); setActiveColor(["Midnight Black Metallic",100, 0])}}  activeBed={activeBed} updateActiveBed={(bed) => {setActiveBed(bed)}}/>
                 </Main>
             </Layout>
         )
