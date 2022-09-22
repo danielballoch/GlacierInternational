@@ -61,7 +61,7 @@ const Layout = ({ title, children, pageLocation, hideFooter, invertNav}) => {
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
             <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100&family=Open+Sans&display=swap" rel="stylesheet"/>
             <meta name="facebook-domain-verification" content="0ggy6szrx5oij65a9ek2c0su9dt2au" /> 
-            
+
             
 
       </Helmet>
