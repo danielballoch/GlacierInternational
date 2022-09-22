@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import styled from '@emotion/styled';
 import { useForm } from "react-hook-form"
 import { navigate, Link } from "gatsby";
-// import useGooglePlaceAutoComplete from "../components/google_place_autocomplete";
+import useGooglePlaceAutoComplete from "../components/google_place_autocomplete";
 import TermsAndConditions from "../../static/TermsAndConditionsGlacierInternationalLimited.pdf";
 
 const Container = styled.div`
@@ -138,8 +138,8 @@ export default function OrderPage ({location}){
 
     // google autocomplete
     const address1Ref = useRef();
-    // const googleAutoCompleteSvc = useGooglePlaceAutoComplete();
-    // let autoComplete = "";
+    const googleAutoCompleteSvc = useGooglePlaceAutoComplete();
+    let autoComplete = "";
 
 
     {/* Here I need to check for location & add to cache || if no location, check for localstorage and set that as state */}
@@ -177,24 +177,24 @@ export default function OrderPage ({location}){
 
 
     //google places functions
-    // const handleAddressSelect = async () => {
-    //     let addressObj = await googleAutoCompleteSvc.getFullAddress(autoComplete);
-    //     address1Ref.current.value = addressObj.address1;
-    //     setValue("address1", addressObj.address1);
-    //     setValue("location", `${addressObj.locality}, ${addressObj.adminArea1Long}`);
-    //     setValue("country", addressObj.countryLong);
-    //     setValue("postalCode", addressObj.postalCode);
-    //     setFocus("address2");
-    // };
+    const handleAddressSelect = async () => {
+        let addressObj = await googleAutoCompleteSvc.getFullAddress(autoComplete);
+        address1Ref.current.value = addressObj.address1;
+        setValue("address1", addressObj.address1);
+        setValue("location", `${addressObj.locality}, ${addressObj.adminArea1Long}`);
+        setValue("country", addressObj.countryLong);
+        setValue("postalCode", addressObj.postalCode);
+        setFocus("address2");
+    };
 
-    // useEffect(()=>{
-    //     async function loadGoogleMaps() {
-    //         // initialize the Google Place Autocomplete widget and bind it to an input element.
-    //         // eslint-disable-next-line
-    //         autoComplete = await googleAutoCompleteSvc.initAutoComplete(address1Ref.current, handleAddressSelect);
-    //     }
-    //     loadGoogleMaps();
-    // },[])
+    useEffect(()=>{
+        async function loadGoogleMaps() {
+            // initialize the Google Place Autocomplete widget and bind it to an input element.
+            // eslint-disable-next-line
+            autoComplete = await googleAutoCompleteSvc.initAutoComplete(address1Ref.current, handleAddressSelect);
+        }
+        loadGoogleMaps();
+    })
     const { handleSubmit: handleSubmit4, register: register4, setFocus, setValue, formState: { errors:errors4 } } = useForm({});
 
     const onSubmit4 = (data) => {
@@ -515,8 +515,8 @@ export default function OrderPage ({location}){
                         </form>
                     </div>
                     : formStage === 2 ?   
-                    <form key={3}>
-                        {/*/onSubmit={handleSubmit4(onSubmit4) */}
+                    <form key={3} onSubmit={handleSubmit4(onSubmit4)}>
+                        
                     
                             <label htmlFor="addressline1">
                                 <p>Address Line 1:</p>

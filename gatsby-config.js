@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: `https://glacier.thoughtfulhq.com`
   },
-  plugins: ["gatsby-plugin-emotion", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap","gatsby-plugin-netlify", {
+  plugins: ["gatsby-plugin-emotion", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", {
     resolve: 'gatsby-plugin-manifest',
     options: {
       "icon": "src/images/icon.png"

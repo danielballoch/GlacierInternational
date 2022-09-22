@@ -195,20 +195,6 @@ export default async function postNewPersonHandler(req, res) {
                 const error = JSON.stringify(err.response.body, null, 2)
                 console.log(`Failed to get invoice ID`);
             }
-            // ###
-            // Getting the invoice as a PDF, in case you wanna show it to the customer immediately.
-            // let invoicePDF;
-            // let InvoicePDFResponse;
-            // try {
-            //     const InvoicePDFResponse = await xero.accountingApi.getInvoiceAsPdf('', invoiceID);
-            //     console.log("PDF BEING CREATED??")
-            //     console.log(InvoicePDFResponse.response.statusCode)
-            //     // res.send(InvoicePDFResponse.body); 
-            // } catch (err) {
-            //     const error = JSON.stringify(err.response.body, null, 2)
-            //     console.log(`Failed to generate PDF of invoice`);
-            // }
-            // ###
             // Emailing the invoice
             const requestEmpty: RequestEmpty = { };
             // let emailInvoice;
@@ -279,18 +265,6 @@ export default async function postNewPersonHandler(req, res) {
                 const error = JSON.stringify(err.response.body, null, 2)
                 console.log(`Status Code: ${err.response.statusCode} => ${error}`);
             }
-            // ###
-            // Getting the invoice as a PDF, in case you wanna show it to the customer immediately.
-            // let InvoicePDFResponse;
-            // try {
-            //     const InvoicePDFResponse = await xero.accountingApi.getInvoiceAsPdf('', invoiceID);
-            //     console.log("PDF RES SENDING???", InvoicePDFResponse.response.statusCode)
-            //     // res.send(InvoicePDFResponse.body); 
-            // } catch (err) {
-            //     const error = JSON.stringify(err.response.body, null, 2)
-            //     console.log(`Status Code: ${err.response.statusCode} => ${error}`);
-            // }
-            // ###
             // Emailing the invoice
             const requestEmpty: RequestEmpty = { };
             // let emailInvoice;
