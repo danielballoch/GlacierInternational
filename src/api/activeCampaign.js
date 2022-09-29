@@ -19,9 +19,32 @@ export default async(req, res) => {
         const response = await contacts.json()
         if(response && response.contacts[0]){
             contactID = response.contacts[0].id
-            //if contact exists do something here
-            console.log("Contact Id: ", contactID)
-            return res.status(200).json(contactID);
+            //if contact exists do something here * update fieldValues to match new order
+            console.log("Response: ", response)
+            const options = {
+                method: 'PUT',
+                headers: {
+                  accept: 'application/json',
+                  'content-type': 'application/json',
+                  'Api-Token': '8acea08daabd9aac50ba58c8edda55ea9746d45b9d53451de62da2cc53b1755863530396'
+                },
+                body: JSON.stringify({
+                  contact: {fieldValues: [{field: 1, value: req.body.order}]}
+                })
+            };
+              
+            try{ const fieldUpdate = await fetch(`https://glacier.api-us1.com/api/3/contacts/${contactID}`, options)
+                const response = await fieldUpdate.json();
+                console.log(response)
+                console.log("Contact Id: ", contactID)
+                return res.status(200).json(contactID);
+            } catch(err) {
+                const error = JSON.stringify(err)
+                console.log(err)
+                console.log(`Problem updating field contact`, error);
+                return res.status(500).json(error)
+            }
+            
         } else {
             //otherwise create contact
             const url = 'https://glacier.api-us1.com/api/3/contacts';

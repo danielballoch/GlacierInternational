@@ -1,2 +1,5 @@
-https://www.tundra.nz/            https://www.glacier.nz/
-https://tundra.nz/                https://www.glacier.nz/
+http://www.tundra.nz/ * https://www.glacier.nz/:splat 301!
+https://www.tundra.nz/ * https://www.glacier.nz/:splat 301!
+
+http://tundra.nz/ * https://www.glacier.nz/:splat 301!
+https://tundra.nz/ * https://www.glacier.nz/:splat 301!

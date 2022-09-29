@@ -141,9 +141,58 @@ export default function OrderPage ({location}){
     const googleAutoCompleteSvc = useGooglePlaceAutoComplete();
     let autoComplete = "";
 
+    //add useEffect to check search params
+    useEffect(() => {
+        console.log("useEffect1 running")
+        console.log("Search", location.search)
+        if (location.search.length > 1 && formStage === 0){
+            
+            const ID = location.search.substring(1);
+                fetch('/api/xero3', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        ID: ID,
+                    }),
+                    headers: {
+                      "content-type": `application/json`,
+                    },
+                }).then(res => res.json())
+                .then(body => {
+                    setFormStage(1);
+                    console.log(body)
+                    let testBuild = "Blueprint 2023 Sequoia Limited Hybrid TRD OFF ROAD bed option: 2 $265000"
+                    console.log(body.fieldValues[0].value)
+                    setInitialFormData({firstname: body.contact.firstName, lastname: body.contact.lastName, phone: body.contact.phone, email: body.contact.email})
+                    //get order info out of activecampaign string & set to local/state so can continue with order.
+                    let space = 13;
+                    if(body.fieldValues[0].value.match("2023 Tundra")){space = 12}
+                    let findBed = body.fieldValues[0].value.indexOf("bed");
+                    let findModel = body.fieldValues[0].value.indexOf("2023");
+                    localStorage.setItem('model', body.fieldValues[0].value.substr(findModel, 12));
+                    localStorage.setItem('color', body.fieldValues[0].value.substr(0, findModel));
+                    localStorage.setItem('grade', body.fieldValues[0].value.substr(findModel+space,findBed-(findModel+space)));
+                    localStorage.setItem('bed', body.fieldValues[0].value.substr(findBed, 13));
+                    localStorage.setItem('price', body.fieldValues[0].value.substr(findBed+15, 8));
+                    setOrder({
+                        model: localStorage.getItem('model'), 
+                        grade: localStorage.getItem('grade'),
+                        color: localStorage.getItem('color'),
+                        bed: localStorage.getItem('bed'),
+                        price: localStorage.getItem('price'),
+                    })
+                    console.log("Order: ",order)
+                    console.log(localStorage.getItem('price'))
+
+                })
+                .catch((error) => alert(error))
+        }
+
+    },[])
+
 
     {/* Here I need to check for location & add to cache || if no location, check for localstorage and set that as state */}
     useEffect(() => {
+        console.log("useEffect2 running")
         if (location.state){
             localStorage.setItem('model',location.state.model);
             localStorage.setItem('grade',location.state.grade);
@@ -236,6 +285,7 @@ export default function OrderPage ({location}){
 
     async function onSubmit(data){
         setFormSent("sending")
+        
         //split location
         var array = locationData.city.split(',');
         var city = array[0];
@@ -372,6 +422,8 @@ export default function OrderPage ({location}){
           .catch((error) => alert(error))
         }
 
+
+        console.log("Order: ",order)
     return(
         <Layout title="Order Page | Glacier International" invertNav={true}>
             <Container>

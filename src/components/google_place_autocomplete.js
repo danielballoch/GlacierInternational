@@ -1,6 +1,7 @@
 const useGooglePlaceAutoComplete = () => {
     const isBrowser = typeof window !== "undefined";
     const initAutoComplete = async (input, callback) => {
+            if(isBrowser && window.google){
             let autoComplete =
                 new window.google.maps.places.Autocomplete(input,
                     {
@@ -12,6 +13,7 @@ const useGooglePlaceAutoComplete = () => {
                 );
             autoComplete.addListener("place_changed", callback);
             return autoComplete;
+        }
     };
 
     const getFullAddress = async (autoComplete) => {
