@@ -330,7 +330,7 @@ const ExperienceTundraPage = () => {
                             <h2>LUXURY MEETS POWER</h2>
                             <p>The 2023 Tundra gives you the freedom to adventure from wharf to mountains without worry. Whether you need a boat towed cross country, a horse float to the local trail, or have the trailer loaded up for a work haul, the Tundra can handle it. </p>
                             <p>With a towing capacity of up to 5 tonne, the 2023 Tundra has the muscle to deliver big payloads with ease and confidence.</p>
-                            <p>Put simply less worry, more fun, and all the braging rights.</p>
+                            <p>Put simply less worry, more fun, and all the bragging rights.</p>
                         </Container2>
                 </div>
             </div>
