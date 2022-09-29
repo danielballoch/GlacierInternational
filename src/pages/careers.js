@@ -308,7 +308,7 @@ const CareersPage = () => {
                     <span>02<div className="verticalLine"/><div className="horizontalLine"/><div className="verticalLine"/></span>
                     <div>
                     <h2>02 Community</h2>
-                    <p>We are a growing, tight-knit team focused on quality. We believe the path to quality is getting the right people for the job, and doing all we can to make sure everyones interested, happy, and excited about their work.</p>
+                    <p>We are a growing, tight-knit team focused on quality. We believe the path to quality is getting the right people for the job, and doing all we can to make sure everyone's interested, happy, and excited about their work.</p>
                     </div>
                 </div>
 
@@ -316,8 +316,8 @@ const CareersPage = () => {
                     <span>03<div className="verticalLine"/><div className="horizontalLine"/><div className="verticalLine last"/></span>
                     <div>
                         <h2>03 Where do I sign?</h2>
-                        <p>"Where do I sign" is our expression for passion, enthusiasim, attention to detail, and prioritisation.</p>
-                        <p>Whether your in the workshop, on the phone, or in the courtyard, the goal should always be to push toward a great customer experience. Our aim is always to make our customers line up, with smiles ear to ear saying "where do I sign!?"</p>
+                        <p>"Where do I sign" is our expression for passion, enthusiasm, attention to detail, and prioritisation.</p>
+                        <p>Whether you're in the workshop, on the phone, or in the courtyard, the goal should always be to push toward a great customer experience. Our aim is always to make our customers line up, with smiles ear to ear saying "where do I sign!?"</p>
                     </div>
                 </div>
             </Values2>
