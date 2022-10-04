@@ -161,7 +161,7 @@ export default async function postNewPersonHandler(req, res) {
                 description: description,
                 quantity: 1.0,
                 accountCode: "200",
-                unitAmount: (safePrice*0.75)
+                unitAmount: (safePrice*0.6522)
             };
             const invoice: Invoice = {
                 lineItems: [lineItem],
@@ -229,7 +229,7 @@ export default async function postNewPersonHandler(req, res) {
                 description: description,
                 quantity: 1.0,
                 accountCode: "200",
-                unitAmount: (safePrice*0.75)
+                unitAmount: (safePrice*0.6522)
             };
             const invoice: Invoice = {
                 lineItems: [lineItem],

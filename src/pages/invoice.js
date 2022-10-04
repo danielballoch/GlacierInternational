@@ -88,8 +88,7 @@ export default function InvoicePage({location}){
                     <p>Thank you for your order with Glacier International.</p>
                     <p>The amount outstanding of ${invData.amountDue} (NZD) is due by {invData.dueDate.substring(0,invData.dueDate.length -14)}</p>
                     <p>Description: {invData.description}</p>
-                    <p>Unit Amount: ${invData.unitAmount} , Quantity: {invData.quantity}</p>
-                    <p>Tax: Inclusive</p>
+                    <p>Unit Amount: ${invData.unitAmount} + GST, Quantity: {invData.quantity}</p>
                     <p>Total: ${invData.amountDue}</p>
                     <br/>
                     <p>You can view the full invoice and pay your bill online here: {invLink ? <a target="_blank" href={invLink}>{invLink}</a> : <a>Loading link...</a>} or via the same link in your email inbox.</p>
