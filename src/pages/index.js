@@ -9,7 +9,6 @@ import Layout from "../components/layout"
 import { Link} from 'gatsby'
 import ScrollAnimation from "../components/scrollAnimation";
 
-// import Terms from "../components/termsPopup"
 
 const pageStyles = {
     padding: 0,
