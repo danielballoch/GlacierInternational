@@ -173,6 +173,7 @@ export default function OrderPage ({location}){
                     localStorage.setItem('grade', body.fieldValues[0].value.substr(findModel+space,findBed-(findModel+space)));
                     localStorage.setItem('bed', body.fieldValues[0].value.substr(findBed, 13));
                     localStorage.setItem('price', body.fieldValues[0].value.substr(findBed+15, 8));
+                    setActiveCampaignID(ID)
                     setOrder({
                         model: localStorage.getItem('model'), 
                         grade: localStorage.getItem('grade'),
