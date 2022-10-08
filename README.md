@@ -1,54 +1,14 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+  <a href="https://www.glacier.nz">
+    <img alt="Glacier" src="/icon.png" width="60" />
   </a>
 </p>
 <h1 align="center">
-  Gatsby minimal starter
+  Glacier International
 </h1>
+<p>Glacier International is a one-stop shop for importing, right hand drive re-manufacturing, and customising your Toyota Sequoia or Tundra. With cutting edge technology, the 2023 Toyota Sequoia and Tundra are meticulously engineered luxury hybrid machines, and our goal is to deliver them to Kiwis who value reliability, performance, and class over anything else.</p>
+<p>CEO: Malcom King</p>
+<p>Website built by Daniel Balloch from <a href="https://thoughtfulhq.com">thoughtfulHQ</a>, with contributions from Matthew (SEO Specialist) from <a>NetBloom</a>, <a href="https://github.com/ifoulidis">Isiaha Foulidis (Freelancer)</a>, and input from the <a href="https://vyne.co.nz/">VYNE Digital Marketing team</a><p>
+<p>The website is live at: <a href="https://glacier.nz">https://glacier.nz</a></p>
+<p><a href="https://danielballoch.com">Daniel</a> Balloch is currently seeking employment and contracting opportunities, please send any inquiries to daniel@thoughtfulhq.com</p>
 
-## 🚀 Quick start
-
-1.  **Create a Gatsby site.**
-
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
-
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
-
-2.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
-
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.js` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
