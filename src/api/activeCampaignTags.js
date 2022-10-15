@@ -15,7 +15,7 @@ export default async(req, res) => {
                     const options = {
                         method: 'POST',
                         headers: {accept: 'application/json', 'content-type': 'application/json',
-                        'Api-Token': '8acea08daabd9aac50ba58c8edda55ea9746d45b9d53451de62da2cc53b1755863530396'},
+                        'Api-Token': ACTIVE_CAMPAIGN_API},
                         body: JSON.stringify({contactTag: {contact: ID, tag: tag}})
                     };
                     try {
