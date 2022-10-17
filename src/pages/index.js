@@ -8,6 +8,8 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import { Link} from 'gatsby'
 import ScrollAnimation from "../components/scrollAnimation";
+import { Products } from "schema-dts";
+import { helmetJsonLdProp } from "react-schemaorg";
 
 
 const pageStyles = {
@@ -324,7 +326,38 @@ const IndexPage = ({location}) => {
 }, [showSent.message])
 
   return (
+    
       <Layout title="Home | Glacier International">
+        <Helmet
+        script={[
+            helmetJsonLdProp<Products>({
+                "@context": "https://schema.org",
+                "@type": "Product",
+                name: "Glacier International",
+                description: "is a one-stop shop for importing, right hand drive re-manufacturing, and customising your Toyota Sequoia or Tundra",
+                brand: {
+                    "@type": "Brand",
+                    name: ["Toyota"],
+                }
+            }),
+            helmetJsonLdProp<Products>({
+                "@context": "https://schema.org",
+                "@type": "Product",
+                name: "Toyota Sequoia",
+                image: "https://www.glacier.nz/static/07ca19badc88105b2df44826bacfde65/2e482/sequoia.jpg",
+                description: "The ultimate luxury SUV in New Zealand. Imported, right-hand drive remanufactured, and modified to your needs, exclusively by Glacier International.",
+                url: "https://www.glacier.nz/experience-sequoia"
+            }),
+            helmetJsonLdProp<Products>({
+                "@context": "https://schema.org",
+                "@type": "Product",
+                name: "Toyota Tundra",
+                image: "https://www.glacier.nz/static/62a3f24b8fbbbad049418debcf0c3ee5/2e482/tundra.jpg",
+                description: "The only Hybrid truck in New Zealand. Imported, right-hand drive remanufactured, and modified to your needs, exclusively by Glacier International.",
+                url: "https://www.glacier.nz/experience-tundra"
+            }),
+        ]}
+        />;
         <Helmet>
             <title>2023 Toyota Sequoia & Tundra | Right Hand Drive Hybrid SUV</title>
             <meta name='description' content='Glacier International is a one-stop shop importing Toyota Hybrid SUVs and remanufacturing right-hand drive Toyota Sequoia and Tundra models in New Zealand.' />
