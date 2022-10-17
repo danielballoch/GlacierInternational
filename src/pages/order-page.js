@@ -472,7 +472,6 @@ export default function OrderPage ({location}){
                         </label>
                     </p>
                     <label htmlFor="attachment">
-                    
                         <p hidden>Photo ID (Drivers Licence or Passport):</p>
                         <input 
                         hidden
