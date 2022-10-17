@@ -464,7 +464,7 @@ export default function OrderPage ({location}){
             {formStage === 0 ? 
             <div>
                 {/* hidden form so file upload shows up in netlify dashboard */}
-                <form data-netlify="true" name="file-upload" data-netlify-honeypot="bot-field" onSubmit={handleSubmit3} >
+                <form data-netlify="true" name="file-upload" data-netlify-honeypot="bot-field" onSubmit={handleSubmit3} hidden>
                     <div data-netlify-recaptcha="true"></div>
                     <p hidden>
                         <label>
@@ -473,8 +473,9 @@ export default function OrderPage ({location}){
                     </p>
                     <label htmlFor="attachment">
                     
-                        <p>Photo ID (Drivers Licence or Passport):</p>
+                        <p hidden>Photo ID (Drivers Licence or Passport):</p>
                         <input 
+                        hidden
                             onChange={handleAttachment}
                             type="file" 
                             name="attachment" 
@@ -483,7 +484,7 @@ export default function OrderPage ({location}){
                         />
                     </label>
                     <input type="hidden" name="form-name" value="file-upload" />
-                    <button type="submit">Submit</button>
+                    <button  hidden type="submit">Submit</button>
                 </form>
                 <form key={1} onSubmit={handleSubmit2(onSubmit2)}
                     id="autocomplete"
