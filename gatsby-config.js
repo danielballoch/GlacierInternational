@@ -4,7 +4,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://glacier.thoughtfulhq.com`
+    siteUrl: `https://glacier.nz`
   },
   plugins: ["gatsby-plugin-emotion", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", {
     resolve: 'gatsby-plugin-manifest',
@@ -18,6 +18,55 @@ module.exports = {
       "path": "./src/images/"
     },
     __key: "images"
+  },
+  {
+    resolve: `gatsby-plugin-sitemap`,
+    options: {
+      query: `{
+        site {
+          siteMetadata {
+            siteUrlNoSlash
+          }
+        }
+        allSitePage {
+          edges {
+            node {
+              path
+            }
+          }
+        }
+        allMarkdownRemark {
+          edges {
+            node {
+              fields {
+                slug
+              }
+            }
+          }
+        }
+      }`,
+      serialize: ({ site, allSitePage, allMarkdownRemark }) => {
+        let pages = []
+        allSitePage.edges.map(edge => {
+          pages.push({
+            url: site.siteMetadata.siteUrlNoSlash + edge.node.path,
+            changefreq: `daily`,
+            priority: 0.7,
+          })
+        })
+        allMarkdownRemark.edges.map(edge => {
+          pages.push({
+            url: `${site.siteMetadata.siteUrlNoSlash}/${
+              edge.node.fields.slug
+            }`,
+            changefreq: `daily`,
+            priority: 0.7,
+          })
+        })
+
+        return pages
+      },
+    },
   },
   {
     resolve: `gatsby-plugin-facebook-pixel`,
