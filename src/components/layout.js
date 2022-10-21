@@ -54,7 +54,6 @@ const Layout = ({ title, children, pageLocation, hideFooter, invertNav}) => {
             <meta charSet="utf-8" lang="en"/>
             <meta name="description" content={data.site.siteMetadata.description}/>
             <title>{title}</title>
-            <link rel="canonical" href={data.site.siteMetadata.siteUrl} />
             <script async src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GATSBY_GOOGLE_PLACES}&libraries=places`}/>
             <link rel="preconnect" href="https://fonts.googleapis.com"/>
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>

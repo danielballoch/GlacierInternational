@@ -6,9 +6,17 @@ const siteUrl = process.env.URL || `https://glacier.nz`
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://glacier.nz`
+    siteUrl: `https://glacier.nz`,
+    pageUrl: process.env.URL
   },
   plugins: ["gatsby-plugin-emotion", "gatsby-plugin-image", "gatsby-plugin-react-helmet","gatsby-plugin-sitemap","gatsby-plugin-advanced-sitemap", 
+  {
+    resolve: `gatsby-plugin-canonical-urls`,
+    options: {
+      siteUrl: `https://glacier.nz`,
+      stripQueryString: true,
+    },
+  },
   {
     resolve: 'gatsby-plugin-manifest',
     options: {
