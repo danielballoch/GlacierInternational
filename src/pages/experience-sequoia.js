@@ -12,6 +12,7 @@ const Container = styled.div`
 /* margin-top: 100px; */
 @media(max-width: 940px){
     margin-bottom: 400px;
+    margin-top: 100px!important;
     p {
         width: auto !important;
         text-align: center;
@@ -27,7 +28,6 @@ const Container = styled.div`
     }
     h1 {
         text-align: center;
-        margin: 0;
     }
     button {
         width: 100%;
@@ -101,7 +101,12 @@ const Container2 = styled.div`
         margin-bottom: 20px;
     }
     background-color: rgba(0,0,0,0.6) !important;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+box-sizing: border-box;
 background-color: rgba(0,0,0,0.8);
 color: white;
 /* width: 30%; */

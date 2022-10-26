@@ -193,6 +193,7 @@ button {
 
 
 const DisplaySection = styled.div`
+box-sizing: border-box;
 background-color: white;
 height: 955px;
 width: 100%;
@@ -218,6 +219,7 @@ font-family: open-sans, visby, sans-serif;
     }
 }
 div {
+    box-sizing: border-box;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -345,7 +347,7 @@ const IndexPage = ({location}) => {
             helmetJsonLdProp<Products>({
                 "@context": "https://schema.org",
                 "@type": "Product",
-                name: "Toyota Sequoia",
+                name: "Toyota Sequoia", 
                 image: "https://www.glacier.nz/static/07ca19badc88105b2df44826bacfde65/2e482/sequoia.jpg",
                 description: "The ultimate luxury SUV in New Zealand. Imported, right-hand drive remanufactured, and modified to your needs, exclusively by Glacier International.",
                 url: "https://www.glacier.nz/experience-sequoia"
