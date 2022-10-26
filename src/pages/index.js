@@ -95,6 +95,8 @@ background-color: #000;
 text-align: center;
 border: 0;
 margin: 0;
+padding-bottom: 100px;
+box-sizing: border-box;
 .cls-1 {
     fill: #FFFFFF;
     text-anchor: middle;
@@ -137,7 +139,7 @@ const CenterContent = styled.div`
     position: absolute;
     z-index: 2;
     opacity: .8;
-    top: 67vh;
+    top: 60vh;
     width: 100%;
     
     justify-content: center;
@@ -357,7 +359,7 @@ const IndexPage = ({location}) => {
                 url: "https://www.glacier.nz/experience-tundra"
             }),
         ]}
-        />;
+        />
         <Helmet>
             <title>2023 Toyota Sequoia & Tundra | Right Hand Drive Hybrid SUV</title>
             <meta name='description' content='Glacier International is a one-stop shop importing Toyota Hybrid SUVs and remanufacturing right-hand drive Toyota Sequoia and Tundra models in New Zealand.' />
@@ -390,7 +392,8 @@ const IndexPage = ({location}) => {
                     </LogoOver>
                     <div className="herotext">
                         {/* <button onClick={() => {setShowSent({message: "show"}); console.log("button click")}}>Test</button>  */}
-                        <p>Glacier International is a one-stop shop for importing, right hand drive re-manufacturing, and customising your Toyota Sequoia or Tundra. With cutting edge technology, the 2023 Toyota Sequoia and Tundra are meticulously engineered luxury hybrid machines, and our goal is to deliver them to Kiwis who value reliability, performance, and class over anything else.</p>
+                        <p>REAL LUXURY IS EXPERIENCING THE DRIVE OF YOUR LIFE, IN UNRIVALLED SAFETY, WITH A CLEAR ENVIRONMENTAL CONSCIENCE <br/><br/>
+                            The Hybrid Sequoia & Tundra experience is something incredibly hard to quantify and we don't feel the word 'luxury' in the traditional sense really does it justice. There is luxury in the feel of the leather. There is luxury in technology. There is luxury in a powerfully smooth ride. There is luxury in unrivalled safety. Lastly there is luxury in looking after our planet, which kiwis recognise more than most.</p>
                     </div>
                         <ScrollAnimation/>
                     </div>
@@ -401,10 +404,11 @@ const IndexPage = ({location}) => {
         </Main>
          {/* Sequioa section */}
          <DisplaySection>
-            <div>
+            <div style={{textAlign:"center", padding: "20px"}}>
                 <h2>2023</h2>
-                <h1>2023 Toyota Sequoia</h1>
-                <p>"The ultimate luxury SUV in New Zealand. Imported, right-hand drive remanufactured, and modified to your needs, exclusively by Glacier International."</p>
+                <h1>2023 Toyota Hybrid Sequoia</h1>
+                <p>The ultimate luxury SUV in New Zealand. Imported, right-hand drive remanufactured, and modified to your needs, exclusively by the team at Glacier International.</p>
+                <p>With their power, comes a superior towing capacity. With their hybrid technology comes fuel efficiency with enhanced torque. With their ability to take you from the beach to the mountains, in comfort like never before, comes a new drive for adventure. The new Sequoia Hybrid is unrivalled.</p>
                 <div><Button to="/experience-sequoia">Experience Sequoia</Button><ButtonOutline to="/build-my-sequoia">Build Your Sequoia</ButtonOutline></div>
             </div>
         <div> 
@@ -419,10 +423,11 @@ const IndexPage = ({location}) => {
         </DisplaySection>
         {/* Tundra section */}
         <DisplaySection>
-            <div>
+            <div style={{textAlign:"center", padding: "20px"}}>
                 <h2>2023</h2>
-                <h1>2023 Toyota Tundra</h1>
-                <p>"The only Hybrid truck in New Zealand. Imported, right-hand drive remanufactured, and modified to your needs, exclusively by Glacier International."</p>
+                <h1>2023 Toyota Hybrid Tundra</h1>
+                <p>Tough, chiselled with cutting-edge hybrid technology - the perfect truck for your off-road adventures, with an unbeatable towing capacity. Technical muscle first and foremost, the all-new Tundra has the best 4x4 capabilities of any UTE we know.</p>
+                <p>Currently the safest truck on the planet. Powered with Toyota Safety Sense 2.5, you no longer have to worry about collisions. Toyota Tundra is your feature-laden friend for long drives or family adventures.</p>
                 <div><Button to="/experience-tundra">Experience Tundra</Button><ButtonOutline to="/build-my-tundra">Build Your Tundra</ButtonOutline></div>
             </div>
         <div> 

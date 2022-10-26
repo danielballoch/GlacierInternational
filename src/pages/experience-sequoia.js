@@ -113,7 +113,6 @@ h2 {
     color: white;
 }
 p {
-    text-align: justify;
     color: white;
 }
 `
@@ -172,6 +171,7 @@ const Container3 = styled.div`
     p {
         height: 100%;
     }
+    flex-direction: column;
 }
 background-color: rgba(0,0,0,0.8);
 color: white;
@@ -191,8 +191,12 @@ p {
     text-align: left;
     width: 150px;
     letter-spacing: 1px;
-    padding: 7px 7px;
+    padding: 0 0 0 20px;
     color: white;
+    width: 800px;
+    display: flex;
+    align-items: center;
+    max-width: 100%;
 }
 `
 
@@ -329,10 +333,8 @@ const ExperienceTundraPage = () => {
                         }}
                     >
                         <Container2>
-                            <h2>LUXURY MEETS POWER</h2>
-                            <p>The 2023 Sequoia gives you the freedom to adventure from wharf to mountains without worry. Whether you need a boat towed cross country, a horse float to the local trail, or have the trailer loaded up for a work haul, the Sequoia can handle it. </p>
-                            <p>With a towing capacity of up to 4 Tonne, the 2023 Sequoia has the muscle to deliver big payloads with ease and confidence.</p>
-                            <p>Put simply less worry, more fun, and all the bragging rights.</p>
+                            <h2>SUV Sophistication + Hybrid Technology, Safety & Power</h2>
+                            <p>The new hybrid Sequoia is designed to take your breath away. Its incredible power comes with world-leading hybrid technology and the highest safety rating in the world for its class. The unrivalled luxury goes far beyond the leather interior. The true difference lies in experiencing the drive of your life, keeping your passengers as safe as can be, with lower emissions.</p>
                         </Container2>
                 </div>
             </div>
@@ -346,8 +348,8 @@ const ExperienceTundraPage = () => {
                     />  
                 <div className="premText">
                         <Container3>
-                        <h2>TOUGH ON THE OUTSIDE PREMIUM ON THE INSIDE</h2>
-                        <p>Sequoia’s exceptional interior stands apart with its premium materials and quality feel that both driver and passengers will enjoy</p>
+                        <h2>A True Performance Hybrid</h2>
+                        <p>The Sequoia's impressive engine comes with 325kW and 790Nm of torque. With the Sequoia's Hybrid engine, quality is never compromised.  The outstanding tow capacity of the 2023 Sequoia means there is no limit to the possibility of new adventures. Choose from 5 grades hosting a plethora of benefits based on your priorities. The elegance of a city SUV, incredible off-road capabilities, power you've never known - the choice is yours - all packaged into an incredibly luxurious hybrid machine.</p>
                         </Container3>
                 </div>
             </ExperienceContainer>
@@ -364,9 +366,11 @@ const ExperienceTundraPage = () => {
                         display: "grid",
                         }}
                     >
-                        <Container>
-                        <h1>2023 TOYOTA SEQUOIA</h1>
-                        <p>Available now for pre-order in New Zealand -  exclusively from Glacier International.</p>
+                        <Container style={{textAlign:"center"}}>
+                        <h1>2023 Toyota Sequoia Technology</h1>
+                        <p>Wireless charging technology lets you place your electronics on the dock and charge them on the go. <br/>
+                        Straight path assist will assist you reversing a boat, jet ski or travel trailer, making this tricky task easier than ever. <br/>
+                        Simply choose your trailer size and sit back. The grand 14 inch display also means they'll never be a dull moment on longer road trip adventures.</p>
                         <StaticImage
                         src={`../images/experienceSequoia/SequoiaRed.jpeg`}
                         alt="Glacier International Logo"
