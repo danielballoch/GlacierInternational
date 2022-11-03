@@ -106,7 +106,7 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
                     <div><h2>325kw</h2><p>i-FORCE MAX Engine</p></div>
                     <div><h2>790nm</h2><p>Torque</p></div>
                     <div><h2>4 Tonne*</h2><p>Max Towing *</p></div>
-                    <div><h2>{activeGrade[0] === "SR5" ? 8 : 7}</h2><p>Seats</p></div>
+                    <div><h2>{activeGrade[0] === "SR5" || activeGrade[0] === "Limited" ? 8 : 7}</h2><p>Seats</p></div>
                 </div>
                 <p>Grade:</p>
                 <div className="wrap">
