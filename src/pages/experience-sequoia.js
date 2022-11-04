@@ -7,6 +7,7 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import { Link } from "gatsby"
 import SequoiaBrochure from "../../static/Glacier_Int_Sequoia_2023.pdf"
+import { SEO, useSEO } from "gatsby-plugin-seo";
 
 const Container = styled.div`
 /* margin-top: 100px; */
@@ -261,6 +262,7 @@ span {
 const isBrowser = typeof window !== "undefined";
 
 const ExperienceTundraPage = () => {
+    const { siteUrl } = useSEO();
     let bottomBackground;
     if (isBrowser && window.innerWidth > 1050){
         bottomBackground =  <StaticImage
@@ -279,6 +281,33 @@ const ExperienceTundraPage = () => {
     }
     return(
         <Layout title="Experience Sequoia | Glacier International">
+            <SEO
+                title="Experience Sequoia | Glacier International"
+                description="The ultimate luxury SUV in New Zealand. Imported, right-hand drive remanufactured, and modified to your needs, exclusively by Glacier International."
+                pagePath="/experience-sequoia"
+                schema={`{
+                    "@context": "http://schema.org",
+                    "@type": "Product",
+                    "name": "Toyota Sequoia",
+                    "image": "https://www.glacier.nz/static/07ca19badc88105b2df44826bacfde65/2e482/sequoia.jpg",
+                    "description": "The ultimate luxury SUV in New Zealand. Imported, right-hand drive remanufactured, and modified to your needs, exclusively by Glacier International.",
+                    "url": "https://www.glacier.nz/experience-sequoia"
+                }`}
+            />
+            <SEO
+                title="2023 Toyota Sequoia & Tundra | Right Hand Drive Hybrid SUV"
+                description="Glacier International is a one-stop shop importing Toyota Hybrid SUVs and remanufacturing right-hand drive Toyota Sequoia and Tundra models in New Zealand."
+                pagePath="/"
+                schema={`{
+                    "@context": "http://schema.org",
+                    "@type": "WebPage",
+                    "mainEntity": {
+                        "@type": "LocalBusiness",
+                        "name": "Glacier International",
+                        "image": "${siteUrl}/static/07ca19badc88105b2df44826bacfde65/2e482/sequoia.jpg"
+                    }
+                }`}
+            />
             <Helmet>
                 <title>Experience 2023 Toyota Sequoia | New Toyota Hybrid SUV</title>
                 <meta name='description' content='2023 Toyota Sequoia is ideal hybrid SUV for luxury design, strength, and efficiency. Available for pre-order in NZ. Experience Toyota Sequoia Today!' />
