@@ -48,5 +48,8 @@
     "schema-dts-gen": "^1.1.0",
     "vertx": "^0.0.1-security",
     "xero-node": "^4.21.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^12.1.0"
   }
 }
