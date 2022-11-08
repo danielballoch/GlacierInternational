@@ -272,7 +272,7 @@ const IndexPage = ({display=false}) => {
     const [price, setPrice] = useState(0);
     const [activeGrade, setActiveGrade] = useState(["SR5",32000, 0]);
     const [activeColor, setActiveColor] = useState(["Midnight Black Metallic",100, 0]);
-    const [activePicture, setActivePicture] = useState(1);
+    const [activePicture, setActivePicture] = useState(0);
     const [selectionStage, setSelectionStage] = useState(0);
     const [mainImageSrc, setMainImageSrc] = useState(grades[activeGrade[2]].src[activeColor[2] + (grades[activeGrade[2]].photos*activePicture)])
     

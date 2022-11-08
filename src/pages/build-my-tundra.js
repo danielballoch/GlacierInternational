@@ -371,7 +371,7 @@ const IndexPage = ({display=false}) => {
     const [activeGrade, setActiveGrade] = useState(["Limited Hybrid TRD OFF ROAD",32000, 0]);
     const [activeColor, setActiveColor] = useState(["Midnight Black Metallic",100, 0]);
     const [activeBed, setActiveBed] = useState(0)
-    const [activePicture, setActivePicture] = useState(1);
+    const [activePicture, setActivePicture] = useState(0);
     const [selectionStage, setSelectionStage] = useState(0);
     const [mainImageSrc, setMainImageSrc] = useState(grades[activeGrade[2]].src[(activeColor[(2)]+activeBed*grades[activeGrade[2]].src.length-4/2)+(grades[activeGrade[2]].photos*activePicture)])
     
