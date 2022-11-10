@@ -464,7 +464,14 @@ export default function OrderPage ({location}){
             {formStage === 0 ? 
             <div>
                 {/* hidden form so file upload shows up in netlify dashboard */}
-                <form data-netlify="true" name="file-upload" method="post" action="/thanks/" data-netlify-honeypot="bot-field" onSubmit={handleSubmit3} hidden>
+                <form 
+                data-netlify="true" 
+                name="file-upload" 
+                method="post" 
+                action="/thanks/" 
+                data-netlify-honeypot="bot-field" 
+                onSubmit={handleSubmit3} 
+                hidden>
                     <div data-netlify-recaptcha="true"></div>
                     <p hidden>
                         <label>
@@ -558,10 +565,11 @@ export default function OrderPage ({location}){
                                 </div>
                         </form>
                         <form 
+                            data-netlify="true" 
                             name="file-upload" 
-                            netlify
                             method="post" 
-                            data-netlify-honeypot="bot-field"
+                            action="/thanks/" 
+                            data-netlify-honeypot="bot-field" 
                             onSubmit={handleSubmit3} 
                         >
                                         <p hidden>
