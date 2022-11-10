@@ -92,7 +92,6 @@ export default function MobileFeatureSection({model, selectionStage, grades, act
         }
     }
     else {
-        
             if (selectionStage === 0){
                 featureSection = <FeatureSection>
                     {/*Display grade buttons, update activeGrade state onClick & if active use active class styling */}

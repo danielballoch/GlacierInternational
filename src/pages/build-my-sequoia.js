@@ -8,6 +8,7 @@ import MainImage from "../components/buildMyTundra/mainImage"
 import FeatureBar from "../components/buildMyTundra/sequioaFeatureBar";
 import MobileFeatureSection from "../components/buildMyTundra/mobileFeatureSection";
 import MobileSelectionTab from "../components/buildMyTundra/mobileSelectionTab";
+ 
 
 //import Capstone images
 import BlackCapstone1 from "../../static/images/sequoia/Capstone/Capstone/BlackCapstone/BlackCapstone1.png"
@@ -116,9 +117,7 @@ import InteriorPlatinum3 from "../../static/images/sequoia/Platinum/Platinum/Int
 import InteriorPlatinum4 from "../../static/images/sequoia/Platinum/Platinum/InteriorPlatinum/InteriorPlatinum4.png"
 
 //import SR5 images
-import BlackSR51 from "../../static/images/sequoia/SR5/SR5/BlackSR5/BlackSR51.png"
-import BlackSR52 from "../../static/images/sequoia/SR5/SR5/BlackSR5/BlackSR52.png"
-import BlackSR53 from "../../static/images/sequoia/SR5/SR5/BlackSR5/BlackSR53.png"
+
 import BlackSR54 from "../../static/images/sequoia/SR5/SR5/BlackSR5/BlackSR54.png"
 import BlueSR51 from "../../static/images/sequoia/SR5/SR5/BlueSR5/BlueSR51.png"
 import BlueSR52 from "../../static/images/sequoia/SR5/SR5/BlueSR5/BlueSR52.png"
@@ -260,6 +259,9 @@ const isBrowser = typeof window !== "undefined";
 
 
 const IndexPage = ({display=false}) => {
+    let BlackSR51 = "../../static/images/sequoia/SR5/SR5/BlackSR5/BlackSR51.png"
+    let BlackSR52 = "./images/sequoia/SR5/SR5/BlackSR5/BlackSR52.png"
+    let BlackSR53 = "images/sequoia/SR5/SR5/BlackSR5/BlackSR53.png"
     
     const grades = [
         {name: "SR5", colors: ["Midnight Black Metallic","Blueprint","Magnetic Grey Metallic","Army Green", "Supersonic Red","Rock", "Celestial Silver Metallic", "Ice Cap"], src: [BlackSR51, BlueSR51, GreySR51, GreenSR51, RedSR51,RockSR51, SilverSR51, WhiteSR51, BlackSR52, BlueSR52, GreySR52, GreenSR52, RedSR52,RockSR52, SilverSR52, WhiteSR52, BlackSR53, BlueSR53, GreySR53, GreenSR53, RedSR53,RockSR53, SilverSR53, WhiteSR53, BlackSR54, BlueSR54, GreySR54, GreenSR54, RedSR54,RockSR54, SilverSR54, WhiteSR54, InteriorSR51, InteriorSR52, InteriorSR53, InteriorSR54], price: 205000, photos: 8},
