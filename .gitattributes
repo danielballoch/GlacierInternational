@@ -1,2 +1,2 @@
-src/images/tundra/** filter=lfs diff=lfs merge=lfs -text
-src/images/sequoia/** filter=lfs diff=lfs merge=lfs -text
+static/images/tundra/** filter=lfs diff=lfs merge=lfs -text
+static/images/sequoia/** filter=lfs diff=lfs merge=lfs -text
