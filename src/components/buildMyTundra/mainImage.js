@@ -99,12 +99,41 @@ align-items: center;
     }
     
 }
+@media screen only (max-width: 1050px ) {
+    .arrow {
+        display: none!important;
+    }
+}
 `
 
 export default function MainImage ({src, activePicture, updatePicture}){
+    //add swipe controls for mobile
+    const [touchStart, setTouchStart] = React.useState(0);
+    const [touchEnd, setTouchEnd] = React.useState(0);
+
+    function handleTouchStart(e) {
+        setTouchStart(e.targetTouches[0].clientX);
+    }
+
+    function handleTouchMove(e) {
+        setTouchEnd(e.targetTouches[0].clientX);
+        console.log(touchEnd)
+    }
+
+    function handleTouchEnd() {
+        if (touchStart - touchEnd > 50) {
+            // do your stuff here for left swipe
+            if(activePicture<7){updatePicture(activePicture+1)}
+        }
+
+        if (touchStart - touchEnd < -50) {
+            // do your stuff here for right swipe
+            if(activePicture>0){updatePicture(activePicture-1)}
+        }
+    }
     return(
-        <Center>
-            <img className="mainImg" alt="Custom Sequoia/Tundra" src={src}/>
+        <Center >
+            <img className="mainImg" style={{marginlLeft: 0.5*(touchStart-touchEnd)}} alt="Custom Sequoia/Tundra" src={src} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}/>
             <div className="buttons">
                 <button onClick={() => {if(activePicture>0){updatePicture(activePicture-1)}}}><span className="arrow left"/></button>
                 <p className={activePicture > 3? "activeP" : ""}>Exterior</p>
