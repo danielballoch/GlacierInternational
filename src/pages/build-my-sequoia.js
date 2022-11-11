@@ -16,6 +16,13 @@ const pageStyles = {
     backgroundColor: "white"
   }
 
+const Loading = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+margin: auto;
+`
+
 const Main = styled.div`
 padding: 0;
 font-family: 'visby',sans-serif;
@@ -326,7 +333,9 @@ const IndexPage = ({display=false}) => {
             </Layout>
         )
     } else { return (
-        <div>Loading...</div>
+        <Layout>
+            <Loading><p>Loading...</p></Loading>
+        </Layout>
     )}
 }
 
