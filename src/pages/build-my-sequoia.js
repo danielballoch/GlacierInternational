@@ -333,9 +333,8 @@ const IndexPage = ({display=false}) => {
             </Layout>
         )
     } else { return (
-        <Layout>
             <Loading><p>Loading...</p></Loading>
-        </Layout>
+
     )}
 }
 
