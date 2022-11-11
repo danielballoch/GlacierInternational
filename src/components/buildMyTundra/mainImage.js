@@ -99,7 +99,7 @@ align-items: center;
     }
     
 }
-@media screen only (max-width: 1050px ) {
+@media (max-width: 1050px ) {
     .arrow {
         display: none!important;
     }
@@ -133,7 +133,7 @@ export default function MainImage ({src, activePicture, updatePicture}){
     }
     return(
         <Center >
-            <img className="mainImg" style={{marginlLeft: 0.5*(touchStart-touchEnd)}} alt="Custom Sequoia/Tundra" src={src} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}/>
+            <img className="mainImg" alt="Custom Sequoia/Tundra" src={src} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}/>
             <div className="buttons">
                 <button onClick={() => {if(activePicture>0){updatePicture(activePicture-1)}}}><span className="arrow left"/></button>
                 <p className={activePicture > 3? "activeP" : ""}>Exterior</p>
