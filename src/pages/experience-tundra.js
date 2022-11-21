@@ -6,7 +6,6 @@ import {css} from '@emotion/react';
 import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import { Link } from "gatsby"
-import { SEO, useSEO } from "gatsby-plugin-seo";
 
 const Container = styled.div`
 /* margin-top: 100px; */
@@ -251,7 +250,6 @@ span {
 const isBrowser = typeof window !== "undefined";
 
 const ExperienceTundraPage = () => {
-    const { siteUrl } = useSEO();
     let bottomBackground;
     if (isBrowser && window.innerWidth > 1050){
         bottomBackground =  <StaticImage
@@ -270,19 +268,6 @@ const ExperienceTundraPage = () => {
     }
     return(
         <Layout title="Experience Tundra | Glacier International">
-            <SEO
-                title="Experience Tundra | Glacier International"
-                description="The only Hybrid truck in New Zealand. Imported, right-hand drive remanufactured, and modified to your needs, exclusively by Glacier International."
-                pagePath="/experience-tundra"
-                schema={`{
-                    "@context": "http://schema.org",
-                    "@type": "Product",
-                    "name": "Toyota Tundra",
-                    "image": "https://www.glacier.nz/static/62a3f24b8fbbbad049418debcf0c3ee5/2e482/tundra.jpg",
-                    "description": "The only Hybrid truck in New Zealand. Imported, right-hand drive remanufactured, and modified to your needs, exclusively by Glacier International.",
-                    "url": "https://www.glacier.nz/experience-tundra"
-                }`}
-            />
             <Helmet>
                 <title>Experience 2023 Toyota Tundra | New Right Hand Drive Tundra</title>
                 <meta name='description' content='Discover the new 2023 Toyota Tundra, the toughest, most capable, and most advanced full-size Tundra in New Zealand. Experience the new Toyota Tundra today!' />

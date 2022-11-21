@@ -11,31 +11,6 @@ module.exports = {
   },
   plugins: ["gatsby-plugin-emotion", "gatsby-plugin-image", "gatsby-plugin-react-helmet","gatsby-plugin-sitemap","gatsby-plugin-advanced-sitemap", 
   {
-    resolve: "gatsby-plugin-seo",
-    
-    options: {
-      siteName: "Glacier International",
-      siteUrl: "https://glacier.nz",
-      defaultSiteImage: "https://www.glacier.nz/static/c6b4c8bd2fc905a29ac1fbb6fd240f23/ccd45/glacierLogo.webp",
-      globalSchema: `{
-        "@context": "http://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Glacier International",
-        "image": "https://www.glacier.nz/static/c6b4c8bd2fc905a29ac1fbb6fd240f23/ccd45/glacierLogo.webp",
-        "telephone": "+64 27 288 6372",
-        "email": "sales@glacier.nz",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "7-9 Monaco Drive Highlands Cromwell",
-          "addressLocality": "Cromwell",
-          "addressCountry": "New Zealand",
-          "postalCode": "9384"
-        },
-        "url": "https://www.glacier.nz/"
-      }`
-    }
-  },
-  {
     resolve: `gatsby-plugin-canonical-urls`,
     options: {
       siteUrl: `https://glacier.nz`,
