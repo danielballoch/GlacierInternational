@@ -26,7 +26,7 @@ export default async(req, res) => {
                 headers: {
                   accept: 'application/json',
                   'content-type': 'application/json',
-                  'Api-Token': ACTIVE_CAMPAIGN_API
+                  'Api-Token': process.env.ACTIVE_CAMPAIGN_API
                 },
                 body: JSON.stringify({
                   contact: {fieldValues: [{field: 1, value: req.body.order}]}
@@ -53,7 +53,7 @@ export default async(req, res) => {
             headers: {
                 accept: 'application/json',
                 'content-type': 'application/json',
-                'Api-Token': ACTIVE_CAMPAIGN_API
+                'Api-Token': process.env.ACTIVE_CAMPAIGN_API
             },
             body: JSON.stringify({
                 contact: {
@@ -82,7 +82,7 @@ export default async(req, res) => {
                     const options3 = {
                         method: 'POST',
                         headers: {accept: 'application/json', 'content-type': 'application/json',
-                        'Api-Token': ACTIVE_CAMPAIGN_API},
+                        'Api-Token': process.env.ACTIVE_CAMPAIGN_API},
                         body: JSON.stringify({contactTag: {contact: ID, tag: 3}})
                     };
                     try {
