@@ -1,13 +1,18 @@
 import React, {useState, useEffect} from "react"
-import {css} from '@emotion/react';
+import { css } from '@emotion/react';
+import { Link } from 'gatsby'
 
 const termsStyles = ({menuOpen}) => css`
 ${'' /* display: none; */}
 ${'' /* overflow-x: scroll; */}
 ${'' /* white-space: nowrap; */}
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 @media(max-width: 940px){
-    p, h1, {
-        width: 98%;
+    div {
+        flex-direction: column;
+        p {
+            padding: 0 10px;
+        }
     }
 button {
     padding: 30px 20px !important;
@@ -23,43 +28,56 @@ font-family: visby,sans-serif;
 transition: .5s;
 transition-delay: 0;
 position: fixed;
-color: white;
+background-color: rgba(355,355,355,0.98);
+color: black;
 justify-content: flex-start;
 align-items: center;
-top: 0;
+bottom: 0;
 right:0;
 opacity: 0;
 z-index: -400;
-height: 100%;
 width: 100%;
 display: flex;
 flex-direction: column;
 transform: translateY(-3%);
 div {
-    margin-top: 100px;
-    padding: 100px 0;
-    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    max-width: 900px;
     overflow-y: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-    @media(max-width: 940px){
-        width: 90%;
-        
-    }
-    
 }
 h1 {
-    color: white;
+    color: black;
 }
 p {
-    color: white;
+    color: black;
 }
 button {
-    padding: 10px 40px;
+    transition: .3s;
+    background-color: #439c43;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    padding: 0 70px;
+    ${'' /* margin: 40px 20px; */}
+    height: 60px;
+    margin: 0 40px;
+    font-size: 16px;
+    weight: 200;    
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 button:hover {
     cursor: pointer;
+    background-color: #49aa49;
 }
+transform: translateY(100%);
 ${menuOpen === true &&`
 z-index: 800;
 display: flex;
@@ -67,27 +85,10 @@ transition-delay: .2s;
 transition: opacity .8s, transform .5s;
 transition-timing-function: ease-out;
 opacity: 1;
-transform: translateX(0%);
+transform: translateY(0%);
 `}
 `
-const backStyle = ({menuOpen}) => css`
-    position: fixed;
-    z-index: -100;
-    top: 0;
-    left: 0;
-    ${'' /* transition: .3s; */}
-    transition-delay: .3s;
-    transition: background-color .3s, z-index .4s;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(255,255,255,0);
 
-${menuOpen === true &&`
-z-index: 400;
-transition: background-color .3s, z-index .1s;
-background-color: rgba(0,0,0,.8);
-`}
-`
 
 
 
@@ -103,26 +104,17 @@ export default function Terms(){
     let DrawerLinks = (
         <div css={termsStyles({ menuOpen })}>
             <div>
-                <h1>Terms & Conditions</h1>
                 <p>
-                Glacier International is an independent vehicle importer & trader, and is not affiliated in any way with Toyota Motor Corporation.  All logos, images, products and company names and trademarks including TOYOTA, SEQUOIA, TUNDRA and TRD are and remain the property of their respective owners. 
+                We use cookies to ensure that we give you the best experience on our website. If you continue to use this website you also agree to our <Link to="/privacy&legal">terms and conditions</Link>.
                 </p>
-                <p>
-                All goods and services offered by Glacier International are not provided by or with the authorisation of Toyota Motor Corporation and Glacier International is not affiliated or endorsed by Toyota Motor Corporation in any way. 
-                </p>
-                <p>
-                "TOYOTA", "SEQUOIA", and "TUNDRA" are registered trademarks of Toyota Motor Corporation. SEQUOIA and TUNDRA are used in the title of this website solely to identify the subject of interest to the website. Toyota Motor Corporation, Toyota Motor Sales, U.S.A., Inc. and their affiliated companies are not responsible in any way for the contents of the site, which are solely the responsibility of the publisher. The contents of the website do not reflect the policy or opinions of Toyota Motor Corporation, Toyota Motor Sales, U.S.A., Inc. or any of Toyota's affiliated companies. This website is not affiliated with, endorsed, sponsored, or supported by Toyota Motor Corporation, Toyota Motor Sales, U.S.A., Inc. or any of Toyota's affiliated companies.
-                </p>
-                <button crossorgin='anonymous' onClick={() => {setMenuOpen(false); sessionStorage.setItem('terms','accepted');}}> Accept Terms & Enter Website</button>
+                <button crossorgin='anonymous' onClick={() => {setMenuOpen(false); sessionStorage.setItem('terms','accepted');}}>Accept</button>
             </div>
             
         </div> 
     )
     return (
     <div>    
-
-    {DrawerLinks}
-    <div css={backStyle({ menuOpen })}/>
+        {DrawerLinks}
     </div>
     )
 }
