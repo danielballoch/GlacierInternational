@@ -110,7 +110,7 @@ export default function FeatureBar ({grades, activeGrade, activeColor, updateAct
                     <div><h2>790nm</h2><p>Torque</p></div>
                     <div><h2>5 Tonne *</h2><p>Max Towing *</p></div>
                 </div>
-                <p>Grade:</p>
+                <p>Spec:</p>
                 <div className="wrap">
                     {grades.map((grade, i) => (
                         <button className={(activeGrade[0] === grade.name ? 'active' : '')} 
